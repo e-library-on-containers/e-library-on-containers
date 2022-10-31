@@ -1,0 +1,25 @@
+name: FunctionalValidation-Tests
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/functional-validation-test.yml'
+      - 'src/shared/FunctionalValidation.Tests/**'
+      - 'src/shared/FunctionalValidation/**'
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore src/shared/FunctionalValidation.Tests
+      - name: Build
+        run: dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true src/shared/FunctionalValidation.Tests
+      - name: Test
+        run: dotnet test -c Release --no-build --verbosity normal src/shared/FunctionalValidation.Tests
+      
