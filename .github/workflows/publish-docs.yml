@@ -35,6 +35,14 @@ jobs:
       run: |
         npm i -g c4builder
         c4builder
+     
+    - name: Process diagrams markdown file
+      run: |
+        sed -E -i '/\*[ ]\[Top\]\(\#Top\)/d' c4builder/docs/eLibraryOnContainers.md
+        sed -E -i '/\#\# Top/d' c4builder/docs/eLibraryOnContainers.md
+        sed -E -i 's/\s{2}([ ]*)\* \[\S\s(.*)\]\(\#\S-(.*)\)/\1\* \[\2\]\(\#\L\3\)/' c4builder/docs/eLibraryOnContainers.md
+        sed -E -i '/\[Top\]\(\#eLibraryOnContainers\)/d' c4builder/docs/eLibraryOnContainers.md
+        sed -E -i 's/\#\#\s\S\s(.*)/## \1/' c4builder/docs/eLibraryOnContainers.md
           
     - name: Copy diagrams to DocFx
       run: |

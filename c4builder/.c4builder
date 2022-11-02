@@ -1,7 +1,7 @@
 {
 	"plantumlVersion": "latest",
 	"projectName": "eLibraryOnContainers",
-	"homepageName": "Home",
+	"homepageName": "Top",
 	"rootFolder": "src",
 	"distFolder": "docs",
 	"generateMD": false,
