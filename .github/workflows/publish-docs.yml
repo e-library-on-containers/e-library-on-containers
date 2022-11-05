@@ -1,62 +1,33 @@
-name: Publish Docs on GitHub Pages
+name: Publish docs on GitHub Pages
 
 on:
-  pull_request:
+  push:
     branches:
       - develop
     paths:
-      - 'src/**'
-      - 'docs/**'
-      - 'c4builder/**'
-      - '.github/workflows/publish-docs.yml'
+      - src/**
+      - docs/**
+      - c4builder/**
+      - .github/workflows/build-docs.yml
+      - .github/workflows/publish-docs.yml
 
 jobs:
-  publish-docs:
+  build:
+    uses: ./.github/workflows/build-docs.yml
+    
+  publish:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Restore docs from cache
+      uses: actions/cache@v3
+      with:
+        path: docs/_site
+        key: docs-${{ github.run_id }}
     
-    - name: Set environment variables
-      uses: ./.github/actions/set-env
-
-    - name: Setup .NET 6.0
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: latest
-
-    - name: build C4-Builder diagrams page
-      working-directory: c4builder
-      run: |
-        npm i -g c4builder
-        c4builder
-     
-    - name: Process diagrams markdown file
-      run: |
-        sed -E -i '/\*[ ]\[Top\]\(\#Top\)/d' c4builder/docs/eLibraryOnContainers.md
-        sed -E -i '/\#\# Top/d' c4builder/docs/eLibraryOnContainers.md
-        sed -E -i 's/\s{2}([ ]*)\* \[\S\s(.*)\]\(\#\S-(.*)\)/\1\* \[\2\]\(\#\L\3\)/' c4builder/docs/eLibraryOnContainers.md
-        sed -E -i '/\[Top\]\(\#eLibraryOnContainers\)/d' c4builder/docs/eLibraryOnContainers.md
-        sed -E -i 's/\#\#\s\S\s(.*)/## \1/' c4builder/docs/eLibraryOnContainers.md
-          
-    - name: Copy diagrams to DocFx
-      run: |
-        cp c4builder/docs/eLibraryOnContainers.md docs/articles/diagrams.md
-        
-    - name: Build Documentation
-      uses: nikeee/docfx-action@v1.0.0
-      with:
-        args: docs/docfx.json
-      continue-on-error: false
-
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.event.pull_request.merged }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/_site
