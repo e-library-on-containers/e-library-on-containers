@@ -6,6 +6,10 @@
     public enum ErrorType
     {
         /// <summary>
+        /// Unknown type of error.
+        /// </summary>
+        Unknown,
+        /// <summary>
         /// Validation error.
         /// </summary>
         Validation,

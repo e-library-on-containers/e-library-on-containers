@@ -36,4 +36,11 @@ internal class ApplicationErrorExtensionsTests
 
         It should_return_Forbidden_status_code = () => result.ShouldEqual(HttpStatusCode.Forbidden);
     }
+
+    class When_UnknownError
+    {
+        Establish ctx = () => error = new UnknownError(string.Empty);
+
+        It should_return_InternalServerError_status_code = () => result.ShouldEqual(HttpStatusCode.InternalServerError);
+    }
 }

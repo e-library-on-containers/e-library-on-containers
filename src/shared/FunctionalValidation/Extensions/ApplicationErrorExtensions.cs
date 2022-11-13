@@ -19,6 +19,7 @@ namespace FunctionalValidation.Extensions
                 ErrorType.NotFound => HttpStatusCode.NotFound,
                 ErrorType.Validation => HttpStatusCode.BadRequest,
                 ErrorType.RestrictedAccess => HttpStatusCode.Forbidden,
+                ErrorType.Unknown => HttpStatusCode.InternalServerError,
                 _ => throw new ArgumentException($"Unknown error type: {error.Type}")
             };
         }
