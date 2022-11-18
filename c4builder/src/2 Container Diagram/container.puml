@@ -41,7 +41,7 @@ System_Boundary(c1, "eLibraryOnContainers"){
     }
     
     Boundary(rentals, "Rentals") {
-        Container(rentals_api, "Rentals service", "Java", "Manage rentals and allow users to borrow books", $sprite="java")
+        Container(rentals_api, "Rentals service", "Java with Spring Boot", "Manage rentals and allow users to borrow books", $sprite="java")
         ContainerDb(rentals_db, "Rentals database", "PostgreSQL", "Holds rentals events and physical copies information", $sprite="postgresql")
         ContainerDb(rentals_read_db, "Rentals (READ) database", "PostgreSQL", "Holds aggregated rentals and physical copies availability information", $sprite="postgresql")    
     }
