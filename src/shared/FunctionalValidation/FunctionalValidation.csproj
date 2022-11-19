@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
+
 		<Nullable>enable</Nullable>
 		<PackageId>FunctionalValidation</PackageId>
 		<Version>1.0.0</Version>
@@ -12,6 +13,12 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CSharpFunctionalExtensions" Version="2.36.1" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>FunctionalValidation.Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 </Project>
