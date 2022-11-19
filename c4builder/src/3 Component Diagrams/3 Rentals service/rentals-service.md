@@ -4,4 +4,4 @@
 
 According to *CQS* (Command-query separation) principles, in the system *Queries* retrieves data from database and processes it before returning it to user (without any side effects on system state) and *Commands* performs actions that changes state of the system without returning any data.
 
-According to *Event Sourcing* pattern *Rentals Repository* is appended only database in which none record can be edited. *Rentals READ Repository* is projection made by *Rentals worker* which aggregated every event to projection that facilitates reading from the database.
+According to *Event Sourcing* pattern *Rentals Repository* is append only database in which none record can be edited. *Rentals READ Repository* is a projection, built by *Rentals worker* from aggregated events, that facilitates reading from the database.
