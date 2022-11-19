@@ -18,10 +18,12 @@ ContainerDb(rentals_read_db, "Rentals (READ) database", "PostgreSQL", "Holds agg
 
 Container_Boundary(rentals, "Rental service") {
   Component(rentalController, "Rentals Controller", "Rest Controller", "Allows users to send requests related to book renting.")
-  Component(rentalService, "Rentals Service", "Events publisher", "Produces rentals events.")
-  Component(rentalReader, "Rentals Reader", "Spring service", "Reads and aggregates events from database.")
+
+  Component(rentalReader, "Rentals Reader", "Spring service", "Reads projection from READ database.")
   Component(rentalWorker, "Rentals Worker", "Events consumer", "Consumes rentals events.")
-  Component(rentalRepository, "Rentals Repository", "Spring repository", "Provides functionality related to database operations like reading and writing events to database")
+  Component(rentalService, "Rentals Service", "Events publisher", "Produces rentals events.")
+
+  Component(rentalRepository, "Rentals Repository", "Spring repository", "Provides functionality related to database operations like reading and updating projection in READ database")
   Component(rentalEventRepository, "Rentals Event Repository", "Spring repository", "Provides functionality related to write-only event database operations like writing and aggregating events to database")
 }
 
@@ -30,14 +32,14 @@ Rel(gateway, rentalController, "Uses", "JSON/HTTPS")
 Rel(rentalController, rentalReader, "Uses")
 Rel(rentalController, rentalService, "Uses")
 
+Rel(rentalWorker, rentalRepository, "Uses")
+Rel(rentalWorker, rabbit, "Consumes events", "async, JSON/HTTPS")
+
 Rel(rentalReader, rentalRepository, "Uses")
 Rel(rentalRepository, rentals_read_db, "Reads from and writes to", "async, JDBC")
 
 Rel(rentalService, rabbit, "Publishes events", "async, JSON/HTTPS")
 Rel(rentalService, rentalEventRepository, "Uses")
-
-Rel(rentalWorker, rentalRepository, "Uses")
-Rel(rentalWorker, rabbit, "Consumes events", "async, JSON/HTTPS")
 
 Rel(rentalEventRepository, rentals_db, "Writes to", "async, JDBC")
 @enduml
