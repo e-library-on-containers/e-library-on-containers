@@ -9,14 +9,14 @@
 
 LAYOUT_WITH_LEGEND()
 
-title Component diagram for eLibraryOnContainers - Rental service
+title Component diagram for eLibraryOnContainers - Rentals service
 
 Container(gateway, "API Gateway", ".NET with ASP.NET Core", "Routes all requests to appropriate services endpoints", $sprite="dotnet")
 ContainerQueue(rabbit, "Event bus", "RabbitMQ", "Event bus for asynchronous communication", $sprite=rabbitmq)
 ContainerDb(rentals_db, "Rentals database", "PostgreSQL", "Holds rentals events and physical copies information", $sprite="postgresql")
 ContainerDb(rentals_read_db, "Rentals (READ) database", "PostgreSQL", "Holds aggregated rentals and physical copies availability information", $sprite="postgresql")
 
-Container_Boundary(rentals, "Rental service") {
+Container_Boundary(rentals, "Rentals service") {
   Component(rentalController, "Rentals Controller", "Rest Controller", "Allows users to send requests related to book renting.")
 
   Component(rentalReader, "Rentals Reader", "Spring service", "Reads projection from READ database.")
