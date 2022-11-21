@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>eLibraryOnContainers </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="eLibraryOnContainers ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="elibraryoncontainers">eLibraryOnContainers</h1>
+
+<ul>
+<li><a href="#system-context-diagram">System Context Diagram</a></li>
+<li><a href="#container-diagram">Container Diagram</a></li>
+<li><a href="#component-diagrams">Component Diagrams</a>
+<ul>
+<li><a href="#api-gateway">API Gateway</a></li>
+<li><a href="#identity-service">Identity service</a></li>
+<li><a href="#rentals-service">Rentals service</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="system-context-diagram">System Context Diagram</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/TL9BSzCm4BxxLom-fJEfVU74gILaW9b0EwGPfgVCMjuc8hBM8wtiXb-FPBa11dgnl0zzZrtTU44deJF56ssL2It1KQJtx-hQuLWTj1n34pmvnLR8IgMugx5r6krWGX_grTlhUuDMTbysjK4XBp6rNwNkPwdwX5niRX_lTW_xxvyVFkqtwu_hhnyMLqKXMWp1zko5EfWlGAlnuB239tP06zquTESxcwgeBJbV5FVnotRH6xM4CWTeO6w5LV327Rao5cz1pH7m4yYHmEIk9HZcaxQ7YGQXYH48nzCv7gloweKazaUSZ1qTbvVW32Ex4xabT6ZnaA0IY0V5nf0IpNQP6BM3_dZsMaM9YdjD7j2suE8aqVZ4bFqlo73oyp_BanLZUFGNFpwf7JIDe6sqq64Y16mu2E20sc0JHviL9Rvi3A9PHnASJTAw2cRKR6N2dDnSvlINcyYiJg_8tw-VPO6DJqf_1aVmtd03Ms4NqSfBTcKujC3DZuYPy59rMa7wJpDCuF6j3R_dgRlOCp4LtyZahS-psddoCP_Iqvx-JUTCrhN5WLxWvl9Kc6zj8-kVzHkoRNgxlm00" alt="diagram"></p>
+<p><strong>Level 1: System Context diagram</strong></p>
+<p>eLibraryOnContainers is a library managament system for librarians and online book rental service for personal users.</p>
+<p>Librarians have access to books collection that can be modified should any new book arrive or is lost/sold/given away. System allows for rentals monitoring and managing books stock by adding or removing physical copies of books.</p>
+<p>Personal users can browse available books, borrow a book if a physical copy is available and pick it up personally later. Moreover, users can manage their own rentals, extend due date or mark a borrowed book for return.</p>
+<p>Azure Blob Storage will be used for storing static images for books.</p>
+<h2 id="container-diagram">Container Diagram</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/hLTRS-8s57xthz0odIcP2V5qshvqsiuIe9lia402wKwV6DbMG1jPSYGPbdRsl_VeOYE3IKYxF80i7P_pdU_Sn7kbiTHbpg9tbAUip0XQQLseN-9Ouit5akfLcPIAo5HmJRY-I4KUuqnIpDUiBCfuy5DloZ3N3pVZc65Db8QjnG2aCUL4NXH6T_Gk8u_mY8QZFwy7azlP2KPqMO2T7-F2Q0SbFGgdlKUGwAb2Kh0KvrXf8kEChCsPggtyCRcTzp-DPfERqJSrPFVmXYYHazxFqOwoN_7VfIHnttmFH9uBRlt-_K1YfeN4IozvoKJYDmx4cLWA1Q2JXEhy-SWnNrB-nP_j3YkEOyoN9SC-18V7d_4Q7plBXEP47plDrJDR08jhSbHv8PHUIWA2Un91R68J2UKpPDp_Q_8mNtowdbyjngCFezjXzooADDMCe3gRK4RnKk8SFGg9o9Wc4iljXDVdAegcy2ruDosLXYZ9SzGP-6K7rdrK7I3nYFIA8EQKd2Ccn1FbIwiQemIUa1RmAwNON7JEAiLE7j8Vj8shTQT-sAADa4_6ReuvNXg5HfL2gM2Cf9eAU17iKecArLRH53CuAYXH2FCCIKXAp9In5yssa7JvubAKF0F5tVG7iDBcTEVidmZ1fzxfgWA3x6pQjpwxD33BEJYSWmYYaFxo4QS4i61jYQY9iMSurGfje5vGgOmJ6vAW19XGbiVlN67yrl4f1d2R09RG2JPuQwnFhz47zsGGNDoEvavlVpQr3mCXYJcv5wKsB306B3oNq4YK2G0k2Yd06gX09kLe2aA4PuK0d2h4udBMCDV0SbUIadHT9O6PqHeeHj04h4sxUtFN2GzS1gWjJrTIS56QsELvoI5M9do1oQeylSawKZG3LLGRzw_zidE6N92QF5MI2rpGGBhoz6N6Rao60HksZ11EKx2lNHu1PslGZN09eGML1z1tR1s06YOxM5aIeigmnWbMrlZK5VZiRcoUhWJB0WYK0uVvWSrTK_1sl-uHPqi5r5sQtoEKMHdFbvLx2ra7nUZOsgj4A8JqIPtCbaDagNA0NkF9WMYpV2fnxH0amLc8eti_wW_FJeIpnmaC1yfmGfa9_0cmAbG-hlMoZgrlRQRgtEf8VBsSZx2N3MFy4Q2v6Cy01_GcS5O78VOAd1UCYOqlaBgREuT3HymeFC9i1SVIMg5vZT4A0Z4zvTj6kiApYtK5wiHeuoNicFwSDPWwc4R_8VwjDQtS3SVC8xSw4dSlj_2HtidlrtSGQfhR1cXU1NTWhjbx5J8NArHPErR5NoD0-ZtgzT3e2mmyRbslHYfiH_jtj2xUsmXSCeEkpNHdado6eaBUEJjQpDgahM7TkbRV4PmxTlXROFU4MSxLYXOM4cm4DnitvHyKiRFiQZwVpk1L8nDSKjg5G3_S3goi5TZDwqhI3i1pz74skOr3rLQyXObxo4SOdLBanzu6c_uYW2JCUd3RAgnDxyt2ru3KxuK3uUINcbtcfTS0TZK0hOecpEQat95Wexkn_nwWyGIw-yE9JMAhsBPfgpLmehwgJAN8ofIuQn2eC_znofoqizo_kPjw9mDTmMXw4xPMDM7BUPkVlaLPjGtc_xUlJMtDNlqgne_3oy5BUjxai5TcAglPjrpPx7UtjcQ2rpi2CiA89YzNLAlYcjB12HH6x-4gRVv__Gi0" alt="diagram"></p>
+<p><strong>Level 2: Container diagram</strong></p>
+<p>Librarians and Customers can interact with system using <em>Single Page Application</em> written in Angular.</p>
+<p>All API calls are routed to appropriate services through <em>API Gateway</em> that handles user authentication using <em>Identity</em> API.</p>
+<p>System's business logic is divided into bounded contexts, each serving a specific subset of functionalities. Communication between contexts is <strong>strictly asynchronous</strong> (not in a meaning of asynchronous calls inside application but globally asynchronous using fire-and-forget event publishing pattern).</p>
+<p>In current state, system is based on contexts:</p>
+<ul>
+<li>Identity - responsible for managing user account and authentication</li>
+<li>Books - responsible for managing books catalog and physical copies collection</li>
+<li>Rentals - responsible for managing rentals and allowing users to borrow books</li>
+<li>Storage - responsible for managing books cover images stored in an external object storage</li>
+</ul>
+<h2 id="component-diagrams">Component Diagrams</h2>
+<h2 id="api-gateway">API Gateway</h2>
+<p>Placeholder</p>
+<h2 id="identity-service">Identity service</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/bLPDZzem4BtdLqnH3wm4ow4zLQfKog8k5LrOmhRg2Pba25OTExMTfQZgV-_O-UP3szuozioyv-StXW_6CctpL0Ilk8n47YFihStCkz58iyDjmkq-t-O6TQIaHMbl8vMECi6agnaQ6mk-7KtU3fTkwUdBV9GoOr7JqcQYqan9LvEv_i6h67TS8jnDlyucYuVm7u1idh5Olsa0EUqETvGnD9dc5as55-EpspD1SuuAPnGhAx5aSRwRAMCJZUQdA7dEnzyNJ-lDjzdwVZEVVfe-tFLlWi1oAn3gCq7CMQ9P2Zkb0UTygva-BkI4g34wf3OmX5bCYTmUWKv5x308wkr-mYmUs740lV5o1f-Ag4VXxSDq3GTI0yRXqWSJfT7jh5HE1mOc16ZycQEn1gm2bcLQaHZKeW8oW3BE59VMKE7hGghtlKA7tar3usxRvoN9JRmbZ9fop2pRCkE1buL2uUFSHVTAnCGYYbHE_O5BKY1bbYlPncfK9Rm6SFEHgcAIgiPjWvRqUpVmEu16wpxBxTwrq4e8r4upMe1cnQj3UfmiZOLG1mFEL5ufmnD9VFtdaLoJ4hKEJ7ccBbHrqF-6qvXmvqrWCePepsI2OFV8TIDUnemvA1qxZLfCDjDVjfyYMSmgn-5B-TchlrSW2ilLcj7ML4OiCxbWpYOqFcakUUHl1hPe3uWIefgnyRGgmvmGw3kfPl8nH-qkA7J2pIJus25D7bTX4S4zjIa5S6dE45w24sqhCMWbfGglO2bFkLJtBUDsvohNWCH39Ty9Gg7mibIqmPaKobSR_m9NbDGcltPDtfTXeM1boh2v3Z-yhNYfrJEvti0kbv6x5IQSwJMw2uihWtAPa8G3U4RDTqSNLUXc06YZsokcNI6D72UJ7DkcRLPhHjsbbqcHE2nnF6hN2lu3QtVJpe02gpczm9H5ps6UqUlHhd2w_Gc25OhctJkRwIU3xhNgVGuN3wFxzNePKbctvD9yNYppTQS8hO4AwNqqG6yeiJObpANkPoLHOPPYU9fwtw19xawFPtXpad8-3nVJhfcwJFRP7RIk9LizkrcNJDFkUKRlnOehJA_okPR_4iwbXEvls0ePNT1EgzJVqi7_Jo0dEvSmSvJH0CPt2pSBrFC3NQlxrVyB" alt="diagram"></p>
+<p><strong>Level 3: Component diagram for <em>Identity</em> service</strong></p>
+<p><em>Identity</em> service acts as a guard for entire system, managing user accounts infomation, providing authentication and allowing (or restricting) authenticated users access to parts of the system.</p>
+<p><em>CQRS</em> (Command Query Responsibility Segregation) is used for reduced coupling between facade (controllers) and internal business logic services.</p>
+<p>According to <em>CQS</em> (Command-query separation) principles, in the system <em>Queries</em> retrieves data from database and processes it before returning it to user (without any side effects on system state) and <em>Commands</em> performs actions that changes state of the system without returning any data.</p>
+<h2 id="rentals-service">Rentals service</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/hLPDRnen4Btlht1H3o05EBIdggr202Mf224iQTGJyc83RhpsnlQ2KDN_tXdl9sHHSkWDZySpxxrvzd9f7JKkZMNmGQYLJ1adM-SI-wNVDtJVsmYtJQFKShFIod7bUYiTznD95PxfMiUaYFh3pzqPXXxl9lsOMiSDX9P37ITQuPa4wmSV65yBnSbe_FDsU3yDtz78fGbbvbFLKC1kTmqPNPiOuRWj-Z6-mprRqVWgzKPRA1v5miKl7iJteDelOFIPTehd85_l9jgwZU7sHUOq9eDVzu-BvTFjucOv6L-FfwDs9mYSS9AJaZ9XWcuCZSbQ6y8d8ZBK7ExL491JqC1OqYLpoAFI4k0Cs7aGbBlj3NLyJmyNf3MOtPBhRDM2PMywNf0zQ4K6uSmlXjfmt9dh5EGWL4fY-4lAhRF4QKAJn6YG2aeKZIpXYYLQA6VXuCTCo6-jJ8PMfuBnaFAKjpC1eSDuXyHWHhwTZzuzjEeRdYsr1xNQ6gqq1628SQh4YZgXLQrRCPLQjr7KDfaYInPXXrmUHXsDgFKaPzammeS9hcwqP9RaXmX75220OYJP7YpqbD0-4S1NA00Mds9eLQDjDUCmdB9ZCEtvU33gl8c9RY22GsGbl2PST4U5f96GmXtU1R92kRpIgM9WgW9i3MG-vrQ7_0b8vSaY4siOBIKtjJDLq4yNx7CI6aYfzvRW3VN6ic2Yocc6IyyMDYAjdprheJOznDm0OGx27hNF0jWd1DvgKtBmEHGa1Hl_vYjKXwoDZWaEefm3zcbeywJDyr6RB51w5lsfR1fdeM7s-zHHPsg76S1QyR22d5TFqaWAkytApuncwQgnVBD4C7dXj3aSoLG4QrAPeo2qsGa6RTQfyd9HxwxQW0hHY4wuyNwpH8fdJj3kM12jcYQGXekQxa8TgzuiZEVUY3vx9_uBXprUZgvMyf39U9uKPXQaYck9w_ovgEa1TFu6mPpBwlbjkZ6FbliNy4TuF-tVB1Qp42U8nngoJ_tk3tVUoAwibQVNymjFDzdaTVKoktZ4IvDd_968Vx0lo5a-1VZtTQnlDxsZU9Vz1SQ1-37Y4EeuHbV34mIb82MDMNwptkBHMEISJnlKVfLqz8bwEW__4fv7_Blm3m00" alt="diagram"></p>
+<p><strong>Level 3: Component diagram for <em>Rentals</em> service</strong></p>
+<p><em>Rentals</em> service is responsible for all actions related to the rental of books. The service saves each borrowing as an event into the database and the worker creates a projection that.</p>
+<p>According to <em>CQS</em> (Command-query separation) principles, in the system <em>Queries</em> retrieves data from database and processes it before returning it to user (without any side effects on system state) and <em>Commands</em> performs actions that changes state of the system without returning any data.</p>
+<p>According to <em>Event Sourcing</em> pattern <em>Rentals Repository</em> is append only database in which none record can be edited. <em>Rentals READ Repository</em> is a projection, built by <em>Rentals worker</em> from aggregated events, that facilitates reading from the database.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/e-library-on-containers/e-library-on-containers/blob/develop/docs/articles/diagrams.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

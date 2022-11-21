@@ -1,0 +1,277 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: FunctionalValidation
+  name: FunctionalValidation
+  href: api/FunctionalValidation.html
+  commentId: N:FunctionalValidation
+  fullName: FunctionalValidation
+  nameWithType: FunctionalValidation
+- uid: FunctionalValidation.AbstractValidator`1
+  name: AbstractValidator<TType>
+  href: api/FunctionalValidation.AbstractValidator-1.html
+  commentId: T:FunctionalValidation.AbstractValidator`1
+  name.vb: AbstractValidator(Of TType)
+  fullName: FunctionalValidation.AbstractValidator<TType>
+  fullName.vb: FunctionalValidation.AbstractValidator(Of TType)
+  nameWithType: AbstractValidator<TType>
+  nameWithType.vb: AbstractValidator(Of TType)
+- uid: FunctionalValidation.AbstractValidator`1.Validate(Result{`0,FunctionalValidation.Errors.ApplicationError})
+  name: Validate(Result<TType, ApplicationError>)
+  href: api/FunctionalValidation.AbstractValidator-1.html#FunctionalValidation_AbstractValidator_1_Validate_Result__0_FunctionalValidation_Errors_ApplicationError__
+  commentId: M:FunctionalValidation.AbstractValidator`1.Validate(Result{`0,FunctionalValidation.Errors.ApplicationError})
+  name.vb: Validate(Result(Of TType, ApplicationError))
+  fullName: FunctionalValidation.AbstractValidator<TType>.Validate(Result<TType, FunctionalValidation.Errors.ApplicationError>)
+  fullName.vb: FunctionalValidation.AbstractValidator(Of TType).Validate(Result(Of TType, FunctionalValidation.Errors.ApplicationError))
+  nameWithType: AbstractValidator<TType>.Validate(Result<TType, ApplicationError>)
+  nameWithType.vb: AbstractValidator(Of TType).Validate(Result(Of TType, ApplicationError))
+- uid: FunctionalValidation.AbstractValidator`1.Validate*
+  name: Validate
+  href: api/FunctionalValidation.AbstractValidator-1.html#FunctionalValidation_AbstractValidator_1_Validate_
+  commentId: Overload:FunctionalValidation.AbstractValidator`1.Validate
+  isSpec: "True"
+  fullName: FunctionalValidation.AbstractValidator<TType>.Validate
+  fullName.vb: FunctionalValidation.AbstractValidator(Of TType).Validate
+  nameWithType: AbstractValidator<TType>.Validate
+  nameWithType.vb: AbstractValidator(Of TType).Validate
+- uid: FunctionalValidation.Errors
+  name: FunctionalValidation.Errors
+  href: api/FunctionalValidation.Errors.html
+  commentId: N:FunctionalValidation.Errors
+  fullName: FunctionalValidation.Errors
+  nameWithType: FunctionalValidation.Errors
+- uid: FunctionalValidation.Errors.ApplicationError
+  name: ApplicationError
+  href: api/FunctionalValidation.Errors.ApplicationError.html
+  commentId: T:FunctionalValidation.Errors.ApplicationError
+  fullName: FunctionalValidation.Errors.ApplicationError
+  nameWithType: ApplicationError
+- uid: FunctionalValidation.Errors.ApplicationError.#ctor(FunctionalValidation.Errors.ErrorType,System.String)
+  name: ApplicationError(ErrorType, String)
+  href: api/FunctionalValidation.Errors.ApplicationError.html#FunctionalValidation_Errors_ApplicationError__ctor_FunctionalValidation_Errors_ErrorType_System_String_
+  commentId: M:FunctionalValidation.Errors.ApplicationError.#ctor(FunctionalValidation.Errors.ErrorType,System.String)
+  fullName: FunctionalValidation.Errors.ApplicationError.ApplicationError(FunctionalValidation.Errors.ErrorType, System.String)
+  nameWithType: ApplicationError.ApplicationError(ErrorType, String)
+- uid: FunctionalValidation.Errors.ApplicationError.#ctor*
+  name: ApplicationError
+  href: api/FunctionalValidation.Errors.ApplicationError.html#FunctionalValidation_Errors_ApplicationError__ctor_
+  commentId: Overload:FunctionalValidation.Errors.ApplicationError.#ctor
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.ApplicationError.ApplicationError
+  nameWithType: ApplicationError.ApplicationError
+- uid: FunctionalValidation.Errors.ApplicationError.Type
+  name: Type
+  href: api/FunctionalValidation.Errors.ApplicationError.html#FunctionalValidation_Errors_ApplicationError_Type
+  commentId: P:FunctionalValidation.Errors.ApplicationError.Type
+  fullName: FunctionalValidation.Errors.ApplicationError.Type
+  nameWithType: ApplicationError.Type
+- uid: FunctionalValidation.Errors.ApplicationError.Type*
+  name: Type
+  href: api/FunctionalValidation.Errors.ApplicationError.html#FunctionalValidation_Errors_ApplicationError_Type_
+  commentId: Overload:FunctionalValidation.Errors.ApplicationError.Type
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.ApplicationError.Type
+  nameWithType: ApplicationError.Type
+- uid: FunctionalValidation.Errors.ErrorType
+  name: ErrorType
+  href: api/FunctionalValidation.Errors.ErrorType.html
+  commentId: T:FunctionalValidation.Errors.ErrorType
+  fullName: FunctionalValidation.Errors.ErrorType
+  nameWithType: ErrorType
+- uid: FunctionalValidation.Errors.ErrorType.NotFound
+  name: NotFound
+  href: api/FunctionalValidation.Errors.ErrorType.html#FunctionalValidation_Errors_ErrorType_NotFound
+  commentId: F:FunctionalValidation.Errors.ErrorType.NotFound
+  fullName: FunctionalValidation.Errors.ErrorType.NotFound
+  nameWithType: ErrorType.NotFound
+- uid: FunctionalValidation.Errors.ErrorType.RestrictedAccess
+  name: RestrictedAccess
+  href: api/FunctionalValidation.Errors.ErrorType.html#FunctionalValidation_Errors_ErrorType_RestrictedAccess
+  commentId: F:FunctionalValidation.Errors.ErrorType.RestrictedAccess
+  fullName: FunctionalValidation.Errors.ErrorType.RestrictedAccess
+  nameWithType: ErrorType.RestrictedAccess
+- uid: FunctionalValidation.Errors.ErrorType.Unknown
+  name: Unknown
+  href: api/FunctionalValidation.Errors.ErrorType.html#FunctionalValidation_Errors_ErrorType_Unknown
+  commentId: F:FunctionalValidation.Errors.ErrorType.Unknown
+  fullName: FunctionalValidation.Errors.ErrorType.Unknown
+  nameWithType: ErrorType.Unknown
+- uid: FunctionalValidation.Errors.ErrorType.Validation
+  name: Validation
+  href: api/FunctionalValidation.Errors.ErrorType.html#FunctionalValidation_Errors_ErrorType_Validation
+  commentId: F:FunctionalValidation.Errors.ErrorType.Validation
+  fullName: FunctionalValidation.Errors.ErrorType.Validation
+  nameWithType: ErrorType.Validation
+- uid: FunctionalValidation.Errors.NotFoundError
+  name: NotFoundError
+  href: api/FunctionalValidation.Errors.NotFoundError.html
+  commentId: T:FunctionalValidation.Errors.NotFoundError
+  fullName: FunctionalValidation.Errors.NotFoundError
+  nameWithType: NotFoundError
+- uid: FunctionalValidation.Errors.NotFoundError.#ctor(System.String)
+  name: NotFoundError(String)
+  href: api/FunctionalValidation.Errors.NotFoundError.html#FunctionalValidation_Errors_NotFoundError__ctor_System_String_
+  commentId: M:FunctionalValidation.Errors.NotFoundError.#ctor(System.String)
+  fullName: FunctionalValidation.Errors.NotFoundError.NotFoundError(System.String)
+  nameWithType: NotFoundError.NotFoundError(String)
+- uid: FunctionalValidation.Errors.NotFoundError.#ctor*
+  name: NotFoundError
+  href: api/FunctionalValidation.Errors.NotFoundError.html#FunctionalValidation_Errors_NotFoundError__ctor_
+  commentId: Overload:FunctionalValidation.Errors.NotFoundError.#ctor
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.NotFoundError.NotFoundError
+  nameWithType: NotFoundError.NotFoundError
+- uid: FunctionalValidation.Errors.RestrictedAccessError
+  name: RestrictedAccessError
+  href: api/FunctionalValidation.Errors.RestrictedAccessError.html
+  commentId: T:FunctionalValidation.Errors.RestrictedAccessError
+  fullName: FunctionalValidation.Errors.RestrictedAccessError
+  nameWithType: RestrictedAccessError
+- uid: FunctionalValidation.Errors.RestrictedAccessError.#ctor(System.String)
+  name: RestrictedAccessError(String)
+  href: api/FunctionalValidation.Errors.RestrictedAccessError.html#FunctionalValidation_Errors_RestrictedAccessError__ctor_System_String_
+  commentId: M:FunctionalValidation.Errors.RestrictedAccessError.#ctor(System.String)
+  fullName: FunctionalValidation.Errors.RestrictedAccessError.RestrictedAccessError(System.String)
+  nameWithType: RestrictedAccessError.RestrictedAccessError(String)
+- uid: FunctionalValidation.Errors.RestrictedAccessError.#ctor*
+  name: RestrictedAccessError
+  href: api/FunctionalValidation.Errors.RestrictedAccessError.html#FunctionalValidation_Errors_RestrictedAccessError__ctor_
+  commentId: Overload:FunctionalValidation.Errors.RestrictedAccessError.#ctor
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.RestrictedAccessError.RestrictedAccessError
+  nameWithType: RestrictedAccessError.RestrictedAccessError
+- uid: FunctionalValidation.Errors.UnknownError
+  name: UnknownError
+  href: api/FunctionalValidation.Errors.UnknownError.html
+  commentId: T:FunctionalValidation.Errors.UnknownError
+  fullName: FunctionalValidation.Errors.UnknownError
+  nameWithType: UnknownError
+- uid: FunctionalValidation.Errors.UnknownError.#ctor(System.String)
+  name: UnknownError(String)
+  href: api/FunctionalValidation.Errors.UnknownError.html#FunctionalValidation_Errors_UnknownError__ctor_System_String_
+  commentId: M:FunctionalValidation.Errors.UnknownError.#ctor(System.String)
+  fullName: FunctionalValidation.Errors.UnknownError.UnknownError(System.String)
+  nameWithType: UnknownError.UnknownError(String)
+- uid: FunctionalValidation.Errors.UnknownError.#ctor*
+  name: UnknownError
+  href: api/FunctionalValidation.Errors.UnknownError.html#FunctionalValidation_Errors_UnknownError__ctor_
+  commentId: Overload:FunctionalValidation.Errors.UnknownError.#ctor
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.UnknownError.UnknownError
+  nameWithType: UnknownError.UnknownError
+- uid: FunctionalValidation.Errors.ValidationError
+  name: ValidationError
+  href: api/FunctionalValidation.Errors.ValidationError.html
+  commentId: T:FunctionalValidation.Errors.ValidationError
+  fullName: FunctionalValidation.Errors.ValidationError
+  nameWithType: ValidationError
+- uid: FunctionalValidation.Errors.ValidationError.#ctor(System.String)
+  name: ValidationError(String)
+  href: api/FunctionalValidation.Errors.ValidationError.html#FunctionalValidation_Errors_ValidationError__ctor_System_String_
+  commentId: M:FunctionalValidation.Errors.ValidationError.#ctor(System.String)
+  fullName: FunctionalValidation.Errors.ValidationError.ValidationError(System.String)
+  nameWithType: ValidationError.ValidationError(String)
+- uid: FunctionalValidation.Errors.ValidationError.#ctor*
+  name: ValidationError
+  href: api/FunctionalValidation.Errors.ValidationError.html#FunctionalValidation_Errors_ValidationError__ctor_
+  commentId: Overload:FunctionalValidation.Errors.ValidationError.#ctor
+  isSpec: "True"
+  fullName: FunctionalValidation.Errors.ValidationError.ValidationError
+  nameWithType: ValidationError.ValidationError
+- uid: FunctionalValidation.Extensions
+  name: FunctionalValidation.Extensions
+  href: api/FunctionalValidation.Extensions.html
+  commentId: N:FunctionalValidation.Extensions
+  fullName: FunctionalValidation.Extensions
+  nameWithType: FunctionalValidation.Extensions
+- uid: FunctionalValidation.Extensions.ApplicationErrorExtensions
+  name: ApplicationErrorExtensions
+  href: api/FunctionalValidation.Extensions.ApplicationErrorExtensions.html
+  commentId: T:FunctionalValidation.Extensions.ApplicationErrorExtensions
+  fullName: FunctionalValidation.Extensions.ApplicationErrorExtensions
+  nameWithType: ApplicationErrorExtensions
+- uid: FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode(FunctionalValidation.Errors.ApplicationError)
+  name: ToHttpStatusCode(ApplicationError)
+  href: api/FunctionalValidation.Extensions.ApplicationErrorExtensions.html#FunctionalValidation_Extensions_ApplicationErrorExtensions_ToHttpStatusCode_FunctionalValidation_Errors_ApplicationError_
+  commentId: M:FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode(FunctionalValidation.Errors.ApplicationError)
+  fullName: FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode(FunctionalValidation.Errors.ApplicationError)
+  nameWithType: ApplicationErrorExtensions.ToHttpStatusCode(ApplicationError)
+- uid: FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode*
+  name: ToHttpStatusCode
+  href: api/FunctionalValidation.Extensions.ApplicationErrorExtensions.html#FunctionalValidation_Extensions_ApplicationErrorExtensions_ToHttpStatusCode_
+  commentId: Overload:FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode
+  isSpec: "True"
+  fullName: FunctionalValidation.Extensions.ApplicationErrorExtensions.ToHttpStatusCode
+  nameWithType: ApplicationErrorExtensions.ToHttpStatusCode
+- uid: FunctionalValidation.Extensions.FunctionalValidationExtensions
+  name: FunctionalValidationExtensions
+  href: api/FunctionalValidation.Extensions.FunctionalValidationExtensions.html
+  commentId: T:FunctionalValidation.Extensions.FunctionalValidationExtensions
+  fullName: FunctionalValidation.Extensions.FunctionalValidationExtensions
+  nameWithType: FunctionalValidationExtensions
+- uid: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation(IServiceCollection,Assembly)
+  name: AddFunctionalValidation(IServiceCollection, Assembly)
+  href: api/FunctionalValidation.Extensions.FunctionalValidationExtensions.html#FunctionalValidation_Extensions_FunctionalValidationExtensions_AddFunctionalValidation_IServiceCollection_Assembly_
+  commentId: M:FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation(IServiceCollection,Assembly)
+  fullName: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation(IServiceCollection, Assembly)
+  nameWithType: FunctionalValidationExtensions.AddFunctionalValidation(IServiceCollection, Assembly)
+- uid: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation*
+  name: AddFunctionalValidation
+  href: api/FunctionalValidation.Extensions.FunctionalValidationExtensions.html#FunctionalValidation_Extensions_FunctionalValidationExtensions_AddFunctionalValidation_
+  commentId: Overload:FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation
+  isSpec: "True"
+  fullName: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation
+  nameWithType: FunctionalValidationExtensions.AddFunctionalValidation
+- uid: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation``1(IServiceCollection)
+  name: AddFunctionalValidation<TType>(IServiceCollection)
+  href: api/FunctionalValidation.Extensions.FunctionalValidationExtensions.html#FunctionalValidation_Extensions_FunctionalValidationExtensions_AddFunctionalValidation__1_IServiceCollection_
+  commentId: M:FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation``1(IServiceCollection)
+  name.vb: AddFunctionalValidation(Of TType)(IServiceCollection)
+  fullName: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation<TType>(IServiceCollection)
+  fullName.vb: FunctionalValidation.Extensions.FunctionalValidationExtensions.AddFunctionalValidation(Of TType)(IServiceCollection)
+  nameWithType: FunctionalValidationExtensions.AddFunctionalValidation<TType>(IServiceCollection)
+  nameWithType.vb: FunctionalValidationExtensions.AddFunctionalValidation(Of TType)(IServiceCollection)
+- uid: FunctionalValidation.Extensions.ResultErrorExtensions
+  name: ResultErrorExtensions
+  href: api/FunctionalValidation.Extensions.ResultErrorExtensions.html
+  commentId: T:FunctionalValidation.Extensions.ResultErrorExtensions
+  fullName: FunctionalValidation.Extensions.ResultErrorExtensions
+  nameWithType: ResultErrorExtensions
+- uid: FunctionalValidation.Extensions.ResultErrorExtensions.Ensure*
+  name: Ensure
+  href: api/FunctionalValidation.Extensions.ResultErrorExtensions.html#FunctionalValidation_Extensions_ResultErrorExtensions_Ensure_
+  commentId: Overload:FunctionalValidation.Extensions.ResultErrorExtensions.Ensure
+  isSpec: "True"
+  fullName: FunctionalValidation.Extensions.ResultErrorExtensions.Ensure
+  nameWithType: ResultErrorExtensions.Ensure
+- uid: FunctionalValidation.Extensions.ResultErrorExtensions.Ensure``1(Result{``0,FunctionalValidation.Errors.ApplicationError},Func{``0,System.Boolean},System.String)
+  name: Ensure<TType>(Result<TType, ApplicationError>, Func<TType, Boolean>, String)
+  href: api/FunctionalValidation.Extensions.ResultErrorExtensions.html#FunctionalValidation_Extensions_ResultErrorExtensions_Ensure__1_Result___0_FunctionalValidation_Errors_ApplicationError__Func___0_System_Boolean__System_String_
+  commentId: M:FunctionalValidation.Extensions.ResultErrorExtensions.Ensure``1(Result{``0,FunctionalValidation.Errors.ApplicationError},Func{``0,System.Boolean},System.String)
+  name.vb: Ensure(Of TType)(Result(Of TType, ApplicationError), Func(Of TType, Boolean), String)
+  fullName: FunctionalValidation.Extensions.ResultErrorExtensions.Ensure<TType>(Result<TType, FunctionalValidation.Errors.ApplicationError>, Func<TType, System.Boolean>, System.String)
+  fullName.vb: FunctionalValidation.Extensions.ResultErrorExtensions.Ensure(Of TType)(Result(Of TType, FunctionalValidation.Errors.ApplicationError), Func(Of TType, System.Boolean), System.String)
+  nameWithType: ResultErrorExtensions.Ensure<TType>(Result<TType, ApplicationError>, Func<TType, Boolean>, String)
+  nameWithType.vb: ResultErrorExtensions.Ensure(Of TType)(Result(Of TType, ApplicationError), Func(Of TType, Boolean), String)
+- uid: FunctionalValidation.IFunctionalValidator
+  name: IFunctionalValidator
+  href: api/FunctionalValidation.IFunctionalValidator.html
+  commentId: T:FunctionalValidation.IFunctionalValidator
+  fullName: FunctionalValidation.IFunctionalValidator
+  nameWithType: IFunctionalValidator
+- uid: FunctionalValidation.IFunctionalValidator.Validate*
+  name: Validate
+  href: api/FunctionalValidation.IFunctionalValidator.html#FunctionalValidation_IFunctionalValidator_Validate_
+  commentId: Overload:FunctionalValidation.IFunctionalValidator.Validate
+  isSpec: "True"
+  fullName: FunctionalValidation.IFunctionalValidator.Validate
+  nameWithType: IFunctionalValidator.Validate
+- uid: FunctionalValidation.IFunctionalValidator.Validate``1(``0)
+  name: Validate<TType>(TType)
+  href: api/FunctionalValidation.IFunctionalValidator.html#FunctionalValidation_IFunctionalValidator_Validate__1___0_
+  commentId: M:FunctionalValidation.IFunctionalValidator.Validate``1(``0)
+  name.vb: Validate(Of TType)(TType)
+  fullName: FunctionalValidation.IFunctionalValidator.Validate<TType>(TType)
+  fullName.vb: FunctionalValidation.IFunctionalValidator.Validate(Of TType)(TType)
+  nameWithType: IFunctionalValidator.Validate<TType>(TType)
+  nameWithType.vb: IFunctionalValidator.Validate(Of TType)(TType)
