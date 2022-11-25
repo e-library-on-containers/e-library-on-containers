@@ -1,0 +1,30 @@
+spring:
+  rabbitmq:
+    username: "guest"
+    password: "guest"
+    port: 5672
+
+
+rabbitmq:
+  topic-exchange:
+    name: "rentals"
+  rent-queue:
+    name: "rent"
+  return-queue:
+    name: "return"
+
+logging:
+  file:
+    name: logs/RentalService.log
+
+  pattern:
+    file:
+      "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [LEVEL: %-5level] [CLASS: %-40logger{39}] %msg%n"
+
+  level:
+    root: info
+
+  logback:
+    rollingpolicy:
+      max-history: 2
+      max-file-size: 20MB
