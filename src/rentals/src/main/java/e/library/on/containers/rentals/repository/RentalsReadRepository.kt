@@ -1,6 +1,7 @@
 package e.library.on.containers.rentals.repository
 
-import e.library.on.containers.rentals.utils.RentalsReadDao
+import e.library.on.containers.rentals.repository.dao.RentalsReadDao
+import java.time.ZonedDateTime
 import java.util.UUID
 import java.util.Optional
 
@@ -12,4 +13,8 @@ interface RentalsReadRepository {
     fun insertRental(readDao: RentalsReadDao)
 
     fun removeRental(rentId: UUID): Boolean
+
+    fun updateLastModificationDate()
+
+    fun getLastModificationDate(): ZonedDateTime
 }

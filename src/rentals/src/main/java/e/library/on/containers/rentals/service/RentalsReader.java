@@ -1,6 +1,6 @@
 package e.library.on.containers.rentals.service;
 
-import e.library.on.containers.rentals.utils.RentalsReadDao;
+import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,10 @@
 package e.library.on.containers.rentals.repository;
 
-import e.library.on.containers.rentals.utils.RentalsReadDao;
+import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,8 +12,9 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class InMemoryRentalsReadRepository implements RentalsReadRepository {
+class InMemoryRentalsReadRepository implements RentalsReadRepository {
 	private final static Map<UUID, RentalsReadDao> inMemoryEventStore = new ConcurrentHashMap<>();
+	private static ZonedDateTime lastModification = ZonedDateTime.now();
 
 	@NotNull
 	@Override
@@ -38,5 +40,16 @@ public class InMemoryRentalsReadRepository implements RentalsReadRepository {
 		}
 		inMemoryEventStore.remove(rentId);
 		return true;
+	}
+
+	@Override
+	public void updateLastModificationDate() {
+		lastModification = ZonedDateTime.now();
+	}
+
+	@NotNull
+	@Override
+	public ZonedDateTime getLastModificationDate() {
+		return lastModification;
 	}
 }

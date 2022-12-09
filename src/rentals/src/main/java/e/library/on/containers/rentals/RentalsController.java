@@ -4,7 +4,7 @@ import e.library.on.containers.rentals.service.RentalsReader;
 import e.library.on.containers.rentals.service.RentalsService;
 import e.library.on.containers.rentals.utils.RentBookRequest;
 import e.library.on.containers.rentals.utils.RentBookResponse;
-import e.library.on.containers.rentals.utils.RentalsReadDao;
+import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;

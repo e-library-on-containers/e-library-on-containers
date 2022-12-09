@@ -12,6 +12,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class RentalsService {
+    private static final int DEFAULT_RENTAL_LENGTH = 30;
     private final RabbitmqProperties config;
     private final RabbitTemplate rabbitTemplate;
     private final RentalsEventRepository eventRepository;
@@ -27,20 +28,19 @@ public class RentalsService {
 
     public UUID rentBook(UUID userId, String isbn) {
         var newRentalId = UUID.randomUUID();
-        final int defaultRentalLength = 30;
-        var newRental = new BookRentedEvent(newRentalId, userId, isbn, defaultRentalLength);
+        var newRental = new BookRentedEvent(newRentalId, userId, isbn, DEFAULT_RENTAL_LENGTH);
 
         log.info("Renting book {}...", isbn);
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.rent", newRental);
         eventRepository.addEvent(newRental);
-        return newRental.rentalId();
+        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.rent", newRental);
+        return newRental.getRentalId();
     }
 
     public void returnBook(UUID rentId)  {
         var returnBook = new BookReturnedEvent(rentId);
 
         log.info("Returning book on rent with id {}...", rentId);
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.return", returnBook);
         eventRepository.addEvent(returnBook);
+        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.return", returnBook);
     }
 }

@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils;
+package e.library.on.containers.rentals.repository.dao;
 
 import e.library.on.containers.rentals.utils.events.BookRentedEvent;
 
@@ -14,11 +14,11 @@ public record RentalsReadDao(
 ) {
 	public static RentalsReadDao from(BookRentedEvent event) {
 		return new RentalsReadDao(
-				event.rentalId(),
-				event.isbn(),
-				event.userId(),
-				event.createdAt(),
-				event.createdAt().plusDays(event.forHowManyDays())
+				event.getRentalId(),
+				event.getIsbn(),
+				event.getUserId(),
+				event.getCreatedAt(),
+				event.getCreatedAt().plusDays(event.getForHowManyDays())
 		);
 	}
 }
