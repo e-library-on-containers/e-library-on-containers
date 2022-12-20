@@ -7,7 +7,9 @@ public
 record RabbitmqProperties(
 	TopicExchange topicExchange,
 	Queue rentQueue,
-	Queue returnQueue) {
+	Queue returnQueue,
+	Queue extendQueue
+) {
 	public record TopicExchange(String name){}
 	public record Queue(String name){}
 }

@@ -3,6 +3,7 @@ package e.library.on.containers.rentals.service;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
+import e.library.on.containers.rentals.utils.events.BookExtendedEvent;
 import e.library.on.containers.rentals.utils.events.BookRentedEvent;
 import e.library.on.containers.rentals.utils.events.BookReturnedEvent;
 import e.library.on.containers.rentals.utils.events.Event;
@@ -34,6 +35,12 @@ class RentalsWorker {
         updateProjection();
     }
 
+    @RabbitListener(queues = "${rabbitmq.extend-queue.name}")
+    public void receiveMessage(BookExtendedEvent event) {
+        log.info("Received: {}", event);
+        updateProjection();
+    }
+
     @Transactional
     protected void updateProjection() {
         var lastModificationDate = readRepository.getLastModificationDate();
@@ -59,6 +66,12 @@ class RentalsWorker {
             if (!isRemoved) {
                 log.info("There were no rental with id {}", rentalId);
             }
+            return;
+        }
+        if (oldEvent instanceof BookExtendedEvent event) {
+            var rentalId = event.getRentalId();
+            var dao = readRepository.getRentalById(rentalId).orElseThrow().withExtendedRent(event.getDays());
+            readRepository.updateRental(dao);
             return;
         }
         throw new IllegalArgumentException("Type of event received is not yet supported");

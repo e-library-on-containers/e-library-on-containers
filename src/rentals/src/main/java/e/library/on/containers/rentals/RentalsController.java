@@ -2,6 +2,7 @@ package e.library.on.containers.rentals;
 
 import e.library.on.containers.rentals.service.RentalsReader;
 import e.library.on.containers.rentals.service.RentalsService;
+import e.library.on.containers.rentals.utils.ExtendBookRentRequest;
 import e.library.on.containers.rentals.utils.RentBookRequest;
 import e.library.on.containers.rentals.utils.RentBookResponse;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
@@ -59,5 +60,15 @@ class RentalsController {
     )
     List<RentalsReadDao> allRentals() {
         return reader.readAllRentals();
+    }
+
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    @PostMapping(
+            value = "/{rentId}/extend",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    void extendBookRental(@PathVariable UUID rentId, @RequestBody ExtendBookRentRequest extendBookRentRequest) {
+        service.extendRent(rentId, extendBookRentRequest.days());
     }
 }

@@ -1,5 +1,6 @@
 package e.library.on.containers.rentals.service;
 
+import e.library.on.containers.rentals.utils.events.BookExtendedEvent;
 import e.library.on.containers.rentals.utils.events.BookRentedEvent;
 import e.library.on.containers.rentals.utils.events.BookReturnedEvent;
 import e.library.on.containers.rentals.configuration.RabbitmqProperties;
@@ -42,5 +43,13 @@ public class RentalsService {
         log.info("Returning book on rent with id {}...", rentId);
         eventRepository.addEvent(returnBook);
         rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.return", returnBook);
+    }
+
+    public void extendRent(UUID rentId, int days) {
+        var extendRent = new BookExtendedEvent(rentId, days);
+
+        log.info("Extending rental {} by {} days...", rentId, days);
+        eventRepository.addEvent(extendRent);
+        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.extend", extendRent);
     }
 }

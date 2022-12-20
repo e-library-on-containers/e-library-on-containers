@@ -18,15 +18,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class RabbitmqConfiguration {
+	@Bean
+	TopicExchange rentalsExchange(RabbitmqProperties config) {
+		return new TopicExchange(config.topicExchange().name());
+	}
 
 	@Bean
 	Queue rentQueue(RabbitmqProperties config) {
 		return new Queue(config.rentQueue().name(), false);
-	}
-
-	@Bean
-	TopicExchange rentalsExchange(RabbitmqProperties config) {
-		return new TopicExchange(config.topicExchange().name());
 	}
 
 	@Bean
@@ -35,10 +34,16 @@ class RabbitmqConfiguration {
 	}
 
 	@Bean
+	Queue extendQueue(RabbitmqProperties config) {
+		return new Queue(config.extendQueue().name(), false);
+	}
+
+	@Bean
 	Declarables bindings(RabbitmqProperties config) {
 		return new Declarables(
 				BindingBuilder.bind(rentQueue(config)).to(rentalsExchange(config)).with("rental.rent"),
-				BindingBuilder.bind(returnQueue(config)).to(rentalsExchange(config)).with("rental.return")
+				BindingBuilder.bind(returnQueue(config)).to(rentalsExchange(config)).with("rental.return"),
+				BindingBuilder.bind(extendQueue(config)).to(rentalsExchange(config)).with("rental.extend")
 		);
 	}
 

@@ -8,9 +8,10 @@ import java.util.UUID;
 @Getter
 public abstract sealed class Event permits BookRentedEvent, BookReturnedEvent, BookAvailableForRentEvent,
         BookCopyAddedEvent, BookCopyRemovedEvent, BookExtendedEvent, BookUnavailableForRentEvent {
-    final UUID id;
-    final UUID userId;
-    final ZonedDateTime createdAt;
+
+    protected final UUID id;
+    protected final UUID userId;
+    protected final ZonedDateTime createdAt;
 
     protected Event(UUID id, UUID userId, ZonedDateTime createdAt) {
         this.id = id;

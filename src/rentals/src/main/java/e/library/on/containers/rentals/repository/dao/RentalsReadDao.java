@@ -8,7 +8,7 @@ import java.util.UUID;
 public record RentalsReadDao(
 		UUID rentalId,
 		String isbn,
-		UUID accountId,
+		UUID userId,
 		ZonedDateTime rentedAt,
 		ZonedDateTime dueDate
 ) {
@@ -19,6 +19,16 @@ public record RentalsReadDao(
 				event.getUserId(),
 				event.getCreatedAt(),
 				event.getCreatedAt().plusDays(event.getForHowManyDays())
+		);
+	}
+
+	public RentalsReadDao withExtendedRent(int days) {
+		return new RentalsReadDao(
+				rentalId(),
+				isbn(),
+				userId(),
+				rentedAt(),
+				dueDate().plusDays(days)
 		);
 	}
 }

@@ -12,6 +12,8 @@ rabbitmq:
     name: "rent"
   return-queue:
     name: "return"
+  extend-queue:
+    name: "extend"
 
 logging:
   file:

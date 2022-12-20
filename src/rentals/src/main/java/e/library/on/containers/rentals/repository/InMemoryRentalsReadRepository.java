@@ -13,24 +13,32 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 class InMemoryRentalsReadRepository implements RentalsReadRepository {
-	private final static Map<UUID, RentalsReadDao> inMemoryEventStore = new ConcurrentHashMap<>();
+	private final static Map<UUID, RentalsReadDao> inMemoryReadStore = new ConcurrentHashMap<>();
 	private static ZonedDateTime lastModification = ZonedDateTime.now();
 
 	@NotNull
 	@Override
 	public List<RentalsReadDao> getAllRentals() {
-		return List.copyOf(inMemoryEventStore.values());
+		return List.copyOf(inMemoryReadStore.values());
 	}
 
 	@NotNull
 	@Override
 	public Optional<RentalsReadDao> getRentalById(@NotNull UUID rentId) {
-		return Optional.ofNullable(inMemoryEventStore.get(rentId));
+		return Optional.ofNullable(inMemoryReadStore.get(rentId));
 	}
 
 	@Override
 	public void insertRental(@NotNull RentalsReadDao readDao) {
-		inMemoryEventStore.put(readDao.rentalId(), readDao);
+		inMemoryReadStore.put(readDao.rentalId(), readDao);
+	}
+
+	@Override
+	public void updateRental(RentalsReadDao readDao) {
+		if (inMemoryReadStore.get(readDao.rentalId()) == null) {
+			throw new RuntimeException("Rental doesn't exists");
+		}
+		inMemoryReadStore.put(readDao.rentalId(), readDao);
 	}
 
 	@Override
@@ -38,7 +46,7 @@ class InMemoryRentalsReadRepository implements RentalsReadRepository {
 		if (getRentalById(rentId).isEmpty()) {
 			return false;
 		}
-		inMemoryEventStore.remove(rentId);
+		inMemoryReadStore.remove(rentId);
 		return true;
 	}
 
