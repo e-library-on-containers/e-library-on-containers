@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Machine.Fakes.NSubstitute" Version="2.11.0" />
+		<PackageReference Include="Machine.Specifications" Version="1.1.0" />
+		<PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.10.2" />
+		<PackageReference Include="Machine.Specifications.Should" Version="1.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Domain\eLibraryOnContainers.Identity.Domain.csproj" />
+	</ItemGroup>
+</Project>
