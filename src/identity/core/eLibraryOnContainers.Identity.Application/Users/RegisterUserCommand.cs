@@ -2,6 +2,7 @@
 using eLibraryOnContainers.Identity.Application.Repositories;
 using eLibraryOnContainers.Identity.Application.Services;
 using eLibraryOnContainers.Identity.Domain.Entities;
+using eLibraryOnContainers.Identity.Domain.Errors;
 using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
 using MediatR;
@@ -35,8 +36,10 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
         _rolesService = rolesService;
     }
 
-    public async Task<Result<Unit, ApplicationError>> Handle(RegisterUserCommand request, CancellationToken cancellationToken) =>
-        await Email.From(request.Email)
+    public async Task<Result<Unit, ApplicationError>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    {
+        return await Email.From(request.Email)
+                .Ensure(async email => (await _usersRepository.GetUserByEmailAsync(email)).IsFailure, new UserAlreadyExists())
             .Bind(email => HashedPassword.FromRawPassword(request.Password, HashedPassword.DefaultHasher)
                 .Map(password => (email, password)))
             .Bind(t => FullName.From(request.FirstName, request.LastName)
@@ -46,4 +49,5 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
             .Bind(t => User.From(Guid.NewGuid(), t.email, t.fullName, t.password, new[] { t.role.RoleName }))
             .Bind(user => _usersRepository.RegisterUserAsync(user))
             .Map(_ => Unit.Value);
+    }
 }

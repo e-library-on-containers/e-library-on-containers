@@ -9,12 +9,13 @@ namespace eLibraryOnContainers.Identity.Application.Users;
 
 public class ChangePasswordCommand : IRequest<Result<Unit, ApplicationError>>
 {
-    public string Email { get; set; }
+    public string Email { get; }
     public string OldPassword { get; }
     public string NewPassword { get; }
 
-    public ChangePasswordCommand(string oldPassword, string newPassword)
+    public ChangePasswordCommand(string email, string oldPassword, string newPassword)
     {
+        Email = email;
         OldPassword = oldPassword;
         NewPassword = newPassword;
     }

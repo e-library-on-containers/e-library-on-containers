@@ -39,7 +39,9 @@ public class UsersRepository : IUsersRepository
         {
             await using var connection = await _connectionFactory.CreateAsync();
             var result = await connection.QueryAsync<ReadUser, ReadRole, ReadUser>(@"
-                SELECT * FROM users u
+                SELECT 
+                    u.id, u.email, u.password, u.first_name as firstName, u.last_name as lastName, ur.user_id as userId, ur.role_name as roleName
+                FROM users u
                 LEFT JOIN user_roles ur
                 ON u.id = ur.user_id
                 WHERE email = @Email;",
@@ -49,7 +51,7 @@ public class UsersRepository : IUsersRepository
                     return readUser;
                 },
                 new { Email = x.Address },
-                splitOn: "user_id");
+                splitOn: "userId");
 
             var user = result.FirstOrDefault();
 

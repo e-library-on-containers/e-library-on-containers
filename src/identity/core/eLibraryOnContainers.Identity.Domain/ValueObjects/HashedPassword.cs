@@ -24,6 +24,14 @@ public class HashedPassword : ValueObject
         Value = value;
     }
 
+    public Result<bool, ApplicationError> Challenge(string passwordCandidate, PasswordHasher hasher)
+    {
+        return new HashedPassword(hasher(passwordCandidate))
+            .AsApplicationResult()
+            .Ensure(c => Equals(c), new PasswordsDoesNotMatch())
+            .Map(_ => true);
+    }
+
     public static Result<HashedPassword, ApplicationError> FromHashedPassword(string hashedPassword) =>
         hashedPassword.AsApplicationResult()
             .Ensure(x => !string.IsNullOrWhiteSpace(x), new InvalidPassword())

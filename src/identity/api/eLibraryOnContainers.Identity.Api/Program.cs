@@ -55,7 +55,8 @@ builder.Services.AddSwaggerGen(c =>
 
 var authSection = builder.Configuration.GetSection("AuthOptions");
 var authOptions = authSection.Get<AuthOptions>();
-builder.Services.Configure<IAuthOptions>(authSection);
+builder.Services.Configure<AuthOptions>(authSection);
+builder.Services.AddSingleton<IOptions<IAuthOptions>>(provider => provider.GetRequiredService<IOptions<AuthOptions>>());
 builder.Services.Configure<SqlOptions>(options =>
     options.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddSingleton<IOptions<ISqlOptions>>(provider => provider.GetRequiredService<IOptions<SqlOptions>>());
@@ -89,7 +90,7 @@ builder.Services.AddAuthentication(options =>
             ValidateLifetime = true
         };
     });
-
+builder.Services.AddAuthorization();
 builder.Services.AddMediatR(typeof(SignInQuery).Assembly);
 
 var app = builder.Build();
@@ -103,6 +104,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

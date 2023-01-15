@@ -1,4 +1,6 @@
-﻿namespace eLibraryOnContainers.Identity.Infrastructure.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace eLibraryOnContainers.Identity.Infrastructure.Models;
 
 public class ReadUser
 {

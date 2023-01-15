@@ -32,13 +32,14 @@ public class SignInQueryHandler : IRequestHandler<SignInQuery, Result<TokenDto, 
         _authService = authService;
     }
 
-    public async Task<Result<TokenDto, ApplicationError>> Handle(SignInQuery request, CancellationToken cancellationToken) =>
-        await Email.From(request.Email)
+    public async Task<Result<TokenDto, ApplicationError>> Handle(SignInQuery request, CancellationToken cancellationToken)
+    {
+        return await Email.From(request.Email)
             .Bind(email => _usersRepository.GetUserByEmailAsync(email)
                 .Map(user => (user, email)))
-            .Bind(t => HashedPassword.FromRawPassword(request.Password, HashedPassword.DefaultHasher)
+            .Bind(t => t.user.Password.Challenge(request.Password, HashedPassword.DefaultHasher)
                 .Map(password => (t.user, password)))
-            .Ensure(t => t.user.Password.Equals(t.password), new PasswordsDoesNotMatch())
             .Map(t => t.user)
             .Bind(user => _authService.SingIn(user));
+    }
 }
