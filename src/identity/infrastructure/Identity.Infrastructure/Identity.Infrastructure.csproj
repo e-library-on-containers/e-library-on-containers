@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Application\eLibraryOnContainers.Identity.Application.csproj" />
-    <ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Domain\eLibraryOnContainers.Identity.Domain.csproj" />
+    <ProjectReference Include="..\..\core\Identity.Application\Identity.Application.csproj" />
+    <ProjectReference Include="..\..\core\Identity.Domain\Identity.Domain.csproj" />
   </ItemGroup>
 
 </Project>

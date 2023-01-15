@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -28,12 +28,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\api\eLibraryOnContainers.Identity.Api\eLibraryOnContainers.Identity.Api.csproj" />
-		<ProjectReference Include="..\..\database\eLibraryOnContainers.Identity.Database\eLibraryOnContainers.Identity.Database.csproj" />
-		<ProjectReference Include="..\..\infrastructure\eLibraryOnContainers.Identity.Infrastructure\eLibraryOnContainers.Identity.Infrastructure.csproj" />
-		<ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Application\eLibraryOnContainers.Identity.Application.csproj" />
-		<ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Domain\eLibraryOnContainers.Identity.Domain.csproj" />
-		<ProjectReference Include="..\eLibraryOnContainers.Identity.Tests\eLibraryOnContainers.Identity.Tests.csproj" />
+		<ProjectReference Include="..\..\api\Identity.Api\Identity.Api.csproj" />
+		<ProjectReference Include="..\..\database\Identity.Database\Identity.Database.csproj" />
+		<ProjectReference Include="..\..\infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\core\Identity.Application\Identity.Application.csproj" />
+		<ProjectReference Include="..\..\core\Identity.Domain\Identity.Domain.csproj" />
+		<ProjectReference Include="..\Identity.Tests\Identity.Tests.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

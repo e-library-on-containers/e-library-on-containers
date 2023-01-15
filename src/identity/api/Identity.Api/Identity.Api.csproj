@@ -14,12 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\eLibraryOnContainers.Identity.Application\eLibraryOnContainers.Identity.Application.csproj" />
-    <ProjectReference Include="..\..\infrastructure\eLibraryOnContainers.Identity.Infrastructure\eLibraryOnContainers.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\core\Identity.Application\Identity.Application.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="eLibraryOnContainers.Identity.IntegrationTests" />
+		<InternalsVisibleTo Include="Identity.IntegrationTests" />
 	</ItemGroup>
 
 	<ItemGroup>

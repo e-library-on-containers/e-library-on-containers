@@ -15,27 +15,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{A3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{5FE6E7C2-0149-414E-B7FD-4E6C86261820}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eLibraryOnContainers.Identity.Domain", "identity\core\eLibraryOnContainers.Identity.Domain\eLibraryOnContainers.Identity.Domain.csproj", "{F940CB4A-C7BB-4AC0-A1E4-B14669CD188A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Domain", "identity\core\Identity.Domain\Identity.Domain.csproj", "{F940CB4A-C7BB-4AC0-A1E4-B14669CD188A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{666792ED-EFF1-4AD3-A0C6-DE1F1D59F603}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eLibraryOnContainers.Identity.Tests", "identity\tests\eLibraryOnContainers.Identity.Tests\eLibraryOnContainers.Identity.Tests.csproj", "{0E671631-DDDA-4CD8-A03B-02C365E72CD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Tests", "identity\tests\Identity.Tests\Identity.Tests.csproj", "{0E671631-DDDA-4CD8-A03B-02C365E72CD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eLibraryOnContainers.Identity.Application", "identity\core\eLibraryOnContainers.Identity.Application\eLibraryOnContainers.Identity.Application.csproj", "{EA90140B-5224-42D3-822E-9B4267087EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Application", "identity\core\Identity.Application\Identity.Application.csproj", "{EA90140B-5224-42D3-822E-9B4267087EDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{C7C300CE-4384-4464-858C-BB99769607E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{DB021173-E901-47EA-9F80-302B94818D04}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eLibraryOnContainers.Identity.Infrastructure", "identity\infrastructure\eLibraryOnContainers.Identity.Infrastructure\eLibraryOnContainers.Identity.Infrastructure.csproj", "{0E48D754-2308-483F-99A5-30041F506538}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Infrastructure", "identity\infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj", "{0E48D754-2308-483F-99A5-30041F506538}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eLibraryOnContainers.Identity.Api", "identity\api\eLibraryOnContainers.Identity.Api\eLibraryOnContainers.Identity.Api.csproj", "{15E6605E-144A-4D16-A3FB-732C87408483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Api", "identity\api\Identity.Api\Identity.Api.csproj", "{15E6605E-144A-4D16-A3FB-732C87408483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eLibraryOnContainers.Identity.IntegrationTests", "identity\tests\eLibraryOnContainers.Identity.IntegrationTests\eLibraryOnContainers.Identity.IntegrationTests.csproj", "{E9533979-DF01-411F-B134-06A8E30B029A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.IntegrationTests", "identity\tests\Identity.IntegrationTests\Identity.IntegrationTests.csproj", "{E9533979-DF01-411F-B134-06A8E30B029A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{A328FA05-5541-49AE-B70A-FE2A3CC05908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eLibraryOnContainers.Identity.Database", "identity\database\eLibraryOnContainers.Identity.Database\eLibraryOnContainers.Identity.Database.csproj", "{18BA7258-20FE-4E7E-B206-2B54B8CD389B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Database", "identity\database\Identity.Database\Identity.Database.csproj", "{18BA7258-20FE-4E7E-B206-2B54B8CD389B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
