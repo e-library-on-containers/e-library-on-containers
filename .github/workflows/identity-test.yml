@@ -1,0 +1,42 @@
+name: Identity-Tests
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/identity-test.yml'
+      - 'src/identity/**'
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set environment variables
+        uses: ./.github/actions/set-env   
+        
+      - name: Set NuGet repository
+        uses: ./.github/actions/set-nuget
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Restore dependencies
+        run: |
+            dotnet restore src/identity/tests/Identity.Tests
+            dotnet restore src/identity/tests/Identity.IntegrationTests
+      
+      - name: Build
+        run: |
+            dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true src/identity/tests/Identity.Tests
+            dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true src/identity/tests/Identity.IntegrationTests
+      
+      - name: Test
+        run: |
+            dotnet test -c Release --no-build --verbosity normal src/identity/tests/Identity.Tests
+            dotnet test -c Release --no-build --verbosity normal src/identity/tests/Identity.IntegrationTests
+      
