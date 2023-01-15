@@ -9,19 +9,21 @@ import java.util.UUID;
 @Getter
 public final class BookReturnedEvent extends Event {
 	private final UUID rentalId;
+	private final UUID userId;
 
 	@JsonCreator
 	public BookReturnedEvent(
 			UUID id,
-			UUID userId,
 			ZonedDateTime createdAt,
+			UUID userId,
 			UUID rentalId
 	) {
-		super(id, userId, createdAt);
+		super(id, createdAt);
+		this.userId = userId;
 		this.rentalId = rentalId;
 	}
 
-	public BookReturnedEvent(UUID rentalId) {
-		this(UUID.randomUUID(), null, ZonedDateTime.now(), rentalId);
+	public BookReturnedEvent(UUID rentalId, UUID userId) {
+		this(UUID.randomUUID(), ZonedDateTime.now(), rentalId, userId);
 	}
 }

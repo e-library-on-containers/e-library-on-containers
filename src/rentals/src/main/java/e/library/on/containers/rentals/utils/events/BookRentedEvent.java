@@ -9,21 +9,23 @@ import java.util.UUID;
 @Getter
 public final class BookRentedEvent extends Event {
 	private final UUID rentalId;
-	private final String isbn;
+	private final UUID userId;
+	private final UUID bookId;
 	private final int forHowManyDays;
 
 	@JsonCreator
 	public BookRentedEvent(
 			UUID id,
-			UUID userId,
 			ZonedDateTime createdAt,
+			UUID userId,
 			UUID rentalId,
-			String isbn,
+			UUID bookId,
 			int forHowManyDays
 	) {
-		super(id, userId, createdAt);
+		super(id, createdAt);
 		this.rentalId = rentalId;
-		this.isbn = isbn;
+		this.userId = userId;
+		this.bookId = bookId;
 		this.forHowManyDays = forHowManyDays;
 	}
 
@@ -32,7 +34,9 @@ public final class BookRentedEvent extends Event {
 		return id;
 	}
 
-	public BookRentedEvent(UUID userId, UUID rentalId, String isbn, int forHowManyDays) {
-		this(UUID.randomUUID(), userId, ZonedDateTime.now(), rentalId, isbn, forHowManyDays);
+	public BookRentedEvent(
+			UUID userId, UUID bookId,
+			UUID rentalId, int forHowManyDays) {
+		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId, bookId, forHowManyDays);
 	}
 }

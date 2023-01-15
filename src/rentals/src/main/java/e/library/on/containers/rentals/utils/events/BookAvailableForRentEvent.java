@@ -9,14 +9,16 @@ import java.util.UUID;
 @Getter
 public final class BookAvailableForRentEvent extends Event {
 	private final String isbn;
+	private final UUID bookId;
 
 	@JsonCreator
 	public BookAvailableForRentEvent(
 			UUID id,
-			UUID userId,
 			ZonedDateTime createdAt,
+			UUID bookId,
 			String isbn) {
-		super(id, userId, createdAt);
+		super(id, createdAt);
 		this.isbn = isbn;
+		this.bookId = bookId;
 	}
 }

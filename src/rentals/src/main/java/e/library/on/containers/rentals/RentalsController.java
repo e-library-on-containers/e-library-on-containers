@@ -1,11 +1,11 @@
 package e.library.on.containers.rentals;
 
+import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.service.RentalsReader;
 import e.library.on.containers.rentals.service.RentalsService;
 import e.library.on.containers.rentals.utils.ExtendBookRentRequest;
 import e.library.on.containers.rentals.utils.RentBookRequest;
 import e.library.on.containers.rentals.utils.RentBookResponse;
-import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,29 +34,32 @@ class RentalsController {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping(
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     RentBookResponse rentBook(
             @RequestHeader(name = "X-User-Id") UUID userId,
             @RequestBody RentBookRequest rentBookRequest
     ) {
-        var rentId = service.rentBook(userId, rentBookRequest.isbn());
+        var rentId = service.rentBook(userId, rentBookRequest.bookId());
         return new RentBookResponse(rentId);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
-        value = "/{rentId}/return",
-        produces = MediaType.APPLICATION_JSON_VALUE
+            value = "/{rentId}/return",
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
-    void returnBook(@PathVariable UUID rentId) {
-        service.returnBook(rentId);
+    void returnBook(
+            @RequestHeader(name = "X-User-Id") UUID userId,
+            @PathVariable UUID rentId
+    ) {
+        service.returnBook(rentId, userId);
     }
 
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     List<RentalsReadDao> allRentals() {
         return reader.readAllRentals();

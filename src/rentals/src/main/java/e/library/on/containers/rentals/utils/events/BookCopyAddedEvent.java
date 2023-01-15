@@ -9,18 +9,16 @@ import java.util.UUID;
 @Getter
 public final class BookCopyAddedEvent extends Event {
 	private final String isbn;
-	private final UUID bookCopyId;
+	private final UUID bookId;
 
 	@JsonCreator
 	public BookCopyAddedEvent(
 			UUID id,
-			UUID userId,
 			ZonedDateTime createdAt,
-			String isbn,
-			UUID bookCopyId
-	) {
-		super(id, userId, createdAt);
+			UUID bookId,
+			String isbn) {
+		super(id, createdAt);
 		this.isbn = isbn;
-		this.bookCopyId = bookCopyId;
+		this.bookId = bookId;
 	}
 }

@@ -30,15 +30,15 @@ class InMemoryRentalsReadRepository implements RentalsReadRepository {
 
 	@Override
 	public void insertRental(@NotNull RentalsReadDao readDao) {
-		inMemoryReadStore.put(readDao.rentalId(), readDao);
+		inMemoryReadStore.put(readDao.id(), readDao);
 	}
 
 	@Override
 	public void updateRental(RentalsReadDao readDao) {
-		if (inMemoryReadStore.get(readDao.rentalId()) == null) {
+		if (inMemoryReadStore.get(readDao.id()) == null) {
 			throw new RuntimeException("Rental doesn't exists");
 		}
-		inMemoryReadStore.put(readDao.rentalId(), readDao);
+		inMemoryReadStore.put(readDao.id(), readDao);
 	}
 
 	@Override

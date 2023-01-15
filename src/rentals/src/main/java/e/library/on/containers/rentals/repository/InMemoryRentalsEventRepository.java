@@ -23,13 +23,8 @@ class InMemoryRentalsEventRepository implements RentalsEventRepository {
 	@NotNull
 	@Override
 	public List<Event> getAllEventsPast(ZonedDateTime data) {
-		if (data == null) {
-			return inMemoryReadStore.values().stream()
-					.sorted(Comparator.comparing(Event::getCreatedAt))
-					.toList();
-		}
 		return inMemoryReadStore.values().stream()
-				.filter(event -> event.getCreatedAt().isAfter(data))
+				.filter(event -> data == null || event.getCreatedAt().isAfter(data))
 				.sorted(Comparator.comparing(Event::getCreatedAt))
 				.toList();
 	}

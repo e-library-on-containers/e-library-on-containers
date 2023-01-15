@@ -5,6 +5,8 @@ import e.library.on.containers.rentals.utils.events.BookRentedEvent;
 import e.library.on.containers.rentals.utils.events.BookReturnedEvent;
 import e.library.on.containers.rentals.configuration.RabbitmqProperties;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
+import e.library.on.containers.rentals.utils.events.Event;
+import e.library.on.containers.rentals.utils.events.MasstransitEventWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
@@ -27,22 +29,22 @@ public class RentalsService {
         this.eventRepository = eventRepository;
     }
 
-    public UUID rentBook(UUID userId, String isbn) {
+    public UUID rentBook(UUID userId, UUID bookId) {
         var newRentalId = UUID.randomUUID();
-        var newRental = new BookRentedEvent(newRentalId, userId, isbn, DEFAULT_RENTAL_LENGTH);
+        var newRental = new BookRentedEvent(userId, bookId, newRentalId, DEFAULT_RENTAL_LENGTH);
 
-        log.info("Renting book {}...", isbn);
+        log.info("Renting book {}...", bookId);
         eventRepository.addEvent(newRental);
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.rent", newRental);
+        sendMessage("rental.rent", newRental);
         return newRental.getRentalId();
     }
 
-    public void returnBook(UUID rentId)  {
-        var returnBook = new BookReturnedEvent(rentId);
+    public void returnBook(UUID rentId, UUID userId)  {
+        var returnBook = new BookReturnedEvent(rentId, userId);
 
         log.info("Returning book on rent with id {}...", rentId);
         eventRepository.addEvent(returnBook);
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.return", returnBook);
+        sendMessage("rental.return", returnBook);
     }
 
     public void extendRent(UUID rentId, int days) {
@@ -50,6 +52,11 @@ public class RentalsService {
 
         log.info("Extending rental {} by {} days...", rentId, days);
         eventRepository.addEvent(extendRent);
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), "rental.extend", extendRent);
+        sendMessage("rental.extend", extendRent);
+    }
+
+    private void sendMessage(String routingKey, Event message) {
+        log.debug("Sending message {}", message.toString());
+        rabbitTemplate.convertAndSend(config.topicExchange().name(), routingKey, MasstransitEventWrapper.wrap(message));
     }
 }

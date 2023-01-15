@@ -8,6 +8,7 @@ import java.util.UUID;
 
 @Getter
 public final class BookExtendedEvent extends Event {
+	private final UUID userId;
 	private final UUID rentalId;
 	private final int days;
 
@@ -19,7 +20,8 @@ public final class BookExtendedEvent extends Event {
 			UUID rentalId,
 			int days
 	) {
-		super(id, userId, createdAt);
+		super(id, createdAt);
+		this.userId = userId;
 		this.rentalId = rentalId;
 		this.days = days;
 	}

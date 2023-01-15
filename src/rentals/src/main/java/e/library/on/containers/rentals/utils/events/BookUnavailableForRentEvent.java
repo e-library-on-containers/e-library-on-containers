@@ -8,15 +8,15 @@ import java.util.UUID;
 
 @Getter
 public final class BookUnavailableForRentEvent extends Event {
-	private final String isbn;
+	private final UUID bookId;
 
 	@JsonCreator
 	public BookUnavailableForRentEvent(
 			UUID id,
-			UUID userId,
-			ZonedDateTime createdAt,
-			String isbn) {
-		super(id, userId, createdAt);
-		this.isbn = isbn;
+			UUID bookId,
+			ZonedDateTime createdAt
+	) {
+		super(id, createdAt);
+		this.bookId = bookId;
 	}
 }

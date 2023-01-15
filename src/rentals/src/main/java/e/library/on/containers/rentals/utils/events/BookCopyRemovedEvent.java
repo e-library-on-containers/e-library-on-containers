@@ -8,16 +8,15 @@ import java.util.UUID;
 
 @Getter
 public final class BookCopyRemovedEvent extends Event {
-	private final UUID bookCopyId;
+	private final UUID bookId;
 
 	@JsonCreator
 	public BookCopyRemovedEvent(
 			UUID id,
-			UUID userId,
-			ZonedDateTime createdAt,
-			UUID bookCopyId
+			UUID bookId,
+			ZonedDateTime createdAt
 	) {
-		super(id, userId, createdAt);
-		this.bookCopyId = bookCopyId;
+		super(id, createdAt);
+		this.bookId = bookId;
 	}
 }
