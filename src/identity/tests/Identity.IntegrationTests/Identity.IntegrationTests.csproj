@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.Tests.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Tests.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Machine.Fakes.NSubstitute" Version="2.11.0" />
+		<PackageReference Include="Machine.Specifications" Version="1.1.0" />
+		<PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.10.2" />
+		<PackageReference Include="Machine.Specifications.Should" Version="1.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.13" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+		<PackageReference Include="Testcontainers" Version="2.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\api\Identity.Api\Identity.Api.csproj" />
+		<ProjectReference Include="..\..\database\Identity.Database\Identity.Database.csproj" />
+		<ProjectReference Include="..\..\infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\core\Identity.Application\Identity.Application.csproj" />
+		<ProjectReference Include="..\..\core\Identity.Domain\Identity.Domain.csproj" />
+		<ProjectReference Include="..\Identity.Tests\Identity.Tests.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Infrastructure\" />
+	  <Folder Include="Configuration\" />
+	</ItemGroup>
+
+</Project>
