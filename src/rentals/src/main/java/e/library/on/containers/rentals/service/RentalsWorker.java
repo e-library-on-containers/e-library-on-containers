@@ -7,6 +7,7 @@ import e.library.on.containers.rentals.utils.events.BookExtendedEvent;
 import e.library.on.containers.rentals.utils.events.BookRentedEvent;
 import e.library.on.containers.rentals.utils.events.BookReturnedEvent;
 import e.library.on.containers.rentals.utils.events.Event;
+import e.library.on.containers.rentals.utils.events.MasstransitEventWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -24,19 +25,19 @@ class RentalsWorker {
     }
 
     @RabbitListener(queues = "${rabbitmq.rent-queue.name}")
-    public void receiveMessage(BookRentedEvent event) {
-        log.info("Received: %s".formatted(event));
+    public void receiveRentMessage(MasstransitEventWrapper<BookRentedEvent> event) {
+        log.info("Received: {}", event);
         updateProjection();
     }
 
     @RabbitListener(queues = "${rabbitmq.return-queue.name}")
-    public void receiveMessage(BookReturnedEvent event) {
-        log.info("Received: %s".formatted(event));
+    public void receiveReturnMessage(MasstransitEventWrapper<BookReturnedEvent> event) {
+        log.info("Received: {}", event);
         updateProjection();
     }
 
     @RabbitListener(queues = "${rabbitmq.extend-queue.name}")
-    public void receiveMessage(BookExtendedEvent event) {
+    public void receiveExtendMessage(MasstransitEventWrapper<BookExtendedEvent> event) {
         log.info("Received: {}", event);
         updateProjection();
     }
