@@ -24,6 +24,6 @@ public final class BookReturnedEvent extends Event {
 	}
 
 	public BookReturnedEvent(UUID rentalId, UUID userId) {
-		this(UUID.randomUUID(), ZonedDateTime.now(), rentalId, userId);
+		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId);
 	}
 }

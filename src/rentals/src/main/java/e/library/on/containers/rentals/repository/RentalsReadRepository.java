@@ -1,23 +1,16 @@
 package e.library.on.containers.rentals.repository;
 
-import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
-import java.time.ZonedDateTime;
+import e.library.on.containers.rentals.repository.entity.RentalEntity;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
 import java.util.List;
-import java.util.UUID;
 import java.util.Optional;
 
-public interface RentalsReadRepository {
-    List<RentalsReadDao> getAllRentals();
+public interface RentalsReadRepository extends PagingAndSortingRepository<RentalEntity, String> {
 
-    Optional<RentalsReadDao> getRentalById(UUID rentId);
+    @NotNull
+    List<RentalEntity> findAll();
 
-    void insertRental(RentalsReadDao readDao);
-
-    void updateRental(RentalsReadDao readDao);
-
-    boolean removeRental(UUID rentId);
-
-    void updateLastModificationDate();
-
-    ZonedDateTime getLastModificationDate();
+    Optional<RentalEntity> findFirstByOrderByLastEditDateDesc();
 }

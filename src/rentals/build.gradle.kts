@@ -18,11 +18,19 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-
-	implementation("org.projectlombok:lombok:1.18.24")
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.1")
+
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("org.postgresql:postgresql")
+	runtimeOnly("com.h2database:h2")
+	implementation("org.mapstruct:mapstruct:1.5.3.Final")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
+
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok:1.18.24")
+	implementation("org.projectlombok:lombok:1.18.24")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

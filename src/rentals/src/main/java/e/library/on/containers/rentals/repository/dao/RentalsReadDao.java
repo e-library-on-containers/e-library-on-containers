@@ -7,7 +7,6 @@ import java.util.UUID;
 
 public record RentalsReadDao(
 		UUID id,
-//		String isbn,
 		UUID bookCopyId,
 		UUID userId,
 		ZonedDateTime rentedAt,
@@ -17,7 +16,6 @@ public record RentalsReadDao(
 	public static RentalsReadDao from(BookRentedEvent event) {
 		return new RentalsReadDao(
 				event.getRentalId(),
-//				event.getIsbn(),
 				event.getUserId(),
 				event.getBookId(),
 				event.getCreatedAt(),
@@ -29,7 +27,6 @@ public record RentalsReadDao(
 	public RentalsReadDao withExtendedRent(int days) {
 		return new RentalsReadDao(
 				id(),
-//				isbn(),
 				userId(),
 				bookCopyId(),
 				rentedAt(),
