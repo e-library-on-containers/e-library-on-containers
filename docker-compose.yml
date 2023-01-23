@@ -5,6 +5,22 @@ networks:
         name: identity-network
 
 services:
+  rabbitmq:
+    image: rabbitmq:management
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 60s
+      retries: 10
+  gateway: 
+    image: elibraryoncontainers/gateway:$IDENTITY_API_VERSION
+    networks:
+      - identity-network
+    depends_on:
+      - identity
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      AuthOptions__Key: $JWT_SECRET
   identity:
     image: elibraryoncontainers/identity:$IDENTITY_API_VERSION
     environment:

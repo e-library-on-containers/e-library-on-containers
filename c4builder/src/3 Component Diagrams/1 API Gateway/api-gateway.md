@@ -1,1 +1,1 @@
-Placeholder
+*API gateway * acts as a proxy exposing all functionatiles, allowing other services to be hidden behind it. Due to using **Ocelot** library, this service contains only configuration and pipeline definition, hence no diagram.
