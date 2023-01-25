@@ -1,7 +1,7 @@
-﻿using eLibraryOnContainers.Identity.Infrastructure.Options;
+﻿using Identity.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 
-namespace eLibraryOnContainers.Identity.Api.Infrastructure;
+namespace Identity.Api.Infrastructure;
 
 public static class OptionsConfiguration
 {

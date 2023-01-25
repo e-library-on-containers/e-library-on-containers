@@ -1,11 +1,10 @@
 ﻿using System.Net.Http.Json;
-using eLibraryOnContainers.Identity.Api.Request;
-using eLibraryOnContainers.Identity.Application.Authentication;
-using eLibraryOnContainers.Identity.Application.Dtos;
-using eLibraryOnContainers.Identity.Application.Users;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
+using Identity.Api.Request;
+using Identity.Application.Authentication;
+using Identity.Application.Dtos;
+using Identity.Application.Users;
 
-namespace eLibraryOnContainers.Identity.IntegrationTests.Helpers;
+namespace Identity.IntegrationTests.Helpers;
 
 public class IdentityClient
 {

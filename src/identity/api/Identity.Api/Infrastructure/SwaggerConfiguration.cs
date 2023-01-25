@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace eLibraryOnContainers.Identity.Api.Infrastructure;
+namespace Identity.Api.Infrastructure;
 
 public static class SwaggerConfiguration
 {

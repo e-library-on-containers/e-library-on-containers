@@ -1,14 +1,14 @@
 ﻿using System.Data.Common;
 using CSharpFunctionalExtensions;
 using Dapper;
-using eLibraryOnContainers.Identity.Application.Repositories;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
-using eLibraryOnContainers.Identity.Infrastructure.Common;
-using eLibraryOnContainers.Identity.Infrastructure.Models;
 using FunctionalValidation.Errors;
+using Identity.Application.Repositories;
+using Identity.Domain.Entities;
+using Identity.Domain.ValueObjects;
+using Identity.Infrastructure.Common;
+using Identity.Infrastructure.Models;
 
-namespace eLibraryOnContainers.Identity.Infrastructure.Repositories;
+namespace Identity.Infrastructure.Repositories;
 
 public class UsersRepository : IUsersRepository
 {

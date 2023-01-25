@@ -1,12 +1,12 @@
-﻿using eLibraryOnContainers.Identity.Infrastructure.Common;
-using eLibraryOnContainers.Identity.Infrastructure.Options;
+﻿using Identity.Infrastructure.Common;
+using Identity.Infrastructure.Options;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace eLibraryOnContainers.Identity.IntegrationTests.Configuration;
+namespace Identity.IntegrationTests.Configuration;
 
 internal class TestWebAppFactory : WebApplicationFactory<Program>
 {

@@ -1,6 +1,6 @@
 ﻿using DbUp;
 
-namespace eLibraryOnContainers.Identity.Database;
+namespace Identity.Database;
 
 public static class Upgrader
 {

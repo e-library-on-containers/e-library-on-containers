@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Database
+﻿namespace Identity.Database
 {
     internal class Program
     {

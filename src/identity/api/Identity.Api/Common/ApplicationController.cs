@@ -1,11 +1,11 @@
 ﻿using System.Net;
 using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Api.Responses;
 using FunctionalValidation.Errors;
 using FunctionalValidation.Extensions;
+using Identity.Api.Responses;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eLibraryOnContainers.Identity.Api.Common
+namespace Identity.Api.Common
 {
     public class ApplicationController : ControllerBase
     {

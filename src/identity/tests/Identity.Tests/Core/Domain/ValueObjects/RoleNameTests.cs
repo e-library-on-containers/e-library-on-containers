@@ -1,13 +1,13 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Domain.Errors;
+using Identity.Domain.ValueObjects;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable ArrangeTypeMemberModifiers
 
-namespace eLibraryOnContainers.Identity.Tests.Core.Domain.ValueObjects;
+namespace Identity.Tests.Core.Domain.ValueObjects;
 
 [Subject(typeof(RoleName))]
 public class RoleNameTests

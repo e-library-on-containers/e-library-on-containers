@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Domain.Entities;
+using Identity.Domain.ValueObjects;
 
-namespace eLibraryOnContainers.Identity.Application.Repositories;
+namespace Identity.Application.Repositories;
 
 public interface IUsersRepository
 {

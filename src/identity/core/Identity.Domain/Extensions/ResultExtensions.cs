@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using FunctionalValidation.Errors;
 
-namespace eLibraryOnContainers.Identity.Domain.Extensions;
+namespace Identity.Domain.Extensions;
 
 public static class ResultExtensions
 {

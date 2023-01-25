@@ -2,15 +2,15 @@
 using System.Security.Claims;
 using System.Text;
 using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Dtos;
-using eLibraryOnContainers.Identity.Application.Services;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Infrastructure.Options;
 using FunctionalValidation.Errors;
+using Identity.Application.Dtos;
+using Identity.Application.Services;
+using Identity.Domain.Entities;
+using Identity.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace eLibraryOnContainers.Identity.Infrastructure.Services;
+namespace Identity.Infrastructure.Services;
 
 public class AuthService : IAuthService
 {

@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Api.Request;
+﻿namespace Identity.Api.Request;
 
 public class ChangePasswordRequest
 {

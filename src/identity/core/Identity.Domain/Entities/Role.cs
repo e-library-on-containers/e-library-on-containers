@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
+using Identity.Domain.ValueObjects;
 
-namespace eLibraryOnContainers.Identity.Domain.Entities;
+namespace Identity.Domain.Entities;
 
 public class Role : Entity<Guid>
 {

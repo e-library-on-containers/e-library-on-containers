@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Dtos;
-using eLibraryOnContainers.Identity.Domain.Entities;
 using FunctionalValidation.Errors;
+using Identity.Application.Dtos;
+using Identity.Domain.Entities;
 
-namespace eLibraryOnContainers.Identity.Application.Services;
+namespace Identity.Application.Services;
 
 public interface IAuthService
 {

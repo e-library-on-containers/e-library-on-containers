@@ -1,13 +1,13 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Repositories;
-using eLibraryOnContainers.Identity.Application.Services;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Application.Repositories;
+using Identity.Application.Services;
+using Identity.Domain.Entities;
+using Identity.Domain.Errors;
+using Identity.Domain.ValueObjects;
 using MediatR;
 
-namespace eLibraryOnContainers.Identity.Application.Users;
+namespace Identity.Application.Users;
 
 public class RegisterUserCommand : IRequest<Result<Unit, ApplicationError>>
 {

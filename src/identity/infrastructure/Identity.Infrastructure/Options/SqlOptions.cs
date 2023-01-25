@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Infrastructure.Options;
+﻿namespace Identity.Infrastructure.Options;
 
 public interface ISqlOptions
 {

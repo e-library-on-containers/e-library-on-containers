@@ -1,6 +1,6 @@
 ﻿using FunctionalValidation.Errors;
 
-namespace eLibraryOnContainers.Identity.Domain.Errors;
+namespace Identity.Domain.Errors;
 
 public class NoUserRoles : ValidationError
 {

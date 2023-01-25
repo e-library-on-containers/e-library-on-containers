@@ -1,8 +1,8 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Entities;
 using FunctionalValidation.Errors;
+using Identity.Domain.Entities;
 
-namespace eLibraryOnContainers.Identity.Application.Services;
+namespace Identity.Application.Services;
 
 public interface IRolesService
 {
