@@ -2,6 +2,8 @@ name: Identity-Api-Publish-Docker
 
 on:
   push:
+    branches:
+      - develop
     paths:
       - '.github/workflows/identity-api-publish-docker.yml'
       - 'src/identity/**'
