@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils.events;
+package e.library.on.containers.rentals.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.UUID;
 public final class BookRentedEvent extends Event {
 	private final UUID rentalId;
 	private final UUID userId;
-	private final UUID bookId;
+	private final int bookInstanceId;
 	private final int forHowManyDays;
 
 	@JsonCreator
@@ -19,13 +19,13 @@ public final class BookRentedEvent extends Event {
 			ZonedDateTime createdAt,
 			UUID userId,
 			UUID rentalId,
-			UUID bookId,
+			int bookInstanceId,
 			int forHowManyDays
 	) {
 		super(id, createdAt);
 		this.rentalId = rentalId;
 		this.userId = userId;
-		this.bookId = bookId;
+		this.bookInstanceId = bookInstanceId;
 		this.forHowManyDays = forHowManyDays;
 	}
 
@@ -34,9 +34,7 @@ public final class BookRentedEvent extends Event {
 		return id;
 	}
 
-	public BookRentedEvent(
-			UUID userId, UUID bookId,
-			UUID rentalId, int forHowManyDays) {
-		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId, bookId, forHowManyDays);
+	public BookRentedEvent(UUID userId, int bookInstanceId, UUID rentalId, int forHowManyDays) {
+		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId, bookInstanceId, forHowManyDays);
 	}
 }

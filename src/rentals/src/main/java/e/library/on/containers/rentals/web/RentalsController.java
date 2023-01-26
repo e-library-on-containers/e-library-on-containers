@@ -1,11 +1,11 @@
-package e.library.on.containers.rentals;
+package e.library.on.containers.rentals.web;
 
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.service.RentalsReader;
 import e.library.on.containers.rentals.service.RentalsService;
-import e.library.on.containers.rentals.utils.ExtendBookRentRequest;
-import e.library.on.containers.rentals.utils.RentBookRequest;
-import e.library.on.containers.rentals.utils.RentBookResponse;
+import e.library.on.containers.rentals.web.entity.ExtendBookRentRequest;
+import e.library.on.containers.rentals.web.entity.RentBookRequest;
+import e.library.on.containers.rentals.web.entity.RentBookResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +41,7 @@ class RentalsController {
             @RequestHeader(name = "X-User-Id") UUID userId,
             @RequestBody RentBookRequest rentBookRequest
     ) {
-        var rentId = service.rentBook(userId, rentBookRequest.bookId());
+        var rentId = service.rentBook(userId, rentBookRequest.bookInstanceId());
         return new RentBookResponse(rentId);
     }
 

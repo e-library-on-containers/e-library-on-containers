@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils.events;
+package e.library.on.containers.rentals.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;

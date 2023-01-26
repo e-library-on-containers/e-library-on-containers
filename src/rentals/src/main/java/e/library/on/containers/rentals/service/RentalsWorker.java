@@ -1,15 +1,14 @@
 package e.library.on.containers.rentals.service;
 
+import e.library.on.containers.rentals.common.RentalEntityMapper;
+import e.library.on.containers.rentals.events.BookExtendedEvent;
+import e.library.on.containers.rentals.events.BookRentedEvent;
+import e.library.on.containers.rentals.events.BookReturnedEvent;
+import e.library.on.containers.rentals.events.Event;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
-import e.library.on.containers.rentals.utils.RentalEntityMapper;
-import e.library.on.containers.rentals.utils.events.BookExtendedEvent;
-import e.library.on.containers.rentals.utils.events.BookRentedEvent;
-import e.library.on.containers.rentals.utils.events.BookReturnedEvent;
-import e.library.on.containers.rentals.utils.events.Event;
-import e.library.on.containers.rentals.utils.events.MasstransitEventWrapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -28,19 +27,19 @@ class RentalsWorker {
     private final RentalEntityMapper rentalEntityMapper;
 
     @RabbitListener(queues = "${rabbitmq.rent-queue.name}")
-    public void receiveRentMessage(MasstransitEventWrapper<BookRentedEvent> event) {
+    public void receiveRentMessage(BookRentedEvent event) {
         log.info("Received: {}", event);
         updateProjection();
     }
 
     @RabbitListener(queues = "${rabbitmq.return-queue.name}")
-    public void receiveReturnMessage(MasstransitEventWrapper<BookReturnedEvent> event) {
+    public void receiveReturnMessage(BookReturnedEvent event) {
         log.info("Received: {}", event);
         updateProjection();
     }
 
     @RabbitListener(queues = "${rabbitmq.extend-queue.name}")
-    public void receiveExtendMessage(MasstransitEventWrapper<BookExtendedEvent> event) {
+    public void receiveExtendMessage(BookExtendedEvent event) {
         log.info("Received: {}", event);
         updateProjection();
     }

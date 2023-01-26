@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils.events;
+package e.library.on.containers.rentals.events;
 
 import lombok.Getter;
 

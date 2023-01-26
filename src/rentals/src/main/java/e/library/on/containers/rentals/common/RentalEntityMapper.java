@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils;
+package e.library.on.containers.rentals.common;
 
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
@@ -10,18 +10,16 @@ import java.util.UUID;
 @Component
 public class RentalEntityMapper {
     public RentalEntity daoToEntity(RentalsReadDao dao, ZonedDateTime lastEdit) {
-        if (dao == null) {
-            return null;
-        }
-
-        return new RentalEntity(
-                dao.id().toString(),
-                dao.bookCopyId().toString(),
-                dao.userId().toString(),
-                dao.rentedAt(),
-                dao.dueDate(),
-                dao.wasExtended(),
-                lastEdit);
+        return dao == null ? null :
+                new RentalEntity(
+                        dao.id().toString(),
+                        dao.bookCopyId(),
+                        dao.userId().toString(),
+                        dao.rentedAt(),
+                        dao.dueDate(),
+                        dao.wasExtended(),
+                        lastEdit
+                );
     }
 
     public RentalEntity daoToEntity(RentalsReadDao dao) {
@@ -35,7 +33,7 @@ public class RentalEntityMapper {
 
         return new RentalsReadDao(
                 UUID.fromString(entity.getId()),
-                UUID.fromString(entity.getBookCopyId()),
+                entity.getBookInstanceId(),
                 UUID.fromString(entity.getUserId()),
                 entity.getRentedAt(),
                 entity.getDueDate(),

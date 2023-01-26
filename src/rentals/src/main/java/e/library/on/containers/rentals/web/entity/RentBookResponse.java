@@ -1,4 +1,4 @@
-package e.library.on.containers.rentals.utils;
+package e.library.on.containers.rentals.web.entity;
 
 import java.util.UUID;
 

@@ -1,5 +1,6 @@
 plugins {
 	java
+	kotlin("jvm").version("1.7.21")
 	id("org.springframework.boot").version("2.7.5")
 	id("io.spring.dependency-management").version("1.0.15.RELEASE")
 }
@@ -22,6 +23,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")
+	implementation("org.liquibase:liquibase-core:4.8.0")
+
 
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok:1.18.24")

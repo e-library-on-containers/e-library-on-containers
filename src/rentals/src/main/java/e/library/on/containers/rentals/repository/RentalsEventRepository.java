@@ -1,6 +1,6 @@
 package e.library.on.containers.rentals.repository;
 
-import e.library.on.containers.rentals.utils.events.Event;
+import e.library.on.containers.rentals.events.Event;
 import java.time.ZonedDateTime;
 import java.util.List;
 

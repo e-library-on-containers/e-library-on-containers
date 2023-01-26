@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,15 +12,14 @@ import javax.persistence.Table;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table
+@Table(name="rentals")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalEntity {
     @Id
     String id;
-    @NotNull
-    String bookCopyId;
+    int bookInstanceId;
     @NotNull
     String userId;
     @NotNull
@@ -27,6 +27,6 @@ public class RentalEntity {
     @NotNull
     ZonedDateTime dueDate;
     boolean isExtended;
-    @NotNull
+    @LastModifiedDate
     ZonedDateTime lastEditDate;
 }

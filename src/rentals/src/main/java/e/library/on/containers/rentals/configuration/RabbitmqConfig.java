@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class RabbitmqConfiguration {
+class RabbitmqConfig {
 	@Bean
 	TopicExchange rentalsExchange(RabbitmqProperties config) {
 		return new TopicExchange(config.topicExchange().name());
