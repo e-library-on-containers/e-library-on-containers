@@ -1,0 +1,45 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!include <logos/rabbitmq.puml>
+
+!include DEVICONS/dotnet.puml
+!include DEVICONS/postgresql.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram for eLibraryOnContainers - Rentals service
+
+Container(gateway, "API Gateway", ".NET with ASP.NET Core", "Routes all requests to appropriate services endpoints", $sprite="dotnet")
+ContainerQueue(rabbit, "Event bus", "RabbitMQ", "Event bus for asynchronous communication", $sprite=rabbitmq)
+ContainerDb(rentals_db, "Rentals database", "PostgreSQL", "Holds rentals events and physical copies information", $sprite="postgresql")
+ContainerDb(rentals_read_db, "Rentals (READ) database", "PostgreSQL", "Holds aggregated rentals and physical copies availability information", $sprite="postgresql")
+
+Container_Boundary(rentals, "Rentals service") {
+  Component(rentalsController, "Rentals Controller", "Rest Controller", "Allows users to send requests related to book renting.")
+
+  Component(rentalsReader, "Rentals Reader", "Spring service", "Reads projection from READ database.")
+  Component(rentalsWorker, "Rentals Worker", "Events consumer", "Consumes rentals events.")
+  Component(rentalsService, "Rentals Service", "Events publisher", "Produces rentals events.")
+
+  Component(rentalsRepository, "Rentals Repository", "Spring repository", "Provides functionality related to database operations like reading and updating projection in READ database")
+  Component(rentalsEventRepository, "Rentals Event Repository", "Spring repository", "Provides functionality related to write-only event database operations like writing and aggregating events to database")
+}
+
+Rel(gateway, rentalsController, "Uses", "JSON/HTTPS")
+
+Rel(rentalsController, rentalsReader, "Uses")
+Rel(rentalsController, rentalsService, "Uses")
+
+Rel(rentalsWorker, rentalsRepository, "Uses")
+Rel(rentalsWorker, rabbit, "Consumes events", "async, JSON/HTTPS")
+
+Rel(rentalsReader, rentalsRepository, "Uses")
+Rel(rentalsRepository, rentals_read_db, "Reads from and writes to", "async, JDBC")
+
+Rel(rentalsService, rabbit, "Publishes events", "async, JSON/HTTPS")
+Rel(rentalsService, rentalsEventRepository, "Uses")
+
+Rel(rentalsEventRepository, rentals_db, "Writes to", "async, JDBC")
+@enduml
