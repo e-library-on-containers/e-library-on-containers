@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "e.library.on.containers"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 repositories {
 	mavenCentral()

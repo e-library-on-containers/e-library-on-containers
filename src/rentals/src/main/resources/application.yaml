@@ -1,12 +1,13 @@
 spring:
   rabbitmq:
-    username: "guest"
-    password: "guest"
-    port: 5672
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    port: ${RABBITMQ_PORT:5672}
+    host: ${RABBITMQ_HOST:localhost}
   datasource:
-    url: jdbc:postgresql://localhost:5432/rentals
-    username: rentals
-    password: rentals
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/rentals}
+    username: ${DB_USERNAME:rentals}
+    password: ${DB_PASSWORD:rentals}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -26,7 +27,7 @@ rabbitmq:
 
 logging:
   file:
-    name: logs/RentalService.log
+    name: ${LOGS_FILE:logs/RentalService.log}
 
   pattern:
     file:

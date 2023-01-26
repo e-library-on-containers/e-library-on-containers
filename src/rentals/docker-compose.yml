@@ -1,11 +1,26 @@
 version: "3.8"
 
 services:
+  rentals:
+    image: rentals
+    ports:
+      - "8080:8080"
+    environment:
+        RABBITMQ_PORT: 5672
+        RABBITMQ_HOST: rabbitmq
+        DB_URL: jdbc:postgresql://rentals-db:5432/rentals
+        DB_USERNAME: rentals
+        DB_PASSWORD: rentals
+    networks:
+      - rental-network
+
   rabbitmq:
     image: rabbitmq:management
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - rental-network
 
   rentals-db:
     image: postgres:11.14
@@ -21,3 +36,10 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+    networks:
+      - rental-network
+
+
+networks:
+  rental-network:
+    name: rental-network
