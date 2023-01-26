@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -16,5 +17,9 @@ public class RentalsReader {
 
 	public List<RentalsReadDao> readAllRentals() {
 		return readRepository.findAll().stream().map(mapper::entityToDao).toList();
+	}
+
+	public List<RentalsReadDao> readAllRentals(UUID userId) {
+		return readRepository.findAllByUserId(userId.toString()).stream().map(mapper::entityToDao).toList();
 	}
 }

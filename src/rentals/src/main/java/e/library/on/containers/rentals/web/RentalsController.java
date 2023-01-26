@@ -61,8 +61,10 @@ class RentalsController {
     @GetMapping(
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    List<RentalsReadDao> allRentals() {
-        return reader.readAllRentals();
+    List<RentalsReadDao> allRentals(
+            @RequestHeader(name = "X-User-Id", required = false) UUID userId
+    ) {
+        return userId == null ? reader.readAllRentals() : reader.readAllRentals(userId);
     }
 
     @ResponseStatus(code = HttpStatus.ACCEPTED)
