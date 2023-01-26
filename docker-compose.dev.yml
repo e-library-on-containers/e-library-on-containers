@@ -1,0 +1,38 @@
+version: '3.6'
+services:
+  identity:
+    build:
+      context: ./src/identity
+      dockerfile: ./Identity.Api.Dockerfile
+      args:
+        FEED_USERNAME: $FEED_USERNAME
+        PERSONAL_ACCESS_TOKEN: $PERSONAL_ACCESS_TOKEN
+    depends_on: 
+      identity-db:
+        condition: service_healthy
+    ports:
+      - 8080:80
+  identity-db:
+    image: postgres:11.14
+    environment:
+      POSTGRES_PASSWORD: $IDENTITY_PASSWORD
+      POSTGRES_USER: $IDENTITY_USER
+      POSTGRES_DB: $IDENTITY_DATABASE
+    ports:
+      - 25432:5432
+    networks:
+      - identity-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "$IDENTITY_DATABASE"]
+      interval: 10s
+      timeout: 60s
+      retries: 10
+      start_period: 100s
+  identity-db-updater:
+    build:
+      context: ./src/identity
+      dockerfile: ./Identity.Database.Dockerfile
+    depends_on: 
+      identity-db:
+        condition: service_healthy
+      
