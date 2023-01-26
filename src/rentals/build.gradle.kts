@@ -22,7 +22,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql")
-	runtimeOnly("com.h2database:h2")
 	implementation("org.liquibase:liquibase-core:4.8.0")
 
 

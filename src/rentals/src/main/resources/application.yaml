@@ -4,18 +4,15 @@ spring:
     password: "guest"
     port: 5672
   datasource:
-    url: jdbc:postgresql://localhost:5432/your_db
-    username: your_username
-    password: your_password
+    url: jdbc:postgresql://localhost:5432/rentals
+    username: rentals
+    password: rentals
     driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
-  h2:
-    console:
-      enabled: true
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.xml
+    change-log: classpath:db/changelog/master.xml
 
 rabbitmq:
   topic-exchange:

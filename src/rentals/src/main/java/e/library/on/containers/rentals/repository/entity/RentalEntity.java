@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name="rentals")
+@Table(name="rental")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
