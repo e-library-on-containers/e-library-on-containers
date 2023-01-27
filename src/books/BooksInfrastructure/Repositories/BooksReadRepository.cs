@@ -21,7 +21,7 @@ namespace Books.Infrastructure.Repositories
         }
         public async Task<int> Create(BookRead _object)
         {
-            var sql = "Insert into BooksRead (ISBN, Title, Description, Authors, CoverImg, CopiesCount) VALUES (@ISBN, @Title, @Description, @Authors, @CoverImg, @CopiesCount)";
+            var sql = "Insert into BooksRead (ISBN, Title, Description, Authors, CopiesCount) VALUES (@ISBN, @Title, @Description, @Authors, @CopiesCount)";
             using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
             {
                 connection.Open();

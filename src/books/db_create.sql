@@ -8,7 +8,7 @@ CREATE TABLE Books(
 	Description VARCHAR(1000) NULL,
 	Title		VARCHAR(100) NOT NULL,
 	Authors		VARCHAR(100) NOT NULL,
-	CoverImg	VARCHAR(100) NOT NULL,
+	CoverImg	VARCHAR(100),
 	PRIMARY KEY	(BookId)
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE BooksRead(
 	Description VARCHAR(1000) NULL,
 	Title		VARCHAR(100) NOT NULL,
 	Authors		VARCHAR(100) NOT NULL,
-	CoverImg	VARCHAR(100) NOT NULL,
+	CoverImg	VARCHAR(100),
 	CopiesCount INT,
 	PRIMARY KEY	(BookId)
 );
