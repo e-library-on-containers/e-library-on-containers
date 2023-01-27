@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  font-size: 18px;
+  padding: 5px 10px;
+  border-color: #eeeeee;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.content_title {
+  text-align: center;
+}
+
+.book_desc {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.padded-text {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.less-focused-text {
+  font-size: 14px;
+  color: #888888;
+}
+
+.forminput {
+  width: 100%;
+}
+
+button.rent-button {
+  width: 100%;
+  background-color: #010057;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.rented-out-button {
+  width: 100%;
+  background-color: grey;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+.gridrow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.gridcol {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.gridcol img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.nobook_page {
+  text-align: center;
+  color: #eee;
+  padding-top: 10%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 8px;
+}
+
+.modal-header {
+  padding: 8px 15px;
+  color: #666666;
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.alert {
+  color: red;
+  font-style: italic;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}

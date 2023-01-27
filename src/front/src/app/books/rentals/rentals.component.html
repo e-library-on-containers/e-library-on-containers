@@ -1,0 +1,33 @@
+<div id="returnModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="modal-header">
+      Return Confirmation
+    </div>
+    <div class="modal-body">
+      <div class="padded-text">Please enter your membership info to return <i>'{{focusedTitle}}'</i>:</div>
+      <label for="username"><b>Username</b></label>
+      <input id="username" type="text" name="username" placeholder="johndoe" class="forminput" [(ngModel)]="username">
+      <label for="membership"><b>Membership #</b></label>
+      <input id="membership" type="text" name="membership" placeholder="125591" class="forminput" [(ngModel)]="membership">
+      <div class="alert">{{errorMsg}}</div>
+      <div style="text-align:center;"><button type="button" class="rent-button" (click)="returnBook()">Return this Book</button></div>
+    </div>
+  </div>
+</div>
+<div>
+  <h2 class='content_title'>Rented Books</h2>
+</div>
+<div class="gridrow">
+  <div class="gridcol" *ngFor="let item of list">
+    <img [src]="item.imgSource" style="width:100%" (error)="loadDefault($event)">
+    <div class="book_desc">
+      <b>{{item.title}}</b> | {{item.author}}<br>
+      <em class="less-focused-text">ISBN: {{item.isbn}}</em><br>
+      <span *ngIf="item.isAvailable === false">Due: TODO</span>
+    </div>
+    <div style="text-align: center;">
+      <button type="button" class="rent-button" (click)="openModalReturn(item.isbn)">Return</button>
+    </div>
+  </div>
+</div>
