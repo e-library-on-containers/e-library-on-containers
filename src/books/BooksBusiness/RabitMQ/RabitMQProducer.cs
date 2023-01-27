@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using Books.Infrastructure.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Books.Business.RabitMQ
 {
     public class RabitMQProducer:IRabitMQProducer
     {
         IModel channel;
-        public RabitMQProducer()
+        private readonly IConfiguration configuration;
+        public RabitMQProducer(IConfiguration configuration)
         {
-            var factory = new ConnectionFactory
-            {
-                HostName = "localhost"
-            };
+            this.configuration = configuration;
+            var factory = new ConnectionFactory();
+            configuration.GetSection("RabbitMq").Bind(factory);
             var connection = factory.CreateConnection();
             this.channel = connection.CreateModel();
             channel.QueueDeclare("book_added", exclusive: false);
             channel.QueueDeclare("book_updated", exclusive: false);
             channel.QueueDeclare("book_deleted", exclusive: false);
             channel.QueueDeclare("book_instance_added", exclusive: false);
-            channel.QueueDeclare("book_instance_updated", exclusive: false);
             channel.QueueDeclare("book_instance_deleted", exclusive: false);
         }
 

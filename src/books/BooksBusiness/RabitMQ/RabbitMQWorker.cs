@@ -50,13 +50,15 @@ namespace Books.Business.RabitMQ
             bookDeleted.QueueDeclare("book_deleted", exclusive: false);
             bookInstanceAdded.QueueDeclare("book_instance_added", exclusive: false);
             bookInstanceDeleted.QueueDeclare("book_instance_deleted", exclusive: false);
+            bookRented.ExchangeDeclare(exchange: "rent", type: "fanout");
             rentQueue = bookRented.QueueDeclare().QueueName;
             bookRented.QueueBind(queue: rentQueue,
                               exchange: "rent",
                               routingKey: "rental.rent");
+            bookReturned.ExchangeDeclare(exchange: "return", type: "fanout");
             returnQueue = bookReturned.QueueDeclare().QueueName;
             bookReturned.QueueBind(queue: returnQueue,
-                              exchange: "logs",
+                              exchange: "return",
                               routingKey: "rental.return");
         }
 
@@ -110,7 +112,7 @@ namespace Books.Business.RabitMQ
                 await _booksReadRepository.Update(bookRead);
             };
 
-            var rentBookInstanceConsumer = new EventingBasicConsumer(bookInstanceAdded);
+            var rentBookInstanceConsumer = new EventingBasicConsumer(bookRented);
             rentBookInstanceConsumer.Received += async (_, ea) =>
             {
                 var body = ea.Body.ToArray();
@@ -121,7 +123,7 @@ namespace Books.Business.RabitMQ
                 await _booksInstancesRepository.Update(bookInstance);
             };
 
-            var returnBookInstanceConsumer = new EventingBasicConsumer(bookInstanceDeleted);
+            var returnBookInstanceConsumer = new EventingBasicConsumer(bookReturned);
             returnBookInstanceConsumer.Received += async (_, ea) =>
             {
                 var body = ea.Body.ToArray();
@@ -137,8 +139,8 @@ namespace Books.Business.RabitMQ
             bookDeleted.BasicConsume(queue: "book_deleted", autoAck: true, consumer: deleteBookConsumer);
             bookInstanceAdded.BasicConsume(queue: "book_instance_added", autoAck: true, consumer: addBookInstanceConsumer);
             bookInstanceDeleted.BasicConsume(queue: "book_instance_deleted", autoAck: true, consumer: deleteBookInstanceConsumer);
-            bookRented.BasicConsume(queue:rentQueue, autoAck: true, consumer: addBookConsumer);
-            bookReturned.BasicConsume(queue: returnQueue, autoAck: true, consumer: updateBookConsumer);
+            bookRented.BasicConsume(queue:rentQueue, autoAck: true, consumer: rentBookInstanceConsumer);
+            bookReturned.BasicConsume(queue: returnQueue, autoAck: true, consumer: returnBookInstanceConsumer);
 
         }
 
