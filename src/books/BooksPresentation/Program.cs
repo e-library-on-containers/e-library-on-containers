@@ -23,9 +23,16 @@ builder.Services.AddTransient<IBookInstancesRepository<BookInstance>, BookInstan
 builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
 builder.Services.AddHostedService<RabbitMQWorker>();
 
+builder.Services.AddCors();
+builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials()); // allow credentials
 
 app.UseHttpsRedirection();
 
