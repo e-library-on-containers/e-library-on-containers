@@ -7,6 +7,7 @@ builder.Services
     .AddOptions(builder.Configuration)
     .AddJwtAuthentication(builder.Configuration)
     .AddApplicationServices()
+    .AddCors()
     .AddControllers();
 
 builder.Build()

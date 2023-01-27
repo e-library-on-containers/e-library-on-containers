@@ -1,5 +1,15 @@
 version: '3.6'
 services:
+  rabbitmq:
+    ports:
+      - 5672:5672
+      - 15672:15672
+  gateway:
+    build:
+      context: ./src/gateway
+      dockerfile: ./Gateway.Api.Dockerfile
+    ports:
+      - 8080:80
   identity:
     build:
       context: ./src/identity
@@ -11,7 +21,7 @@ services:
       identity-db:
         condition: service_healthy
     ports:
-      - 8080:80
+      - 8081:80
   identity-db:
     image: postgres:11.14
     environment:
