@@ -6,12 +6,12 @@ Relational database management system (*RDBMS*) used in this project is **Postgr
 ## Identity
 ![identity-erd](https://user-images.githubusercontent.com/48659621/215188955-7ba17225-5485-4638-9e55-44c9267abdb4.png)
 
-Identity database stores information about users accounts and their roles. Due to use of *DbUp* library, schemaversions table is used for saving information about applied SQL scripts/migrations.
+Identity database stores information about users accounts and their roles. Due to use of *DbUp* library, *schemaversions* table is used for saving information about applied SQL scripts/migrations.
 
 ## Books
-![books-erd](https://user-images.githubusercontent.com/48659621/215188947-bbe01932-0086-454b-af6c-572474a8d791.png)
+![books-erd](https://user-images.githubusercontent.com/48659621/215223790-285b6eb2-cf84-4723-b2fb-287494346fbe.png)
 
-Books database stores information about books and their physical copies. To ensure avoiding n+1 query problem and possible heavy joins, redundant *booksread* table is used for querying information. All physical copies are aggregated and stores among other **Book** properties.
+Books database stores information about books and their physical copies. To ensure avoiding n+1 query problem and possible heavy joins, redundant *booksread* table is used for querying information. All physical copies are aggregated and stores among other **Book** properties. Due to use of *DbUp* library, *schemaversions* table is used for saving information about applied SQL scripts/migrations.
 
 ## Rentals
 
