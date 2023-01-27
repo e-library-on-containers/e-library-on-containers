@@ -50,15 +50,15 @@ namespace Books.Business.RabitMQ
             bookDeleted.QueueDeclare("book_deleted", exclusive: false);
             bookInstanceAdded.QueueDeclare("book_instance_added", exclusive: false);
             bookInstanceDeleted.QueueDeclare("book_instance_deleted", exclusive: false);
-            bookRented.ExchangeDeclare(exchange: "rent", type: "fanout");
+            //bookRented.ExchangeDeclare(exchange: "rent", type: "fanout");
             rentQueue = bookRented.QueueDeclare().QueueName;
             bookRented.QueueBind(queue: rentQueue,
-                              exchange: "rent",
+                              exchange: "rentals",
                               routingKey: "rental.rent");
             bookReturned.ExchangeDeclare(exchange: "return", type: "fanout");
             returnQueue = bookReturned.QueueDeclare().QueueName;
             bookReturned.QueueBind(queue: returnQueue,
-                              exchange: "return",
+                              exchange: "retals",
                               routingKey: "rental.return");
         }
 
