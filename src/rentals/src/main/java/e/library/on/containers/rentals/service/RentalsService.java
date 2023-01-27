@@ -1,5 +1,6 @@
 package e.library.on.containers.rentals.service;
 
+import e.library.on.containers.rentals.common.EventEntityMapper;
 import e.library.on.containers.rentals.configuration.RabbitmqProperties;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
@@ -23,13 +24,18 @@ public class RentalsService {
     private final RabbitTemplate rabbitTemplate;
     private final RentalsEventRepository eventRepository;
     private final RentalsReadRepository readRepository;
+    private final EventEntityMapper eventEntityMapper;
 
     public UUID rentBook(UUID userId, int bookInstanceId) {
         var newRentalId = UUID.randomUUID();
+        var currentRent = readRepository.findByBookInstanceId(bookInstanceId);
+        if (currentRent.isPresent()) {
+            throw new IllegalStateException();
+        }
         var newRental = new BookRentedEvent(userId, bookInstanceId, newRentalId, DEFAULT_RENTAL_LENGTH);
 
         log.info("Renting book {}...", bookInstanceId);
-        eventRepository.addEvent(newRental);
+        eventRepository.save(eventEntityMapper.eventToEntity(newRental));
         sendMessage("rental.rent", newRental);
         return newRental.getRentalId();
     }
@@ -39,15 +45,15 @@ public class RentalsService {
         var returnBook = new BookReturnedEvent(rentId, userId, rental.getBookInstanceId());
 
         log.info("Returning book on rent with id {}...", rentId);
-        eventRepository.addEvent(returnBook);
+        eventRepository.save(eventEntityMapper.eventToEntity(returnBook));
         sendMessage("rental.return", returnBook);
     }
 
-    public void extendRent(UUID rentId, int days) {
-        var extendRent = new BookExtendedEvent(rentId, days);
+    public void extendRent(UUID userId, UUID rentId, int days) {
+        var extendRent = new BookExtendedEvent(userId, rentId, days);
 
         log.info("Extending rental {} by {} days...", rentId, days);
-        eventRepository.addEvent(extendRent);
+        eventRepository.save(eventEntityMapper.eventToEntity(extendRent));
         sendMessage("rental.extend", extendRent);
     }
 

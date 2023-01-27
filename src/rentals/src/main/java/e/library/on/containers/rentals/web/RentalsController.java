@@ -73,7 +73,9 @@ class RentalsController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    void extendBookRental(@PathVariable UUID rentId, @RequestBody ExtendBookRentRequest extendBookRentRequest) {
-        service.extendRent(rentId, extendBookRentRequest.days());
+    void extendBookRental(
+            @RequestHeader(name = "X-User-Id", required = false) UUID userId,
+            @PathVariable UUID rentId, @RequestBody ExtendBookRentRequest extendBookRentRequest) {
+        service.extendRent(userId, rentId, extendBookRentRequest.days());
     }
 }

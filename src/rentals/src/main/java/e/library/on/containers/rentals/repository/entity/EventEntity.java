@@ -3,8 +3,7 @@ package e.library.on.containers.rentals.repository.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,20 +12,18 @@ import java.time.ZonedDateTime;
 
 @Getter
 @Entity
-@Table(name="rental")
+@Table(name="event")
 @AllArgsConstructor
 @NoArgsConstructor
-public class RentalEntity {
+public class EventEntity {
     @Id
     String id;
-    int bookInstanceId;
-    @NotNull
+    @CreatedDate
+    ZonedDateTime createdAt;
+    String rentalId;
     String userId;
-    @NotNull
-    ZonedDateTime rentedAt;
-    @NotNull
-    ZonedDateTime dueDate;
-    boolean isExtended;
-    @LastModifiedDate
-    ZonedDateTime lastEditDate;
+    int bookInstanceId;
+    int forHowManyDays;
+    int days;
+    String eventType;
 }

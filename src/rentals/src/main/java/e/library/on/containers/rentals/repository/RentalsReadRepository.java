@@ -14,5 +14,5 @@ public interface RentalsReadRepository extends PagingAndSortingRepository<Rental
 
     List<RentalEntity> findAllByUserId(String userId);
 
-    Optional<RentalEntity> findFirstByOrderByLastEditDateDesc();
+    Optional<RentalEntity> findByBookInstanceId(int bookInstanceId);
 }

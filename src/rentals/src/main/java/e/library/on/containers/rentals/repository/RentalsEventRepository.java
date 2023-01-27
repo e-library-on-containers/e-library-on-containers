@@ -1,11 +1,7 @@
 package e.library.on.containers.rentals.repository;
 
-import e.library.on.containers.rentals.events.Event;
-import java.time.ZonedDateTime;
-import java.util.List;
+import e.library.on.containers.rentals.repository.entity.EventEntity;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface RentalsEventRepository {
-    void addEvent(Event event);
-
-    List<Event> getAllEventsPast(ZonedDateTime data);
+public interface RentalsEventRepository extends PagingAndSortingRepository<EventEntity, String> {
 }

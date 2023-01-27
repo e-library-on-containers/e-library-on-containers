@@ -15,8 +15,8 @@ public final class BookExtendedEvent extends Event {
 	@JsonCreator
 	public BookExtendedEvent(
 			UUID id,
-			UUID userId,
 			ZonedDateTime createdAt,
+			UUID userId,
 			UUID rentalId,
 			int days
 	) {
@@ -26,7 +26,7 @@ public final class BookExtendedEvent extends Event {
 		this.days = days;
 	}
 
-	public BookExtendedEvent(UUID rentalId, int days) {
-		this(UUID.randomUUID(), null, ZonedDateTime.now(), rentalId, days);
+	public BookExtendedEvent(UUID userId, UUID rentalId, int days) {
+		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId, days);
 	}
 }
