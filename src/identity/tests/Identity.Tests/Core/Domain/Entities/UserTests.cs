@@ -1,14 +1,14 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Domain.Entities;
+using Identity.Domain.Errors;
+using Identity.Domain.ValueObjects;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable ArrangeTypeMemberModifiers
 
-namespace eLibraryOnContainers.Identity.Tests.Core.Domain.Entities;
+namespace Identity.Tests.Core.Domain.Entities;
 
 [Subject(typeof(User))]
 public class UserTests
@@ -63,7 +63,7 @@ public class UserTests
 
             Establish ctx = () =>
             {
-                oldPasswordCandidate = New.HashedPassword("Password1234"); 
+                oldPasswordCandidate = New.HashedPassword("Password1234");
                 expectedUser = CreateUser(email, firstName, lastName, newRawPassword, roleNames).Value;
             };
 
@@ -76,7 +76,7 @@ public class UserTests
     class When_user_roles_invalid
     {
         static Result<User, ApplicationError> user;
-        
+
         Establish ctx = () => user = CreateUser(email, firstName, lastName, rawPassword, Array.Empty<RoleName>());
 
         It should_return_failed_result = () => user.IsFailure.ShouldBeTrue();

@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Application.Dtos;
+﻿namespace Identity.Application.Dtos;
 
 public class TokenDto
 {

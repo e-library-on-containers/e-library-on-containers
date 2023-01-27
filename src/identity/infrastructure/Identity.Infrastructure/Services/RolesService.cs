@@ -1,10 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Services;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Application.Services;
+using Identity.Domain.Entities;
+using Identity.Domain.ValueObjects;
 
-namespace eLibraryOnContainers.Identity.Infrastructure.Services;
+namespace Identity.Infrastructure.Services;
 
 public class RolesService : IRolesService
 {

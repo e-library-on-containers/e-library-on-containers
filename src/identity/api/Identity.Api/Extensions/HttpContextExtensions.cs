@@ -1,6 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 
-namespace eLibraryOnContainers.Identity.Api.Extensions;
+namespace Identity.Api.Extensions;
 
 public static class HttpContextExtensions
 {

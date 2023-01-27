@@ -1,8 +1,8 @@
-﻿using eLibraryOnContainers.Identity.Infrastructure.Options;
+﻿using Identity.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 using Npgsql;
 
-namespace eLibraryOnContainers.Identity.Infrastructure.Common;
+namespace Identity.Infrastructure.Common;
 
 public interface ISqlConnectionFactory
 {

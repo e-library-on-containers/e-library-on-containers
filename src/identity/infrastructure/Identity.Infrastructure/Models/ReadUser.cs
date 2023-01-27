@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eLibraryOnContainers.Identity.Infrastructure.Models;
+namespace Identity.Infrastructure.Models;
 
 public class ReadUser
 {

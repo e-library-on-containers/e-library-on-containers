@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace eLibraryOnContainers.Identity.Tests;
+namespace Identity.Tests;
 
 public static class Functions
 {

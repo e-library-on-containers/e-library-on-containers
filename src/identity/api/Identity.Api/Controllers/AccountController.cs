@@ -1,15 +1,15 @@
 ﻿using System.Net;
 using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Api.Common;
-using eLibraryOnContainers.Identity.Api.Extensions;
-using eLibraryOnContainers.Identity.Api.Request;
-using eLibraryOnContainers.Identity.Application.Users;
 using FunctionalValidation;
+using Identity.Api.Common;
+using Identity.Api.Extensions;
+using Identity.Api.Request;
+using Identity.Application.Users;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eLibraryOnContainers.Identity.Api.Controllers;
+namespace Identity.Api.Controllers;
 
 [Authorize]
 [ApiController]

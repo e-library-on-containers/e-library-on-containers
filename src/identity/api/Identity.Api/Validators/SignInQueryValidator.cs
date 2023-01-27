@@ -1,10 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Authentication;
 using FunctionalValidation;
 using FunctionalValidation.Errors;
 using FunctionalValidation.Extensions;
+using Identity.Application.Authentication;
 
-namespace eLibraryOnContainers.Identity.Api.Validators
+namespace Identity.Api.Validators
 {
     public class SignInQueryValidator : AbstractValidator<SignInQuery>
     {

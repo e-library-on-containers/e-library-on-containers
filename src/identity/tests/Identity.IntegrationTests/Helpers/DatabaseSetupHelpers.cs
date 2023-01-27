@@ -1,9 +1,9 @@
 ﻿using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
-using eLibraryOnContainers.Identity.Database;
+using Identity.Database;
 
-namespace eLibraryOnContainers.Identity.IntegrationTests.Helpers;
+namespace Identity.IntegrationTests.Helpers;
 
 public static class DatabaseSetupHelpers
 {

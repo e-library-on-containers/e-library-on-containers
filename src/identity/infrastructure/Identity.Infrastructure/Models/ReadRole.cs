@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Infrastructure.Models;
+﻿namespace Identity.Infrastructure.Models;
 
 public class ReadRole
 {

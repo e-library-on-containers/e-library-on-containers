@@ -1,11 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Repositories;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Application.Repositories;
+using Identity.Domain.ValueObjects;
 using MediatR;
 
-namespace eLibraryOnContainers.Identity.Application.Users;
+namespace Identity.Application.Users;
 
 public class ChangePasswordCommand : IRequest<Result<Unit, ApplicationError>>
 {

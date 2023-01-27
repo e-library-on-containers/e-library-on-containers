@@ -1,11 +1,11 @@
-﻿using eLibraryOnContainers.Identity.Api.Common;
-using FunctionalValidation;
+﻿using FunctionalValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Authentication;
+using Identity.Api.Common;
+using Identity.Application.Authentication;
 
-namespace eLibraryOnContainers.Identity.Api.Controllers;
+namespace Identity.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

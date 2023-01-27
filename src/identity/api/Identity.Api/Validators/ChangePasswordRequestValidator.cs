@@ -1,11 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Api.Request;
-using eLibraryOnContainers.Identity.Application.Users;
 using FunctionalValidation;
 using FunctionalValidation.Errors;
 using FunctionalValidation.Extensions;
+using Identity.Api.Request;
 
-namespace eLibraryOnContainers.Identity.Api.Validators;
+namespace Identity.Api.Validators;
 
 public class ChangePasswordRequestValidator : AbstractValidator<ChangePasswordRequest>
 {

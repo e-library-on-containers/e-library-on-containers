@@ -1,7 +1,7 @@
-﻿using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
+﻿using Identity.Domain.Entities;
+using Identity.Domain.ValueObjects;
 
-namespace eLibraryOnContainers.Identity.Tests;
+namespace Identity.Tests;
 
 public static class New
 {

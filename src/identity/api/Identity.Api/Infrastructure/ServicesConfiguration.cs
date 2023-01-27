@@ -1,13 +1,13 @@
-﻿using eLibraryOnContainers.Identity.Application.Authentication;
-using eLibraryOnContainers.Identity.Application.Repositories;
-using eLibraryOnContainers.Identity.Application.Services;
-using eLibraryOnContainers.Identity.Infrastructure.Common;
-using eLibraryOnContainers.Identity.Infrastructure.Repositories;
-using eLibraryOnContainers.Identity.Infrastructure.Services;
-using FunctionalValidation.Extensions;
+﻿using FunctionalValidation.Extensions;
+using Identity.Application.Authentication;
+using Identity.Application.Repositories;
+using Identity.Application.Services;
+using Identity.Infrastructure.Common;
+using Identity.Infrastructure.Repositories;
+using Identity.Infrastructure.Services;
 using MediatR;
 
-namespace eLibraryOnContainers.Identity.Api.Infrastructure;
+namespace Identity.Api.Infrastructure;
 
 public static class ServicesConfiguration
 {

@@ -3,7 +3,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace eLibraryOnContainers.Identity.Api.Infrastructure;
+namespace Identity.Api.Infrastructure;
 
 public static class AuthenticationConfiguration
 {
@@ -11,7 +11,7 @@ public static class AuthenticationConfiguration
         IConfiguration configuration)
     {
         var authOptions = configuration.GetAuthOptions();
-        
+
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         services.AddAuthentication(options =>
             {

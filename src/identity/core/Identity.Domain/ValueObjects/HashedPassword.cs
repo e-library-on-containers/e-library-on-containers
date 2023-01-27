@@ -2,11 +2,11 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.Extensions;
 using FunctionalValidation.Errors;
+using Identity.Domain.Errors;
+using Identity.Domain.Extensions;
 
-namespace eLibraryOnContainers.Identity.Domain.ValueObjects;
+namespace Identity.Domain.ValueObjects;
 
 public class HashedPassword : ValueObject
 {

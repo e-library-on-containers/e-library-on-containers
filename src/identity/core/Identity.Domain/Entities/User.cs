@@ -1,10 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.Extensions;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Domain.Errors;
+using Identity.Domain.Extensions;
+using Identity.Domain.ValueObjects;
 
-namespace eLibraryOnContainers.Identity.Domain.Entities;
+namespace Identity.Domain.Entities;
 
 public class User : Entity<Guid>
 {

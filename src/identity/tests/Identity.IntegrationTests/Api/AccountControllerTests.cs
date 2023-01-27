@@ -1,21 +1,20 @@
 ﻿using System.Net;
 using System.Net.Http.Json;
 using DotNet.Testcontainers.Containers;
-using eLibraryOnContainers.Identity.Api.Controllers;
-using eLibraryOnContainers.Identity.Api.Request;
-using eLibraryOnContainers.Identity.Api.Responses;
-using eLibraryOnContainers.Identity.Application.Authentication;
-using eLibraryOnContainers.Identity.Application.Dtos;
-using eLibraryOnContainers.Identity.Application.Users;
-using eLibraryOnContainers.Identity.IntegrationTests.Configuration;
-using eLibraryOnContainers.Identity.IntegrationTests.Helpers;
+using Identity.Api.Controllers;
+using Identity.Api.Request;
+using Identity.Api.Responses;
+using Identity.Application.Authentication;
+using Identity.Application.Users;
+using Identity.IntegrationTests.Configuration;
+using Identity.IntegrationTests.Helpers;
 using Machine.Specifications;
 using Newtonsoft.Json.Linq;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable ArrangeTypeMemberModifiers
 
-namespace eLibraryOnContainers.Identity.IntegrationTests.Api;
+namespace Identity.IntegrationTests.Api;
 
 [Subject(typeof(AccountController))]
 public class AccountControllerTests

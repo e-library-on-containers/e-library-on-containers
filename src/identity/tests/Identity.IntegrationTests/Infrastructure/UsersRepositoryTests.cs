@@ -1,20 +1,18 @@
-﻿using eLibraryOnContainers.Identity.Infrastructure.Repositories;
-using eLibraryOnContainers.Identity.IntegrationTests.Helpers;
-using Machine.Fakes;
+﻿using Machine.Fakes;
 using Machine.Specifications;
-using System.ComponentModel;
 using CSharpFunctionalExtensions;
 using DotNet.Testcontainers.Containers;
-using eLibraryOnContainers.Identity.Domain.Entities;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
-using eLibraryOnContainers.Identity.Infrastructure.Common;
-using eLibraryOnContainers.Identity.Infrastructure.Options;
-using eLibraryOnContainers.Identity.Tests;
 using FunctionalValidation.Errors;
 using Microsoft.Extensions.Options;
-using NSubstitute;
+using Identity.Domain.Entities;
+using Identity.Domain.ValueObjects;
+using Identity.Infrastructure.Common;
+using Identity.Infrastructure.Options;
+using Identity.Infrastructure.Repositories;
+using Identity.IntegrationTests.Helpers;
+using Identity.Tests;
 
-namespace eLibraryOnContainers.Identity.IntegrationTests.Infrastructure;
+namespace Identity.IntegrationTests.Infrastructure;
 
 [Subject(typeof(UsersRepository))]
 public class UsersRepositoryTests : WithSubject<UsersRepository>

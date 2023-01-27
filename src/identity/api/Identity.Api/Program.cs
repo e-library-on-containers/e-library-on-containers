@@ -1,4 +1,4 @@
-using eLibraryOnContainers.Identity.Api.Infrastructure;
+using Identity.Api.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

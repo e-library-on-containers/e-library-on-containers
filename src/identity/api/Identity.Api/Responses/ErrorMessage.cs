@@ -1,4 +1,4 @@
-﻿namespace eLibraryOnContainers.Identity.Api.Responses;
+﻿namespace Identity.Api.Responses;
 
 public class ErrorMessage
 {

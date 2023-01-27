@@ -1,13 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Dtos;
-using eLibraryOnContainers.Identity.Application.Repositories;
-using eLibraryOnContainers.Identity.Application.Services;
-using eLibraryOnContainers.Identity.Domain.Errors;
-using eLibraryOnContainers.Identity.Domain.ValueObjects;
 using FunctionalValidation.Errors;
+using Identity.Application.Dtos;
+using Identity.Application.Repositories;
+using Identity.Application.Services;
+using Identity.Domain.ValueObjects;
 using MediatR;
 
-namespace eLibraryOnContainers.Identity.Application.Authentication;
+namespace Identity.Application.Authentication;
 
 public class SignInQuery : IRequest<Result<TokenDto, ApplicationError>>
 {

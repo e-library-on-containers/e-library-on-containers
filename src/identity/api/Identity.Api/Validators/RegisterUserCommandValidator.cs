@@ -1,10 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
-using eLibraryOnContainers.Identity.Application.Users;
 using FunctionalValidation;
 using FunctionalValidation.Errors;
 using FunctionalValidation.Extensions;
+using Identity.Application.Users;
 
-namespace eLibraryOnContainers.Identity.Api.Validators;
+namespace Identity.Api.Validators;
 
 public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
 {
