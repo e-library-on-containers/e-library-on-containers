@@ -2,6 +2,8 @@ name: Rentals-Publish-Docker
 
 on:
   push:
+    branches:
+      - develop
     paths:
       - '.github/workflows/rentals-publish-docker.yml'
       - 'src/rentals/**'
