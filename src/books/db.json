@@ -1,0 +1,16 @@
+{
+    "books": [
+        {"isbn": "1111111111111", "title": "Łagodne wprowadzenie do algorytmów", "author": "Marek Kubale;Inny Ziomek", "description": "XD", "cover_img":"./images/kubale.jpg", "copies_count": 2, "copies":[
+          {"id":1, "isAvailable":false, "isbn": "1111111111111"},
+          {"id":2, "isAvailable":true, "isbn": "1111111111111"}
+        ]},
+        {"isbn": "2222222222222", "title": "Przewodowe i bezprzewodowe sieci LAN", "author": "Krzysztof Nowicki;Janusz Korin Mikke", "description": "Powieść przygodowa o wysyłaniu ramkji Shreka", "cover_img":"./images/ksiazka.jpg", "copies_count": 1, "copies":[
+          {"id":0, "isAvailable":true, "isbn": "2222222222222"}
+        ]}
+      ],
+    "bookinstances":[
+      {"id":0, "isAvailable":true, "isbn": "2222222222222"},
+      {"id":1, "isAvailable":false, "isbn": "1111111111111"},
+      {"id":2, "isAvailable":true, "isbn": "1111111111111"}
+    ]
+}
