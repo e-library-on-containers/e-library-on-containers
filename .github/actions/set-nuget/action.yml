@@ -1,0 +1,13 @@
+name: 'Set custom NuGet repository for workflows'
+description: 'Set custom NuGet repository for workflows'
+
+inputs:
+  token:
+    description: 'GitHub PAT'
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - run: dotnet nuget add source --username e-library-on-containers --password ${{ inputs.token }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/e-library-on-containers/index.json"
+      shell: bash

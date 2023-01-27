@@ -1,0 +1,42 @@
+spring:
+  rabbitmq:
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    port: ${RABBITMQ_PORT:5672}
+    host: ${RABBITMQ_HOST:localhost}
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/rentals}
+    username: ${DB_USERNAME:rentals}
+    password: ${DB_PASSWORD:rentals}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+
+rabbitmq:
+  topic-exchange:
+    name: "rentals"
+  rent-queue:
+    name: "rent"
+  return-queue:
+    name: "return"
+  extend-queue:
+    name: "extend"
+
+logging:
+  file:
+    name: ${LOGS_FILE:logs/RentalService.log}
+
+  pattern:
+    file:
+      "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [LEVEL: %-5level] [CLASS: %-40logger{39}] %msg%n"
+
+  level:
+    root: info
+
+  logback:
+    rollingpolicy:
+      max-history: 2
+      max-file-size: 20MB

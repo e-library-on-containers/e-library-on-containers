@@ -1,0 +1,22 @@
+version: '3.6'
+
+networks: 
+    identity-network: 
+        name: identity-network
+
+services:
+  identity:
+    image: elibraryoncontainers/identity:$IDENTITY_API_VERSION
+    environment:
+      AuthOptions__Key: $JWT_SECRET
+      AuthOptions__ExpiredInMinutes: 30
+      ConnectionStrings__DefaultConnection: $IDENTITY_CONNECTION_STRING
+      ASPNETCORE_ENVIRONMENT: $IDENTITY_API_ENVIRONMENT
+    networks:
+      - identity-network
+  identity-db-updater:
+    image: elibraryoncontainers/identity-db-updater:$IDENTITY_DB_UPDATER_VERSION
+    environment:
+      Database_ConnectionString: $IDENTITY_UPDATER_CONNECTION_STRING
+    networks:
+      - identity-network
