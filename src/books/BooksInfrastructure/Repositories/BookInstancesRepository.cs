@@ -77,9 +77,13 @@ namespace Books.Infrastructure.Repositories
             }
         }
 
-        public async Task<List<BookInstance>> GetByISBN(string isbn)
+        public async Task<List<BookInstance>> GetByISBN(string isbn, bool isAvailable)
         {
             var sql = "SELECT * FROM BookInstances WHERE ISBN = @ISBN";
+            if (isAvailable)
+            {
+                sql += " AND isAvailable = true";
+            }
             using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
             {
                 connection.Open();

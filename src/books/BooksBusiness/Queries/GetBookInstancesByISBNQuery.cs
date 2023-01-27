@@ -12,9 +12,11 @@ namespace Books.Business.Queries
     public class GetBookInstancesByISBNQuery : IRequest<List<BookInstanceResponse>>
     {
         public string ISBN { get; private set; }
-        public GetBookInstancesByISBNQuery(string iSBN)
+        public bool isAvailable { get; private set; }
+        public GetBookInstancesByISBNQuery(string ISBN, bool isAvailable)
         {
-            ISBN = iSBN;
+            this.ISBN = ISBN;
+            this.isAvailable = isAvailable;
         }
     }
 }

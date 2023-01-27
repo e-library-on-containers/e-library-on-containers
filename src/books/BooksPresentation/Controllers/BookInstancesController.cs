@@ -38,7 +38,7 @@ namespace Books.API.Controllers
                 }
                 else
                 {
-                    return Ok(await _mediator.Send(new GetBookInstancesByISBNQuery(ISBN)));
+                    return Ok(await _mediator.Send(new GetBookInstancesByISBNQuery(ISBN, available)));
                 }
             }
             catch (Exception ex)

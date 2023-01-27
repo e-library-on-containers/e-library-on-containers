@@ -14,6 +14,6 @@ namespace Books.Infrastructure.Contracts
         Task<int> Update(T _object);
         Task<List<T>> GetAll();
         Task<T> GetById(int id);
-        Task<List<T>> GetByISBN(string isbn);
+        Task<List<T>> GetByISBN(string isbn, bool isAvailable);
     }
 }

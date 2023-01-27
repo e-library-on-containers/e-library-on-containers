@@ -22,7 +22,7 @@ namespace Books.Business.Handlers
 
         public async Task<List<BookInstanceResponse>> Handle(GetBookInstancesByISBNQuery request, CancellationToken cancellationToken)
         {
-            List<BookInstance> bookInstances = await _bookInstancesRepository.GetByISBN(request.ISBN);
+            List<BookInstance> bookInstances = await _bookInstancesRepository.GetByISBN(request.ISBN, request.isAvailable);
             List<BookInstanceResponse> response = new List<BookInstanceResponse>();
             foreach (BookInstance bookInstance in bookInstances)
             {

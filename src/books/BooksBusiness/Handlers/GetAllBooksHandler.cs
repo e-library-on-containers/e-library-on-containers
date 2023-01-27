@@ -28,16 +28,8 @@ namespace Books.Business.Handlers
             List<BookResponse> result = new List<BookResponse>();
             foreach (BookRead book in books) 
             {
-                List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(book.ISBN);
-                bool available = false;
-                foreach (BookInstance bookInstance in bookInstances)
-                {
-                    if (bookInstance.IsAvailable)
-                    {
-                        available = true;
-                    }
-                }
-                BookResponse bookResponse = new BookResponse(book, available);
+                List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(book.ISBN, true);
+                BookResponse bookResponse = new BookResponse(book, bookInstances.Count>0);
                 result.Add(bookResponse);
             }
             return result;
