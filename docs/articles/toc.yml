@@ -1,2 +1,10 @@
+- name: FunctionalValidation library
+  href: functional-validation.md
 - name: Diagrams
   href: diagrams.md
+- name: Database schemas
+  href: databases.md
+- name: API Gateway
+  href: api-gateway.md
+- name: Identity service
+  href: identity.md
