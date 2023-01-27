@@ -47,11 +47,11 @@ Rel(booksQueries, booksService,"Uses")
 Rel(booksCommands, booksService, "Uses")
 Rel(booksCopiesCommands, booksService, "Uses")
 
-Rel(booksRepository, books_read_db,"Uses")
-Rel(booksRepository, books_db,"Uses")
+Rel(booksRepository, books_read_db,"Writes to, Reads from")
+Rel(booksRepository, books_db,"Writes to")
 
 Rel(booksService, booksRepository,"Uses")
 
-Rel(booksWorker, rabbit, "Uses")
-Rel(booksService, rabbit, "Uses")
+Rel(booksWorker, rabbit, "Consumes events")
+Rel(booksService, rabbit, "Publishes events")
 @enduml
