@@ -13,6 +13,8 @@ import {JwtInterceptor, JwtModule} from "@auth0/angular-jwt";
 import {SignupComponent} from './auth/signup/signup.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { APP_BASE_HREF } from '@angular/common';
+import {environment} from "../ environments/environment";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
       }
     })
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: APP_BASE_HREF, useValue: environment.baseHref}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

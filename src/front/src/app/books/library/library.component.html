@@ -24,9 +24,9 @@
 
 <div class="gridrow">
   <div class="gridcol" *ngFor="let item of list">
-    <img [src]="item.imgSource" style="width:100%" (error)="loadDefault($event)">
+    <img [src]="item.coverImg" style="width:100%" (error)="loadDefault($event)" alt="{{item.title}}}">
     <div class="book_desc">
-      <b>{{item.title}}</b><br>{{item.author}}<br>
+      <b>{{item.title}}</b><br>{{item.authors}}<br>
       <em class="less-focused-text">ISBN: {{item.isbn}}</em><br>
     </div>
     <div style="text-align: center;">
