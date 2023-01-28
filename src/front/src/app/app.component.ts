@@ -16,5 +16,6 @@ export class AppComponent {
   logOut() {
     localStorage.removeItem('access_token')
     localStorage.removeItem('user-id')
+    window.location.replace("/")
   }
 }

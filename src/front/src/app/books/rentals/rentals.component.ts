@@ -20,6 +20,18 @@ export class RentalsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.updateBooks()
+  }
+
+  returnBook(rentalId: string) {
+    this.rentalService.returnBook(rentalId).subscribe(() => this.updateBooks())
+  }
+
+  loadDefault(event: Event) {
+    (event.target as HTMLImageElement).src = "assets/no-image.jpg"
+  }
+
+  private updateBooks() {
     this.rentalService.getAllRentals().subscribe(
       rental => {
         this.list = []
@@ -47,13 +59,5 @@ export class RentalsComponent implements OnInit {
           )
       }
     )
-  }
-
-  returnBook(rentalId: string) {
-    this.rentalService.returnBook(rentalId).subscribe()
-  }
-
-  loadDefault(event: Event) {
-    (event.target as HTMLImageElement).src = "assets/no-image.jpg"
   }
 }

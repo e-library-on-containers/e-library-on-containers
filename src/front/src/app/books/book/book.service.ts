@@ -31,7 +31,9 @@ export class BookService {
         return from([]);
       }),
       map(response => Object.assign([], response)),
+      map(response => response.map(book => book as BookCopy)),
       filter(response => response.length > 0),
+      map(response => response.filter(book => book.isAvailable)),
       map(response => response[0]),
       map(response => response as BookCopy)
     )

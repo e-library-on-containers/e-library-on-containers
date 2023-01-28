@@ -33,7 +33,7 @@ export class LoginComponent {
     this.authService.login(this.form['email'].value, this.form['password'].value)
       .subscribe(token => {
         localStorage.setItem('user-id', token.sub)
-        this.router.navigate(['/']).then(() => console.log("Logged in!s"))
+        window.location.replace("/")
       })
   }
 }

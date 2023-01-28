@@ -20,16 +20,20 @@ export class LibraryComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.bookService.getAllBooks().subscribe(list => this.list = list)
+    this.updateBooks()
   }
 
   rentBook(isbn: string) {
     this.bookService.getFreeBook(isbn)
       .pipe(tap(x => console.log(x)))
-      .subscribe(book => this.rentalService.rentBook(book.id).pipe(tap(x => console.log(x))).subscribe())
+      .subscribe(book => this.rentalService.rentBook(book.id).subscribe(() => this.updateBooks()))
   }
 
   loadDefault(event: Event) {
     (event.target as HTMLImageElement).src = "assets/no-image.jpg"
+  }
+
+  private updateBooks() {
+    this.bookService.getAllBooks().subscribe(list => this.list = list)
   }
 }

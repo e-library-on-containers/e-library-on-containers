@@ -37,7 +37,6 @@ export class SignupComponent {
       return;
     }
 
-    // perform your login validation here and navigate to the appropriate page
     this.authService.createAccount({
       email: this.form['email'].value,
       firstName: this.form['firstname'].value,
@@ -46,7 +45,10 @@ export class SignupComponent {
     })
       .pipe(filter(result => result))
       .subscribe(
-        () => this.router.navigate(['/']).then(() => console.log('Account created!'))
+        () => {
+          console.log('Account created!')
+          window.location.replace("/")
+        }
       )
   }
 }
