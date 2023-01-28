@@ -4,6 +4,8 @@
   href: databases.md
 - name: API Gateway
   href: api-gateway.md
+- name: Rentals service
+  href: rentals.md
 - name: Identity service
   href: identity.md
 - name: FunctionalValidation library
