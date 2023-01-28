@@ -32,7 +32,7 @@ Container_Boundary(Books, "Books service") {
 
 Rel(gateway, booksController, "Uses", "JSON/HTTPS")
 
-Rel(booksController, mediator, "Uses")
+Rel(booksController, mediator, "Sends commands and queries")
 
 Rel(mediator, booksQueries, "Uses")
 Rel(mediator, booksCommands, "Uses")
