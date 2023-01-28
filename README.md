@@ -1,5 +1,6 @@
 
 
+
 [![LinkedIn][linkedin-shield-kulik]][linkedin-url-kulik] [![LinkedIn][linkedin-shield-swislocki]][linkedin-url-swislocki] [![LinkedIn][linkedin-shield-zajaczkowski]][linkedin-url-zajaczkowski]
 
 [![Build and publish FunctionalValidation][build-publish-functional-validation-shield]][build-publish-functional-validation-url] 
@@ -14,6 +15,7 @@
 * [About the Project](#about-the-project)
 * [Internal Libraries](#internal-libraries)
 	* [Functional Validation](#functional-validation)
+* [Local environment](#local-environment)
 * [Contributions](#contributions)
 
 ## Docker images
@@ -38,6 +40,17 @@ Due to libraries internal use only, we decided that maintaining SemVer is not a 
 
 ### Functional Validation
 Library for strongly-typed validation rules that uses concept of monad implemented as **Result<TLeft, TRight>** (also known as **Either<TLeft, TRight>**). API exposed through FunctionalValidation library is documented using XML docs and published in [documentation](https://e-library-on-containers.github.io/e-library-on-containers/api/index.html) under *Api Documentation* tab.
+
+## Local environment
+
+### Prerequisites
+For building images locally, GitHub personal access token with access to reading packages is required. Fill in these variables in `.dev-env` file:
+```
+FEED_USERNAME="<GITHUB_USERNAME>"
+PERSONAL_ACCESS_TOKEN="<GITHUB_PTA>"
+```
+### Docker compose
+To startup local development environment run `dev-compose.sh up` (Linux) or `dev-compose.ps1 up` (Windows). API Gateway is mapped to `http://localhost:8080`.
 
 ## Contributions
 If you want to contribute to this project see [CONTRIBUTING](CONTRIBUTING.md).
