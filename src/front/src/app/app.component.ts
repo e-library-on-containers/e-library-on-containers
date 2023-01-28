@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front';
+  loggedIn: boolean;
+
+  constructor() {
+    this.loggedIn = localStorage.getItem('access_token') != null
+  }
+
 }

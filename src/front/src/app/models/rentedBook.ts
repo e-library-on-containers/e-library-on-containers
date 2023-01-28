@@ -1,7 +1,10 @@
 export interface RentedBook {
-  id: number;
-  rent_duration: number;
-  return_date: Date;
-  username: string;
-  membership: string;
+  rentId: string,
+  bookCopyId: number,
+  userId: string,
+  coverImg: string,
+  title: string,
+  authors: string
+  isbn: string
+
 }

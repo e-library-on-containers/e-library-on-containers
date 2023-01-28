@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Book} from "../../models/book";
-import {RentedBook} from "../../models/rentedBook";
 import {ActivatedRoute} from "@angular/router";
 import {BookService} from "../book/book.service";
+import {RentalService} from "../rental/rental.service";
+import {RentedBook} from "../../models/rentedBook";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-rentals',
@@ -10,70 +11,46 @@ import {BookService} from "../book/book.service";
   styleUrls: ['./rentals.component.css']
 })
 export class RentalsComponent implements OnInit {
-  list: Array<Book> = [];
-  rentedBooks: Array<RentedBook> = [];
-
-  //Modal variables
-  username = "";
-  membership = "";
-  focusedIsbn = "";
-  focusedTitle = ""; //Title of book selected by user
-  rentalDuration: any;
-  errorMsg = "";
+  list: Array<RentedBook> = [];
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService) {
+    private bookService: BookService,
+    private rentalService: RentalService) {
   }
 
   ngOnInit() {
-    this.bookService.getAllBooks().subscribe(list => this.list = list)
+    this.rentalService.getAllRentals().subscribe(
+      rental => {
+        this.list = []
+        rental
+          .map(rent => this.bookService.getAllBookCopies()
+            .pipe(filter(copies => copies.length > 0))
+            .subscribe(copies => {
+                const copy = copies.find(copy => copy.id == rent.bookCopyId);
+                if (copy !== undefined) {
+                  this.bookService.getBook(copy.isbn).subscribe(book => {
+                    const rentedBook = {
+                      rentId: rent.id,
+                      bookCopyId: rent.bookCopyId,
+                      userId: rent.userId,
+                      coverImg: book.coverImg,
+                      title: book.title,
+                      authors: book.authors,
+                      isbn: book.isbn
+                    } as RentedBook;
+                    this.list = [...this.list, rentedBook]
+                  })
+                }
+              }
+            )
+          )
+      }
+    )
   }
 
-  returnBook() {
-    if (this.username.length === 0) {
-      this.errorMsg = "Error: Username is empty";
-      return;
-    }
-    if (this.membership.length === 0) {
-      this.errorMsg = "Error: Membership # is empty";
-      return;
-    }
-    // let i = this.rentedBooks.map(x => x.id).indexOf(this.focusedId);
-    // if (i !== -1) {
-    //   if (this.rentedBooks[i].username === this.username &&
-    //     this.rentedBooks[i].membership === this.membership) {
-    //     // this.list = this.list.filter(x => x.id !== this.rentedBooks[i].id);
-    //     this.rentedBooks.splice(i, 1);
-    //   } else {
-    //     this.errorMsg = "Error: Invalid username or membership #";
-    //     return;
-    //   }
-    // }
-
-    localStorage.setItem('rented_list', JSON.stringify(this.rentedBooks));
-    this.closeModal();
-  }
-
-  openModalReturn(isbn: string) {
-    let book = this.list.find(x => x.isbn === isbn);
-    if (book) {
-      this.focusedIsbn = book.isbn;
-      this.focusedTitle = book.title;
-    }
-    let modal = document.getElementById("returnModal");
-    if (modal != null) {
-      modal.style.display = "block";
-    }
-  }
-
-  closeModal() {
-    let modal = document.getElementById("loginModal");
-    if (modal)
-      modal.style.display = "none";
-    modal = document.getElementById("returnModal");
-    if (modal)
-      modal.style.display = "none";
+  returnBook(rentalId: string) {
+    this.rentalService.returnBook(rentalId).subscribe()
   }
 
   loadDefault(event: Event) {

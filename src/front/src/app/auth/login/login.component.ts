@@ -13,29 +13,27 @@ export class LoginComponent {
   submitted = false;
   invalidLogin = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.email],
       password: ['', Validators.required]
     });
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get form() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    // perform your login validation here and navigate to the appropriate page
-    if(this.f['username'].value === 'admin' && this.f['password'].value === 'admin') {
-      this.router.navigate(['home']);
-    } else {
-      this.invalidLogin = true;
-    }
+    this.authService.login(this.form['email'].value, this.form['password'].value)
+      .subscribe(token => {
+        localStorage.setItem('user-id', token.sub)
+        this.router.navigate(['/']).then(() => console.log("Logged in!s"))
+      })
   }
 }
