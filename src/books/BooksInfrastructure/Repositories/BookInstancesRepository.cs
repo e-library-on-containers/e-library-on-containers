@@ -94,7 +94,7 @@ namespace Books.Infrastructure.Repositories
 
         public async Task<int> Update(BookInstance _object)
         {
-            var sql = "UPDATE BookInstances SET ISBN = @ISBN, IsAvailable = @IsAvailable";
+            var sql = "UPDATE BookInstances SET ISBN = @ISBN, IsAvailable = @IsAvailable WHERE InstanceId = @InstanceId";
             using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
             {
                 connection.Open();
