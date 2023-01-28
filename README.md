@@ -1,4 +1,5 @@
 
+
 [![LinkedIn][linkedin-shield-kulik]][linkedin-url-kulik] [![LinkedIn][linkedin-shield-swislocki]][linkedin-url-swislocki] [![LinkedIn][linkedin-shield-zajaczkowski]][linkedin-url-zajaczkowski]
 
 [![Build and publish FunctionalValidation][build-publish-functional-validation-shield]][build-publish-functional-validation-url] 
@@ -9,10 +10,22 @@
 
 ## Table of Contents
 
+* [Docker images](#docker-images)
 * [About the Project](#about-the-project)
 * [Internal Libraries](#internal-libraries)
 	* [Functional Validation](#functional-validation)
 * [Contributions](#contributions)
+
+## Docker images
+| Status| Service|
+|:---:|:----:|
+| [![build-publish-front-shield]][build-publish-front-url]  | Frontend |
+| [![build-publish-gateway-api-shield]][build-publish-gateway-api-url]  | API Gateway |
+| [![build-publish-identity-api-shield]][build-publish-identity-api-url]  | Identity API |
+| [![build-publish-identity-updater-shield]][build-publish-identity-updater-url]  | Identity Database updater|
+| [![build-publish-books-api-shield]][build-publish-books-api-url]  | Books API |
+| [![build-publish-books-updater-shield]][build-publish-books-updater-url]  | Books Database updater|
+| [![build-publish-rentals-api-shield]][build-publish-rentals-api-url]  | Rentals API |
 
 ## About the project
 *Project in development*
@@ -35,7 +48,28 @@ If you want to contribute to this project see [CONTRIBUTING](CONTRIBUTING.md).
 [linkedin-url-kulik]: https://www.linkedin.com/in/%E2%98%95-rafa%C5%82-kulik-12733a189/
 [linkedin-shield-swislocki]: https://img.shields.io/badge/LinkedIn-Świsłocki-blue?logo=linkedin
 [linkedin-url-swislocki]: https://www.linkedin.com/in/jakub-swislocki/
-[build-deploy-docs-shield]: https://img.shields.io/github/workflow/status/e-library-on-containers/e-library-on-containers/Publish%20docs%20on%20GitHub%20Pages?label=Build%20and%20deploy%20docs&logo=GitHub
+[build-deploy-docs-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/publish-docs.yml?label=Build%20and%20deploy%20docs&logo=GitHub
 [build-deploy-docs-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/publish-docs.yml
-[build-publish-functional-validation-shield]: https://img.shields.io/github/workflow/status/e-library-on-containers/e-library-on-containers/FunctionalValidation-PublishPackage?label=Publish%20FunctionalValidation%20package&logo=GitHub
+[build-publish-functional-validation-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/functional-validation-publish.yml?label=Publish%20FunctionalValidation%20package&logo=GitHub
 [build-publish-functional-validation-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/functional-validation-publish.yml
+
+[build-publish-books-api-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/books-api-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-books-api-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/books-api-publish-docker.yml
+
+[build-publish-books-updater-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/books-db-updater-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-books-updater-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/books-db-updater-publish-docker.yml
+
+[build-publish-front-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/front-prod-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-front-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/front-prod-publish-docker.yml
+
+[build-publish-gateway-api-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/gateway-api-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-gateway-api-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/gateway-api-publish-docker.yml
+
+[build-publish-identity-api-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/identity-api-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-identity-api-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/identity-api-publish-docker.yml
+
+[build-publish-identity-updater-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/identity-db-updater-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-identity-updater-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/identity-db-updater-publish-docker.yml
+
+[build-publish-rentals-api-shield]: https://img.shields.io/github/actions/workflow/status/e-library-on-containers/e-library-on-containers/rentals-publish-docker.yml?label=Push%20to%20Docker%20Hub&logo=Docker
+[build-publish-rentals-api-url]: https://github.com/e-library-on-containers/e-library-on-containers/actions/workflows/rentals-publish-docker.yml
