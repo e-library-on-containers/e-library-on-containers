@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk-alpine:6.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine
 WORKDIR /build
 
 COPY ./BooksDatabase/Books.Database/Books.Database.csproj ./

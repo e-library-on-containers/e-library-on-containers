@@ -1,5 +1,3 @@
-- name: FunctionalValidation library
-  href: functional-validation.md
 - name: Diagrams
   href: diagrams.md
 - name: Database schemas
@@ -10,3 +8,5 @@
   href: identity.md
 - name: Books service
   hred: books.md
+- name: FunctionalValidation library
+  href: functional-validation.md
