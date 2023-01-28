@@ -7,6 +7,8 @@
 - name: Identity service
   href: identity.md
 - name: Books service
-  hred: books.md
+  href: books.md
+- name: Rentals service
+  href: rentals.md
 - name: FunctionalValidation library
   href: functional-validation.md
