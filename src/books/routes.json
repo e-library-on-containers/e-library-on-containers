@@ -1,0 +1,1 @@
+{ "/books/:isbn" : "/books?isbn=:isbn" }

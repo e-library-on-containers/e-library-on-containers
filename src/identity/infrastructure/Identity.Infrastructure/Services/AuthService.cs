@@ -34,7 +34,7 @@ public class AuthService : IAuthService
             new Claim(JwtRegisteredClaimNames.Iat, now.ToUnixTimeSeconds().ToString()),
         };
 
-        claims.AddRange(user.Roles.Select(x => new Claim(ClaimTypes.Role, x.Value)));
+        claims.AddRange(user.Roles.Select(x => new Claim("Role", x.Value)));
 
         var expires = now.AddMinutes(_options.ExpiredInMinutes);
         var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_options.Key)),
