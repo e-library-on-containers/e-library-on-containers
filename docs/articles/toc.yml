@@ -6,5 +6,7 @@
   href: api-gateway.md
 - name: Identity service
   href: identity.md
+- name: Books service
+  hred: books.md
 - name: FunctionalValidation library
   href: functional-validation.md
