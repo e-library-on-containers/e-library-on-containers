@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: "https://elib.zajaczkowski.dev/api",
+  apiUrl: "http://localhost:8080\n",
   baseHref: "/"
 };

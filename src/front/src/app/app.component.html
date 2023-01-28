@@ -3,6 +3,7 @@
     <a *ngIf="!loggedIn" id="nav_login" class="navlink" routerLink="/login" routerLinkActive="active">Log in or Sign up<span style="float: right;">&gt;</span></a>
     <a id="nav_library" class="navlink" routerLink="/library" routerLinkActive="active">Library<span style="float: right;">&gt;</span></a>
     <a *ngIf="loggedIn" id="nav_rented" class="navlink" routerLink="/rental" routerLinkActive="active">Return<span style="float: right;">&gt;</span></a>
+    <a *ngIf="loggedIn" class="navlink" routerLink="/" routerLinkActive="active" (click)="logOut()">Log out<span style="float: right;">&gt;</span></a>
   </div>
   <div id="content">
     <router-outlet></router-outlet>

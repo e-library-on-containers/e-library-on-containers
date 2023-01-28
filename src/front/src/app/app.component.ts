@@ -13,4 +13,8 @@ export class AppComponent {
     this.loggedIn = localStorage.getItem('access_token') != null
   }
 
+  logOut() {
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('user-id')
+  }
 }

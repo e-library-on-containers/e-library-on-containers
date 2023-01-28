@@ -14,7 +14,7 @@ import {SignupComponent} from './auth/signup/signup.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {APP_BASE_HREF} from '@angular/common';
-import {environment} from "../ environments/environment";
+import {environment} from "../environments/environment";
 import {AuthInterceptor} from "./config/AuthInterceptor";
 
 @NgModule({
