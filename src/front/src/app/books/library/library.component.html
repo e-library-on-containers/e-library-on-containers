@@ -1,0 +1,17 @@
+<div>
+  <h2 class='content_title'>Library</h2>
+</div>
+
+<div class="gridrow">
+  <div class="gridcol" *ngFor="let item of list">
+    <img [src]="item.coverImg" style="width:100%" (error)="loadDefault($event)" alt="{{item.title}}}">
+    <div class="book_desc">
+      <b>{{item.title}}</b><br>{{item.authors}}<br>
+      <em class="less-focused-text">ISBN: {{item.isbn}}</em><br>
+    </div>
+    <div style="text-align: center;">
+      <button *ngIf="item.isAvailable === true" type="button" class="rent-button" (click)="rentBook(item.isbn)">Rent</button>
+      <button *ngIf="item.isAvailable === false" type="button" class="rented-out-button" disabled="disabled">Rented Out</button>
+    </div>
+  </div>
+</div>

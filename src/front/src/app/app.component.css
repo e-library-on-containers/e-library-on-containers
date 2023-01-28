@@ -1,0 +1,37 @@
+div#dashboard {
+}
+
+div#sidebar {
+  background-color: #03002e;
+  height: 100%;
+  width: 20%;
+  max-width: 300px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  position: fixed;
+}
+
+#sidebar a {
+  background-color: #03002e;
+  padding: 10px 8px 10px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  display: block;
+}
+
+#sidebar a:hover {
+  background-color: #010057;
+}
+
+#content {
+  margin-left: 20%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 16px;}
+}

@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Please sign in</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['email'].errors }" />
+      <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
+        <div *ngIf="form['email'].errors['email']">Email is invalid</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname">First name</label>
+      <input id="firstname" type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['firstname'].errors }" />
+      <div *ngIf="submitted && form['firstname'].errors" class="invalid-feedback">
+        <div *ngIf="form['firstname'].errors['required']">First name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last name</label>
+      <input id="lastname" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['lastname'].errors }" />
+      <div *ngIf="submitted && form['lastname'].errors" class="invalid-feedback">
+        <div *ngIf="form['lastname'].errors['required']">Last name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['password'].errors }" />
+      <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
+        <div *ngIf="form['password'].errors['required']">Password is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Login</button>
+    </div>
+    <div *ngIf="invalidLogin" class="alert alert-danger">Invalid data given.</div>
+  </form>
+</div>
