@@ -1,2 +1,14 @@
 - name: Diagrams
   href: diagrams.md
+- name: Database schemas
+  href: databases.md
+- name: API Gateway
+  href: api-gateway.md
+- name: Identity service
+  href: identity.md
+- name: Books service
+  href: books.md
+- name: Rentals service
+  href: rentals.md
+- name: FunctionalValidation library
+  href: functional-validation.md

@@ -33,6 +33,7 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+**/.vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -195,6 +196,8 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
+# nuget config file
+nuget.config
 
 # Microsoft Azure Build Output
 csx/
@@ -351,3 +354,7 @@ MigrationBackup/
 
 # VS Code environment files
 .vscode/
+
+# IntelliJ
+.idea/
+**/.idea/

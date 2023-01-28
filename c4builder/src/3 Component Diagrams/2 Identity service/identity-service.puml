@@ -1,0 +1,50 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+!include DEVICONS/dotnet.puml
+!include DEVICONS/postgresql.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram for eLibraryOnContainers - Identity service
+
+Container(gateway, "API Gateway", ".NET with ASP.NET Core", "Routes all requests to appropriate services endpoints", $sprite="dotnet")
+ContainerDb(identity_db, "Identity database", "PostgreSQL", "Holds accounts information", $sprite="postgresql")
+
+Container_Boundary(identity, "Identity service") {
+  Component(authController, "Auth Controller", "Rest Controller", "Allows users to sign in to system")
+  Component(accountsController, "Accounts Controller", "Rest Controller", "Allows users to register and change their accounts password")
+
+  Component_Ext(mediator, "Mediator", "MediatR library service", "Encapsulates communication between controllers and services")
+
+  Component(signInQuery, "Sign In Query", "CQRS Query Handler", "Signs in user")
+  Component(registerCommand, "Register Command", "CQRS Command Handler", "Registers new account")
+  Component(changePasswordCommand, "Change Password Command", "CQRS Command Handler", "Changes account password")
+
+  Component(authService, "Auth Service", ".NET Service", "Provides functionality related to signing in, verifying passwords, etc.")
+  Component(accountsRepository, "Accounts Repository", ".NET Repository", "Provides functionality related to managing accounts like registering, retrieving or updating accounts")
+
+}
+
+Rel(gateway, authController, "Uses", "JSON/HTTPS")
+Rel(gateway, accountsController, "Uses", "JSON/HTTPS")
+
+Rel(authController, mediator, "Sends queries")
+Rel(accountsController, mediator, "Sends commands and queries")
+
+Rel(mediator, signInQuery, "Uses")
+Rel(mediator, registerCommand, "Uses")
+Rel(mediator, changePasswordCommand, "Uses")
+
+Rel(signInQuery, authService, "Uses")
+Rel(signInQuery, accountsRepository, "Uses")
+
+Rel(registerCommand, accountsRepository, "Uses")
+
+Rel(changePasswordCommand, authService, "Uses")
+Rel(changePasswordCommand, accountsRepository, "Uses")
+
+Rel(accountsRepository, identity_db, "Reads from and writes to", "async, ADO.NET")
+@enduml
