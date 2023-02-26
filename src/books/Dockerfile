@@ -7,18 +7,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 WORKDIR /src
-COPY ["BooksPresentation/Books.API.csproj", "BooksPresentation/"]
-COPY ["BooksBusiness/Books.Business.csproj", "BooksBusiness/"]
-COPY ["BooksInfrastructure/Books.Infrastructure.csproj", "BooksInfrastructure/"]
-RUN dotnet restore "BooksPresentation/Books.API.csproj"
+COPY ["api/Books.Api/Books.Api.csproj", "api/Books.Api/"]
+COPY ["core/Books.Core/Books.Core.csproj", "core/Books.Core/"]
+COPY ["infrastructure/Books.Infrastructure/Books.Infrastructure.csproj", "infrastructure/Books.Infrastructure/"]
+RUN dotnet restore "api/Books.Api/Books.Api.csproj"
 COPY . .
-WORKDIR "/src/BooksPresentation"
-RUN dotnet build "Books.API.csproj" -c Release -o /app/build
+WORKDIR "/src/api/Books.Api"
+RUN dotnet build "Books.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Books.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Books.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Books.API.dll"]
+ENTRYPOINT ["dotnet", "Books.Api.dll"]
