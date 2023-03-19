@@ -36,17 +36,31 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
         _rolesService = rolesService;
     }
 
+    private static Func<Email, Func<Result<HashedPassword, ApplicationError>, Func<Result<FullName, ApplicationError>,
+        Func<Result<Role, ApplicationError>, Func<Guid, Result<User, ApplicationError>>>>>> CurriedUserCreator =>
+        email =>
+            password =>
+                name =>
+                    role =>
+                        guid =>
+                            password.Bind(p =>
+                                name.Bind(n =>
+                                    role.Bind(r =>
+                                        User.From(guid, email, n, p, new[] { r.RoleName }))));
+
     public async Task<Result<Unit, ApplicationError>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         return await Email.From(request.Email)
-                .Ensure(async email => (await _usersRepository.GetUserByEmailAsync(email)).IsFailure, new UserAlreadyExists())
-            .Bind(email => HashedPassword.FromRawPassword(request.Password, HashedPassword.DefaultHasher)
-                .Map(password => (email, password)))
-            .Bind(t => FullName.From(request.FirstName, request.LastName)
-                .Map(f => (t.email, t.password, fullName: f)))
-            .Bind(t => _rolesService.GetDefaultRoleAsync()
-                .Map(r => (t.email, t.password, t.fullName, role: r)))
-            .Bind(t => User.From(Guid.NewGuid(), t.email, t.fullName, t.password, new[] { t.role.RoleName }))
+            .Ensure(async email => (await _usersRepository.GetUserByEmailAsync(email)).IsFailure,
+                new UserAlreadyExists())
+            .Map(CurriedUserCreator)
+            .Bind(func => HashedPassword.FromRawPassword(request.Password, HashedPassword.DefaultHasher)
+                .Map(password => func(password)))
+            .Bind(func => FullName.From(request.FirstName, request.LastName)
+                .Map(name => func(name)))
+            .Bind(async func => await _rolesService.GetDefaultRoleAsync()
+                .Map(role => func(role)))
+            .Bind(func => func(Guid.NewGuid()))
             .Bind(user => _usersRepository.RegisterUserAsync(user))
             .Map(_ => Unit.Value);
     }
