@@ -10,4 +10,4 @@ In current state, system is based on contexts:
 * Identity - responsible for managing user account and authentication
 * Books - responsible for managing books catalog and physical copies collection
 * Rentals - responsible for managing rentals and allowing users to borrow books
-* Storage - responsible for managing books cover images stored in an external object storage
+<!-- * Storage - responsible for managing books cover images stored in an external object storage -->

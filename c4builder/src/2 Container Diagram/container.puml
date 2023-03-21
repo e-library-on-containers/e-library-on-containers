@@ -46,13 +46,13 @@ System_Boundary(c1, "eLibraryOnContainers"){
         ContainerDb(rentals_read_db, "Rentals (READ) database", "PostgreSQL", "Holds aggregated rentals and physical copies availability information", $sprite="postgresql")    
     }
 
-    Boundary(storage, "Storage") {
-        Container(storage_service, "Storage service", ".NET", "Manage images stored in Azure Blob Storage", $sprite="dotnet")
-    }
+    'Boundary(storage, "Storage") {
+    '    Container(storage_service, "Storage service", ".NET", "Manage images stored in Azure Blob Storage", $sprite="dotnet")
+    '}
 }
 
 ' -- External containers --
-AzureBlobStorage(azureBlobStorage, "Storage", "Azure Blob Storage", "Object storage for storing and serving books images.")
+'AzureBlobStorage(azureBlobStorage, "Storage", "Azure Blob Storage", "Object storage for storing and serving books images.")
 
 ' -- Relationships --
 Rel(customer, spa, "Uses", "HTTPS")
@@ -60,7 +60,7 @@ Rel(librarian, spa, "Uses", "HTTPS")
 
 ' SPA
 Rel(spa, gateway, "Uses", "async, JSON/HTTPS")
-Rel(spa, azureBlobStorage, "Reads from", "async, JSON/HTTPS")
+'Rel(spa, azureBlobStorage, "Reads from", "async, JSON/HTTPS")
 
 ' Gateway routing
 Rel(gateway, identity_api, "Uses", "async, JSON/HTTPS")
@@ -81,7 +81,7 @@ Rel(rentals_api, rentals_db, "Reads from and writes to", "async, JDBC")
 Rel(rentals_api, rentals_read_db, "Reads from and writes to", "async, JDBC")
 
 ' Storage service
-Rel(storage_service, azureBlobStorage, "Saves to and deletes from", "async, JSON/HTTPS")
-Rel(storage_service, rabbit, "Consumes from", "async, JSON/AMQP")
+'Rel(storage_service, azureBlobStorage, "Saves to and deletes from", "async, JSON/HTTPS")
+'Rel(storage_service, rabbit, "Consumes from", "async, JSON/AMQP")
 
 @enduml
