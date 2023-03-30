@@ -2,12 +2,10 @@ package e.library.on.containers.rentals.common;
 
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
-import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-@Component
 public class RentalEntityMapper {
     public RentalEntity daoToEntity(RentalsReadDao dao, ZonedDateTime lastEdit) {
         return dao == null ? null :

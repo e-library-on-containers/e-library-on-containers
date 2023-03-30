@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 class RentalsWorker {
     private final RentalsReadRepository readRepository;
-    private final RentalEntityMapper rentalEntityMapper;
+    private final RentalEntityMapper rentalEntityMapper = new RentalEntityMapper();
 
     @RabbitListener(queues = "${rabbitmq.rent-queue.name}")
     public void receiveRentMessage(BookRentedEvent event) {
@@ -51,7 +51,7 @@ class RentalsWorker {
 //        log.info("Updated projection with {} new event(s)", iterations);
 //    }
 
-    private void handle(Event oldEvent) {
+    void handle(Event oldEvent) {
         if (oldEvent instanceof BookRentedEvent event) {
             var entity = rentalEntityMapper.daoToEntity(RentalsReadDao.from(event));
             readRepository.save(entity);
