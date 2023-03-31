@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Responses
+namespace Books.Core.Responses
 {
     public class BookInstanceResponse
     {
@@ -16,7 +16,7 @@ namespace Books.Business.Responses
         public BookInstanceResponse(BookInstance bookInstance)
         {
             Id = bookInstance.InstanceId;
-            ISBN= bookInstance.ISBN;
+            ISBN = bookInstance.ISBN;
             IsAvailable = bookInstance.IsAvailable;
         }
     }

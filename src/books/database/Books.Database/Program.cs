@@ -1,6 +1,4 @@
-﻿using Identity.Database;
-
-namespace Books.Database
+﻿namespace Books.Database
 {
     internal class Program
     {

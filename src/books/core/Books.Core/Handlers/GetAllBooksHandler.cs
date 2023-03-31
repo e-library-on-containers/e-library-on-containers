@@ -1,5 +1,5 @@
-﻿using Books.Business.Queries;
-using Books.Business.Responses;
+﻿using Books.Core.Queries;
+using Books.Core.Responses;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class GetAllBooksHandler : IRequestHandler<GetAllBooksQuery, List<BookResponse>>
     {
@@ -26,10 +26,10 @@ namespace Books.Business.Handlers
         {
             List<BookRead> books = await booksReadRepository.GetAll();
             List<BookResponse> result = new List<BookResponse>();
-            foreach (BookRead book in books) 
+            foreach (BookRead book in books)
             {
                 List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(book.ISBN, true);
-                BookResponse bookResponse = new BookResponse(book, bookInstances.Count>0);
+                BookResponse bookResponse = new BookResponse(book, bookInstances.Count > 0);
                 result.Add(bookResponse);
             }
             return result;

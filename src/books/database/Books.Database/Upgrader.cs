@@ -1,6 +1,6 @@
 ﻿using DbUp;
 
-namespace Identity.Database;
+namespace Books.Database;
 
 public static class Upgrader
 {

@@ -1,7 +1,7 @@
-﻿using Books.Business.Commands;
-using Books.Business.Mapper;
-using Books.Business.Queries;
-using Books.Business.Responses;
+﻿using Books.Core.Queries;
+using Books.Core.Responses;
+using Books.Core.Commands;
+using Books.Core.Mapper;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class CreateBookHandler : IRequestHandler<CreateBookCommand, Book>
     {
@@ -19,7 +19,7 @@ namespace Books.Business.Handlers
 
         public CreateBookHandler(IBookRepository<Book> booksRepository)
         {
-            this._booksRepository = booksRepository;
+            _booksRepository = booksRepository;
         }
 
         public async Task<Book> Handle(CreateBookCommand request, CancellationToken cancellationToken)

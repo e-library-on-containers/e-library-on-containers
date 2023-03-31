@@ -1,5 +1,5 @@
-﻿using Books.Business.Commands;
-using Books.Business.Responses;
+﻿using Books.Core.Responses;
+using Books.Core.Commands;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class DeleteBookHandler : IRequestHandler<DeleteBookCommand, int>
     {
@@ -32,9 +32,9 @@ namespace Books.Business.Handlers
                 //await bookInstancesRepository.Delete(request.ISBN);
                 await _bookRepository.Delete(request.ISBN);
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
-                throw (new ApplicationException(exp.Message));
+                throw new ApplicationException(exp.Message);
             }
 
             return id;

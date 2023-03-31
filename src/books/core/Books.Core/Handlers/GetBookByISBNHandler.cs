@@ -1,5 +1,5 @@
-﻿using Books.Business.Queries;
-using Books.Business.Responses;
+﻿using Books.Core.Queries;
+using Books.Core.Responses;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class GetBookByISBNHandler : IRequestHandler<GetBookByISBNQuery, BookResponse>
     {
@@ -26,7 +26,7 @@ namespace Books.Business.Handlers
         {
             BookRead book = await booksReadRepository.GetByISBN(request.ISBN);
             List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(book.ISBN, true);
-            BookResponse result = new BookResponse(book, bookInstances.Count>0);
+            BookResponse result = new BookResponse(book, bookInstances.Count > 0);
             return result;
         }
     }

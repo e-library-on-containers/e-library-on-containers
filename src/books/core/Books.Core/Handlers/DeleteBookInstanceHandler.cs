@@ -1,4 +1,4 @@
-﻿using Books.Business.Commands;
+﻿using Books.Core.Commands;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using Books.Infrastructure.Repositories;
@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class DeleteBookInstanceHandler : IRequestHandler<DeleteBookInstanceCommand, string>
     {
         private readonly IBookInstancesRepository<BookInstance> _bookInstancesRepository;
-        public  DeleteBookInstanceHandler(IBookInstancesRepository<BookInstance> bookInstancesRepository)
+        public DeleteBookInstanceHandler(IBookInstancesRepository<BookInstance> bookInstancesRepository)
         {
             _bookInstancesRepository = bookInstancesRepository;
         }
@@ -29,7 +29,7 @@ namespace Books.Business.Handlers
             }
             catch (Exception exp)
             {
-                throw (new ApplicationException(exp.Message));
+                throw new ApplicationException(exp.Message);
             }
 
             return ISBN;

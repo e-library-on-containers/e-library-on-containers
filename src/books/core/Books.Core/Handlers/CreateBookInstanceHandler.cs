@@ -1,5 +1,5 @@
-﻿using Books.Business.Commands;
-using Books.Business.Mapper;
+﻿using Books.Core.Commands;
+using Books.Core.Mapper;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using Books.Infrastructure.Repositories;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class CreateBookInstanceHandler : IRequestHandler<CreateBookInstanceCommand, string>
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Mapper
+namespace Books.Core.Mapper
 {
     internal class BookMapper
     {

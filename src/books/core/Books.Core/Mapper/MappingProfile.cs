@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using Books.Infrastructure.Models;
-using Books.Business.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Books.Business.Responses;
+using Books.Core.Commands;
+using Books.Core.Responses;
 
-namespace Books.Business.Mapper
+namespace Books.Core.Mapper
 {
     internal class MappingProfile : Profile
     {

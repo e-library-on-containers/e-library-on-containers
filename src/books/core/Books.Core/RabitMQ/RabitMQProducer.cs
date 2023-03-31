@@ -9,9 +9,9 @@ using RabbitMQ.Client;
 using Books.Infrastructure.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace Books.Business.RabitMQ
+namespace Books.Core.RabitMQ
 {
-    public class RabitMQProducer:IRabitMQProducer
+    public class RabitMQProducer : IRabitMQProducer
     {
         IModel channel;
         private readonly IConfiguration configuration;
@@ -21,7 +21,7 @@ namespace Books.Business.RabitMQ
             var factory = new ConnectionFactory();
             configuration.GetSection("RabbitMq").Bind(factory);
             var connection = factory.CreateConnection();
-            this.channel = connection.CreateModel();
+            channel = connection.CreateModel();
             channel.QueueDeclare("book_added", exclusive: false);
             channel.QueueDeclare("book_updated", exclusive: false);
             channel.QueueDeclare("book_deleted", exclusive: false);

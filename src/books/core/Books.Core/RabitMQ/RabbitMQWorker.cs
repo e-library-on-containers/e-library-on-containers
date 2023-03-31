@@ -13,7 +13,7 @@ using System.Text.Json;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace Books.Business.RabitMQ
+namespace Books.Core.RabitMQ
 {
     public class RabbitMQWorker : IHostedService
     {
@@ -30,11 +30,11 @@ namespace Books.Business.RabitMQ
         private readonly IBookRepository<BookRead> _booksReadRepository;
         private readonly IBookInstancesRepository<BookInstance> _booksInstancesRepository;
         private readonly IConfiguration configuration;
-        public RabbitMQWorker(IBookRepository<BookRead> booksReadRepository, IBookInstancesRepository<BookInstance> bookInstancesRepository, IConfiguration configuration) 
+        public RabbitMQWorker(IBookRepository<BookRead> booksReadRepository, IBookInstancesRepository<BookInstance> bookInstancesRepository, IConfiguration configuration)
         {
             this.configuration = configuration;
-            _booksInstancesRepository= bookInstancesRepository;
-            _booksReadRepository= booksReadRepository;
+            _booksInstancesRepository = bookInstancesRepository;
+            _booksReadRepository = booksReadRepository;
             var factory = new ConnectionFactory();
             configuration.GetSection("RabbitMq").Bind(factory);
             connection = factory.CreateConnection();
@@ -141,7 +141,7 @@ namespace Books.Business.RabitMQ
             bookDeleted.BasicConsume(queue: "book_deleted", autoAck: true, consumer: deleteBookConsumer);
             bookInstanceAdded.BasicConsume(queue: "book_instance_added", autoAck: true, consumer: addBookInstanceConsumer);
             bookInstanceDeleted.BasicConsume(queue: "book_instance_deleted", autoAck: true, consumer: deleteBookInstanceConsumer);
-            bookRented.BasicConsume(queue:rentQueue, autoAck: true, consumer: rentBookInstanceConsumer);
+            bookRented.BasicConsume(queue: rentQueue, autoAck: true, consumer: rentBookInstanceConsumer);
             bookReturned.BasicConsume(queue: returnQueue, autoAck: true, consumer: returnBookInstanceConsumer);
 
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Responses
+namespace Books.Core.Responses
 {
     public class BookResponse
     {
@@ -27,7 +27,7 @@ namespace Books.Business.Responses
             CoverImg = book.CoverImg;
             ISBN = book.ISBN;
             CopiesCount = book.CopiesCount;
-            this.IsAvailable = isAvailable;
+            IsAvailable = isAvailable;
         }
     }
 }

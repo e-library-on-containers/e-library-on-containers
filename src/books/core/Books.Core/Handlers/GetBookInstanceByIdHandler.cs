@@ -1,5 +1,5 @@
-﻿using Books.Business.Queries;
-using Books.Business.Responses;
+﻿using Books.Core.Queries;
+using Books.Core.Responses;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using Books.Infrastructure.Repositories;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Business.Handlers
+namespace Books.Core.Handlers
 {
     public class GetBookInstanceByIdHandler : IRequestHandler<GetBookInstanceByIdQuery, BookInstanceResponse>
     {

@@ -1,4 +1,4 @@
-﻿using Books.Business.Responses;
+﻿using Books.Core.Responses;
 using Books.Infrastructure.Models;
 using MediatR;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RabbitMQ.Client;
 
-namespace Books.Business.Commands
+namespace Books.Core.Commands
 {
     public class CreateBookCommand : IRequest<Book>
     {
@@ -20,7 +20,7 @@ namespace Books.Business.Commands
 
         public CreateBookCommand()
         {
-            
+
         }
     }
 }

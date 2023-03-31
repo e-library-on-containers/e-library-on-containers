@@ -1,7 +1,7 @@
-﻿using Books.Business.Commands;
-using Books.Business.Queries;
-using Books.Business.RabitMQ;
-using Books.Business.Responses;
+﻿using Books.Core.Queries;
+using Books.Core.Responses;
+using Books.Core.Commands;
+using Books.Core.RabitMQ;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
