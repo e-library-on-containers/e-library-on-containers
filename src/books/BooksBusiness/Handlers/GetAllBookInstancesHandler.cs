@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Books.Business.Handlers
 {
-    internal class GetAllBookInstancesHandler : IRequestHandler<GetAllBookInstancesQuery, List<BookInstanceResponse>>
+    public class GetAllBookInstancesHandler : IRequestHandler<GetAllBookInstancesQuery, List<BookInstanceResponse>>
     {
         private readonly IBookInstancesRepository<BookInstance> _bookInstancesRepository;
 

@@ -25,7 +25,7 @@ namespace Books.Business.Handlers
         public async Task<BookResponse> Handle(GetBookByISBNQuery request, CancellationToken cancellationToken)
         {
             BookRead book = await booksReadRepository.GetByISBN(request.ISBN);
-            List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(book.ISBN, true);
+            List<BookInstance> bookInstances = await bookInstancesRepository.GetByISBN(request.ISBN, true);
             BookResponse result = new BookResponse(book, bookInstances.Count>0);
             return result;
         }

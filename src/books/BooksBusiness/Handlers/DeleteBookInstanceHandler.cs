@@ -18,7 +18,7 @@ namespace Books.Business.Handlers
         {
             _bookInstancesRepository = bookInstancesRepository;
         }
-        async Task<string> IRequestHandler<DeleteBookInstanceCommand, string>.Handle(DeleteBookInstanceCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(DeleteBookInstanceCommand request, CancellationToken cancellationToken)
         {
             string ISBN;
             try

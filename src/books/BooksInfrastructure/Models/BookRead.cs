@@ -15,6 +15,18 @@ namespace Books.Infrastructure.Models
         public string Authors { get; set; }
         public string CoverImg { get; set; }
         public int CopiesCount { get; set; }
+
+        public BookRead(int bookId, string iSBN, string title, string description, string authors, string coverImg, int copiesCount)
+        {
+            BookId = bookId;
+            ISBN = iSBN;
+            Title = title;
+            Description = description;
+            Authors = authors;
+            CoverImg = coverImg;
+            CopiesCount = copiesCount;
+        }
+
         public BookRead(Book book)
         {
             this.ISBN = book.ISBN;

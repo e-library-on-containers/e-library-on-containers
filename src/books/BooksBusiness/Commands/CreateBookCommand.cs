@@ -18,6 +18,15 @@ namespace Books.Business.Commands
         public string Description { get; set; }
         public string CoverImg { get; set; }
 
+        public CreateBookCommand(string iSBN, string authors, string title, string description, string coverImg)
+        {
+            ISBN = iSBN;
+            Authors = authors;
+            Title = title;
+            Description = description;
+            CoverImg = coverImg;
+        }
+
         public CreateBookCommand()
         {
             

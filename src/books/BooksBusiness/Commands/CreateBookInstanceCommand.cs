@@ -13,5 +13,11 @@ namespace Books.Business.Commands
     {
         public string ISBN { get; set; }
         public bool IsAvailable { get; set; }
+
+        public CreateBookInstanceCommand(string iSBN, bool isAvailable)
+        {
+            ISBN = iSBN;
+            IsAvailable = isAvailable;
+        }
     }
 }
