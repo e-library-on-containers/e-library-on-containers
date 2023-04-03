@@ -28,10 +28,11 @@ public class RentalsService {
     private final EventEntityMapper eventEntityMapper = new EventEntityMapper();
 
     public UUID rentBook(UUID userId, int bookInstanceId) {
-        final var currentRent = readRepository.findByBookInstanceId(bookInstanceId);
-        if (currentRent.isPresent()) {
-            throw new RentalForBookAlreadyExistsException(bookInstanceId);
-        }
+        readRepository.findByBookInstanceId(bookInstanceId).ifPresent(
+                $ -> {
+                    throw new RentalForBookAlreadyExistsException(bookInstanceId);
+                }
+        );
 
         final var newRentalId = UUID.randomUUID();
         final var rentEvent = new BookRentedEvent(userId, bookInstanceId, newRentalId, DEFAULT_RENTAL_LENGTH);
