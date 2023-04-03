@@ -41,7 +41,7 @@ class RentalsController {
             @RequestHeader(name = "X-User-Id") UUID userId,
             @RequestBody RentBookRequest rentBookRequest
     ) {
-        var rentId = service.rentBook(userId, rentBookRequest.bookInstanceId());
+        final var rentId = service.rentBook(userId, rentBookRequest.bookInstanceId());
         return new RentBookResponse(rentId);
     }
 
@@ -54,7 +54,7 @@ class RentalsController {
             @RequestHeader(name = "X-User-Id") UUID userId,
             @PathVariable UUID rentId
     ) {
-        service.returnBook(rentId, userId);
+        service.returnBook(userId, rentId);
     }
 
     @ResponseStatus(code = HttpStatus.OK)
@@ -75,7 +75,8 @@ class RentalsController {
     )
     void extendBookRental(
             @RequestHeader(name = "X-User-Id", required = false) UUID userId,
-            @PathVariable UUID rentId, @RequestBody ExtendBookRentRequest extendBookRentRequest) {
+            @PathVariable UUID rentId,
+            @RequestBody ExtendBookRentRequest extendBookRentRequest) {
         service.extendRent(userId, rentId, extendBookRentRequest.days());
     }
 }

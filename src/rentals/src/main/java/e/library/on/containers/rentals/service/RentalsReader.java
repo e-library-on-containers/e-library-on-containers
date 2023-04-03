@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class RentalsReader {
-	private final RentalEntityMapper mapper;
+	private final RentalEntityMapper mapper = new RentalEntityMapper();
 	private final RentalsReadRepository readRepository;
 
 	public List<RentalsReadDao> readAllRentals() {

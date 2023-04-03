@@ -1,8 +1,11 @@
 package e.library.on.containers.rentals.repository.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -15,7 +18,10 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name="rental")
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
+@ToString
+@Builder
+@EqualsAndHashCode
 public class RentalEntity {
     @Id
     String id;

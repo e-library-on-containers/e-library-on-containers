@@ -5,6 +5,7 @@ import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
+import e.library.on.containers.rentals.exceptions.UnsupportedEventTypeException;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import lombok.RequiredArgsConstructor;
@@ -17,26 +18,27 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 class RentalsWorker {
     private final RentalsReadRepository readRepository;
-    private final RentalEntityMapper rentalEntityMapper;
+    private final RentalEntityMapper rentalEntityMapper = new RentalEntityMapper();
 
     @RabbitListener(queues = "${rabbitmq.rent-queue.name}")
     public void receiveRentMessage(BookRentedEvent event) {
-        log.info("Received: {}", event);
+        log(event);
         handle(event);
     }
 
     @RabbitListener(queues = "${rabbitmq.return-queue.name}")
     public void receiveReturnMessage(BookReturnedEvent event) {
-        log.info("Received: {}", event);
+        log(event);
         handle(event);
     }
 
     @RabbitListener(queues = "${rabbitmq.extend-queue.name}")
     public void receiveExtendMessage(BookExtendedEvent event) {
-        log.info("Received: {}", event);
+        log(event);
         handle(event);
     }
 
+// TODO: Use below code as true projection
 //    @Transactional
 //    protected void updateProjection() {
 //        var lastModificationDate = readRepository.findFirstByOrderByLastEditDateDesc()
@@ -51,27 +53,30 @@ class RentalsWorker {
 //        log.info("Updated projection with {} new event(s)", iterations);
 //    }
 
-    private void handle(Event oldEvent) {
+    void handle(Event oldEvent) {
         if (oldEvent instanceof BookRentedEvent event) {
-            var entity = rentalEntityMapper.daoToEntity(RentalsReadDao.from(event));
+            final var entity = rentalEntityMapper.daoToEntity(RentalsReadDao.from(event));
             readRepository.save(entity);
             return;
         }
         if (oldEvent instanceof BookReturnedEvent event) {
-            var rentalId = event.getRentalId();
+            final var rentalId = event.getRentalId();
             readRepository.deleteById(rentalId.toString());
             return;
         }
         if (oldEvent instanceof BookExtendedEvent event) {
-            var rentalId = event.getRentalId();
-            var dao = readRepository.findById(rentalId.toString())
+            final var rentalId = event.getRentalId();
+            final var dao = readRepository.findById(rentalId.toString())
                     .map(rentalEntityMapper::entityToDao)
-                    .map(x -> x.withExtendedRent(event.getDays()))
+                    .map(rental -> rental.withExtendedRent(event.getDays()))
                     .orElseThrow();
             readRepository.save(rentalEntityMapper.daoToEntity(dao));
             return;
         }
-        throw new IllegalArgumentException("Type of event received is not yet supported");
+        throw new UnsupportedEventTypeException(oldEvent.getClass());
+    }
 
+    private void log(Event event) {
+        log.info("Received: {}", event);
     }
 }
