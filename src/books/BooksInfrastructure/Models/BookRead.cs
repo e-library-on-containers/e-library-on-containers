@@ -16,17 +16,6 @@ namespace Books.Infrastructure.Models
         public string CoverImg { get; set; }
         public int CopiesCount { get; set; }
 
-        public BookRead(int bookId, string iSBN, string title, string description, string authors, string coverImg, int copiesCount)
-        {
-            BookId = bookId;
-            ISBN = iSBN;
-            Title = title;
-            Description = description;
-            Authors = authors;
-            CoverImg = coverImg;
-            CopiesCount = copiesCount;
-        }
-
         public BookRead(Book book)
         {
             this.ISBN = book.ISBN;
@@ -36,6 +25,7 @@ namespace Books.Infrastructure.Models
             this.CoverImg = book.CoverImg;
             this.CopiesCount = 0;
         } 
+
         public BookRead() { }
     }
 }

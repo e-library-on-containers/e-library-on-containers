@@ -10,10 +10,6 @@ namespace Books.Business.Queries
 {
     public class GetBookInstanceByIdQuery : IRequest<BookInstanceResponse>
     {
-        public int Id { get; private set; }
-        public GetBookInstanceByIdQuery(int Id)
-        {
-            Id = Id;
-        }
+        public int Id { get; set; }
     }
 }

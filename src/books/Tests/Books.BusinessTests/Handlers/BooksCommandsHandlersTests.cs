@@ -8,43 +8,60 @@ namespace Books.Business.Handlers.Tests
 {
     public class BooksCommandsHandlersTests
     {
-        private readonly Mock<IBookRepository<Book>> _repositoryMock;
+        private readonly Mock<IBookRepository<Book>> _bookRepositoryMock;
 
         public BooksCommandsHandlersTests()
         {
-            _repositoryMock = new Mock<IBookRepository<Book>>();
+            _bookRepositoryMock = new Mock<IBookRepository<Book>>();
         }
 
-        [Fact()]
-        public async void CreateBookHandlerTest()
+        [Fact]
+        public async void CreateBookHandler_Calls_BooksRepository_Delete()
         {
             // Arrange
-            CreateBookCommand request = new CreateBookCommand("11111111111", "author", "title", "description", "coverImg");
-            _repositoryMock.Setup(x => x.Create(It.IsAny<Book>()));
-            CreateBookHandler handler = new CreateBookHandler(_repositoryMock.Object);
+            CreateBookCommand request = new CreateBookCommand { ISBN = "11111111111", Authors = "author", Title = "title", Description = "description", CoverImg = "coverImg" };
+            _bookRepositoryMock.Setup(x => x.Create(It.IsAny<Book>()));
+            CreateBookHandler handler = new CreateBookHandler(_bookRepositoryMock.Object);
 
             // Act
             await handler.Handle(request, default);
 
             // Assert
-            _repositoryMock.VerifyAll();
+            _bookRepositoryMock.Verify(x => x.Create(It.IsAny<Book>()), Times.Once());
         }
 
-        [Fact()]
-        public async void DeleteBookHandlerTest()
+        [Fact]
+        public async void DeleteBookHandler_Calls_BooksRepository_Delete()
         {
             // Arrange
-            DeleteBookCommand request = new DeleteBookCommand("11111111111");
-            Book book = new Book(1, "11111111111", "author", "title", "description", "coverImg");
-            _repositoryMock.Setup(x => x.Delete(It.IsAny<string>()));
-            _repositoryMock.Setup(x => x.GetByISBN(It.IsAny<string>())).ReturnsAsync(book);
-            DeleteBookHandler handler = new DeleteBookHandler(_repositoryMock.Object);
+            DeleteBookCommand request = new DeleteBookCommand { ISBN = "11111111111" };
+            Book book = new Book { BookId = 1, ISBN = "11111111111", Authors = "author", Title = "title", Description = "description", CoverImg = "coverImg" };
+            _bookRepositoryMock.Setup(x => x.Delete(It.IsAny<string>()));
+            _bookRepositoryMock.Setup(x => x.GetByISBN(It.IsAny<string>())).ReturnsAsync(book);
+            DeleteBookHandler handler = new DeleteBookHandler(_bookRepositoryMock.Object);
 
             // Act
             await handler.Handle(request, default);
 
             // Assert
-            _repositoryMock.VerifyAll();
+            _bookRepositoryMock.Verify(x => x.Delete(It.IsAny<string>()), Times.Once());
+        }
+
+        [Fact]
+        public async void DeleteBookHandler_Calls_BooksRepository_GetByISBN()
+        {
+            // Arrange
+            DeleteBookCommand request = new DeleteBookCommand { ISBN = "11111111111" };
+            Book book = new Book { BookId = 1, ISBN = "11111111111", Authors = "author", Title = "title", Description = "description", CoverImg = "coverImg" };
+            _bookRepositoryMock.Setup(x => x.Delete(It.IsAny<string>()));
+            _bookRepositoryMock.Setup(x => x.GetByISBN(It.IsAny<string>())).ReturnsAsync(book);
+            DeleteBookHandler handler = new DeleteBookHandler(_bookRepositoryMock.Object);
+
+            // Act
+            await handler.Handle(request, default);
+
+            // Assert
+            _bookRepositoryMock.Verify(x => x.GetByISBN(It.IsAny<string>()), Times.Once());
         }
     }
 }

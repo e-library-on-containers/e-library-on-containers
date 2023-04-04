@@ -15,16 +15,5 @@ namespace Books.Infrastructure.Models
         public string Authors { get; set; }
         public string CoverImg { get; set; }
 
-        public Book() {}
-
-        public Book(int bookId, string iSBN, string title, string description, string authors, string coverImg)
-        {
-            BookId = bookId;
-            ISBN = iSBN;
-            Title = title;
-            Description = description;
-            Authors = authors;
-            CoverImg = coverImg;
-        }
     }
 }
