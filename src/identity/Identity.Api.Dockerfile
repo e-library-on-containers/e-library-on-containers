@@ -3,8 +3,6 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
-ARG FEED_USERNAME=e-library-on-containers
-ARG PERSONAL_ACCESS_TOKEN=pat
 WORKDIR /src
 
 COPY ./api/Identity.Api/Identity.Api.csproj ./api/Identity.Api/Identity.Api.csproj

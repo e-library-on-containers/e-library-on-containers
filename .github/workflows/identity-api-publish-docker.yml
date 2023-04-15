@@ -34,7 +34,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            FEED_USERNAME="e-library-on-containers"
-            PERSONAL_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
       
