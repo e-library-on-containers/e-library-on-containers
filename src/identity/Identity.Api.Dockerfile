@@ -10,8 +10,6 @@ COPY ./core/Identity.Application/Identity.Application.csproj ./core/Identity.App
 COPY ./core/Identity.Domain/Identity.Domain.csproj ./core/Identity.Domain/Identity.Domain.csproj
 COPY ./infrastructure/Identity.Infrastructure/Identity.Infrastructure.csproj ./infrastructure/Identity.Infrastructure/Identity.Infrastructure.csproj
 
-RUN dotnet nuget add source --username $FEED_USERNAME --password $PERSONAL_ACCESS_TOKEN --store-password-in-clear-text --name github "https://nuget.pkg.github.com/e-library-on-containers/index.json"
-
 RUN dotnet restore ./api/Identity.Api/Identity.Api.csproj
 
 COPY . .
