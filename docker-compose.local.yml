@@ -12,9 +12,6 @@ services:
     build:
       context: ./src/identity
       dockerfile: ./Identity.Api.Dockerfile
-      args:
-        FEED_USERNAME: $FEED_USERNAME
-        PERSONAL_ACCESS_TOKEN: $PERSONAL_ACCESS_TOKEN
   identity-db-updater:
     build:
       context: ./src/identity

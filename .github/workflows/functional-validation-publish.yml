@@ -7,12 +7,12 @@ on:
     paths:
       - '.github/workflows/functional-validation-publish.yml'
       - 'src/shared/FunctionalValidation/**'
-    types: [closed]
+    # types: [closed]
 
      
 jobs:
   publish:
-    if: ${{ github.event.pull_request.merged }}
+    # if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,10 +20,19 @@ jobs:
       - name: Set environment variables
         uses: ./.github/actions/set-env
         
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Restore dependencies
+        run: dotnet restore src/shared/FunctionalValidation
+        
+      - name: Test
+        run: dotnet test -c Release --no-build --verbosity normal src/shared/FunctionalValidation.Tests
           
       - name: Get current date for version
         uses: josStorer/get-current-time@v2.0.2
@@ -35,6 +44,9 @@ jobs:
         run: |
           echo "VERSION=$(echo ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }})" >> $GITHUB_ENV
           
+      - name: Build
+        run: dotnet build -c Release --no-restore -p:Version=$VERSION src/shared/FunctionalValidation
+          
       - name: Create commit tag with library version
         run: |
           git tag FunctionalValidation-${{ env.VERSION }}
@@ -43,20 +55,6 @@ jobs:
       - name: Build and Pack NuGet package
         run: dotnet pack src/shared/FunctionalValidation/FunctionalValidation.csproj -p:Version='${{ env.VERSION }}' -c Release
         
-      - name: Upload NuGet package to GitHub
-        uses: actions/upload-artifact@v2
-        with:
-          name: nugetPackage
-          path: src/shared/FunctionalValidation/bin/Release/ 
-          
-      - name: Download nuget package artifact
-        uses: actions/download-artifact@v1.0.0
-        with:
-          name: nugetPackage
-          
-      - name: Add NuGet source
-        run: dotnet nuget add source --username e-library-on-containers --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/e-library-on-containers/index.json"
-      
-      - name: Push package to GitHub packages
-        run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      - name: Publish
+        run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
       

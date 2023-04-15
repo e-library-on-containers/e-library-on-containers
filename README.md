@@ -44,17 +44,16 @@ Library for strongly-typed validation rules that uses concept of monad implement
 
 ## Local environment
 
-### Prerequisites
-**Right now building images locally is available only for project contributors!**
-For building images locally, GitHub personal access token with access to reading packages is required. Fill in these variables in `.dev-env` file:
-```
-FEED_USERNAME="<GITHUB_USERNAME>"
-PERSONAL_ACCESS_TOKEN="<GITHUB_PTA>"
-```
 ### Docker compose
 To startup local development environment run `dev-compose.sh up` (Linux) or `dev-compose.ps1 up` (Windows).
-API Gateway is mapped to `http://localhost:8080`.
-Frontend is mapped to `http://localhost:8084 `.
+
+### Docker compose with locally built images
+To startup local development environment on locally built images run `dev-compose.sh -l up` (Linux) or `dev-compose.ps1 -l up` (Windows).
+
+### Exposed ports
+
+API Gateway is exposed on `http://localhost:8080`.
+Frontend is exposed on `http://localhost:8084 `.
 
 ## Contributions
 If you want to contribute to this project see [CONTRIBUTING](CONTRIBUTING.md).
