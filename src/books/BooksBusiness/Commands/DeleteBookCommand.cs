@@ -9,11 +9,6 @@ namespace Books.Business.Commands
 {
     public class DeleteBookCommand : IRequest<int>
     {
-        public string ISBN { get; private set; }
-
-        public DeleteBookCommand(string ISBN)
-        {
-            this.ISBN = ISBN;
-        }
+        public string ISBN { get; set; }
     }
 }

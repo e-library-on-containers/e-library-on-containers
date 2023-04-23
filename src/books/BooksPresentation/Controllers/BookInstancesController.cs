@@ -38,7 +38,7 @@ namespace Books.API.Controllers
                 }
                 else
                 {
-                    return Ok(await _mediator.Send(new GetBookInstancesByISBNQuery(ISBN, available)));
+                    return Ok(await _mediator.Send(new GetBookInstancesByISBNQuery{ ISBN = ISBN, isAvailable = available }));
                 }
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace Books.API.Controllers
         {
             try
             {
-                return Ok(await _mediator.Send(new GetBookInstanceByIdQuery(id)));
+                return Ok(await _mediator.Send(new GetBookInstanceByIdQuery { Id = id }));
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace Books.API.Controllers
         {
             try
             {
-                string ISBN = await _mediator.Send(new DeleteBookInstanceCommand(id));
+                string ISBN = await _mediator.Send(new DeleteBookInstanceCommand { Id = id });
                 _rabitMQProducer.SendBookInstanceDeletedMessage(ISBN);
                 return Ok(id);
             }

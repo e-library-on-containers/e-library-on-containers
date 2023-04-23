@@ -11,11 +11,6 @@ namespace Books.Business.Queries
 {
     public class GetBookByISBNQuery : IRequest<BookResponse>
     {
-        public string ISBN { get; private set; }
-
-        public GetBookByISBNQuery(string ISBN)
-        {
-            this.ISBN = ISBN;
-        }
+        public string ISBN { get; set; }
     }
 }
