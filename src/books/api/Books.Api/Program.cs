@@ -1,14 +1,10 @@
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using Books.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Hosting;
 using MediatR;
-using AutoMapper;
-using Books.Core.Handlers;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Books.Core.RabitMQ;
-using Books.Core.Queries;
+using Books.Core.GetAll;
 
 var builder = WebApplication.CreateBuilder(args);
 

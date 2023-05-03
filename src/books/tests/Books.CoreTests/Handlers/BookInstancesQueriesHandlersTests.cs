@@ -1,5 +1,6 @@
-﻿using Books.Core.Handlers;
-using Books.Core.Queries;
+﻿using Books.Core.GetAll;
+using Books.Core.GetById;
+using Books.Core.GetByISBN;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using Moq;

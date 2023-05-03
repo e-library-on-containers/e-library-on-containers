@@ -1,16 +1,9 @@
-﻿using Books.Core.Commands;
-using Books.Core.Mapper;
+﻿using Books.Core.Mapper;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
-using Books.Infrastructure.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Books.Core.Handlers
+namespace Books.Core.Create
 {
     public class CreateBookInstanceHandler : IRequestHandler<CreateBookInstanceCommand, string>
     {

@@ -2,8 +2,8 @@
 using Moq;
 using Books.Infrastructure.Models;
 using Books.Infrastructure.Contracts;
-using Books.Core.Handlers;
-using Books.Core.Queries;
+using Books.Core.GetByISBN;
+using Books.Core.GetAll;
 
 namespace Books.Core.Handlers.Tests
 {

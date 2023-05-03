@@ -1,16 +1,9 @@
-﻿using Books.Core.Queries;
-using Books.Core.Responses;
+﻿using Books.Core.Responses;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
-using Books.Infrastructure.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Books.Core.Handlers
+namespace Books.Core.GetById
 {
     public class GetBookInstanceByIdHandler : IRequestHandler<GetBookInstanceByIdQuery, BookInstanceResponse>
     {

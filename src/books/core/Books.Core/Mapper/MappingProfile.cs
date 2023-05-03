@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Books.Infrastructure.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Books.Core.Commands;
 using Books.Core.Responses;
+using Books.Core.Create;
+using Books.Core.Update;
+using Books.Core.Delete;
 
 namespace Books.Core.Mapper
 {

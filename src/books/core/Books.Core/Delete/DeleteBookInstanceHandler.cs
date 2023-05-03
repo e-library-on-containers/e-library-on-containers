@@ -1,15 +1,8 @@
-﻿using Books.Core.Commands;
-using Books.Infrastructure.Contracts;
+﻿using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
-using Books.Infrastructure.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Books.Core.Handlers
+namespace Books.Core.Delete
 {
     public class DeleteBookInstanceHandler : IRequestHandler<DeleteBookInstanceCommand, string>
     {

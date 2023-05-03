@@ -1,14 +1,9 @@
 ﻿using Xunit;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
-using Books.Core.Commands;
-using Books.Core.Handlers;
+using Books.Core.Create;
+using Books.Core.Delete;
 
 namespace Books.Core.Handlers.Tests
 {
