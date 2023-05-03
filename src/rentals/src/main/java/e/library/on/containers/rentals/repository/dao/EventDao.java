@@ -3,6 +3,8 @@ package e.library.on.containers.rentals.repository.dao;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
+import e.library.on.containers.rentals.events.Event;
+import e.library.on.containers.rentals.exceptions.UnsupportedEventTypeException;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -17,7 +19,21 @@ public record EventDao(
       int days,
       EventType eventType
 ){
-    public static EventDao from(BookRentedEvent event) {
+    public static EventDao from(Event event) {
+        if (event instanceof BookReturnedEvent bookReturnedEvent) {
+            return EventDao.from(bookReturnedEvent);
+        }
+        if (event instanceof BookRentedEvent bookRentedEvent) {
+            return EventDao.from(bookRentedEvent);
+        }
+        if (event instanceof BookExtendedEvent bookExtendedEvent) {
+            return EventDao.from(bookExtendedEvent);
+        }
+
+        throw new UnsupportedEventTypeException(event.getClass());
+    }
+
+    private static EventDao from(BookRentedEvent event) {
         return new EventDao(
                 event.getId(),
                 event.getCreatedAt(),
@@ -30,7 +46,7 @@ public record EventDao(
         );
     }
 
-    public static EventDao from(BookReturnedEvent event) {
+    private static EventDao from(BookReturnedEvent event) {
         return new EventDao(
                 event.getId(),
                 event.getCreatedAt(),
@@ -43,7 +59,7 @@ public record EventDao(
         );
     }
 
-    public static EventDao from(BookExtendedEvent event) {
+    private static EventDao from(BookExtendedEvent event) {
         return new EventDao(
                 event.getId(),
                 event.getCreatedAt(),

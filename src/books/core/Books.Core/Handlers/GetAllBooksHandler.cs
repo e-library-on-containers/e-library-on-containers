@@ -22,7 +22,7 @@ namespace Books.Core.Handlers
             this.bookInstancesRepository = bookInstancesRepository;
         }
 
-        async Task<List<BookResponse>> IRequestHandler<GetAllBooksQuery, List<BookResponse>>.Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
+        public async Task<List<BookResponse>> Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
         {
             List<BookRead> books = await booksReadRepository.GetAll();
             List<BookResponse> result = new List<BookResponse>();

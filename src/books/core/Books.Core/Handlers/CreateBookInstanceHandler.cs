@@ -23,7 +23,7 @@ namespace Books.Core.Handlers
             //_booksReadRepository = booksReadRepository;
         }
 
-        async Task<string> IRequestHandler<CreateBookInstanceCommand, string>.Handle(CreateBookInstanceCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateBookInstanceCommand request, CancellationToken cancellationToken)
         {
             var bookInstance = BookMapper.Mapper.Map<BookInstance>(request);
             await _bookInstancesRepository.Create(bookInstance);

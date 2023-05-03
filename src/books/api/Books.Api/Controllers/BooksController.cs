@@ -45,7 +45,7 @@ namespace Books.API.Controllers
         {
             try
             {
-                return Ok(await _mediator.Send(new GetBookByISBNQuery(ISBN)));
+                return Ok(await _mediator.Send(new GetBookByISBNQuery { ISBN = ISBN }));
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace Books.API.Controllers
         {
             try
             {
-                int id = await _mediator.Send(new DeleteBookCommand(ISBN));
+                int id = await _mediator.Send(new DeleteBookCommand { ISBN = ISBN });
                 _rabitMQProducer.SendBookDeletedMessage(ISBN);
                 return Ok(id);
             }

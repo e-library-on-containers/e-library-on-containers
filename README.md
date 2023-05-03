@@ -1,6 +1,7 @@
 
 
 
+
 [![LinkedIn][linkedin-shield-kulik]][linkedin-url-kulik] [![LinkedIn][linkedin-shield-swislocki]][linkedin-url-swislocki] [![LinkedIn][linkedin-shield-zajaczkowski]][linkedin-url-zajaczkowski]
 
 [![Build and publish FunctionalValidation][build-publish-functional-validation-shield]][build-publish-functional-validation-url] 
@@ -43,14 +44,16 @@ Library for strongly-typed validation rules that uses concept of monad implement
 
 ## Local environment
 
-### Prerequisites
-For building images locally, GitHub personal access token with access to reading packages is required. Fill in these variables in `.dev-env` file:
-```
-FEED_USERNAME="<GITHUB_USERNAME>"
-PERSONAL_ACCESS_TOKEN="<GITHUB_PTA>"
-```
 ### Docker compose
-To startup local development environment run `dev-compose.sh up` (Linux) or `dev-compose.ps1 up` (Windows). API Gateway is mapped to `http://localhost:8080`.
+To startup local development environment run `dev-compose.sh up` (Linux) or `dev-compose.ps1 up` (Windows).
+
+### Docker compose with locally built images
+To startup local development environment on locally built images run `dev-compose.sh -l up` (Linux) or `dev-compose.ps1 -l up` (Windows).
+
+### Exposed ports
+
+API Gateway is exposed on `http://localhost:8080`.
+Frontend is exposed on `http://localhost:8084 `.
 
 ## Contributions
 If you want to contribute to this project see [CONTRIBUTING](CONTRIBUTING.md).

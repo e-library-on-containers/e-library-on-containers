@@ -1,22 +1,16 @@
 version: '3.6'
 services:
+  frontend:
+    ports: 
+      - 8084:80
   rabbitmq:
     ports:
       - 5672:5672
       - 15672:15672
   gateway:
-    build:
-      context: ./src/gateway
-      dockerfile: ./Gateway.Api.Dockerfile
     ports:
       - 8080:80
   identity:
-    build:
-      context: ./src/identity
-      dockerfile: ./Identity.Api.Dockerfile
-      args:
-        FEED_USERNAME: $FEED_USERNAME
-        PERSONAL_ACCESS_TOKEN: $PERSONAL_ACCESS_TOKEN
     depends_on: 
       identity-db:
         condition: service_healthy
@@ -39,16 +33,10 @@ services:
       retries: 10
       start_period: 100s
   identity-db-updater:
-    build:
-      context: ./src/identity
-      dockerfile: ./Identity.Database.Dockerfile
     depends_on: 
       identity-db:
         condition: service_healthy
   rentals:
-    build:
-      context: ./src/rentals
-      dockerfile: ./Dockerfile
     ports:
       - 8082:8080
     depends_on: 
@@ -71,9 +59,6 @@ services:
       retries: 10
       start_period: 100s
   books:
-    build:
-      context: ./src/books
-      dockerfile: ./Dockerfile
     ports:
       - 8083:8080
     depends_on: 
@@ -96,9 +81,6 @@ services:
       retries: 10
       start_period: 100s
   books-db-updater:
-    build:
-      context: ./src/books
-      dockerfile: ./Books.Database.Dockerfile
     depends_on: 
       books-db:
         condition: service_healthy

@@ -9,11 +9,6 @@ namespace Books.Core.Commands
 {
     public class DeleteBookInstanceCommand : IRequest<string>
     {
-        public int Id { get; private set; }
-
-        public DeleteBookInstanceCommand(int id)
-        {
-            Id = id;
-        }
+        public int Id { get; set; }
     }
 }

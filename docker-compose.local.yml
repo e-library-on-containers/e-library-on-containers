@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+  frontend:
+    build:
+      context: ./src/front
+      dockerfile: Dockerfile.local
+  gateway:
+    build:
+      context: ./src/gateway
+      dockerfile: ./Gateway.Api.Dockerfile
+  identity:
+    build:
+      context: ./src/identity
+      dockerfile: ./Identity.Api.Dockerfile
+  identity-db-updater:
+    build:
+      context: ./src/identity
+      dockerfile: ./Identity.Database.Dockerfile
+  rentals:
+    build:
+      context: ./src/rentals
+      dockerfile: ./Dockerfile
+  books:
+    build:
+      context: ./src/books
+      dockerfile: ./Dockerfile
+  books-db-updater:
+    build:
+      context: ./src/books
+      dockerfile: ./Books.Database.Dockerfile

@@ -1,0 +1,78 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+title Deployment diagram for eLibraryOnContainers
+
+Deployment_Node(client, "Client system", "<<device>>") {
+	Deployment_Node(browser, "Browser", "<<device>>") {
+		Container(index, "index.html", "<<artifact>>")
+	}
+}
+
+Node(elib, "Server", "<<device>>") {
+	Node(spa, "Angular SPA", "<<dockerContainer>>", "image: elibraryoncontainers/frontend") {
+		Container(nginx, "nginx", "<<artifact>>")
+	}
+	
+	Node(gateway, "API Gateway", "<<dockerContainer>>", "image: elibraryoncontainers/gateway") {
+		Container(gateway_dll, "Gateway.Api.dll", "<<artifact>>")
+	}
+	
+	Node(identity, "Identity", "<<dockerContainer>>", "image: elibraryoncontainers/identity") {
+		Container(identity_dll, "Identity.Api.dll", "<<artifact>>")
+	}
+	
+	Node(identity_db, "Identity Database", "<<dockerContainer>>", "image: postgres:11.14")
+	
+	Node(identity_db_updater, "Identity Database Updater", "<<dockerContainer>>", "image: elibraryoncontainers/identity-db-updater") {
+		Container(identity_db_updater_dll, "Identity.Database.dll", "<<artifact>>")
+	}
+	
+	Node(books, "Books", "<<dockerContainer>>", "image: elibraryoncontainers/books") {
+		Container(books_dll, "Books.API.dll", "<<artifact>>")
+	}
+	
+	Node(books_db_updater, "Books Database Updater", "<<dockerContainer>>", "image: elibraryoncontainers/books-db-updater") {
+		Container(books_db_updater_dll, "Books.Database.dll", "<<artifact>>")
+	}
+	
+	Node(books_db, "Books Database", "<<dockerContainer>>", "image: postgres:11.14")
+	
+	Node(rentals, "Rentals", "<<dockerContainer>>", "image: elibraryoncontainers/rentals") {
+		Container(rentals_jar, "app.jar", "<<artifact>>")
+	}
+	
+	Node(rentals_db, "Rentals Database", "<<dockerContainer>>", "image: postgres:11.14")
+	
+	Node(event_bus, "RabbitMq", "<<dockerContainer>>", "image: rabbit:3.9.13")
+	
+
+}
+
+Lay_U(identity_db_updater, identity_db)
+Lay_U(books_db_updater, books_db)
+Lay_U(gateway, spa)
+
+BiRel_U(event_bus, rentals, "")
+BiRel_U(event_bus, books, "")
+
+BiRel_U(identity_db, identity, "")
+Rel_R(identity_db_updater, identity_db, "")
+
+BiRel_U(books_db, books, "")
+Rel_R(books_db_updater, books_db, "")
+
+BiRel_U(rentals_db, rentals, "")
+
+Rel_L(gateway, identity, "")
+Rel_D(gateway, books, "")
+Rel_D(gateway, rentals, "")
+
+Rel_D(spa, gateway, "")
+
+Rel(client, elib, "")
+
+
+SHOW_LEGEND()
+
+@enduml

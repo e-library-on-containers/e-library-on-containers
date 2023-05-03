@@ -22,7 +22,7 @@ namespace Books.Core.Handlers
             //this.bookInstancesRepository = bookInstancesRepository;
         }
 
-        async Task<int> IRequestHandler<DeleteBookCommand, int>.Handle(DeleteBookCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
         {
             int id;
             try

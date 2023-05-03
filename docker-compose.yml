@@ -9,6 +9,8 @@ networks:
         name: books-network
 
 services:
+  frontend:
+    image: elibraryoncontainers/frontend:$FRONTEND_VERSION
   rabbitmq:
     image: rabbitmq:management
     networks:

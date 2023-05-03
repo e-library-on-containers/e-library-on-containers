@@ -8,10 +8,10 @@ title System Context diagram for eLibraryOnContainers
 Person(plc, "Personal Library Customer", "A customer of the library, looking for a book to borrow.")
 Person(lib, "Librarian", "Library worker, managing books collection, their physical copies and rentals.")
 System(eloc, "eLibraryOnContainers", "Allows customers to view information about available books and borrow or return them. Allows workers to manage library collection, stocks and rentals.")
-System_Ext(abs, "Azure Blob Storage", "Azure Cloud object storage for storing and serving books images.")
+'System_Ext(abs, "Azure Blob Storage", "Azure Cloud object storage for storing and serving books images.")
 
 Rel(plc, eloc, "Uses")
 Rel(lib, eloc, "Uses")
-Rel(eloc, abs, "Saves images")
-Rel(abs, eloc, "Serves images")
+'Rel(eloc, abs, "Saves images")
+'Rel(abs, eloc, "Serves images")
 @enduml

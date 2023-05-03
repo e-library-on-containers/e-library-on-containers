@@ -6,4 +6,4 @@ Librarians have access to books collection that can be modified should any new b
 
 Personal users can browse available books, borrow a book if a physical copy is available and pick it up personally later. Moreover, users can manage their own rentals, extend due date or mark a borrowed book for return.
 
-Azure Blob Storage will be used for storing static images for books.
+<!-- Azure Blob Storage will be used for storing static images for books. -->
