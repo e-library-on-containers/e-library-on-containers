@@ -1,21 +1,26 @@
 version: '3.6'
 services:
   frontend:
-    ports: 
-      - 8084:80
+    ports:
+      - "8084:80"
+  react-frontend:
+    ports:
+      - "8090:80"
+    environment:
+      - API_URL="http://localhost:8080"
   rabbitmq:
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
   gateway:
     ports:
-      - 8080:80
+      - "8080:80"
   identity:
-    depends_on: 
+    depends_on:
       identity-db:
         condition: service_healthy
     ports:
-      - 8081:80
+      - "8081:80"
   identity-db:
     image: postgres:11.14
     environment:
@@ -23,7 +28,7 @@ services:
       POSTGRES_USER: $IDENTITY_USER
       POSTGRES_DB: $IDENTITY_DATABASE
     ports:
-      - 25432:5432
+      - "25432:5432"
     networks:
       - identity-network
     healthcheck:
@@ -33,13 +38,13 @@ services:
       retries: 10
       start_period: 100s
   identity-db-updater:
-    depends_on: 
+    depends_on:
       identity-db:
         condition: service_healthy
   rentals:
     ports:
-      - 8082:8080
-    depends_on: 
+      - "8082:8080"
+    depends_on:
       rentals-db:
         condition: service_healthy
   rentals-db:
@@ -49,7 +54,7 @@ services:
       POSTGRES_USER: $RENTALS_USER
       POSTGRES_DB: $RENTALS_DATABASE
     ports:
-      - 25433:5432
+      - "25433:5432"
     networks:
       - rentals-network
     healthcheck:
@@ -60,8 +65,8 @@ services:
       start_period: 100s
   books:
     ports:
-      - 8083:8080
-    depends_on: 
+      - "8083:8080"
+    depends_on:
       books-db:
         condition: service_healthy
   books-db:
@@ -71,7 +76,7 @@ services:
       POSTGRES_USER: $BOOKS_USER
       POSTGRES_DB: $BOOKS_DATABASE
     ports:
-      - 25434:5432
+      - "25434:5432"
     networks:
       - books-network
     healthcheck:
@@ -81,6 +86,6 @@ services:
       retries: 10
       start_period: 100s
   books-db-updater:
-    depends_on: 
+    depends_on:
       books-db:
         condition: service_healthy
