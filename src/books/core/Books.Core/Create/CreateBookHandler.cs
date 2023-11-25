@@ -17,6 +17,7 @@ namespace Books.Core.Create
         public async Task<Book> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             var book = BookMapper.Mapper.Map<Book>(request);
+            book.InPreview = true;
             await _booksRepository.Create(book);
             Book response = await _booksRepository.GetByISBN(book.ISBN);
             return response;

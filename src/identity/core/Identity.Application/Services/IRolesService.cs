@@ -7,4 +7,5 @@ namespace Identity.Application.Services;
 public interface IRolesService
 {
     Task<Result<Role, ApplicationError>> GetDefaultRoleAsync();
+    Task<Result<Role, ApplicationError>> GetNamedRoleAsync(string roleName);
 }

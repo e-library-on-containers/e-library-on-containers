@@ -35,9 +35,15 @@ namespace Books.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<List<BookRead>> GetAll()
+        public async Task<List<BookRead>> GetAll(bool includePreview = false)
         {
-            var sql = "SELECT * FROM BooksRead";
+            var sql = "SELECT * FROM BooksRead b";
+            
+            if (!includePreview)
+            {
+                sql += " WHERE b.InPreview = 'FALSE'";
+            }
+            
             using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
             {
                 connection.Open();

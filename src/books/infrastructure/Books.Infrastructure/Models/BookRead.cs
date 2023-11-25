@@ -15,6 +15,7 @@ namespace Books.Infrastructure.Models
         public string Authors { get; set; }
         public string CoverImg { get; set; }
         public int CopiesCount { get; set; }
+        public bool InPreview { get; set; }
 
         public BookRead(Book book)
         {
@@ -24,6 +25,7 @@ namespace Books.Infrastructure.Models
             this.Authors = book.Authors;
             this.CoverImg = book.CoverImg;
             this.CopiesCount = 0;
+            this.InPreview = book.InPreview;
         } 
 
         public BookRead() { }

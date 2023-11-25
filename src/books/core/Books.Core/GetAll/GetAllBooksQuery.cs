@@ -5,6 +5,6 @@ namespace Books.Core.GetAll
 {
     public class GetAllBooksQuery : IRequest<List<BookResponse>>
     {
-
+        public bool IncludeInPreview { get; set; }
     }
 }
