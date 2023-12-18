@@ -1,11 +1,16 @@
 package e.library.on.containers.rentals.web;
 
+import e.library.on.containers.rentals.repository.dao.BorrowReadDao;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
+import e.library.on.containers.rentals.service.BorrowReader;
 import e.library.on.containers.rentals.service.RentalsReader;
 import e.library.on.containers.rentals.service.RentalsService;
+import e.library.on.containers.rentals.web.entity.AcceptBorrowRequest;
+import e.library.on.containers.rentals.web.entity.CreateBorrowRequest;
 import e.library.on.containers.rentals.web.entity.ExtendBookRentRequest;
 import e.library.on.containers.rentals.web.entity.RentBookRequest;
 import e.library.on.containers.rentals.web.entity.RentBookResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,16 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "api/rents")
 class RentalsController {
     private final RentalsService service;
-    private final RentalsReader reader;
-
-    RentalsController(RentalsService service, RentalsReader reader) {
-        this.service = service;
-        this.reader = reader;
-    }
+    private final RentalsReader rentalsReader;
+    private final BorrowReader borrowReader;
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping(
@@ -68,13 +70,11 @@ class RentalsController {
     }
 
     @ResponseStatus(code = HttpStatus.OK)
-    @GetMapping(
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     List<RentalsReadDao> allRentals(
             @RequestHeader(name = "X-User-Id", required = false) UUID userId
     ) {
-        return userId == null ? reader.readAllRentals() : reader.readAllRentals(userId);
+        return userId == null ? rentalsReader.readAllRentals() : rentalsReader.readAllRentals(userId);
     }
 
     @ResponseStatus(code = HttpStatus.ACCEPTED)
@@ -88,5 +88,38 @@ class RentalsController {
             @PathVariable UUID rentId,
             @RequestBody ExtendBookRentRequest extendBookRentRequest) {
         service.extendRent(userId, rentId, extendBookRentRequest.days());
+    }
+
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    @PostMapping(
+            value = "/borrow",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    void borrow(
+            @RequestHeader(name = "X-User-Id", required = false) UUID userId,
+            @RequestBody CreateBorrowRequest createBorrowRequest) {
+        service.borrow(userId, createBorrowRequest);
+    }
+
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    @PostMapping(
+            value = "/accept-borrow",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    void acceptBorrow(
+            @RequestHeader(name = "X-User-Id", required = false) UUID userId,
+            @RequestBody AcceptBorrowRequest acceptBorrowRequest) {
+        service.acceptBorrow(userId, acceptBorrowRequest);
+    }
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @GetMapping(
+            value = "/borrows",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    List<BorrowReadDao> getAllBorrows(@RequestHeader(name = "X-User-Id", required = false) UUID userId) {
+        return userId == null ? borrowReader.getAllBorrows() : borrowReader.getAllBorrowsByPreviousOwner(userId);
     }
 }

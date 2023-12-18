@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 class RabbitmqConfig {
 	@Bean
 	TopicExchange rentalsExchange(RabbitmqProperties config) {
-		return new TopicExchange(config.topicExchange().name());
+		return new TopicExchange(config.rentalsExchange().name());
 	}
 
 	@Bean
@@ -44,12 +44,29 @@ class RabbitmqConfig {
 	}
 
 	@Bean
+	TopicExchange borrowsExchange(RabbitmqProperties config) {
+		return new TopicExchange(config.borrowsExchange().name());
+	}
+
+	@Bean
+	Queue borrowQueue(RabbitmqProperties config) {
+		return new Queue(config.borrowQueue().name(), false);
+	}
+
+	@Bean
+	Queue acceptBorrowQueue(RabbitmqProperties config) {
+		return new Queue(config.acceptQueue().name(), false);
+	}
+
+	@Bean
 	Declarables bindings(RabbitmqProperties config) {
 		return new Declarables(
 				BindingBuilder.bind(rentQueue(config)).to(rentalsExchange(config)).with("rental.rent"),
 				BindingBuilder.bind(returnQueue(config)).to(rentalsExchange(config)).with("rental.return"),
 				BindingBuilder.bind(extendQueue(config)).to(rentalsExchange(config)).with("rental.extend"),
-				BindingBuilder.bind(awaitingQueue(config)).to(rentalsExchange(config)).with("rental.awaiting")
+				BindingBuilder.bind(awaitingQueue(config)).to(rentalsExchange(config)).with("rental.awaiting"),
+				BindingBuilder.bind(borrowQueue(config)).to(borrowsExchange(config)).with("borrows.borrow"),
+				BindingBuilder.bind(acceptBorrowQueue(config)).to(borrowsExchange(config)).with("borrows.accept")
 		);
 	}
 

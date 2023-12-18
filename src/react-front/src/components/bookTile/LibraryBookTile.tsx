@@ -1,8 +1,13 @@
-import {Box, Button, VStack} from "@chakra-ui/react";
+import {Box, Button, Link, VStack} from "@chakra-ui/react";
 import {Book} from "../../models/Book";
 import BookTile from "./BookTile";
 
-const LibraryBookTile = (props: { book: Book, onRentBook: (bookIsbn: string) => void, isLoggedIn: boolean }) => {
+const LibraryBookTile = (props: {
+    book: Book,
+    onRentBook: (bookIsbn: string) => void,
+    onBorrowBook: (bookIsbn: string) => void,
+    isLoggedIn: boolean
+}) => {
     const rentedOutButton = {
         width: "100%",
         backgroundColor: "grey",
@@ -25,6 +30,12 @@ const LibraryBookTile = (props: { book: Book, onRentBook: (bookIsbn: string) => 
         cursor: "pointer"
     }
 
+    const lessImportantText = {
+        color: "#888888"
+    }
+
+    console.log(props.book)
+
     return (
         <VStack
             spacing={4}
@@ -37,20 +48,22 @@ const LibraryBookTile = (props: { book: Book, onRentBook: (bookIsbn: string) => 
                         <Button
                             type="button"
                             style={rentButton}
-                            onClick={() => props.onRentBook(props.book.isbn)}
-                        >
+                            onClick={() => props.onRentBook(props.book.isbn)}>
                             Rent
                         </Button>
                     ) : (
-                        <Button
-                            type="button"
-                            style={rentedOutButton}
-                            disabled
-                        >
-                            Rented Out
-                        </Button>
-                    )
-                    }
+                        <VStack>
+                            <Button type="button"
+                                    style={rentedOutButton}>
+                                Rented Out
+                            </Button>
+                            <Link style={lessImportantText}
+                                  fontSize={'sm'}
+                                  onClick={() => props.onBorrowBook(props.book.isbn)}>
+                                Try borrowing it from another user!
+                            </Link>
+                        </VStack>
+                    )}
                 </Box>}
         </VStack>
     )

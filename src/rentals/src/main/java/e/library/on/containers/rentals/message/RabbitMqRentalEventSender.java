@@ -41,6 +41,6 @@ public class RabbitMqRentalEventSender implements RentalEventSender {
 
     private void sendMessage(String routingKey, Event message) {
         log.debug("Sending message {}", message.toString());
-        rabbitTemplate.convertAndSend(config.topicExchange().name(), routingKey, message);
+        rabbitTemplate.convertAndSend(config.rentalsExchange().name(), routingKey, message);
     }
 }

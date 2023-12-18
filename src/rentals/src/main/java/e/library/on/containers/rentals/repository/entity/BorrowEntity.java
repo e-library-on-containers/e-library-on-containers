@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -21,24 +21,25 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name="rental")
+@Table(name="borrow")
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @ToString
 @Builder
 @EqualsAndHashCode
-public class RentalEntity {
+public class BorrowEntity {
     @Id
     UUID id;
+    @NotNull
+    UUID previousOwner;
+    @NotNull
+    UUID newOwner;
     int bookInstanceId;
-    @NotNull
-    UUID userId;
-    @NotNull
-    ZonedDateTime rentedAt;
-    @NotNull
-    ZonedDateTime dueDate;
-    @Enumerated(EnumType.ORDINAL)
-    RentalState rentalState;
+    boolean accepted;
+    @OneToOne(optional = true)
+    @JoinColumn(name="created_rental")
+    RentalEntity createdRental;
+    ZonedDateTime borrowedAt;
     @LastModifiedDate
     ZonedDateTime lastEditDate;
 }

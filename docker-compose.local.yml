@@ -37,4 +37,4 @@ services:
   movies-db-updater:
     build:
       context: ./src/movies
-      dockerfile: ./Movies.Database.Dockerfile      
+      dockerfile: ./Movies.Database.Dockerfile

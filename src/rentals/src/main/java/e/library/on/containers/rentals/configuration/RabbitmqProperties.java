@@ -5,11 +5,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "rabbitmq")
 public
 record RabbitmqProperties(
-	TopicExchange topicExchange,
+	TopicExchange rentalsExchange,
 	Queue rentQueue,
 	Queue returnQueue,
 	Queue extendQueue,
-	Queue awaitingQueue
+    Queue awaitingQueue,
+	TopicExchange borrowsExchange,
+	Queue borrowQueue,
+	Queue acceptQueue
 ) {
 	public record TopicExchange(String name){}
 	public record Queue(String name){}
