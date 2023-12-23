@@ -66,12 +66,12 @@ class RentalsServiceTest {
         // GIVEN
         final var borrowedBookRent = RentalEntity.builder()
                 .bookInstanceId(TEST_BOOK_INSTANCE_ID)
-                .userId(TEST_USER_ID.toString())
+                .userId(TEST_USER_ID)
                 .rentedAt(ZonedDateTime.now())
                 .dueDate(ZonedDateTime.now().plusDays(30))
                 .build();
 
-        when(readRepository.findById(TEST_RENT_ID.toString())).thenReturn(Optional.of(borrowedBookRent));
+        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN
         sut.returnBook(TEST_USER_ID, TEST_RENT_ID);
@@ -86,7 +86,7 @@ class RentalsServiceTest {
     @Test
     void givenBookInstance_WhenItIsNotRented_thenThrowExceptionOnReturning() {
         // GIVEN
-        when(readRepository.findById(TEST_RENT_ID.toString())).thenReturn(Optional.empty());
+        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.returnBook(TEST_USER_ID, TEST_RENT_ID))
@@ -99,12 +99,12 @@ class RentalsServiceTest {
         // GIVEN
         final var borrowedBookRent = RentalEntity.builder()
                 .bookInstanceId(TEST_BOOK_INSTANCE_ID)
-                .userId(TEST_USER_ID.toString())
+                .userId(TEST_USER_ID)
                 .rentedAt(ZonedDateTime.now())
                 .dueDate(ZonedDateTime.now().plusDays(30))
                 .build();
 
-        when(readRepository.findById(TEST_RENT_ID.toString())).thenReturn(Optional.of(borrowedBookRent));
+        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN
         sut.extendRent(TEST_USER_ID, TEST_RENT_ID, TEST_DAYS);
@@ -120,7 +120,7 @@ class RentalsServiceTest {
     @Test
     void givenBookInstance_WhenItIsNotRented_thenThrowExceptionOnExtending() {
         // GIVEN
-        when(readRepository.findById(TEST_RENT_ID.toString())).thenReturn(Optional.empty());
+        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.extendRent(TEST_USER_ID, TEST_RENT_ID, TEST_DAYS))

@@ -3,6 +3,7 @@ package e.library.on.containers.rentals.message;
 import e.library.on.containers.rentals.configuration.RabbitmqProperties;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
+import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,11 @@ public class RabbitMqRentalEventSender implements RentalEventSender {
     @Override
     public void send(BookExtendedEvent event) {
         sendMessage("rental.extend", event);
+    }
+
+    @Override
+    public void send(BookReturnApprovedEvent event) {
+        sendMessage("rental.approve", event);
     }
 
     private void sendMessage(String routingKey, Event message) {

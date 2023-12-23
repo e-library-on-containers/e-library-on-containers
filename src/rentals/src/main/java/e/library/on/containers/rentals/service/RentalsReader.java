@@ -3,6 +3,7 @@ package e.library.on.containers.rentals.service;
 import e.library.on.containers.rentals.common.RentalEntityMapper;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
+import e.library.on.containers.rentals.repository.entity.RentalState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,6 @@ public class RentalsReader {
 	}
 
 	public List<RentalsReadDao> readAllRentals(UUID userId) {
-		return readRepository.findAllByUserId(userId.toString()).stream().map(mapper::entityToDao).toList();
+		return readRepository.findAllByUserIdAndRentalStateIsNot(userId, RentalState.RETURNED).stream().map(mapper::entityToDao).toList();
 	}
 }

@@ -22,6 +22,8 @@ rabbitmq:
     name: "rent"
   return-queue:
     name: "return"
+  approve-queue:
+    name: "approve"
   extend-queue:
     name: "extend"
 

@@ -2,6 +2,7 @@ package e.library.on.containers.rentals.repository.dao;
 
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
+import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
 import e.library.on.containers.rentals.exceptions.UnsupportedEventTypeException;
@@ -28,6 +29,9 @@ public record EventDao(
         }
         if (event instanceof BookExtendedEvent bookExtendedEvent) {
             return EventDao.from(bookExtendedEvent);
+        }
+        if (event instanceof BookReturnApprovedEvent bookReturnApprovedEvent) {
+            return EventDao.from(bookReturnApprovedEvent);
         }
 
         throw new UnsupportedEventTypeException(event.getClass());
@@ -69,6 +73,19 @@ public record EventDao(
                 0,
                 event.getDays(),
                 EventType.EXTENDED
+        );
+    }
+
+    private static EventDao from(BookReturnApprovedEvent event) {
+        return new EventDao(
+                event.getId(),
+                event.getCreatedAt(),
+                event.getRentalId(),
+                null,
+                0,
+                0,
+                0,
+                EventType.RETURN_APPROVED
         );
     }
 }

@@ -270,7 +270,7 @@
       ],
       "UpstreamPathTemplate": "/rentals/{rentId}/return",
       "UpstreamHttpMethod": [
-        "Delete"
+        "Post"
       ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
