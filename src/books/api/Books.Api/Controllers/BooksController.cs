@@ -2,11 +2,13 @@
 using Books.Core.Delete;
 using Books.Core.GetAll;
 using Books.Core.GetByISBN;
+using Books.Core.Publish;
 using Books.Core.RabitMQ;
 using Books.Core.Update;
 using Books.Infrastructure.Contracts;
 using Books.Infrastructure.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Books.API.Controllers
@@ -25,6 +27,44 @@ namespace Books.API.Controllers
             _mediator = mediator;
             _rabitMQProducer = rabitMQProducer;
         }
+        
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpGet("get-preview")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPreview()
+        {
+            try
+            {
+                return Ok(await _mediator.Send(new GetAllBooksQuery
+                {
+                    IncludeInPreview = true
+                }));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("{ISBN}/publish")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Publish(string ISBN)
+        {
+            try
+            {
+                return Ok(await _mediator.Send(new PublishBookCommand
+                {
+                    ISBN = ISBN
+                }));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()

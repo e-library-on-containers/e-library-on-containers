@@ -17,6 +17,7 @@ namespace Books.Core.Responses
         public string CoverImg { get; set; }
         public bool IsAvailable { get; set; }
         public int CopiesCount { get; set; }
+        public bool InPreview { get; set; }
 
         public BookResponse(BookRead book, bool isAvailable)
         {
@@ -28,6 +29,7 @@ namespace Books.Core.Responses
             ISBN = book.ISBN;
             CopiesCount = book.CopiesCount;
             IsAvailable = isAvailable;
+            InPreview = book.InPreview;
         }
     }
 }

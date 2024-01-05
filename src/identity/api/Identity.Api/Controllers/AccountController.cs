@@ -33,6 +33,15 @@ public class AccountController : ApplicationController
                 .Bind(c => _mediator.Send(c)),
             _ => StatusCode((int)HttpStatusCode.Created)
         );
+    
+    [Authorize(Roles = "Admin")]
+    [HttpPost("add-user")]
+    public async Task<IActionResult> AddUserAsync(AddUserCommand command) =>
+        await MatchWithDefaultErrorHandler(
+            _functionalValidator.Validate(command)
+                .Bind(c => _mediator.Send(c)),
+            _ => StatusCode((int)HttpStatusCode.Created)
+        );
 
     [HttpPost("changePassword")]
     public async Task<IActionResult> ChangePasswordAsync(ChangePasswordRequest request) =>

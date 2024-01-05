@@ -1,0 +1,5 @@
+﻿ALTER TABLE Books
+    ADD InPreview   BIT DEFAULT TRUE;
+
+ALTER TABLE BooksRead
+    ADD InPreview   BIT DEFAULT TRUE;

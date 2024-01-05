@@ -12,7 +12,7 @@ namespace Books.Infrastructure.Contracts
         Task<int> Delete(string ISBN);
         Task<int> Delete(int id);
         Task<int> Update(T _object);
-        Task<List<T>> GetAll();
+        Task<List<T>> GetAll(bool includePreview = false);
         Task<T> GetById(int id);
         Task<List<T>> GetByISBN(string isbn, bool isAvailable);
     }

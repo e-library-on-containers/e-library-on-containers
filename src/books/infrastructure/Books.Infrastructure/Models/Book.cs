@@ -14,6 +14,8 @@ namespace Books.Infrastructure.Models
         public string Description { get; set; }
         public string Authors { get; set; }
         public string CoverImg { get; set; }
+        
+        public bool InPreview { get; set; }
 
     }
 }

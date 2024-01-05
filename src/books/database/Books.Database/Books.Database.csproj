@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Scripts\Script0001 - Create tables.sql" />
+		<EmbeddedResource Include="Scripts\Script0002 - Add in preview fields.sql" />
 	</ItemGroup>
 
 </Project>
