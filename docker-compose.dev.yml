@@ -89,3 +89,29 @@ services:
     depends_on:
       books-db:
         condition: service_healthy
+  movies:
+    ports:
+      - "8085:8080"
+    depends_on:
+      movies-db:
+        condition: service_healthy
+  movies-db:
+    image: postgres:11.14
+    environment:
+      POSTGRES_PASSWORD: $MOVIES_PASSWORD
+      POSTGRES_USER: $MOVIES_USER
+      POSTGRES_DB: $MOVIES_DATABASE
+    ports:
+      - "25434:5432"
+    networks:
+      - movies-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "$MOVIES_DATABASE"]
+      interval: 10s
+      timeout: 60s
+      retries: 10
+      start_period: 100s
+  movies-db-updater:
+    depends_on:
+      movies-db:
+        condition: service_healthy        

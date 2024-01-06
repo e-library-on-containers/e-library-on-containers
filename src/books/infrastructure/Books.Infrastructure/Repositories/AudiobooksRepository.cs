@@ -47,7 +47,7 @@ public class AudiobooksRepository : IRepository<Audiobook>
         using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
         {
             connection.Open();
-            await connection.ExecuteAsync("UPDATE Audiobooks SET BookId = @BookId, Duration = @Duration WHERE Id = @Id", audiobook);
+            await connection.ExecuteAsync("UPDATE Audiobooks SET BookId = @BookId, Duration = @Duration, InPreview = @InPreview WHERE Id = @Id", audiobook);
         }
     }
 

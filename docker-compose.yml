@@ -7,6 +7,8 @@ networks:
         name: rentals-network
     books-network:
         name: books-network
+    movies-network:
+        name: movies-network        
 
 services:
   frontend:
@@ -77,8 +79,25 @@ services:
     networks:
       - books-network
   books-db-updater:
-    image: elibraryoncontainers/books-db-updater:$BOOKS_DB_UPDATER_VERSION
+    image: elibraryoncontainers/movies-db-updater:$BOOKS_DB_UPDATER_VERSION
     environment:
       Database_ConnectionString: $BOOKS_UPDATER_CONNECTION_STRING
     networks:
-      - books-network
+      - movies-network
+  movies:
+    image: elibraryoncontainers/movies:$MOVIES_API_VERSION
+    environment:
+      ConnectionStrings__DapperConnection: $MOVIES_CONNECTION_STRING
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      rentals:
+        condition: service_started
+    networks:
+      - movies-network
+  movies-db-updater:
+    image: elibraryoncontainers/movies-db-updater:$MOVIES_DB_UPDATER_VERSION
+    environment:
+      Database_ConnectionString: $MOVIES_UPDATER_CONNECTION_STRING
+    networks:
+      - movies-network      

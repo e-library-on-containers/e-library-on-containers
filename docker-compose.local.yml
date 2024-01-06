@@ -34,3 +34,11 @@ services:
     build:
       context: ./src/books
       dockerfile: ./Books.Database.Dockerfile
+  movies:
+    build:
+      context: ./src/movies
+      dockerfile: ./Dockerfile
+  movies-db-updater:
+    build:
+      context: ./src/movies
+      dockerfile: ./Movies.Database.Dockerfile      
