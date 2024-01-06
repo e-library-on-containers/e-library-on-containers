@@ -295,6 +295,20 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/bookInstances/{id}/book-info",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8081
+        }
+      ],
+      "UpstreamPathTemplate": "/books-copies/{id}/book-info",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/bookInstances?{queryString}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
