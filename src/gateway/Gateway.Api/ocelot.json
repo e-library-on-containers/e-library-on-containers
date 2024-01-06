@@ -124,6 +124,120 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/books/get-preview",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/books/get-preview",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/books/{isbn}/publish",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/books/{isbn}/publish",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/audiobooks",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/audiobooks",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/audiobooks",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/audiobooks",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/audiobooks/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/audiobooks/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/audiobooks/{id}/publish",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "books",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/audiobooks/{id}/publish",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
       "DownstreamPathTemplate": "/bookInstances",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

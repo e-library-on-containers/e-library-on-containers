@@ -13,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddMediatR(typeof(GetAllBooksQuery).GetTypeInfo().Assembly);
+builder.Services.AddScoped<IRepository<Audiobook>, AudiobooksRepository>();
+builder.Services.AddScoped<IRepository<Person>, PeopleRepository>();
 builder.Services.AddTransient<IBookRepository<Book>, BooksRepository>();
 builder.Services.AddTransient<IBookRepository<BookRead>, BooksReadRepository>();
 builder.Services.AddTransient<IBookInstancesRepository<BookInstance>, BookInstancesRepository>();
