@@ -61,14 +61,14 @@ namespace Books.Core.Handlers.Tests
                 new BookInstance(),
                 new BookInstance()
             };
-            _bookInstanceRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(bookInstances);
+            _bookInstanceRepositoryMock.Setup(x => x.GetAll(It.IsAny<bool>())).ReturnsAsync(bookInstances);
             GetAllBookInstancesHandler handler = new GetAllBookInstancesHandler(_bookInstanceRepositoryMock.Object);
 
             // Act
             await handler.Handle(request, default);
 
             // Assert
-            _bookInstanceRepositoryMock.Verify(x => x.GetAll(), Times.Once());
+            _bookInstanceRepositoryMock.Verify(x => x.GetAll(It.IsAny<bool>()), Times.Once());
         }
     }
 }

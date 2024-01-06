@@ -80,6 +80,17 @@ namespace Books.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("{id}/book-info")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetBookInfoByInstanceId(int id)
+        {
+            return Ok(await _mediator.Send(new GetBookByInstanceIdQuery
+            {
+                InstanceId = id
+            }));
+        }
+
         /// <summary>
         /// This endpont deletes a book form the database by ISBN
         /// </summary>

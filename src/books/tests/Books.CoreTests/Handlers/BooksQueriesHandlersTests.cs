@@ -72,7 +72,7 @@ namespace Books.Core.Handlers.Tests
                 new BookInstance(),
                 new BookInstance()
             };
-            _bookReadRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(books);
+            _bookReadRepositoryMock.Setup(x => x.GetAll(It.IsAny<bool>())).ReturnsAsync(books);
             _bookInstanceRepositoryMock.Setup(x => x.GetByISBN(It.IsAny<string>(), It.IsAny<bool>())).ReturnsAsync(bookInstances);
             GetAllBooksHandler handler = new GetAllBooksHandler(_bookReadRepositoryMock.Object, _bookInstanceRepositoryMock.Object);
 
@@ -80,7 +80,7 @@ namespace Books.Core.Handlers.Tests
             await handler.Handle(request, default);
 
             // Assert
-            _bookReadRepositoryMock.Verify(x => x.GetAll(), Times.Once());
+            _bookReadRepositoryMock.Verify(x => x.GetAll(It.IsAny<bool>()), Times.Once());
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace Books.Core.Handlers.Tests
                 new BookInstance(),
                 new BookInstance()
             };
-            _bookReadRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(books);
+            _bookReadRepositoryMock.Setup(x => x.GetAll(It.IsAny<bool>())).ReturnsAsync(books);
             _bookInstanceRepositoryMock.Setup(x => x.GetByISBN(It.IsAny<string>(), It.IsAny<bool>())).ReturnsAsync(bookInstances);
             GetAllBooksHandler handler = new GetAllBooksHandler(_bookReadRepositoryMock.Object, _bookInstanceRepositoryMock.Object);
 

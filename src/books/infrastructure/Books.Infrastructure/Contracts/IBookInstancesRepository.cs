@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Books.Infrastructure.Models;
 
 namespace Books.Infrastructure.Contracts
 {
@@ -15,5 +16,6 @@ namespace Books.Infrastructure.Contracts
         Task<List<T>> GetAll(bool includePreview = false);
         Task<T> GetById(int id);
         Task<List<T>> GetByISBN(string isbn, bool isAvailable);
+        Task<Book> GetInfoByInstanceId(int id);
     }
 }

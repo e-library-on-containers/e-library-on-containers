@@ -98,6 +98,18 @@ namespace Books.Infrastructure.Repositories
             }
         }
 
+        public async Task<Book> GetInfoByInstanceId(int id)
+        {
+            var sql =
+                "SELECT br.* FROM BooksRead br JOIN BookInstances bi ON br.BookId = bi.BookId WHERE bi.InstanceId = @InstanceId;";
+            using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DapperConnection")))
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<Book>(sql, new { InstanceId = id });
+                return result.FirstOrDefault()!;
+            }
+        }
+
         public async Task<int> Update(BookInstance _object)
         {
             var sql = "UPDATE BookInstances SET ISBN = @ISBN, IsAvailable = @IsAvailable WHERE InstanceId = @InstanceId";
