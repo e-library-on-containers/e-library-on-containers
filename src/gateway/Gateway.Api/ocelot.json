@@ -384,6 +384,154 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
+    },
+    // Movies
+    {
+      "DownstreamPathTemplate": "/movies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/movies",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/movies/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/movies/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/movies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/movies",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/movies/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/movies/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/movies/{id}/publish",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/movies/{id}/publish",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/people",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/people",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/people/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/people/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/people",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movies",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/people",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
     }
   ],
   "GlobalConfiguration": {

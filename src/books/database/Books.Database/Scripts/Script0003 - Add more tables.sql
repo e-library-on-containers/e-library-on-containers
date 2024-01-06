@@ -1,6 +1,7 @@
 ﻿CREATE TABLE Audiobooks (
     Id INT PRIMARY KEY,
     BookId INT,
+    InPreview BIT DEFAULT TRUE,
     FOREIGN KEY (BookId) REFERENCES Books(BookId)
 );
 
