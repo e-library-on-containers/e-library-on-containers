@@ -57,5 +57,12 @@ namespace Books.Core.RabitMQ
             var body = Encoding.UTF8.GetBytes(json);
             channel.BasicPublish(exchange: "", routingKey: "book_updated", body: body);
         }
+
+        public void AddNewPerson(Person person)
+        {
+            var json = JsonConvert.SerializeObject(person);
+            var body = Encoding.UTF8.GetBytes(json);
+            channel.BasicPublish(exchange: "", routingKey: "person_added", body: body);
+        }
     }
 }

@@ -15,10 +15,12 @@ namespace Books.Infrastructure.Repositories
 {
     public class BooksRepository : IBookRepository<Book>
     {
+        private readonly IRepository<Person> _peopleRepository;
         private readonly IConfiguration configuration;
 
-        public BooksRepository(IConfiguration configuration)
+        public BooksRepository(IRepository<Person> peopleRepository, IConfiguration configuration)
         {
+            _peopleRepository = peopleRepository;
             this.configuration = configuration;
         }
 
@@ -29,6 +31,17 @@ namespace Books.Infrastructure.Repositories
             {
                 connection.Open();
                 var result = await connection.ExecuteAsync(sql, _object);
+
+                foreach (var author in _object.Authors.Split(",").Select(x => x.Trim()))
+                { 
+                    var parts = author.Split(" ");
+                    await _peopleRepository.Add(new Person
+                    {
+                        Name = parts.First(),
+                        Surname = string.Join(' ', parts.Skip(1))
+                    });
+                }
+                
                 return result;
             }
         }

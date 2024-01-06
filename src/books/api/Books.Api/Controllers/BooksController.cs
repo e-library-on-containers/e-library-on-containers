@@ -28,7 +28,6 @@ namespace Books.API.Controllers
             _rabitMQProducer = rabitMQProducer;
         }
         
-        [Authorize(Roles = "Admin, Editor")]
         [HttpGet("get-preview")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPreview()
@@ -46,7 +45,6 @@ namespace Books.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost("{ISBN}/publish")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Publish(string ISBN)
