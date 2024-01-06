@@ -7,9 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 WORKDIR /src
-COPY ["Movies.Api.csproj", "."]
-RUN dotnet restore "Movies.Api.csproj"
+COPY ["Movies.Api/Movies.Api.csproj", "Movies.Api/"]
+RUN dotnet restore "Movies.Api/Movies.Api.csproj"
 COPY . .
+WORKDIR "/src/Movies.Api"
 RUN dotnet build "Movies.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
