@@ -1,6 +1,8 @@
 version: '3.6'
 
 networks:
+    consul-network:
+       name: consul-network
     identity-network:
         name: identity-network
     rentals-network:
@@ -25,16 +27,29 @@ services:
       interval: 10s
       timeout: 60s
       retries: 10
+  consul:
+    image: consul:1.15.4
+    networks:
+      - consul-network
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    healthcheck:
+      # return information about the status of the Consul cluster https://www.consul.io/api/status.html
+      test: ["CMD", "curl", "-X", "GET", "localhost:8500/v1/status/leader"]
+      interval: 1s
+      timeout: 3s
+      retries: 60
   gateway:
     image: elibraryoncontainers/gateway:$GATEWAY_API_VERSION
     networks:
       - identity-network
       - rentals-network
       - books-network
+      - consul-network
     depends_on:
       - identity
       - rentals
       - books
+      - consul
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       AuthOptions__Key: $JWT_SECRET
@@ -45,8 +60,15 @@ services:
       AuthOptions__ExpiredInMinutes: 30
       ConnectionStrings__DefaultConnection: $IDENTITY_CONNECTION_STRING
       ASPNETCORE_ENVIRONMENT: $IDENTITY_API_ENVIRONMENT
+      ConsulOptions__ServiceDiscoveryAddress: $CONSUL_ADDRESS
+      ConsulOptions__ServiceAddress: $IDENTITY_SERVICE_ADDRESS
+      ConsulOptions__ServiceName: $IDENTITY_SERVICE_NAME
+      ConsulOptions__ServiceId: $IDENTITY_SERVICE_ID
     networks:
       - identity-network
+      - consul-network
+    depends_on:
+      - consul
   identity-db-updater:
     image: elibraryoncontainers/identity-db-updater:$IDENTITY_DB_UPDATER_VERSION
     environment:
@@ -61,23 +83,37 @@ services:
       DB_URL: $RENTALS_CONNECTION_STRING_NO_AUTH
       DB_USERNAME: $RENTALS_USER
       DB_PASSWORD: $RENTALS_PASSWORD
+      CONSUL_SERVICE_DISCOVERY_ADDRESS: $CONSUL_ADDRESS
+      CONSUL_SERVICE_ADDRESS: $RENTALS_SERVICE_ADDRESS
+      CONSUL_SERVICE_NAME: $RENTALS_SERVICE_NAME
+      CONSUL_SERVICE_ID: $RENTALS_SERVICE_ID
     depends_on:
       rabbitmq:
         condition: service_healthy
+      consul:
+        condition: service_healthy
     networks:
       - rentals-network
+      - consul-network
   books:
     image: elibraryoncontainers/books:$BOOKS_API_VERSION
     environment:
       ConnectionStrings__DapperConnection: $BOOKS_CONNECTION_STRING
       RabbitMq__HostName: $RABBIT_HOST
+      ConsulOptions__ServiceDiscoveryAddress: $CONSUL_ADDRESS
+      ConsulOptions__ServiceAddress: $BOOKS_SERVICE_ADDRESS
+      ConsulOptions__ServiceName: $BOOKS_SERVICE_NAME
+      ConsulOptions__ServiceId: $BOOKS_SERVICE_ID
     depends_on:
       rabbitmq:
         condition: service_healthy
       rentals:
         condition: service_started
+      consul:
+        condition: service_healthy
     networks:
       - books-network
+      - consul-network
   books-db-updater:
     image: elibraryoncontainers/books-db-updater:$BOOKS_DB_UPDATER_VERSION
     environment:
@@ -88,13 +124,16 @@ services:
     image: elibraryoncontainers/movies:$MOVIES_API_VERSION
     environment:
       ConnectionStrings__DapperConnection: $MOVIES_CONNECTION_STRING
+      ConsulOptions__ServiceDiscoveryAddress: $CONSUL_ADDRESS
+      ConsulOptions__ServiceAddress: $MOVIES_SERVICE_ADDRESS
+      ConsulOptions__ServiceName: $MOVIES_SERVICE_NAME
+      ConsulOptions__ServiceId: $MOVIES_SERVICE_ID
     depends_on:
-      rabbitmq:
+      consul:
         condition: service_healthy
-      rentals:
-        condition: service_started
     networks:
       - movies-network
+      - consul-network
   movies-db-updater:
     image: elibraryoncontainers/movies-db-updater:$MOVIES_DB_UPDATER_VERSION
     environment:

@@ -6,6 +6,7 @@ builder.Services
     .AddSwaggerWithJwt()
     .AddOptions(builder.Configuration)
     .AddJwtAuthentication(builder.Configuration)
+    .AddConsulServices(builder.Configuration)
     .AddApplicationServices()
     .AddCors()
     .AddControllers();

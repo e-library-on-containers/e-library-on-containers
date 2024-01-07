@@ -3,8 +3,10 @@ using Books.Infrastructure.Models;
 using Books.Infrastructure.Repositories;
 using MediatR;
 using System.Reflection;
+using Books.Api.Consul;
 using Books.Core.RabitMQ;
 using Books.Core.GetAll;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,10 @@ builder.Services.AddTransient<IBookRepository<BookRead>, BooksReadRepository>();
 builder.Services.AddTransient<IBookInstancesRepository<BookInstance>, BookInstancesRepository>();
 builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
 builder.Services.AddHostedService<RabbitMQWorker>();
+
+builder.Services.Configure<ConsulOptions>(builder.Configuration.GetConsulSection())
+    .AddSingleton<IOptions<IConsulOptions>>(provider => provider.GetRequiredService<IOptions<ConsulOptions>>())
+    .AddConsulServices(builder.Configuration);
 
 builder.Services.AddCors();
 builder.Services.AddAuthorization();

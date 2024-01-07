@@ -12,6 +12,9 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+  consul:
+    ports:
+      - "8500:8500"
   gateway:
     ports:
       - "8080:80"

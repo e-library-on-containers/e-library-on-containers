@@ -4,12 +4,7 @@
     {
       "DownstreamPathTemplate": "/auth/authenticate",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "identity",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "identity",
       "UpstreamPathTemplate": "/identity/auth",
       "UpstreamHttpMethod": [
         "Post"
@@ -18,12 +13,7 @@
     {
       "DownstreamPathTemplate": "/account/register",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "identity",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "identity",
       "UpstreamPathTemplate": "/identity/register",
       "UpstreamHttpMethod": [
         "Post"
@@ -32,12 +22,7 @@
     {
       "DownstreamPathTemplate": "/account/changePassword",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "identity",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "identity",
       "UpstreamPathTemplate": "/identity/change-password",
       "UpstreamHttpMethod": [
         "Post"
@@ -54,12 +39,7 @@
     {
       "DownstreamPathTemplate": "/books",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books",
       "UpstreamHttpMethod": [
         "Post",
@@ -77,12 +57,7 @@
     {
       "DownstreamPathTemplate": "/books",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books",
       "UpstreamHttpMethod": [
         "Get"
@@ -91,12 +66,7 @@
     {
       "DownstreamPathTemplate": "/books/{isbn}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books/{isbn}",
       "UpstreamHttpMethod": [
         "Put"
@@ -112,12 +82,7 @@
     {
       "DownstreamPathTemplate": "/books/{isbn}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books/{isbn}",
       "UpstreamHttpMethod": [
         "Get"
@@ -126,12 +91,7 @@
     {
       "DownstreamPathTemplate": "/books/get-preview",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books/get-preview",
       "UpstreamHttpMethod": [
         "Get"
@@ -147,12 +107,7 @@
     {
       "DownstreamPathTemplate": "/books/{isbn}/publish",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books/{isbn}/publish",
       "UpstreamHttpMethod": [
         "Post"
@@ -168,12 +123,7 @@
     {
       "DownstreamPathTemplate": "/audiobooks",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/audiobooks",
       "UpstreamHttpMethod": [
         "Post",
@@ -191,12 +141,7 @@
     {
       "DownstreamPathTemplate": "/audiobooks",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/audiobooks",
       "UpstreamHttpMethod": [
         "Get"
@@ -205,12 +150,7 @@
     {
       "DownstreamPathTemplate": "/audiobooks/{id}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/audiobooks/{id}",
       "UpstreamHttpMethod": [
         "Get"
@@ -219,12 +159,7 @@
     {
       "DownstreamPathTemplate": "/audiobooks/{id}/publish",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/audiobooks/{id}/publish",
       "UpstreamHttpMethod": [
         "Post"
@@ -240,12 +175,7 @@
     {
       "DownstreamPathTemplate": "/bookInstances",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books-copies",
       "UpstreamHttpMethod": [
         "Post",
@@ -263,12 +193,7 @@
     {
       "DownstreamPathTemplate": "/bookInstances",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books-copies",
       "UpstreamHttpMethod": [
         "Get"
@@ -277,12 +202,7 @@
     {
       "DownstreamPathTemplate": "/bookInstances/{id}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books-copies/{id}",
       "UpstreamHttpMethod": [
         "Get"
@@ -291,12 +211,7 @@
     {
       "DownstreamPathTemplate": "/bookInstances/{id}/book-info",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books-copies/{id}/book-info",
       "UpstreamHttpMethod": [
         "Get"
@@ -305,12 +220,7 @@
     {
       "DownstreamPathTemplate": "/bookInstances?{queryString}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "books",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "books",
       "UpstreamPathTemplate": "/books-copies?{queryString}",
       "UpstreamHttpMethod": [
         "Get"
@@ -389,12 +299,7 @@
     {
       "DownstreamPathTemplate": "/movies",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/movies",
       "UpstreamHttpMethod": [
         "Post"
@@ -410,12 +315,7 @@
     {
       "DownstreamPathTemplate": "/movies/{id}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/movies/{id}",
       "UpstreamHttpMethod": [
         "Delete"
@@ -431,12 +331,7 @@
     {
       "DownstreamPathTemplate": "/movies",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/movies",
       "UpstreamHttpMethod": [
         "Get"
@@ -445,12 +340,7 @@
     {
       "DownstreamPathTemplate": "/movies/{id}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/movies/{id}",
       "UpstreamHttpMethod": [
         "Get"
@@ -459,12 +349,7 @@
     {
       "DownstreamPathTemplate": "/movies/{id}/publish",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/movies/{id}/publish",
       "UpstreamHttpMethod": [
         "Post"
@@ -480,12 +365,7 @@
     {
       "DownstreamPathTemplate": "/people",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/people",
       "UpstreamHttpMethod": [
         "Post"
@@ -501,12 +381,7 @@
     {
       "DownstreamPathTemplate": "/people/{id}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/people/{id}",
       "UpstreamHttpMethod": [
         "Delete"
@@ -522,12 +397,7 @@
     {
       "DownstreamPathTemplate": "/people",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movies",
-          "Port": 80
-        }
-      ],
+      "ServiceName": "movies",
       "UpstreamPathTemplate": "/people",
       "UpstreamHttpMethod": [
         "Get"
@@ -535,6 +405,11 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:80"
+    "BaseUrl": "http://localhost:80",
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
   }
 }
