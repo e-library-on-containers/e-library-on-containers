@@ -1,12 +1,12 @@
-name: Books-Db-Updater-Publish-Docker
+name: Movies-Api-Publish-Docker
 
 on:
   push:
     branches:
       - develop
     paths:
-      - '.github/workflows/books-db-updater-publish-docker.yml'
-      - 'src/books/database/**'
+      - '.github/workflows/movies-api-publish-docker.yml'
+      - 'src/movies/**'
       
 jobs:
   publish:
@@ -24,13 +24,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: elibraryoncontainers/books-db-updater
+          images: elibraryoncontainers/movies
      
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./src/books
-          file: ./src/books/Books.Database.Dockerfile
+          context: ./src/movies
+          file: ./src/movies/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
