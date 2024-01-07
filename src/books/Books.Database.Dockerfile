@@ -1,10 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine
 WORKDIR /build
 
-COPY ./database/Books.Database/Books.Database/Books.Database.csproj ./
+COPY ./database/Books.Database/Books.Database.csproj ./
 RUN dotnet restore 
 
-COPY ./database/Books.Database/Books.Database/ .
+COPY ./database/Books.Database/ .
 RUN dotnet publish -o /publish 
 
 WORKDIR /publish 
