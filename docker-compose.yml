@@ -79,11 +79,11 @@ services:
     networks:
       - books-network
   books-db-updater:
-    image: elibraryoncontainers/movies-db-updater:$BOOKS_DB_UPDATER_VERSION
+    image: elibraryoncontainers/books-db-updater:$BOOKS_DB_UPDATER_VERSION
     environment:
       Database_ConnectionString: $BOOKS_UPDATER_CONNECTION_STRING
     networks:
-      - movies-network
+      - books-network
   movies:
     image: elibraryoncontainers/movies:$MOVIES_API_VERSION
     environment:

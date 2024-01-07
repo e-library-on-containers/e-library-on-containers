@@ -1,43 +1,169 @@
-﻿INSERT INTO People (Id, Surname, Name) VALUES
-    (1, 'Smith', 'John'),
-    (2, 'Johnson', 'Alice'),
-    (3, 'Brown', 'Robert'),
-    (4, 'Davis', 'Emma'),
-    (5, 'Miller', 'Michael'),
-    (6, 'Wilson', 'Sophia'),
-    (7, 'Moore', 'William'),
-    (8, 'Taylor', 'Olivia');
+﻿INSERT INTO People (Surname, Name)
+VALUES ('Smith', 'John'),
+       ('Johnson', 'Alice'),
+       ('Brown', 'Robert'),
+       ('Davis', 'Emma'),
+       ('Miller', 'Michael'),
+       ('Wilson', 'Sophia'),
+       ('Moore', 'William'),
+       ('Taylor', 'Olivia');
 
-INSERT INTO Screenwriters (PersonId) VALUES (1), (2), (3), (4);
+INSERT INTO Screenwriters (PersonId)
+SELECT Id
+FROM People
+WHERE (Surname = 'Smith' AND Name = 'John')
+   OR (Surname = 'Johnson' AND Name = 'Alice')
+   OR (Surname = 'Brown' AND Name = 'Robert')
+   OR (Surname = 'Davis' AND Name = 'Emma');
 
-INSERT INTO Directors (PersonId) VALUES (5), (6), (7), (8);
+INSERT INTO Directors (PersonId)
+SELECT Id
+FROM People
+WHERE (Surname = 'Miller' AND Name = 'Michael')
+   OR (Surname = 'Wilson' AND Name = 'Sophia')
+   OR (Surname = 'Moore' AND Name = 'William')
+   OR (Surname = 'Taylor' AND Name = 'Olivia');
 
-INSERT INTO Actors (PersonId) VALUES (1), (2), (3), (4);
+INSERT INTO Actors (PersonId)
+SELECT Id
+FROM People
+WHERE (Surname = 'Smith' AND Name = 'John')
+   OR (Surname = 'Johnson' AND Name = 'Alice')
+   OR (Surname = 'Brown' AND Name = 'Robert')
+   OR (Surname = 'Davis' AND Name = 'Emma');
 
-INSERT INTO Movies (Id, Title, Duration, Category, InPreview) VALUES
-      (1, 'The Lost World', 120, 'Action', 1),
-      (2, 'Eternal Love', 110, 'Drama', 0),
-      (3, 'Laugh Out Loud', 95, 'Comedy', 1),
-      (4, 'Galactic Odyssey', 130, 'Sci-Fi', 1),
-      (5, 'Hidden Secrets', 105, 'Thriller', 0);
+INSERT INTO Movies (Title, Duration, Category, InPreview)
+VALUES ('The Lost World', 120, 'Action', TRUE),
+       ('Eternal Love', 110, 'Drama', FALSE),
+       ('Laugh Out Loud', 95, 'Comedy', TRUE),
+       ('Galactic Odyssey', 130, 'Sci-Fi', TRUE),
+       ('Hidden Secrets', 105, 'Thriller', FALSE);
 
-INSERT INTO MovieScreenwriters (ScreenwriterId, MovieId) VALUES
-     (1, 'The Lost World'), (2, 'The Lost World'),
-     (3, 'Eternal Love'), (4, 'Eternal Love'),
-     (1, 'Laugh Out Loud'), (2, 'Laugh Out Loud'),
-     (3, 'Galactic Odyssey'), (4, 'Galactic Odyssey'),
-     (1, 'Hidden Secrets'), (2, 'Hidden Secrets');
+INSERT INTO MovieScreenwriters (ScreenwriterId, MovieId)
+VALUES 
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1) 
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Brown' AND p.Name = 'Robert') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1) 
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Davis' AND p.Name = 'Emma') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1) 
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Brown' AND p.Name = 'Robert') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1) 
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Davis' AND p.Name = 'Emma') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1) 
+),
+(
+    (SELECT PersonId FROM Screenwriters sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1)
+);
 
-INSERT INTO MovieDirectors (DirectorId, MovieId) VALUES
-     (5, 'The Lost World'), (6, 'The Lost World'),
-     (7, 'Eternal Love'), (8, 'Eternal Love'),
-     (5, 'Laugh Out Loud'), (6, 'Laugh Out Loud'),
-     (7, 'Galactic Odyssey'), (8, 'Galactic Odyssey'),
-     (5, 'Hidden Secrets'), (6, 'Hidden Secrets');
+INSERT INTO MovieDirectors (DirectorId, MovieId)
+VALUES
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Miller' AND p.Name = 'Michael') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Wilson' AND p.Name = 'Sophia') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Moore' AND p.Name = 'William') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Taylor' AND p.Name = 'Olivia') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Miller' AND p.Name = 'Michael') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Wilson' AND p.Name = 'Sophia') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Moore' AND p.Name = 'William') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Taylor' AND p.Name = 'Olivia') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Miller' AND p.Name = 'Michael') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Directors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Wilson' AND p.Name = 'Sophia') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1)
+);
 
-INSERT INTO MovieActors (ActorId, MovieId) VALUES
-   (1, 'The Lost World'), (2, 'The Lost World'),
-   (3, 'Eternal Love'), (4, 'Eternal Love'),
-   (1, 'Laugh Out Loud'), (2, 'Laugh Out Loud'),
-   (3, 'Galactic Odyssey'), (4, 'Galactic Odyssey'),
-   (1, 'Hidden Secrets'), (2, 'Hidden Secrets');
+INSERT INTO MovieActors (ActorId, MovieId)
+VALUES
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'The Lost World' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Brown' AND p.Name = 'Robert') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Davis' AND p.Name = 'Emma') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Eternal Love' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Laugh Out Loud' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Brown' AND p.Name = 'Robert') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Davis' AND p.Name = 'Emma') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Galactic Odyssey' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Smith' AND p.Name = 'John') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1)
+),
+(
+    (SELECT PersonId FROM Actors sc INNER JOIN People p ON sc.PersonId = p.Id WHERE (p.Surname = 'Johnson' AND p.Name = 'Alice') LIMIT 1),
+    (SELECT Id FROM Movies WHERE Title = 'Hidden Secrets' LIMIT 1)
+);

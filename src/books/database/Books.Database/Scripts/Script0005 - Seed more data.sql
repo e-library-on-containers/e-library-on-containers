@@ -1,0 +1,50 @@
+﻿INSERT INTO BookInstances (BookId, ISBN, IsAvailable)
+SELECT BookId, '978316148410', TRUE
+FROM Books
+WHERE ISBN = '978316148410'
+    LIMIT 1;
+
+INSERT INTO BookInstances (BookId, ISBN, IsAvailable)
+SELECT BookId, '978123456789', TRUE
+FROM Books
+WHERE ISBN = '978123456789'
+    LIMIT 1;
+
+
+INSERT INTO BookInstances (BookId, ISBN, IsAvailable)
+SELECT BookId, '978555987654', TRUE
+FROM Books
+WHERE ISBN = '978555987654'
+    LIMIT 1;
+
+
+INSERT INTO BookInstances (BookId, ISBN, IsAvailable)
+SELECT BookId, '978098765432', TRUE
+FROM Books
+WHERE ISBN = '978098765432'
+    LIMIT 1;
+
+
+INSERT INTO BookInstances (BookId, ISBN, IsAvailable)
+SELECT BookId, '978234567890', TRUE
+FROM Books
+WHERE ISBN = '978234567890'
+    LIMIT 1;
+
+INSERT INTO Audiobooks (BookId, InPreview)
+SELECT BookId, TRUE
+FROM Books
+WHERE ISBN = '978316148410'
+    LIMIT 1;
+
+INSERT INTO Audiobooks (BookId, InPreview)
+SELECT BookId, TRUE
+FROM Books
+WHERE ISBN = '978555987654'
+    LIMIT 1;
+
+INSERT INTO Audiobooks (BookId, InPreview)
+SELECT BookId, FALSE
+FROM Books
+WHERE ISBN = '978098765432'
+    LIMIT 1;
