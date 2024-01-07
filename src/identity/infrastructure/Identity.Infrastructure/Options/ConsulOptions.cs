@@ -10,6 +10,7 @@ public interface IConsulOptions
 
 public class ConsulOptions : IConsulOptions
 {
+    public bool UseConsul { get; set; }
     public Uri ServiceDiscoveryAddress { get; set; } = null!;
     public Uri ServiceAddress { get; set; } = null!;
     public string ServiceName { get; set; } = null!;

@@ -9,6 +9,11 @@ public static class ConsulConfiguration
     public static IServiceCollection AddConsulServices(this IServiceCollection services, IConfiguration configuration)
     {
         var options = configuration.GetConsulOptions();
+        if (options is not { UseConsul: true })
+        {
+            return services;
+        }
+        
         var consulClient = CreateConsulClient(options);
         services.AddSingleton(options);
         services.AddSingleton<IHostedService, ConsulHostedService>();

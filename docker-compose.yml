@@ -64,6 +64,7 @@ services:
       ConsulOptions__ServiceAddress: $IDENTITY_SERVICE_ADDRESS
       ConsulOptions__ServiceName: $IDENTITY_SERVICE_NAME
       ConsulOptions__ServiceId: $IDENTITY_SERVICE_ID
+      ConsulOptions__UseConsul: "true"
     networks:
       - identity-network
       - consul-network
