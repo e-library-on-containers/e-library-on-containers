@@ -19,6 +19,8 @@
     <ItemGroup>
       <EmbeddedResource Include="Scripts\Script0001 - Create tables.sql" />
       <EmbeddedResource Include="Scripts\Script0002 - Seed data.sql" />
+      <EmbeddedResource Include="Scripts\Script0003 - People cascade foreign keys.sql" />
+      <EmbeddedResource Include="Scripts\Script0004 - many to many cascade foreign keys.sql" />
     </ItemGroup>
 
 </Project>
