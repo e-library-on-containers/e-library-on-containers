@@ -77,7 +77,7 @@ app.Run();
 
 public class MovieDto
 {
-    public int MovieId { get; set; }
+    public int Id { get; set; }
     public string Title { get; set; }
     public string Category { get; set; }
     public bool InPreview { get; set; }
@@ -88,7 +88,7 @@ public class MovieDto
 
 public class Person
 {
-    public int PersonId { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
 }
@@ -106,93 +106,191 @@ public class Movie
 
 public class PeopleRepository
 {
-    private readonly IDbConnection _dbConnection;
+    private readonly string _dbConnectionString;
 
     public PeopleRepository(string connectionString)
     {
-        _dbConnection = new NpgsqlConnection(connectionString);
+        _dbConnectionString = connectionString;
     }
     
     public IEnumerable<Person> GetPeople()
     {
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
         var sql = "SELECT * FROM People";
-        return _dbConnection.Query<Person>(sql);
+        return dbConnection.Query<Person>(sql);
     }
 
     public void AddPerson(Person person)
     {
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
         var sql = "INSERT INTO People (Name, Surname) VALUES (@Name, @Surname)";
-        _dbConnection.Execute(sql, person);
+        dbConnection.Execute(sql, person);
     }
 
     public void RemovePerson(int personId)
     {
-        var sql = "DELETE FROM People WHERE PersonId = @PersonId";
-        _dbConnection.Execute(sql, new { PersonId = personId });
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
+        var sql = "DELETE FROM People WHERE Id = @PersonId";
+        dbConnection.Execute(sql, new { PersonId = personId });
     }
 }
 
 public class MoviesRepository
 {
-    private readonly IDbConnection _dbConnection;
+    private readonly string _dbConnectionString;
 
     public MoviesRepository(string connectionString)
     {
-        _dbConnection = new NpgsqlConnection(connectionString);
+        _dbConnectionString = connectionString;
     }
     
     public IEnumerable<MovieDto> GetAllMovies()
     {
-        var sql = @"
-        SELECT
-            m.Id,
-            m.Title,
-            m.Category,
-            m.InPreview,
-            s.Name + ' ' + s.Surname AS Screenwriter,
-            d.Name + ' ' + d.Surname AS Director,
-            a.Name + ' ' + a.Surname AS Actor
-        FROM Movies m
-        LEFT JOIN MovieScreenwriters ms ON m.Id = ms.MovieId
-        LEFT JOIN Screenwriters s ON ms.ScreenwriterId = s.PersonId
-        LEFT JOIN MovieDirectors md ON m.Id = md.MovieId
-        LEFT JOIN Directors d ON md.DirectorId = d.PersonId
-        LEFT JOIN MovieActors ma ON m.Id = ma.MovieId
-        LEFT JOIN Actors a ON ma.ActorId = a.PersonId";
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+
+        var people = dbConnection.Query<Person>("SELECT * FROM People").ToList();
         
-        var movies = _dbConnection.Query<MovieDto>(sql);
-        return movies;
+        var sql = @"
+                SELECT
+                    M.Id AS Id,
+                    M.Title,
+                    M.Category,
+                    M.InPreview,
+                    MS.ScreenwriterId,
+                    MD.DirectorId,
+                    MA.ActorId
+                FROM Movies M
+                LEFT JOIN MovieScreenwriters MS ON M.Id = MS.MovieId
+                LEFT JOIN MovieDirectors MD ON M.Id = MD.MovieId
+                LEFT JOIN MovieActors MA ON M.Id = MA.MovieId";
+        
+        var movies = new Dictionary<int, Movie>();
+
+        dbConnection.Query<Movie, int, int, int, Movie>(
+            sql,
+            (movie, screenwriterId, directorId, actorId) =>
+            {
+                if (!movies.TryGetValue(movie.Id, out var movieEntity))
+                {
+                    movieEntity = movie;
+                    movieEntity.ScreenwritersIds = new List<int>();
+                    movieEntity.DirectorsIds = new List<int>();
+                    movieEntity.ActorsIds = new List<int>();
+                    movies.Add(movie.Id, movieEntity);
+                }
+
+                if (screenwriterId != 0)
+                    movieEntity.ScreenwritersIds.Add(screenwriterId);
+
+                if (directorId != 0)
+                    movieEntity.DirectorsIds.Add(directorId);
+
+                if (actorId != 0)
+                    movieEntity.ActorsIds.Add(actorId);
+
+                return movieEntity;
+            },
+            splitOn: "ScreenwriterId,DirectorId,ActorId"
+        );
+
+        return movies.Values.Select(m => new MovieDto
+        {
+            Id = m.Id,
+            InPreview = m.InPreview,
+            Category = m.Category,
+            Title = m.Title,
+            Actors = people.Where(p => m.ActorsIds.Contains(p.Id)).Select(p => $"{p.Name} {p.Surname}").ToList(),
+            Screenwriters = people.Where(p => m.ScreenwritersIds.Contains(p.Id)).Select(p => $"{p.Name} {p.Surname}")
+                .ToList(),
+            Directors = people.Where(p => m.DirectorsIds.Contains(p.Id)).Select(p => $"{p.Name} {p.Surname}").ToList(),
+        });
     }
     
     public MovieDto GetByIdWithNames(int id)
     {
-        var sql = @"
-        SELECT
-            m.Id,
-            m.Title,
-            m.Category,
-            m.InPreview,
-            s.Name + ' ' + s.Surname AS Screenwriter,
-            d.Name + ' ' + d.Surname AS Director,
-            a.Name + ' ' + a.Surname AS Actor
-        FROM Movies m
-        LEFT JOIN MovieScreenwriters ms ON m.Id = ms.MovieId
-        LEFT JOIN Screenwriters s ON ms.ScreenwriterId = s.PersonId
-        LEFT JOIN MovieDirectors md ON m.Id = md.MovieId
-        LEFT JOIN Directors d ON md.DirectorId = d.PersonId
-        LEFT JOIN MovieActors ma ON m.Id = ma.MovieId
-        LEFT JOIN Actors a ON ma.ActorId = a.PersonId
-        WHERE m.Id = @MovieId";
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
         
-        var movie = _dbConnection.QuerySingleOrDefault<MovieDto>(sql, new { MovieId = id });
-        return movie;
+        var sql = @"
+                SELECT
+                    M.Id AS Id,
+                    M.Title,
+                    M.Category,
+                    M.InPreview,
+                    MS.ScreenwriterId,
+                    MD.DirectorId,
+                    MA.ActorId
+                FROM Movies M
+                LEFT JOIN MovieScreenwriters MS ON M.Id = MS.MovieId
+                LEFT JOIN MovieDirectors MD ON M.Id = MD.MovieId
+                LEFT JOIN MovieActors MA ON M.Id = MA.MovieId
+                WHERE m.Id = @MovieId";
+        
+        var result = dbConnection.Query<Movie, int, int, int, Movie>(
+            sql,
+            (movie, screenwriterId, directorId, actorId) =>
+            {
+                movie.ScreenwritersIds ??= new List<int>();
+                movie.DirectorsIds ??= new List<int>();
+                movie.ActorsIds ??= new List<int>();
+                
+                if (screenwriterId != 0)
+                    movie.ScreenwritersIds.Add(screenwriterId);
+
+                if (directorId != 0)
+                    movie.DirectorsIds.Add(directorId);
+
+                if (actorId != 0)
+                    movie.ActorsIds.Add(actorId);
+
+                return movie;
+            },
+            new { MovieId = id },
+            splitOn: "ScreenwriterId,DirectorId,ActorId"
+        );
+
+        var movie = result?.FirstOrDefault();
+
+        if (movie == null)
+        {
+            return null;
+        }
+        
+        var ids = movie.ActorsIds.Concat(movie.DirectorsIds).Concat(movie.ScreenwritersIds).Where(x => x != null).ToList();
+
+        var parameters = new DynamicParameters();
+        parameters.Add("Ids", ids);
+
+        var people = dbConnection.Query<Person>("SELECT * FROM People WHERE Id = ANY(@Ids)", parameters).ToList();
+
+        return new MovieDto
+        {
+            Id = movie.Id,
+            InPreview = movie.InPreview,
+            Category = movie.Category,
+            Title = movie.Title,
+            Actors = people.Where(p => movie.ActorsIds.Contains(p.Id)).Select(p => $"{p.Name} {p.Surname}").ToList(),
+            Screenwriters = people.Where(p => movie.ScreenwritersIds.Contains(p.Id))
+                .Select(p => $"{p.Name} {p.Surname}")
+                .ToList(),
+            Directors = people.Where(p => movie.DirectorsIds.Contains(p.Id)).Select(p => $"{p.Name} {p.Surname}")
+                .ToList(),
+        };
     }
-
-
 
     public Movie GetById(int id)
     {
-        using (var multipleResults = _dbConnection.QueryMultiple(
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
+        using (var multipleResults = dbConnection.QueryMultiple(
                    @"SELECT * FROM Movies WHERE Id = @MovieId;
               SELECT ScreenwriterId FROM MovieScreenwriters WHERE MovieId = @MovieId;
               SELECT ActorId FROM MovieActors WHERE MovieId = @MovieId;
@@ -215,36 +313,39 @@ public class MoviesRepository
 
     public void AddMovie(Movie movie)
     {
-        using (var transaction = _dbConnection.BeginTransaction())
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
+        using (var transaction = dbConnection.BeginTransaction())
         {
-            var sql = "INSERT INTO Movies (Title, Duration, Category) VALUES (@Title, @ReleaseYear, @Category)";
-            var movieId = _dbConnection.ExecuteScalar<int>(sql, movie, transaction);
+            var sql = "INSERT INTO Movies (Title, Duration, Category) VALUES (@Title, @Duration, @Category)";
+            var movieId = dbConnection.ExecuteScalar<int>(sql, movie, transaction);
 
             foreach (var actorId in movie.ActorsIds)
             {
                 var insertSql = "INSERT INTO Actors (PersonId) VALUES (@PersonId)";
-                _dbConnection.Execute(insertSql, new { PersonId = actorId }, transaction);
+                dbConnection.Execute(insertSql, new { PersonId = actorId }, transaction);
 
                 insertSql = "INSERT INTO MovieActors (ActorId, MovieId) VALUES (@ActorId, @MovieId)";
-                _dbConnection.Execute(insertSql, new { ActorId = actorId, MovieId = movieId }, transaction);
+                dbConnection.Execute(insertSql, new { ActorId = actorId, MovieId = movieId }, transaction);
             }
             
-            foreach (var actorId in movie.ScreenwritersIds)
+            foreach (var screenwriterId in movie.ScreenwritersIds)
             {
                 var insertSql = "INSERT INTO Screenwriters (PersonId) VALUES (@PersonId)";
-                _dbConnection.Execute(insertSql, new { PersonId = actorId }, transaction);
+                dbConnection.Execute(insertSql, new { PersonId = screenwriterId }, transaction);
                 
                 insertSql = "INSERT INTO MovieDirectors (DirectorId, MovieId) VALUES (@DirectorId, @MovieId)";
-                _dbConnection.Execute(insertSql, new { DirectorId = actorId, MovieId = movieId }, transaction);
+                dbConnection.Execute(insertSql, new { DirectorId = screenwriterId, MovieId = movieId }, transaction);
             }
             
-            foreach (var actorId in movie.DirectorsIds)
+            foreach (var directorId in movie.DirectorsIds)
             {
                 var insertSql = "INSERT INTO Directors (PersonId) VALUES (@PersonId)";
-                _dbConnection.Execute(insertSql, new { PersonId = actorId }, transaction);
+                dbConnection.Execute(insertSql, new { PersonId = directorId }, transaction);
                 
                 insertSql = "INSERT INTO MovieScreenwriters (ScreenwriterId, MovieId) VALUES (@ScreenwriterId, @MovieId)";
-                _dbConnection.Execute(insertSql, new { ScreenwriterId = actorId, MovieId = movieId }, transaction);
+                dbConnection.Execute(insertSql, new { ScreenwriterId = directorId, MovieId = movieId }, transaction);
             }
             
             transaction.Commit();
@@ -253,22 +354,28 @@ public class MoviesRepository
 
     public void UpdateMovie(Movie movie)
     {
-        using (var transaction = _dbConnection.BeginTransaction())
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
+        using (var transaction = dbConnection.BeginTransaction())
         {
-            _dbConnection.Execute("UPDATE Movies SET InPreview = @InPreview", movie, transaction);
+            dbConnection.Execute("UPDATE Movies SET InPreview = @InPreview", movie, transaction);
 
         }
     }
 
     public void RemoveMovie(int movieId)
     {
-        using (var transaction = _dbConnection.BeginTransaction())
+        using var dbConnection = new NpgsqlConnection(_dbConnectionString);
+        dbConnection.Open();
+        
+        using (var transaction = dbConnection.BeginTransaction())
         {
-            _dbConnection.Execute("DELETE FROM MovieScreenwriters WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
-            _dbConnection.Execute("DELETE FROM MovieDirectors WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
-            _dbConnection.Execute("DELETE FROM MovieActors WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
+            dbConnection.Execute("DELETE FROM MovieScreenwriters WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
+            dbConnection.Execute("DELETE FROM MovieDirectors WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
+            dbConnection.Execute("DELETE FROM MovieActors WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
 
-            _dbConnection.Execute("DELETE FROM Movies WHERE MovieId = @MovieId", new { MovieId = movieId }, transaction);
+            dbConnection.Execute("DELETE FROM Movies WHERE Id = @MovieId", new { MovieId = movieId }, transaction);
 
             transaction.Commit();
         }
