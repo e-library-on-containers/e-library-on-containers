@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
 
 namespace Gateway.Api
 {
@@ -22,7 +23,9 @@ namespace Gateway.Api
                 .AddEnvironmentVariables();
 
             builder.Services.AddControllers();
-            builder.Services.AddOcelot();
+            builder.Services
+                .AddOcelot()
+                .AddConsul();
 
             var authOptions = builder.Configuration.GetSection("AuthOptions").Get<AuthOptions>();
 

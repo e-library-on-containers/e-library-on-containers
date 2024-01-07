@@ -1,8 +1,16 @@
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using Microsoft.Extensions.Options;
+using Movies.Api.Consul;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ConsulOptions>(builder.Configuration.GetConsulSection())
+    .AddSingleton<IOptions<IConsulOptions>>(provider => provider.GetRequiredService<IOptions<ConsulOptions>>())
+    .AddConsulServices(builder.Configuration);
+
 
 var connectionString = builder.Configuration.GetConnectionString("DapperConnection")!;
 var moviesRepository = new MoviesRepository(connectionString);
@@ -102,7 +110,7 @@ public class PeopleRepository
 
     public PeopleRepository(string connectionString)
     {
-        _dbConnection = new SqlConnection(connectionString);
+        _dbConnection = new NpgsqlConnection(connectionString);
     }
     
     public IEnumerable<Person> GetPeople()
@@ -130,7 +138,7 @@ public class MoviesRepository
 
     public MoviesRepository(string connectionString)
     {
-        _dbConnection = new SqlConnection(connectionString);
+        _dbConnection = new NpgsqlConnection(connectionString);
     }
     
     public IEnumerable<MovieDto> GetAllMovies()
