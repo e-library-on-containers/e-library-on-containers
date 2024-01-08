@@ -40,7 +40,7 @@ public class HashedPassword : ValueObject
     public static Result<HashedPassword, ApplicationError> FromRawPassword(string rawPassword, PasswordHasher hasher) =>
         rawPassword.AsApplicationResult()
             .Ensure(x => !string.IsNullOrWhiteSpace(x) && !Regex.IsMatch(x, @$"^.{{{MAX_LENGTH + 1},}}$"), new InvalidPassword())
-            .Ensure(x => Regex.IsMatch(x, @$"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{{{MIN_LENGTH},}}$"), new UnsafePassword())
+            .Ensure(x => Regex.IsMatch(x, @$"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{{{MIN_LENGTH},}}$"), new UnsafePassword())
             .Map(x => new HashedPassword(hasher(x)));
 
     protected override IEnumerable<object> GetEqualityComponents()
