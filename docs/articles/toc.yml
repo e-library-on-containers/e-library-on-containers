@@ -2,6 +2,8 @@
   href: diagrams.md
 - name: Database schemas
   href: databases.md
+- name: Containerization
+  href: containerization.md
 - name: API Gateway
   href: api-gateway.md
 - name: Identity service
@@ -10,5 +12,7 @@
   href: books.md
 - name: Rentals service
   href: rentals.md
+- name: Movies service
+  href: movies.md  
 - name: FunctionalValidation library
   href: functional-validation.md

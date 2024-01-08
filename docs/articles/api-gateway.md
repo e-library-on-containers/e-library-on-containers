@@ -4,7 +4,7 @@ API Gateway is an ASP.NET Core API utilizing Ocelot library as API Gateway. Usin
 
 ## API Routes
 
-| Http method |                         Route                        | Guard* | Minimum role |          Description         |
+| Http method |                         Route                        | Guard*| Minimum role |          Description         |
 |    :---:    |                         :---                         | :---: |     :---:    |            :----:            |
 |    POST     |                     /identity/auth                   |   X   |       -      |  Authenticate existing user  |
 |    POST     |                  /identity/register                  |   X   |       -      |       Register new user      |
@@ -19,13 +19,28 @@ API Gateway is an ASP.NET Core API utilizing Ocelot library as API Gateway. Usin
 |    POST     |                     /books-copies                    |   V   |     Admin    |         Add book copy        |
 |   DELETE    |                     /books-copies                    |   V   |     Admin    |        Delete book copy      |
 |    PUT      |                     /books-copies                    |   V   |     Admin    |        Update book copy      |
+|    GET      |                     /books/get-preview               |   V   |     Admin    |       Get books in preview   |
+|    POST     |              /books/**{isbn}**/publish               |   V   |     Admin    |      Publish book by ISBN    |
+|    POST     |                     /audiobooks                      |   V   |     Admin    |         Add new audiobook    |
+|    GET      |                   /audiobooks/**{id}**               |   X   |       -      |         Get audiobook        |
+|    POST     |             /audiobooks/**{id}**/publish             |   V   |     Admin    |      Publish audiobook by ID |
 |    GET      |                       /rentals                       |   V   |     User     |         Get user rents       |
 |    POST     |                     /rentals/rent                    |   V   |     User     |          Rent a book         |
 |   DELETE    |             /rentals/**{rentId}**/return             |   V   |     User     |          Return book         |
 |    POST     |             /rentals/**{rentId}**/extend             |   V   |     User     |        Extend due date       |
+|    POST     |                       /movies                        |   V   |     Admin    |         Add new movie        |
+|    GET      |                       /movies                        |   X   |       -      |         Get all movies       |
+|   DELETE    |                    /movies/**{id}**                  |   V   |     Admin    |          Delete movie        |
+|    GET      |                  /movies/**{id}**                    |   X   |       -      |           Get movie          |
+|    POST     |               /movies/**{id}**/publish               |   V   |     Admin    |       Publish movie by ID    |
+|    GET      |                       /people                        |   X   |       -      |         Get all people       |
+|    POST     |                       /people                        |   V   |     Admin    |         Add new person       |
+|   DELETE    |                  /people/**{id}**                    |   V   |     Admin    |        Delete person by ID   |
 
-\*Does endpoint require user to be authenticated with Bearer token
+\*Endpoint requires user to be authenticated with Bearer token
 
 ## Routes definition
 
-Gateway configuration (i.e. routes) is defined in **ocelot.json**/**ocelot.{Environment}.json** file. Each route definition consists of downstream path (receiving API route), scheme that will be used for proxying request, receiver's host and port, upstream path (gateway API route), upstream methods handled by this definition and authentication options that defines authentication guard for definition and required claims (authenticated user's properties, e.g. role).
+Gateway configuration (i.e. routes) is defined in **ocelot.json**/**ocelot.{Environment}.json** file. Each route definition consists of downstream path (receiving API route), scheme that will be used for proxying request, receiver's service name (to be used by Consul service discovery), upstream path (gateway API route), upstream methods handled by this definition and authentication options that defines authentication guard for definition and required claims (authenticated user's properties, e.g. role).
+
+Additionally, Gateway utilizes Consul service discovery to dynamically resolve addresses, ensuring efficient and reliable communication with the registered services.
