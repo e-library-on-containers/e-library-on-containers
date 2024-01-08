@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "acaf98d0-fd22-414f-b368-885c1aa64b97",
+		"_postman_id": "52796352-0c10-4dd3-bb5f-5beec5eb5252",
 		"name": "eLibraryOnContainers",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7925839"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -45,9 +44,8 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "//books-copies/:id",
+													"raw": "/books-copies/:id",
 													"path": [
-														"",
 														"books-copies",
 														":id"
 													],
@@ -104,9 +102,8 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "//books-copies/:id",
+													"raw": "/books-copies/:id",
 													"path": [
-														"",
 														"books-copies",
 														":id"
 													],
@@ -167,9 +164,8 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "//books-copies?ISBN=<string>&available=false",
+											"raw": "/books-copies?ISBN=<string>&available=false",
 											"path": [
-												"",
 												"books-copies"
 											],
 											"query": [
@@ -243,9 +239,8 @@
 											}
 										},
 										"url": {
-											"raw": "//books-copies",
+											"raw": "/books-copies",
 											"path": [
-												"",
 												"books-copies"
 											]
 										}
@@ -309,9 +304,8 @@
 											}
 										},
 										"url": {
-											"raw": "//books-copies",
+											"raw": "/books-copies",
 											"path": [
-												"",
 												"books-copies"
 											]
 										}
@@ -368,9 +362,8 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "//books/:ISBN",
+													"raw": "/books/:ISBN",
 													"path": [
-														"",
 														"books",
 														":ISBN"
 													],
@@ -427,9 +420,67 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "//books/:ISBN",
+													"raw": "/books/:ISBN",
 													"path": [
-														"",
+														"books",
+														":ISBN"
+													],
+													"variable": [
+														{
+															"key": "ISBN",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "{{baseUrl}}/books/:ISBN/publish",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/books/:ISBN/publish",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"books",
+												":ISBN",
+												"publish"
+											],
+											"variable": [
+												{
+													"key": "ISBN",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "/books/:ISBN",
+													"path": [
 														"books",
 														":ISBN"
 													],
@@ -480,9 +531,50 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "//books",
+											"raw": "/books",
 											"path": [
-												"",
+												"books"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "{{baseUrl}}/books/get-preview",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "/books",
+											"path": [
 												"books"
 											]
 										}
@@ -546,9 +638,8 @@
 											}
 										},
 										"url": {
-											"raw": "//books",
+											"raw": "/books",
 											"path": [
-												"",
 												"books"
 											]
 										}
@@ -612,9 +703,8 @@
 											}
 										},
 										"url": {
-											"raw": "//books",
+											"raw": "/books",
 											"path": [
-												"",
 												"books"
 											]
 										}
@@ -630,6 +720,74 @@
 									],
 									"cookie": [],
 									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "audiobooks",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "{{baseUrl}}/audiobooks/:id/publish",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/audiobooks/:id/publish",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"audiobooks",
+												":id",
+												"publish"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "/books/:ISBN",
+													"path": [
+														"books",
+														":ISBN"
+													],
+													"variable": [
+														{
+															"key": "ISBN",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
 								}
 							]
 						}
@@ -695,9 +853,8 @@
 											}
 										},
 										"url": {
-											"raw": "//Account/register",
+											"raw": "/Account/register",
 											"path": [
-												"",
 												"Account",
 												"register"
 											]
@@ -769,9 +926,8 @@
 											}
 										},
 										"url": {
-											"raw": "//Account/changePassword",
+											"raw": "/Account/changePassword",
 											"path": [
-												"",
 												"Account",
 												"changePassword"
 											]
@@ -845,9 +1001,8 @@
 									}
 								},
 								"url": {
-									"raw": "//Auth/authenticate",
+									"raw": "/Auth/authenticate",
 									"path": [
-										"",
 										"Auth",
 										"authenticate"
 									]
@@ -866,6 +1021,168 @@
 							"body": ""
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Add Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Title\": \"Sample Movie\",\n  \"Category\": \"Action\",\n  \"InPreview\": true,\n  \"ScreenwritersIds\": [1, 2],\n  \"DirectorsIds\": [3],\n  \"ActorsIds\": [4, 5]\n}"
+						},
+						"url": {
+							"raw": "http://{{base_url}}/movies",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/movies",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/movies/1",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Movie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/movies/1/publish",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"1",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/movies/1",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All People",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/people",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"John\",\n  \"Surname\": \"Doe\"\n}"
+						},
+						"url": {
+							"raw": "http://{{base_url}}/people",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{base_url}}/people/1",
+							"protocol": "http",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

@@ -1,10 +1,10 @@
 @startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include <C4/C4_Component>
 
-!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!$DEVICONS = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons"
 
-!include DEVICONS/dotnet.puml
-!include DEVICONS/postgresql.puml
+!include $DEVICONS/dotnet.puml
+!include $DEVICONS/postgresql.puml
 !include <logos/rabbitmq.puml>
 
 LAYOUT_WITH_LEGEND()
