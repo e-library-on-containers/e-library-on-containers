@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: ${CONSUL_SERVICE_NAME:rentals}
   rabbitmq:
     username: ${RABBITMQ_USER:guest}
     password: ${RABBITMQ_PASSWORD:guest}
@@ -14,6 +16,15 @@ spring:
     show-sql: true
   liquibase:
     change-log: classpath:db/changelog/master.xml
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      config:
+        enabled: false
+      discovery:
+        instance-id: ${CONSUL_SERVICE_ID:${spring.application.name}:${random.value}}
+        service-name: ${spring.application.name}
 
 rabbitmq:
   topic-exchange:

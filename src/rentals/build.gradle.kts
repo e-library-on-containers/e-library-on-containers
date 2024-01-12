@@ -19,6 +19,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2")
+	implementation ("org.springframework.cloud:spring-cloud-starter-consul-all:3.1.1")
 
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
