@@ -8,6 +8,7 @@ import RentalBookTile from "../../components/bookTile/RentalBookTile";
 import {RentedBook} from "../../models/RentedBook";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/rootReducer";
+import {useNavigate} from "react-router-dom";
 
 const Rental = () => {
     const [error, setError] = useState<string>();
@@ -18,6 +19,7 @@ const Rental = () => {
 
     const bookService = new BookService();
     const rentalService = new RentalService();
+    const navigate = useNavigate();
 
     useEffect(() => {
         updateRentals();
@@ -48,8 +50,7 @@ const Rental = () => {
 
     const returnBook = (rentId: string) => {
         rentalService.returnBook(rentId).then(r => {
-            setRentedBooks([])
-            updateRentals()
+            navigate('/')
         });
     }
 
