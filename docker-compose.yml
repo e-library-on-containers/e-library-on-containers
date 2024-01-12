@@ -13,8 +13,6 @@ networks:
         name: movies-network        
 
 services:
-  frontend:
-    image: elibraryoncontainers/frontend:$FRONTEND_VERSION
   react-frontend:
     image: elibraryoncontainers/react-frontend:$FRONTEND_VERSION
   rabbitmq:

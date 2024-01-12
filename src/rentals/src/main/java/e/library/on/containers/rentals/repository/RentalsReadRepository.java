@@ -16,5 +16,5 @@ public interface RentalsReadRepository extends PagingAndSortingRepository<Rental
 
     List<RentalEntity> findAllByUserIdAndRentalStateIsNot(UUID userId, RentalState state);
 
-    Optional<RentalEntity> findByBookInstanceId(int bookInstanceId);
+    Optional<RentalEntity> findByBookInstanceIdAndRentalStateNot(int bookInstanceId, RentalState rentalState);
 }

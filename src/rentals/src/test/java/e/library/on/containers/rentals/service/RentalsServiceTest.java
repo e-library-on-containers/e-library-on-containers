@@ -2,13 +2,14 @@ package e.library.on.containers.rentals.service;
 
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
-import e.library.on.containers.rentals.events.BookReturnedEvent;
+import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import e.library.on.containers.rentals.exceptions.RentDoesNotExistException;
 import e.library.on.containers.rentals.exceptions.RentalForBookAlreadyExistsException;
 import e.library.on.containers.rentals.message.RentalEventSender;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
+import e.library.on.containers.rentals.repository.entity.RentalState;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -37,7 +38,7 @@ class RentalsServiceTest {
     @Test
     void givenBookInstance_WhenItIsNotRented_thenSentRentSuccessfully() {
         // GIVEN
-        when(readRepository.findByBookInstanceId(TEST_BOOK_INSTANCE_ID)).thenReturn(Optional.empty());
+        when(readRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.empty());
 
         // WHEN
         sut.rentBook(TEST_USER_ID, TEST_BOOK_INSTANCE_ID);
@@ -53,7 +54,7 @@ class RentalsServiceTest {
         // GIVEN
         final var borrowedBookRent = new RentalEntity();
 
-        when(readRepository.findByBookInstanceId(TEST_BOOK_INSTANCE_ID)).thenReturn(Optional.of(borrowedBookRent));
+        when(readRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.rentBook(TEST_USER_ID, TEST_BOOK_INSTANCE_ID))
@@ -77,7 +78,7 @@ class RentalsServiceTest {
         sut.returnBook(TEST_USER_ID, TEST_RENT_ID);
 
         // THEN
-        final var captor = ArgumentCaptor.forClass(BookReturnedEvent.class);
+        final var captor = ArgumentCaptor.forClass(ReturnAwaitingApprovalEvent.class);
         verify(rentalEventSender).send(captor.capture());
         assertThat(captor.getValue().getRentalId()).isEqualTo(TEST_RENT_ID);
         assertThat(captor.getValue().getBookInstanceId()).isEqualTo(TEST_BOOK_INSTANCE_ID);

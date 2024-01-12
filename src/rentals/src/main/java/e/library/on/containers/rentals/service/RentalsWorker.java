@@ -3,9 +3,9 @@ package e.library.on.containers.rentals.service;
 import e.library.on.containers.rentals.common.RentalEntityMapper;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
-import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
+import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.entity.RentalState;
@@ -28,8 +28,8 @@ class RentalsWorker {
         readRepository.save(entity);
     }
 
-    @RabbitListener(queues = "${rabbitmq.return-queue.name}")
-    public void handle(BookReturnedEvent event) {
+    @RabbitListener(queues = "${rabbitmq.awaiting-queue.name}")
+    public void handle(ReturnAwaitingApprovalEvent event) {
         log(event);
         final var rentalId = event.getRentalId();
         final var dao = readRepository.findById(rentalId)
@@ -50,8 +50,8 @@ class RentalsWorker {
         readRepository.save(rentalEntityMapper.daoToEntity(dao));
     }
 
-    @RabbitListener(queues = "${rabbitmq.approve-queue.name}")
-    public void handle(BookReturnApprovedEvent event) {
+    @RabbitListener(queues = "${rabbitmq.return-queue.name}")
+    public void handle(BookReturnedEvent event) {
         log(event);
         final var rentalId = event.getRentalId();
         final var dao = readRepository.findById(rentalId)

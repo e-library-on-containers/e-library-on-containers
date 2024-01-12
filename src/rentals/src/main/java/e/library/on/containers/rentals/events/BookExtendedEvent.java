@@ -2,11 +2,13 @@ package e.library.on.containers.rentals.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Getter
+@ToString
 public final class BookExtendedEvent extends Event {
 	private final UUID userId;
 	private final UUID rentalId;

@@ -2,9 +2,9 @@ package e.library.on.containers.rentals.repository.dao;
 
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
-import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
+import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import e.library.on.containers.rentals.exceptions.UnsupportedEventTypeException;
 
 import java.time.ZonedDateTime;
@@ -21,8 +21,8 @@ public record EventDao(
       EventType eventType
 ){
     public static EventDao from(Event event) {
-        if (event instanceof BookReturnedEvent bookReturnedEvent) {
-            return EventDao.from(bookReturnedEvent);
+        if (event instanceof ReturnAwaitingApprovalEvent returnAwaitingApprovalEvent) {
+            return EventDao.from(returnAwaitingApprovalEvent);
         }
         if (event instanceof BookRentedEvent bookRentedEvent) {
             return EventDao.from(bookRentedEvent);
@@ -30,8 +30,8 @@ public record EventDao(
         if (event instanceof BookExtendedEvent bookExtendedEvent) {
             return EventDao.from(bookExtendedEvent);
         }
-        if (event instanceof BookReturnApprovedEvent bookReturnApprovedEvent) {
-            return EventDao.from(bookReturnApprovedEvent);
+        if (event instanceof BookReturnedEvent bookReturnedEvent) {
+            return EventDao.from(bookReturnedEvent);
         }
 
         throw new UnsupportedEventTypeException(event.getClass());
@@ -76,7 +76,7 @@ public record EventDao(
         );
     }
 
-    private static EventDao from(BookReturnApprovedEvent event) {
+    private static EventDao from(ReturnAwaitingApprovalEvent event) {
         return new EventDao(
                 event.getId(),
                 event.getCreatedAt(),
@@ -85,7 +85,7 @@ public record EventDao(
                 0,
                 0,
                 0,
-                EventType.RETURN_APPROVED
+                EventType.AWAITING_APPROVAL
         );
     }
 }

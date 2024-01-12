@@ -1,15 +1,11 @@
 version: '3.6'
 services:
-  frontend:
-    build:
-      context: ./src/front
-      dockerfile: Dockerfile.local
   react-frontend:
     build:
       context: ./src/react-front
-      dockerfile: Dockerfile.local
+      dockerfile: Dockerfile
     environment:
-      - API_URL="http://localhost:8080"
+      - API_URL=http://localhost:8080
   gateway:
     build:
       context: ./src/gateway

@@ -3,9 +3,9 @@ package e.library.on.containers.rentals.message;
 import e.library.on.containers.rentals.configuration.RabbitmqProperties;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
-import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
 import e.library.on.containers.rentals.events.Event;
+import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -25,8 +25,8 @@ public class RabbitMqRentalEventSender implements RentalEventSender {
     }
 
     @Override
-    public void send(BookReturnedEvent event) {
-        sendMessage("rental.return", event);
+    public void send(ReturnAwaitingApprovalEvent event) {
+        sendMessage("rental.awaiting", event);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class RabbitMqRentalEventSender implements RentalEventSender {
     }
 
     @Override
-    public void send(BookReturnApprovedEvent event) {
-        sendMessage("rental.approve", event);
+    public void send(BookReturnedEvent event) {
+        sendMessage("rental.return", event);
     }
 
     private void sendMessage(String routingKey, Event message) {

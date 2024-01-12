@@ -64,7 +64,7 @@ class RentalsWorkerTest {
                 givenEvent.getUserId(),
                 givenEvent.getCreatedAt(),
                 givenEvent.getCreatedAt().plusDays(1),
-                RentalState.AWAITING_RETURN_APPROVAL,
+                RentalState.RETURNED,
                 null
         );
         final var testEntity = new RentalEntity(
@@ -73,7 +73,7 @@ class RentalsWorkerTest {
                 givenEvent.getUserId(),
                 givenEvent.getCreatedAt(),
                 givenEvent.getCreatedAt().plusDays(1),
-                RentalState.ACTIVE,
+                RentalState.AWAITING_RETURN_APPROVAL,
                 null
         );
         when(repository.findById(testRentalId)).thenReturn(Optional.of(testEntity));

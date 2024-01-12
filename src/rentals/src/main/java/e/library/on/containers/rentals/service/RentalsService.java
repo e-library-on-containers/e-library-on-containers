@@ -3,13 +3,14 @@ package e.library.on.containers.rentals.service;
 import e.library.on.containers.rentals.common.EventEntityMapper;
 import e.library.on.containers.rentals.events.BookExtendedEvent;
 import e.library.on.containers.rentals.events.BookRentedEvent;
-import e.library.on.containers.rentals.events.BookReturnApprovedEvent;
 import e.library.on.containers.rentals.events.BookReturnedEvent;
+import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import e.library.on.containers.rentals.exceptions.RentDoesNotExistException;
 import e.library.on.containers.rentals.exceptions.RentalForBookAlreadyExistsException;
 import e.library.on.containers.rentals.message.RentalEventSender;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
+import e.library.on.containers.rentals.repository.entity.RentalState;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class RentalsService {
     private final EventEntityMapper eventEntityMapper = new EventEntityMapper();
 
     public UUID rentBook(UUID userId, int bookInstanceId) {
-        readRepository.findByBookInstanceId(bookInstanceId).ifPresent(
+        readRepository.findByBookInstanceIdAndRentalStateNot(bookInstanceId, RentalState.RETURNED).ifPresent(
                 $ -> {
                     throw new RentalForBookAlreadyExistsException(bookInstanceId);
                 }
@@ -47,7 +48,7 @@ public class RentalsService {
     public void returnBook(UUID userId, UUID rentId)  {
         final var rental = readRepository.findById(rentId)
                 .orElseThrow(() -> new RentDoesNotExistException(rentId));
-        final var returnEvent = new BookReturnedEvent(rentId, userId, rental.getBookInstanceId());
+        final var returnEvent = new ReturnAwaitingApprovalEvent(rentId, userId, rental.getBookInstanceId());
 
         log.info("Returning book on rent with id {}...", rentId);
         eventRepository.save(eventEntityMapper.eventToEntity(returnEvent));
@@ -57,11 +58,11 @@ public class RentalsService {
     public void approveReturn(UUID rentId) {
         final var rental = readRepository.findById(rentId)
                 .orElseThrow(() -> new RentDoesNotExistException(rentId));
-        final var approvedReturnEvent = new BookReturnApprovedEvent(rental.getId());
+        final var bookReturnedEvent = new BookReturnedEvent(rental.getUserId(), rental.getId(), rental.getBookInstanceId());
 
         log.info("Approved return of rent with id: {}", rental.getId());
-        eventRepository.save(eventEntityMapper.eventToEntity(approvedReturnEvent));
-        eventSender.send(approvedReturnEvent);
+        eventRepository.save(eventEntityMapper.eventToEntity(bookReturnedEvent));
+        eventSender.send(bookReturnedEvent);
     }
 
     public void extendRent(UUID userId, UUID rentId, int days) {

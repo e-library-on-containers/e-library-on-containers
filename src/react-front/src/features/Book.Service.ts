@@ -56,4 +56,13 @@ export class BookService {
                 return Promise.reject(error);
             });
     }
+
+    getBookCopyInfo(bookCopyId: number): Promise<Book> {
+        return this.httpClient
+            .get(`${this.apiUrl}/books-copies/${bookCopyId}/book-info`)
+            .then((response) => response.data as Book)
+            .catch((error) => {
+                return Promise.reject(error);
+            });
+    }
 }

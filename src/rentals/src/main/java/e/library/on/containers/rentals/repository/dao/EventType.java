@@ -2,7 +2,7 @@ package e.library.on.containers.rentals.repository.dao;
 
 public enum EventType {
     RENTED,
-    RETURNED,
+    AWAITING_APPROVAL,
     EXTENDED,
-    RETURN_APPROVED
+    RETURNED
 }

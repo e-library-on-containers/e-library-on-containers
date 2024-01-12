@@ -39,8 +39,8 @@ class RabbitmqConfig {
 	}
 
 	@Bean
-	Queue approveQueue(RabbitmqProperties config) {
-		return new Queue(config.approveQueue().name(), false);
+	Queue awaitingQueue(RabbitmqProperties config) {
+		return new Queue(config.awaitingQueue().name(), false);
 	}
 
 	@Bean
@@ -49,7 +49,7 @@ class RabbitmqConfig {
 				BindingBuilder.bind(rentQueue(config)).to(rentalsExchange(config)).with("rental.rent"),
 				BindingBuilder.bind(returnQueue(config)).to(rentalsExchange(config)).with("rental.return"),
 				BindingBuilder.bind(extendQueue(config)).to(rentalsExchange(config)).with("rental.extend"),
-				BindingBuilder.bind(approveQueue(config)).to(rentalsExchange(config)).with("rental.approve")
+				BindingBuilder.bind(awaitingQueue(config)).to(rentalsExchange(config)).with("rental.awaiting")
 		);
 	}
 
