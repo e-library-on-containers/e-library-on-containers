@@ -1,9 +1,9 @@
 import {AxiosInstance} from "axios";
-import {Rent} from "../models/Rent";
-import {environment} from "./environment"
+import {environment} from "./environment";
 import axiosInstance from "./HttpClient";
+import {Movie} from "../models/Movie";
 
-export class RentalService {
+export class MoviesService {
 
     readonly apiUrl: string;
     readonly httpClient: AxiosInstance;
@@ -13,21 +13,13 @@ export class RentalService {
         this.httpClient = axiosInstance;
     }
 
-    getAllRentals(): Promise<Rent[]> {
+    getAllMovies(): Promise<Movie[]> {
         return this.httpClient
-            .get(`${this.apiUrl}/rentals`)
+            .get(`${this.apiUrl}/movies`)
             .then((response) => response.data)
             .catch((error) => {
                 console.error(error);
                 return Promise.reject(error);
             })
-    }
-
-    rentBook(bookCopyId: number): Promise<Object> {
-        return this.httpClient.post(`${this.apiUrl}/rentals/rent`, {bookInstanceId: bookCopyId});
-    }
-
-    returnBook(rentId: string) {
-        return this.httpClient.post(`${this.apiUrl}/rentals/${rentId}/return`)
     }
 }

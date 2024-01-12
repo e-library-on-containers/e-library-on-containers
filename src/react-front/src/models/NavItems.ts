@@ -8,6 +8,10 @@ const NAV_ITEMS: Array<NavItem> = [
     {
         label: 'Rentals',
         href: '/rentals'
+    },
+    {
+        label: 'Movies',
+        href: '/movies'
     }
 ];
 

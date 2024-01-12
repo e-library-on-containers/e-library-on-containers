@@ -6,6 +6,7 @@ import Library from "./pages/library/Library";
 import SingUp from "./pages/auth/SignUp";
 import SignIn from "./pages/auth/SignIn";
 import Rental from "./pages/rentals/Rental";
+import Movies from "./pages/movies/Movies";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/rentals" element={<Rental/>}/>
                 <Route path="/sign-in" element={<SignIn/>}/>
                 <Route path="/sign-up" element={<SingUp/>}/>
+                <Route path="/movies" element={<Movies/>}/>
             </Routes>
         </ChakraProvider>
     )
