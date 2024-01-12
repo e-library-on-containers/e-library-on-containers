@@ -230,12 +230,7 @@
     {
       "DownstreamPathTemplate": "/api/rents",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "rentals",
-          "Port": 8080
-        }
-      ],
+      "ServiceName": "rentals",
       "UpstreamPathTemplate": "/rentals",
       "UpstreamHttpMethod": [
         "Get"
@@ -244,12 +239,7 @@
     {
       "DownstreamPathTemplate": "/api/rents",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "rentals",
-          "Port": 8080
-        }
-      ],
+      "ServiceName": "rentals",
       "UpstreamPathTemplate": "/rentals/rent",
       "UpstreamHttpMethod": [
         "Post"
@@ -262,12 +252,7 @@
     {
       "DownstreamPathTemplate": "/api/rents/{rentId}/return",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "rentals",
-          "Port": 8080
-        }
-      ],
+      "ServiceName": "rentals",
       "UpstreamPathTemplate": "/rentals/{rentId}/return",
       "UpstreamHttpMethod": [
         "Post"
@@ -280,12 +265,7 @@
     {
       "DownstreamPathTemplate": "/api/rents/{rentId}/extend",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "rentals",
-          "Port": 8080
-        }
-      ],
+      "ServiceName": "rentals",
       "UpstreamPathTemplate": "/rentals/{rentId}/extend",
       "UpstreamHttpMethod": [
         "Post"
