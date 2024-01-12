@@ -10,14 +10,14 @@ public class EventEntityMapper {
         EventDao dao =  EventDao.from(event);
 
         return new EventEntity(
-                dao.id().toString(),
+                dao.id(),
                 dao.createdAt(),
-                dao.rentalId().toString(),
-                dao.userId().toString(),
+                dao.rentalId(),
+                dao.userId(),
                 dao.bookInstanceId(),
                 dao.forHowManyDays(),
                 dao.days(),
-                dao.eventType().toString()
+                dao.eventType()
         );
     }
 }

@@ -13,6 +13,8 @@ RABBIT_HOST="rabbitmq"
 JWT_SECRET="super_secret_123!"
 
 CONSUL_ADDRESS="http://consul:8500"
+CONSUL_HOST="consul"
+CONSUL_PORT="8500"
 
 IDENTITY_SERVICE_ADDRESS="http://identity:80"
 IDENTITY_SERVICE_NAME="identity"

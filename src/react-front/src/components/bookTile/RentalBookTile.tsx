@@ -15,6 +15,11 @@ const RentalBookTile = (props: { book: RentedBook, onReturnBook: (bookIsbn: stri
         cursor: "pointer"
     }
 
+    const awaitingApprovalButton = {
+        backgroundColor: "pink.400",
+        color: "white"
+    }
+
     return (
         <VStack
             spacing={4}
@@ -22,13 +27,22 @@ const RentalBookTile = (props: { book: RentedBook, onReturnBook: (bookIsbn: stri
         >
             <BookTile book={props.book}/>
             <Box style={{textAlign: "center"}}>
-                <Button
-                    type="button"
-                    style={rentButton}
-                    onClick={() => props.onReturnBook(props.book.rentId)}
-                >
-                    Return
-                </Button>
+                {props.book.rentalState.toString() === "AWAITING_RETURN_APPROVAL" ?
+                    <Button
+                        variant={"ghost"}
+                        isLoading
+                        spinnerPlacement={"start"}
+                        loadingText={"Awaiting admin approval"}
+                        style={awaitingApprovalButton}
+                    />
+                    :
+                    <Button
+                        style={rentButton}
+                        onClick={() => props.onReturnBook(props.book.rentId)}
+                    >
+                        Return
+                    </Button>
+                }
             </Box>
         </VStack>
     )

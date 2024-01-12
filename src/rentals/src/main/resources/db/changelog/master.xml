@@ -9,14 +9,15 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
     <changeSet id="202010211812" author="RafKulas">
+        <!-- Create the RentStatus enum type -->
         <createTable tableName="rental">
-            <column name="id" type="varchar(255)">
+            <column name="id" type="uuid">
                 <constraints primaryKey="true" />
             </column>
             <column name="book_instance_id" type="integer">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
-            <column name="user_id" type="varchar(255)">
+            <column name="user_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
             <column name="rented_at" type="timestamp with time zone">
@@ -25,7 +26,7 @@
             <column name="due_date" type="timestamp with time zone">
                 <constraints nullable="false"/>
             </column>
-            <column name="is_extended" type="boolean">
+            <column name="rental_state" type="integer">
                 <constraints nullable="false"/>
             </column>
             <column name="last_edit_date" type="timestamp with time zone">
@@ -33,17 +34,17 @@
             </column>
         </createTable>
         <createTable tableName="event">
-            <column name="id" type="varchar(255)" >
+            <column name="id" type="uuid" >
                 <constraints primaryKey="true"/>
             </column>
             <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
-            <column name="rental_id" type="varchar(255)" >
+            <column name="rental_id" type="uuid" >
                 <constraints nullable="false"/>
             </column>
-            <column name="user_id" type="varchar(255)" >
-                <constraints nullable="false"/>
+            <column name="user_id" type="uuid" >
+                <constraints nullable="true"/>
             </column>
             <column name="book_instance_id" type="integer" >
                 <constraints nullable="false"/>
@@ -54,7 +55,7 @@
             <column name="days" type="integer" >
                 <constraints nullable="false"/>
             </column>
-            <column name="event_type" type="varchar(255)" >
+            <column name="event_type" type="integer" >
                 <constraints nullable="false"/>
             </column>
         </createTable>

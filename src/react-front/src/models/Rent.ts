@@ -1,3 +1,5 @@
+import {RentalState} from "./RentalState";
+
 export interface Rent {
     id: string
     bookCopyId: number
@@ -5,4 +7,5 @@ export interface Rent {
     rentedAt: Date
     dueDate: Date
     wasExtended: boolean
+    rentalState: RentalState
 }

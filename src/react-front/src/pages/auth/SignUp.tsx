@@ -7,7 +7,7 @@ import {User} from "../../models/User";
 
 const SignUpComponent = () => {
     const autService = new AuthService()
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {

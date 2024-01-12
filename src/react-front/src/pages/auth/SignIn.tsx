@@ -9,7 +9,7 @@ import {login} from "../../redux/authSlice";
 
 const SignInComponent = () => {
     const autService = new AuthService()
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const formik = useFormik({

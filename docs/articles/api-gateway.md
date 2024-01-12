@@ -26,7 +26,7 @@ API Gateway is an ASP.NET Core API utilizing Ocelot library as API Gateway. Usin
 |    POST     |             /audiobooks/**{id}**/publish             |   V   |     Admin    |      Publish audiobook by ID |
 |    GET      |                       /rentals                       |   V   |     User     |         Get user rents       |
 |    POST     |                     /rentals/rent                    |   V   |     User     |          Rent a book         |
-|   DELETE    |             /rentals/**{rentId}**/return             |   V   |     User     |          Return book         |
+|    POST     |             /rentals/**{rentId}**/return             |   V   |     User     |          Return book         |
 |    POST     |             /rentals/**{rentId}**/extend             |   V   |     User     |        Extend due date       |
 |    POST     |                       /movies                        |   V   |     Admin    |         Add new movie        |
 |    GET      |                       /movies                        |   X   |       -      |         Get all movies       |

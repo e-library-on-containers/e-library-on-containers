@@ -13,8 +13,6 @@ networks:
         name: movies-network        
 
 services:
-  frontend:
-    image: elibraryoncontainers/frontend:$FRONTEND_VERSION
   react-frontend:
     image: elibraryoncontainers/react-frontend:$FRONTEND_VERSION
   rabbitmq:
@@ -84,8 +82,8 @@ services:
       DB_URL: $RENTALS_CONNECTION_STRING_NO_AUTH
       DB_USERNAME: $RENTALS_USER
       DB_PASSWORD: $RENTALS_PASSWORD
-      CONSUL_SERVICE_DISCOVERY_ADDRESS: $CONSUL_ADDRESS
-      CONSUL_SERVICE_ADDRESS: $RENTALS_SERVICE_ADDRESS
+      CONSUL_HOST: $CONSUL_HOST
+      CONSUL_PORT: $CONSUL_PORT
       CONSUL_SERVICE_NAME: $RENTALS_SERVICE_NAME
       CONSUL_SERVICE_ID: $RENTALS_SERVICE_ID
     depends_on:

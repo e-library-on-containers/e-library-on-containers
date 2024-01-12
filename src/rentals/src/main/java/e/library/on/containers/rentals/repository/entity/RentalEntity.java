@@ -10,9 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Getter
 @Entity
@@ -24,15 +27,16 @@ import java.time.ZonedDateTime;
 @EqualsAndHashCode
 public class RentalEntity {
     @Id
-    String id;
+    UUID id;
     int bookInstanceId;
     @NotNull
-    String userId;
+    UUID userId;
     @NotNull
     ZonedDateTime rentedAt;
     @NotNull
     ZonedDateTime dueDate;
-    boolean isExtended;
+    @Enumerated(EnumType.ORDINAL)
+    RentalState rentalState;
     @LastModifiedDate
     ZonedDateTime lastEditDate;
 }

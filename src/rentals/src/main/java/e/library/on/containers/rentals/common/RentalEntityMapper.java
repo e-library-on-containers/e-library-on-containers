@@ -4,18 +4,17 @@ import e.library.on.containers.rentals.repository.dao.RentalsReadDao;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
 
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
 public class RentalEntityMapper {
     public RentalEntity daoToEntity(RentalsReadDao dao, ZonedDateTime lastEdit) {
         return dao == null ? null :
                 new RentalEntity(
-                        dao.id().toString(),
+                        dao.id(),
                         dao.bookCopyId(),
-                        dao.userId().toString(),
+                        dao.userId(),
                         dao.rentedAt(),
                         dao.dueDate(),
-                        dao.wasExtended(),
+                        dao.rentalState(),
                         lastEdit
                 );
     }
@@ -30,11 +29,12 @@ public class RentalEntityMapper {
         }
 
         return new RentalsReadDao(
-                UUID.fromString(entity.getId()),
+                entity.getId(),
                 entity.getBookInstanceId(),
-                UUID.fromString(entity.getUserId()),
+                entity.getUserId(),
                 entity.getRentedAt(),
                 entity.getDueDate(),
-                entity.isExtended());
+                entity.getRentalState()
+        );
     }
 }

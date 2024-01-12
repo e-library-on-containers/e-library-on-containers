@@ -8,7 +8,6 @@ import e.library.on.containers.rentals.web.entity.RentBookRequest;
 import e.library.on.containers.rentals.web.entity.RentBookResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,8 +44,8 @@ class RentalsController {
         return new RentBookResponse(rentId);
     }
 
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    @DeleteMapping(
+    @ResponseStatus(code = HttpStatus.OK)
+    @PostMapping(
             value = "/{rentId}/return",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -55,6 +54,17 @@ class RentalsController {
             @PathVariable UUID rentId
     ) {
         service.returnBook(userId, rentId);
+    }
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @PostMapping(
+            value = "/{rentId}/approve-return",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    void approveReturnedBook(
+            @PathVariable UUID rentId
+    ) {
+        service.approveReturn(rentId);
     }
 
     @ResponseStatus(code = HttpStatus.OK)

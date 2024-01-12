@@ -28,6 +28,6 @@ export class RentalService {
     }
 
     returnBook(rentId: string) {
-        return this.httpClient.delete(`${this.apiUrl}/rentals/${rentId}/return`)
+        return this.httpClient.post(`${this.apiUrl}/rentals/${rentId}/return`)
     }
 }

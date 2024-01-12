@@ -1,5 +1,5 @@
 #### STAGE 1
-FROM node:lts-alpine as builder
+FROM node:lts-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,7 +9,7 @@ RUN npm run build
 
 
 #### STAGE 2
-FROM nginx:1.21-alpine as production-stage
+FROM nginx:1.21-alpine AS production-stage
 
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/dist /usr/share/nginx/html

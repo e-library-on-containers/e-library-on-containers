@@ -2,14 +2,16 @@ package e.library.on.containers.rentals.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Getter
+@ToString
 public final class BookReturnedEvent extends Event {
-	private final UUID rentalId;
 	private final UUID userId;
+	private final UUID rentalId;
 	private final int bookInstanceId;
 
 	@JsonCreator
@@ -26,7 +28,7 @@ public final class BookReturnedEvent extends Event {
 		this.bookInstanceId = bookInstanceId;
 	}
 
-	public BookReturnedEvent(UUID rentalId, UUID userId, int bookInstanceId) {
+	public BookReturnedEvent(UUID userId, UUID rentalId, int bookInstanceId) {
 		this(UUID.randomUUID(), ZonedDateTime.now(), userId, rentalId, bookInstanceId);
 	}
 }

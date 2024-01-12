@@ -8,6 +8,7 @@ import RentalBookTile from "../../components/bookTile/RentalBookTile";
 import {RentedBook} from "../../models/RentedBook";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/rootReducer";
+import {useNavigate} from "react-router-dom";
 
 const Rental = () => {
     const [error, setError] = useState<string>();
@@ -18,6 +19,7 @@ const Rental = () => {
 
     const bookService = new BookService();
     const rentalService = new RentalService();
+    const navigate = useNavigate();
 
     useEffect(() => {
         updateRentals();
@@ -27,43 +29,29 @@ const Rental = () => {
         setLoading(true)
         setRentedBooks([])
         rentalService.getAllRentals()
-            .then(rental => {
-                    rental.map(async rent => await bookService.getAllBookCopies()
-                        .then(rentals => {
-                            setLoading(true)
-                            if (rentals.length <= 0) {
-                                return Promise.reject("No book in library!")
-                            }
-                            return rentals
-                        })
-                        .then(copies => {
-                                const copy = copies.find(copy => copy.id == rent.bookCopyId);
-                                if (copy !== undefined) {
-                                    bookService.getBook(copy.isbn).then(book => {
-                                        const rentedBook = {
-                                            rentId: rent.id,
-                                            bookCopyId: rent.bookCopyId,
-                                            userId: rent.userId,
-                                            coverImg: book.coverImg,
-                                            title: book.title,
-                                            authors: book.authors,
-                                            isbn: book.isbn
-                                        } as RentedBook;
-                                        setRentedBooks([...rentedBooks, rentedBook])
-                                    })
-                                }
-                            }
-                        )
-                        .finally(() => setLoading(false))
-                    )
-                }
-            )
+            .then(rentals =>
+                rentals.map(async rental => {
+                    const bookCopyInfo = await bookService.getBookCopyInfo(rental.bookCopyId)
+                    const rentedBook = {
+                        rentId: rental.id,
+                        bookCopyId: rental.bookCopyId,
+                        userId: rental.userId,
+                        coverImg: bookCopyInfo.coverImg,
+                        title: bookCopyInfo.title,
+                        authors: bookCopyInfo.authors,
+                        isbn: bookCopyInfo.isbn,
+                        rentalState: rental.rentalState
+                    } as RentedBook;
+                    setRentedBooks([...rentedBooks, rentedBook])
+                }))
             .finally(() => setLoading(false))
-            .catch(error => console.error(error))
+            .catch(error => setError(error))
     }
 
     const returnBook = (rentId: string) => {
-        rentalService.returnBook(rentId).then(r => updateRentals());
+        rentalService.returnBook(rentId).then(r => {
+            navigate('/')
+        });
     }
 
     return (

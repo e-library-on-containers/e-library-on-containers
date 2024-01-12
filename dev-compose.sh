@@ -12,7 +12,7 @@ done
 if [ "$LOCAL_BUILD" = true ]
   then
     shift 
-    docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.local.yml --env-file .dev-env "$@"
+    docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.local.yml --env-file .dev-env "$@"
   else
-    docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file .dev-env "$@"
+    docker compose -f docker-compose.yml -f docker-compose.dev.yml --env-file .dev-env "$@"
 fi

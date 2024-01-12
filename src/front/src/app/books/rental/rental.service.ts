@@ -38,7 +38,7 @@ export class RentalService {
   }
 
   returnBook(rentId: string) {
-    return this.http.delete(`${this.apiUrl}/rentals/${rentId}/return`).pipe(
+    return this.http.post(`${this.apiUrl}/rentals/${rentId}/return`, {}).pipe(
       catchError((error: HttpErrorResponse) => {
         this.snackBar.open(error.error.message, '', {duration: 2000})
         return from([]);

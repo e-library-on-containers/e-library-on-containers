@@ -1,29 +1,34 @@
 package e.library.on.containers.rentals.repository.entity;
 
+import e.library.on.containers.rentals.repository.dao.EventType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name="event")
+@Table(name = "event")
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventEntity {
     @Id
-    String id;
+    UUID id;
     @CreatedDate
     ZonedDateTime createdAt;
-    String rentalId;
-    String userId;
+    UUID rentalId;
+    UUID userId;
     int bookInstanceId;
     int forHowManyDays;
     int days;
-    String eventType;
+    @Enumerated(EnumType.ORDINAL)
+    EventType eventType;
 }
