@@ -1,0 +1,2420 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.API.Controllers.AudiobooksController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.API.Controllers.AudiobooksController.html",
+          "hash": "IlduB7bG6Bz1ZoEr8RZRCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.API.Controllers.BookInstancesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.API.Controllers.BookInstancesController.html",
+          "hash": "NNPxomfmWzQZrs0gwQfdsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.API.Controllers.BooksController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.API.Controllers.BooksController.html",
+          "hash": "Z5X90iAY6Oil00E6CT1rug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.API.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.API.Controllers.html",
+          "hash": "hAPfx8cy50WZ0W+TbrL/aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Api.Consul.ConsulConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Api.Consul.ConsulConfiguration.html",
+          "hash": "BfBJnMF0AW6aRDOiePHp0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Api.Consul.ConsulHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Api.Consul.ConsulHostedService.html",
+          "hash": "y5e/N50vRx40f6/Fii/Upw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Api.Consul.ConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Api.Consul.ConsulOptions.html",
+          "hash": "jHyMF4IZhmSl7qiu3v3tuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Api.Consul.IConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Api.Consul.IConsulOptions.html",
+          "hash": "PTUG5mHBPJAepZBGAEHniA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Api.Consul.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Api.Consul.html",
+          "hash": "Cef9mJM64hkfOhMes2ePrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Create.CreateAudiobookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Create.CreateAudiobookCommand.html",
+          "hash": "is+KJ9ousLQ4Cnqos0Y12g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Create.CreateAudiobookCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Create.CreateAudiobookCommandHandler.html",
+          "hash": "4b6HzjtXklAQhSuHk1wIBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Create.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Create.html",
+          "hash": "UBXNECw/dUT06/i+svVchQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Get.GetAllAudiobooksQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Get.GetAllAudiobooksQuery.html",
+          "hash": "vFPl5/1LU7Pb8Nj63NIp/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Get.GetAllAudiobooksQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Get.GetAllAudiobooksQueryHandler.html",
+          "hash": "Zt3452fopXHYvBMjIPX2Rw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Get.GetAudiobookByIdQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Get.GetAudiobookByIdQuery.html",
+          "hash": "V0Cqo5GVU0uxgLuLLzEV3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Get.GetAudiobookByIdQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Get.GetAudiobookByIdQueryHandler.html",
+          "hash": "GjPA7xCC3jEgsSYj5OiCeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.Get.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.Get.html",
+          "hash": "0CZ9QS3qGNFT8n8tIZ9NkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.PublishAudiobookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.PublishAudiobookCommand.html",
+          "hash": "FlaI4qFEZ1IwiiVLaI0vwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.PublishAudiobookCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.PublishAudiobookCommandHandler.html",
+          "hash": "ziSK/qzjVMnMrGSrjfsFdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Audiobooks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Audiobooks.html",
+          "hash": "h50qM9a4dtUA/rUTjg87xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Books.PublishBookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Books.PublishBookCommand.html",
+          "hash": "EJZQ2yeQ4gOYNoK4iHC0BA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Books.PublishBookCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Books.PublishBookCommandHandler.html",
+          "hash": "c+KC3tStkc/1PrE/8DTR1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Books.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Books.html",
+          "hash": "42QljTOpb5BaeuKmPC1K5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Create.CreateBookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Create.CreateBookCommand.html",
+          "hash": "p7nm/5VpJgI5MVQvHJ7oGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Create.CreateBookHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Create.CreateBookHandler.html",
+          "hash": "WiRTo53R4RT5FiJQ7mcysw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Create.CreateBookInstanceCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Create.CreateBookInstanceCommand.html",
+          "hash": "0v0F4eP54EEzrapjYaUjHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Create.CreateBookInstanceHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Create.CreateBookInstanceHandler.html",
+          "hash": "Wp+YJTYyIJ6/Xapa3WSo5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Create.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Create.html",
+          "hash": "9rVbTrOLKdBOzrJQxqpK3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Delete.DeleteBookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Delete.DeleteBookCommand.html",
+          "hash": "AVcMfrpsLKcGBIl3rWX05A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Delete.DeleteBookHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Delete.DeleteBookHandler.html",
+          "hash": "X6ia9XWBNIBAOHfXN8pktQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Delete.DeleteBookInstanceCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Delete.DeleteBookInstanceCommand.html",
+          "hash": "UWr87n/zJR13u7cGkbEDNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Delete.DeleteBookInstanceHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Delete.DeleteBookInstanceHandler.html",
+          "hash": "+A/dD2a7Pctma7YfZf90HQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Delete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Delete.html",
+          "hash": "ZQ2E562omiZofwFllj14bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetAll.GetAllBookInstancesHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetAll.GetAllBookInstancesHandler.html",
+          "hash": "NU1rGe9XLpbealMxkhdWxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetAll.GetAllBookInstancesQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetAll.GetAllBookInstancesQuery.html",
+          "hash": "AQ9M/hU3f1iFvWSWC0plLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetAll.GetAllBooksHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetAll.GetAllBooksHandler.html",
+          "hash": "fM86Bkdas9sEwxtFYRUbYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetAll.GetAllBooksQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetAll.GetAllBooksQuery.html",
+          "hash": "VvmaypoR+vXOKIPiNHG6Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetAll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetAll.html",
+          "hash": "vWNzu36ataTNYCf/o62P1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetByISBN.GetBookByISBNHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetByISBN.GetBookByISBNHandler.html",
+          "hash": "ejlfKGkrs9tiNUqVZyPP6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetByISBN.GetBookByISBNQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetByISBN.GetBookByISBNQuery.html",
+          "hash": "jibs+4ZHDUR0egCpBdzfpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetByISBN.GetBookInstancesByISBNHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetByISBN.GetBookInstancesByISBNHandler.html",
+          "hash": "clQwQ5fHw9Gb454ubvJ0pg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetByISBN.GetBookInstancesByISBNQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetByISBN.GetBookInstancesByISBNQuery.html",
+          "hash": "CxsDr9L029DEMjklrwV8oA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetByISBN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetByISBN.html",
+          "hash": "nzzg4BG3ksOh36JYmPPecw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetById.GetBookByInstanceIdQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetById.GetBookByInstanceIdQuery.html",
+          "hash": "59HSM16vz3A6QCHldIfP6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetById.GetBookByInstanceIdQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetById.GetBookByInstanceIdQueryHandler.html",
+          "hash": "ujWu8FUde8jz5azfGqDcBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetById.GetBookInstanceByIdHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetById.GetBookInstanceByIdHandler.html",
+          "hash": "YG152hhOTn/J+tLUevcmXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetById.GetBookInstanceByIdQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetById.GetBookInstanceByIdQuery.html",
+          "hash": "Ht4bspmZdal5K+kdXL84Yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.GetById.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.GetById.html",
+          "hash": "S9HoX5fRaz2LJ0iaXJvLJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.RabitMQ.BookReturnedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.RabitMQ.BookReturnedEvent.html",
+          "hash": "ehK23b7tWMoalnKTKPtb3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.RabitMQ.IRabitMQProducer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.RabitMQ.IRabitMQProducer.html",
+          "hash": "B60ODdBa3Xl592kRBZioYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.RabitMQ.RabbitMQWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.RabitMQ.RabbitMQWorker.html",
+          "hash": "qtU9HCBRBIoxU1nbw5QYgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.RabitMQ.RabitMQProducer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.RabitMQ.RabitMQProducer.html",
+          "hash": "3jPWVyByUbT/V89Fp5cMZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.RabitMQ.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.RabitMQ.html",
+          "hash": "hxJCSuNH+GN+GnH+6buvbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Responses.BookInstanceResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Responses.BookInstanceResponse.html",
+          "hash": "3EYG4WWrbzsWgHKMUuFTEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Responses.BookResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Responses.BookResponse.html",
+          "hash": "BUyxD/2j9hATshS7Zzth2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Responses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Responses.html",
+          "hash": "II/FHOTl5n53K4wnaqc8xQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Update.UpdateBookCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Update.UpdateBookCommand.html",
+          "hash": "ykDJeHd8rPS1AX85TjHysg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Update.UpdateBookInstanceCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Update.UpdateBookInstanceCommand.html",
+          "hash": "kGzY51R6Pa/H6I6zHrfsVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Core.Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Core.Update.html",
+          "hash": "ZIU/oZjJp21MoMJuCY7dVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Database.Upgrader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Database.Upgrader.html",
+          "hash": "ZC4N4OdP///vmh9vg00woA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Database.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Database.html",
+          "hash": "pHHdO9sZJT/QlLK1bLoOQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Contracts.IBookInstancesRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Contracts.IBookInstancesRepository-1.html",
+          "hash": "ZC+q/rHoeSSYseAgV0mmJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Contracts.IBookRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Contracts.IBookRepository-1.html",
+          "hash": "KYkOU5QmZzjwoQQZD1AXaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Contracts.IRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Contracts.IRepository-1.html",
+          "hash": "iLb2Ly+8diYLNNaZBmb5PA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Contracts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Contracts.html",
+          "hash": "NwApe0529lhIcmJ2oEmVfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.Audiobook.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.Audiobook.html",
+          "hash": "VzcPvyLMystG10ALpEnEJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.Book.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.Book.html",
+          "hash": "r/oPKloaW9xBIdj6NOCAEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.BookInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.BookInstance.html",
+          "hash": "Zi7HiFrT28QQg9Fl6610tg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.BookRead.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.BookRead.html",
+          "hash": "A2XKBs1krPBBiPsb1rhvjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.Person.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.Person.html",
+          "hash": "pnRUyP/nYoB5tZo6/zHG8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Models.html",
+          "hash": "+QcDFhZJ+Yhhx8lcpwxHgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.AudiobooksRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.AudiobooksRepository.html",
+          "hash": "5Vh5CFjMH54L2K0BrjCJHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.BookInstancesRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.BookInstancesRepository.html",
+          "hash": "aXPHwaxKHmNYhqJIuOgawQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.BooksReadRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.BooksReadRepository.html",
+          "hash": "P1v0RHatcwyolyMGYVxkMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.BooksRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.BooksRepository.html",
+          "hash": "i7isv1SA8jODkKiKr3wp+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.PeopleRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.PeopleRepository.html",
+          "hash": "sY8z5bOE1CjvdGUYirTsBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Books.Infrastructure.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Books.Infrastructure.Repositories.html",
+          "hash": "9B6HmLwmI1VrOSO+Ub7mEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.AbstractValidator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.AbstractValidator-1.html",
+          "hash": "1bVzz345KcjijAWPnVR3KQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.ApplicationError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.ApplicationError.html",
+          "hash": "QlC2Av9rkraZR+1f01sJ2A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.ErrorType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.ErrorType.html",
+          "hash": "h0zgYxigBZ6OvPEESnM1Xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.NotFoundError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.NotFoundError.html",
+          "hash": "XApFLvdc9kgcgl+KyhtdWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.RestrictedAccessError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.RestrictedAccessError.html",
+          "hash": "thaGJ+NRPQ+CzYmz+EaH1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.UnknownError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.UnknownError.html",
+          "hash": "PFXbQ1YBfyoqugNcEPf8NQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.ValidationError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.ValidationError.html",
+          "hash": "RC/4JJC1IqGCk3sGJUobLg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Errors.html",
+          "hash": "n3t9Nh7hbnkFPUhGlduE3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Extensions.ApplicationErrorExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Extensions.ApplicationErrorExtensions.html",
+          "hash": "WLCFIp0greDTKU4AEkIMqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Extensions.FunctionalValidationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Extensions.FunctionalValidationExtensions.html",
+          "hash": "+sSSxqdQzdNJp2r0H5s7oA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Extensions.ResultErrorExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Extensions.ResultErrorExtensions.html",
+          "hash": "CF/+xhUSQ4sdV9JVkPA38w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.Extensions.html",
+          "hash": "bo31V0umo/bwCoFf4SPPaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.IFunctionalValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.IFunctionalValidator.html",
+          "hash": "cbpv9iYJ5IE10nKh77LZdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FunctionalValidation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FunctionalValidation.html",
+          "hash": "Ug7qKus0+Vpg/lE2QXkS2A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gateway.Api.Options.AuthOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gateway.Api.Options.AuthOptions.html",
+          "hash": "XavEO0TcOScDNX/2aEc2/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gateway.Api.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gateway.Api.Options.html",
+          "hash": "LruTqQOVH/Dr3DhTQCXtJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gateway.Api.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gateway.Api.Program.html",
+          "hash": "NBBFniqjTgWq+xaTx1TScw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gateway.Api.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gateway.Api.html",
+          "hash": "T5Fu9RhuNFFtgeTr5dJaXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Common.ApplicationController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Common.ApplicationController.html",
+          "hash": "f5PkPTrJPDtPDUYbmZxN+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Common.html",
+          "hash": "Zgoif6lF8j0nekEBPFummw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Controllers.AccountController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Controllers.AccountController.html",
+          "hash": "JU0CsggWGCWhVPAjPeokBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Controllers.AuthController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Controllers.AuthController.html",
+          "hash": "qzDA/o0Uhd/O/moOksIdOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Controllers.html",
+          "hash": "d/oUOSbwBQ+WXNMkcXHJlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Extensions.HttpContextExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Extensions.HttpContextExtensions.html",
+          "hash": "VY1PGIWIg4Ze1B19CI2xsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Extensions.html",
+          "hash": "olq6GbXR+u+FHrvlY6GwRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.AuthenticationConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.AuthenticationConfiguration.html",
+          "hash": "l1ovOb1M8uRL5ET+OiF6VQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.ConsulConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.ConsulConfiguration.html",
+          "hash": "39m1BbiuGpuj0uCKp9VvDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.OptionsConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.OptionsConfiguration.html",
+          "hash": "lIl0feU9HfNZyGPtHdQHMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.PipelineConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.PipelineConfiguration.html",
+          "hash": "J6Itf8moQcSwgnXwVJQyJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.ServicesConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.ServicesConfiguration.html",
+          "hash": "DGRTs/s54RdnaY1n2/4oKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.SwaggerConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.SwaggerConfiguration.html",
+          "hash": "mxJjruXFWe9D9yvquTHkOQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Infrastructure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Infrastructure.html",
+          "hash": "LyI8N6VwGrH6uU3UPqL30Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Request.ChangePasswordRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Request.ChangePasswordRequest.html",
+          "hash": "VscdVTMNQOnFermSW+5yaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Request.html",
+          "hash": "w1licb8TjcGKTF3L/sLrYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Responses.ErrorMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Responses.ErrorMessage.html",
+          "hash": "fLmm9d69RMviC18tv24dYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Responses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Responses.html",
+          "hash": "kEbsvYDqq6Pvq12Io+AbRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Services.ConsulHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Services.ConsulHostedService.html",
+          "hash": "ROs66RcQKRxKaD3l0Z9wag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Services.html",
+          "hash": "zr2tVishIkKvksJsJW8IPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Validators.ChangePasswordRequestValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Validators.ChangePasswordRequestValidator.html",
+          "hash": "BSsg5zueO1JwvHRW4P2+nA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Validators.RegisterUserCommandValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Validators.RegisterUserCommandValidator.html",
+          "hash": "CuUPHogEg3gSnW0JJnlOog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Validators.SignInQueryValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Validators.SignInQueryValidator.html",
+          "hash": "9HtkI0fPf1kiqXYsZ1yTXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Api.Validators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Api.Validators.html",
+          "hash": "79e+rnk/rXKmIR59MJFVFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Authentication.SignInQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Authentication.SignInQuery.html",
+          "hash": "dadjmjsOCxQWKNfWRbaakw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Authentication.SignInQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Authentication.SignInQueryHandler.html",
+          "hash": "QDUasg7h8jeTT+H/1sy7RA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Authentication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Authentication.html",
+          "hash": "x7cRTv0PukOsHLpP12Km/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Dtos.TokenDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Dtos.TokenDto.html",
+          "hash": "TTXEuVUc+NRrt/qfD5fE6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Dtos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Dtos.html",
+          "hash": "uYZjfwKUOIrXPb4BOifq3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Repositories.IUsersRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Repositories.IUsersRepository.html",
+          "hash": "ZdG1PKfOio0WehAc24DyGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Repositories.html",
+          "hash": "yVoYe+lcuwpNtlrpup8R6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Services.IAuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Services.IAuthService.html",
+          "hash": "AsxJMggdN0/oinwkHijQ4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Services.IRolesService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Services.IRolesService.html",
+          "hash": "6REK+Aw65j/X3fwCAH/FPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Services.html",
+          "hash": "yY270HPkP4JHeEyiADwZ1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.AddUserCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.AddUserCommand.html",
+          "hash": "StiKSx+uEpjtY8kliQrSNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.AddUserCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.AddUserCommandHandler.html",
+          "hash": "NLXMhELpQvTrDY0o8jcVXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.ChangePasswordCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.ChangePasswordCommand.html",
+          "hash": "qqSphmfarGYkIospXnCeMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.ChangePasswordCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.ChangePasswordCommandHandler.html",
+          "hash": "wCaNbPQgHYadLNlO9EOajw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.RegisterUserCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.RegisterUserCommand.html",
+          "hash": "pXYZgKd3v5gPevx/o43nkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.RegisterUserCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.RegisterUserCommandHandler.html",
+          "hash": "4PUg+PbXMB8XriqAp45hcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Application.Users.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Application.Users.html",
+          "hash": "iuBH2HTj9tKEbPe+dvXykg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Database.Upgrader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Database.Upgrader.html",
+          "hash": "vByI+urJSzYbXLMydD1Ovg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Database.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Database.html",
+          "hash": "qkMtvgdcdHfw2GzVLh6xzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Entities.Role.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Entities.Role.html",
+          "hash": "T3y6ug/PG/UnK1n9+p/2Kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Entities.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Entities.User.html",
+          "hash": "vSgwmoUtfNndgE4Y91RaKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Entities.html",
+          "hash": "VfvhE8zjW1PiL8251TCMwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.InvalidEmail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.InvalidEmail.html",
+          "hash": "kXp50XSXCvDQ3IUunAUrpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.InvalidFullName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.InvalidFullName.html",
+          "hash": "rvAGDmVJ8VGLD5nghEWStg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.InvalidPassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.InvalidPassword.html",
+          "hash": "75KvfJhT4XGopoX/V5foLg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.InvalidRoleName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.InvalidRoleName.html",
+          "hash": "Aba8Ttl8lY6JQeSZIOdFyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.NoUserRoles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.NoUserRoles.html",
+          "hash": "bHbVvKehleL+14D77SgmYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.PasswordsDoesNotMatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.PasswordsDoesNotMatch.html",
+          "hash": "i2vuReIMRgVoBMmMROewug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.UnsafePassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.UnsafePassword.html",
+          "hash": "U/kKrVTbXiYZldpj8BdNTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.UserAlreadyExists.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.UserAlreadyExists.html",
+          "hash": "5QZGJKV666g5/HNeoB5KDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Errors.html",
+          "hash": "1ZhEqOZLN+Cn1iF72xS3og=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Extensions.ResultExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Extensions.ResultExtensions.html",
+          "hash": "MzeUiO7PCVEowGG97XL2Wg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.Extensions.html",
+          "hash": "29hLsfL7K0wRkJkaXrMVDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.Email.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.Email.html",
+          "hash": "g5UbuYS4xrRPPYGj5Hf6pA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.FullName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.FullName.html",
+          "hash": "7yg3ujDrpVAqPdz8j0KOuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.HashedPassword.PasswordHasher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.HashedPassword.PasswordHasher.html",
+          "hash": "sem9QggW8BIG4x/d6lOFtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.HashedPassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.HashedPassword.html",
+          "hash": "2PpZ0leadoY0Ug6uJSOzzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.RoleName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.RoleName.html",
+          "hash": "ZZPUz7S0P/fnt5c6LVXEVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Domain.ValueObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Domain.ValueObjects.html",
+          "hash": "senZIFpmLEQ8jeHqn/WLkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Common.ISqlConnectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Common.ISqlConnectionFactory.html",
+          "hash": "Truawb7lrqjrbBhKHW/hJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Common.NpgsqlConnectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Common.NpgsqlConnectionFactory.html",
+          "hash": "UHgCt9rdrQpXT+pcjLa6jQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Common.html",
+          "hash": "aYaG7PjzD8dnPXOqLfsf/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Models.ReadRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Models.ReadRole.html",
+          "hash": "fZP2+LcaE/dI9lcP4fcQ0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Models.ReadUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Models.ReadUser.html",
+          "hash": "Ytyx0brix/3dNk8NjWJtjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Models.html",
+          "hash": "FLG1PkdxT6YBfujDxe2hqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.AuthOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.AuthOptions.html",
+          "hash": "aZG/6rSLgWznBfPH9yO/4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.ConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.ConsulOptions.html",
+          "hash": "kfff5bT3DWIftAWAmSQsIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.IAuthOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.IAuthOptions.html",
+          "hash": "k0WJGqSPUkZOXupfGrnC3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.IConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.IConsulOptions.html",
+          "hash": "UdaM04vhAWAtjVdBsePQWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.ISqlOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.ISqlOptions.html",
+          "hash": "qXqZpzI1gEUAKqRZG0T29g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.SqlOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.SqlOptions.html",
+          "hash": "wGRhMwsgS/pMRhMORO3LDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Options.html",
+          "hash": "S5mAhcSPKxsGRCQkovHg/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Repositories.UsersRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Repositories.UsersRepository.html",
+          "hash": "o4U6dT5pAVRa/40ZtU0qcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Repositories.html",
+          "hash": "ZvD26Gkwwijie75mluuuew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Services.AuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Services.AuthService.html",
+          "hash": "8SLNHpPIANThE4lsbhFAsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Services.RolesService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Services.RolesService.html",
+          "hash": "dCOIEV/vzuuGaIRW6WLdfw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Identity.Infrastructure.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Identity.Infrastructure.Services.html",
+          "hash": "65flUO+h1QmzGIoJm3sqRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Api.Consul.ConsulConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Api.Consul.ConsulConfiguration.html",
+          "hash": "1EK+yaAmeixcvIQ2+DfO5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Api.Consul.ConsulHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Api.Consul.ConsulHostedService.html",
+          "hash": "F4f5cva6FnNa/lwXMyNOPA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Api.Consul.ConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Api.Consul.ConsulOptions.html",
+          "hash": "TJmmSjy59a8o94aZOcu+SA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Api.Consul.IConsulOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Api.Consul.IConsulOptions.html",
+          "hash": "QhshmejiGNRDcXOA1dyeog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Api.Consul.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Api.Consul.html",
+          "hash": "V17YTtcTwjlqCUpRg4hMZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Database.Upgrader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Database.Upgrader.html",
+          "hash": "n1IxBlbNupDINYSRE2Ad+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Movies.Database.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Movies.Database.html",
+          "hash": "KMnmdDvJ6jYQjS/DH+sMhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "rIGsfs5LCDBnavP24xC4eA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "UJb7kESqVcZIiH99ujmG7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/api-gateway.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api-gateway.html",
+          "hash": "8ZPQae+KJlk6XtihxQt3iQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/books.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/books.html",
+          "hash": "bCdI7HFDZjzK8xPxgdbVfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/containerization.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/containerization.html",
+          "hash": "K1Id3UtfV0T5ZfStPNu8ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/databases.html",
+          "hash": "VmfULkDFHDMnVoc+n4J8gw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/diagrams.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/diagrams.html",
+          "hash": "UfTB8AHqWVhGh6eb3hbwWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/functional-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/functional-validation.html",
+          "hash": "4ObB9RDga8zbxvAISbrcNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/identity.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/identity.html",
+          "hash": "2nv/s5Se4VnJ9yX0+S2FnQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/movies.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/movies.html",
+          "hash": "RMIyucDdvgwMz3LabpO5qQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/rentals.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/rentals.html",
+          "hash": "tfeuGSUXveVBCHSFnqy+3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "/UeNamb6oBQGGPJcBZudaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "ozF5VkPb3WMb8HZvnlvBKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "YWpTWj7KG6CIq1mmPD2S9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 11,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 183,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

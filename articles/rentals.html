@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Identity service </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Identity service ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="identity-service">Identity service</h1>
+
+<h2 id="tech-stack">Tech stack</h2>
+<ul>
+<li>Java 17</li>
+<li>Spring 2.7.5</li>
+<li>Docker</li>
+</ul>
+<h2 id="main-libraries">Main libraries</h2>
+<ul>
+<li>Functionality:
+<ul>
+<li>Lombok</li>
+<li>Jpa</li>
+<li>Hibernate</li>
+<li>Liquibase</li>
+<li>Logback</li>
+</ul>
+</li>
+</ul>
+<h3 id="common">Common</h3>
+<p>Common contains mappers for data access object and JPA Entities to make it easier to work with Database and have immutable objects everywhere.</p>
+<h3 id="configuration">Configuration</h3>
+<p>Configuration contains all the files related to Spring configuration like <code>@Configuration</code> which show Spring how <code>application-*.yml</code> should look like and configuration for all the Beans used in code.</p>
+<h3 id="events">Events</h3>
+<p>Events contains definition of every event used by Rentals Service.</p>
+<h3 id="repository">Repository</h3>
+<p>Repository contains <code>interfaces</code> for Spring Data to manipulate on data in database. Also, there you can find all the data access model and entities definitions.</p>
+<p>Configuration for database is in <code>Liquibase</code> in resources. Currently, there is only <code>master.xml</code> which should be replaced with file containing all the files with changes set.</p>
+<h3 id="service">Service</h3>
+<p>Service is the core business logic in whole component. It contains how event should be published and consumed.</p>
+<h3 id="web">Web</h3>
+<p>Web contains <code>@Controllers</code> and all request and response definitions.</p>
+<h2 id="pipelines">Pipelines</h2>
+<h3 id="publishing-docker-images">Publishing Docker images</h3>
+<p>Publishing pipeline is triggered on pushes to develop (i.e. on merging pull requests). It builds docker image with tags based on commit tags and branch name and publishes it on Docker Hub.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/e-library-on-containers/e-library-on-containers/blob/develop/docs/articles/rentals.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

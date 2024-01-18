@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Identity service </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Identity service ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="identity-service">Identity service</h1>
+
+<h2 id="tech-stack">Tech stack</h2>
+<ul>
+<li>.NET 6</li>
+<li>ASP<span>.</span>NET Core</li>
+<li>Docker</li>
+</ul>
+<h2 id="main-libraries">Main libraries</h2>
+<ul>
+<li>Functionality:
+<ul>
+<li>MediatR</li>
+<li>CSharpFunctionalExtensions</li>
+<li>FunctionalValidation</li>
+<li>Dapper</li>
+<li>Npgsql</li>
+<li>DbUp</li>
+</ul>
+</li>
+<li>Testing
+<ul>
+<li>Machine.Specifications</li>
+<li>Microsoft.AspNetCore.Mvc.Testing</li>
+<li>Testcontainers</li>
+<li>NSubstitute</li>
+</ul>
+</li>
+</ul>
+<h2 id="architectural-approach">Architectural approach</h2>
+<p>Clean architecture was used an architectural approach to developing this service. Although one of its layers is called <em>Domain</em>, use of <em>Domain Driven Design</em> is not required. Nevertheless, some of its strategies were utilized here (i.e. value objects and business logic in domain model).</p>
+<h3 id="api">Api</h3>
+<p>Api layers contains all classes related to ASP<span>.</span>NET Core and exposing Web API, i.e. request validators, non-business request/response DTOs, pipeline/middleware configuration etc.</p>
+<h3 id="infrastructure">Infrastructure</h3>
+<p>Infrastructure layer contains logic related to communication with database (i.e. repository, read models) and authentication service. Read models are anemic models closely related to domain models, but lacking any rules and business logic. They are pure DTOs for easier data mapping from database. Authentication service is responsible for creating authentication bearer <em>JWT token</em> for user.</p>
+<h3 id="application">Application</h3>
+<p>Application layers defines CQRS queries and commands request, their handlers and DTOs and business logic interfaces (services and repositories) used within this layer.</p>
+<h3 id="domain">Domain</h3>
+<p>Domain layer contains definitions of domain models (<em>User</em> and <em>Role</em>), value objects related to these models and application errors (defining rules that must be followed.</p>
+<h3 id="database-updater">Database updater</h3>
+<p>Unrelated to Identity service in terms of code, this service is used for handling SQL scripts/migrations to database using <em>DbUp</em> library. Docker container checks schema state, applies SQL scripts/migrations if needed and exits.</p>
+<h2 id="coding-style">Coding style</h2>
+<p>Coding style heavily utilizes <em>CSharpFunctionalExtensions</em> library. There is no branching in business logic of this service apart from pipeline configuration and on the edges of service's logic (switch statement in controller on the user &lt;-&gt; api edge to specify error code and if checks on the api &lt;-&gt; database edge to encapsulate queried data into functional code.</p>
+<h2 id="tests">Tests</h2>
+<p>Testing in this project utilizes rarely used library and approach. <em>Machine.Specifications</em> is a Context/Specification testing framework using approach that is closely related to Behavior-Driven Development (<em>BDD</em>) because of conventions used when describing tests that resembles functionality and rules that affects it.</p>
+<p>Example:</p>
+<pre><code>static IService service;
+static bool result;
+
+class When_service_returns_false
+{
+    Establish ctx = () =&gt; service.Call().ReturnsForAnyArgs(false)
+
+    Because of = () =&gt; result = service.Call();
+
+    It should_return_false = () =&gt; results.ShouldBeFalse();
+}
+</code></pre>
+<h3 id="unit-tests">Unit tests</h3>
+<p>Only domain model entities and value objects are covered by unit tests. In current state, service doesn't have complicated dependencies and heavy logic in other layers, so such low coverage in unit tests is compensated in integration tests.</p>
+<h3 id="integration-tests">Integration tests</h3>
+<p>In case of this service, which works as a backbone of entire system (providing user authentication and authorization), intregation tests are or heavy importance. For quick and easy test runs, <em>Microsoft.AspNetCore.Mvc.Testing</em> is used for starting up entire API in-memory and <em>Testcontainers</em> runs <strong>PostgreSQL</strong> containers with applied schema migrations. Both of these resources are disposed when cleanin up after the test.</p>
+<h2 id="pipelines">Pipelines</h2>
+<h3 id="testing">Testing</h3>
+<p>Testing pipeline is triggered on pull requests containing changes to pipeline configuration or identity source code. It runs unit tests and integration tests after.</p>
+<h3 id="publishing-docker-images">Publishing Docker images</h3>
+<p>Publishing pipeline is triggered on pushes to develop (i.e. on merging pull requests). It builds docker image with tags based on commit tags and branch name and publishes it on Docker Hub.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/e-library-on-containers/e-library-on-containers/blob/develop/docs/articles/identity.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

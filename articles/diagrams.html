@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>eLibraryOnContainers </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="eLibraryOnContainers ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="elibraryoncontainers">eLibraryOnContainers</h1>
+
+<ul>
+<li><a href="#system-context-diagram">System Context Diagram</a></li>
+<li><a href="#container-diagram">Container Diagram</a></li>
+<li><a href="#component-diagrams">Component Diagrams</a>
+<ul>
+<li><a href="#api-gateway">API Gateway</a></li>
+<li><a href="#identity-service">Identity service</a></li>
+<li><a href="#rentals-service">Rentals service</a></li>
+<li><a href="#books-service">Books service</a></li>
+</ul>
+</li>
+<li><a href="#deployment-diagram">Deployment Diagram</a></li>
+</ul>
+<hr>
+<h2 id="system-context-diagram">System Context Diagram</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/RL9DRzim3BtxLt2-D06CzjBZKBJpWdL0i0vDYs6dW98PLmij1fISDFlrWoGdGx3Tp4VwVP2w3n4rZWDN7votF7O47zlRc_PstOgFz1xlgchvyFFfzMNzu-lButgv-BBuzdashwhe8XEiZY7I0DCmT0vxnG4sea1BPnJr-EHJ5vqd3LNrdJI8d-tODb2N0XccKMZ746KWhHke7y1E5SW6uXi1bwa6M6JhV9zb48p85gA04LKvNDVpamWxqq1Tk1tw-bmSuI2w9MrWG8zzeaea0QmmaurEV9CKdSBkxHYSHGOhEqS1q7UWv2DoI4eb_unOKfx_HSvHcEKGpdb2ShjtT03dDw839a508sC4tADZD4oJewHNWe4eACLHVR8sNCF4Mg9apfpclAUBD26AtVvZ_whuNo_UumnDI5P_ZqhmYSN0AefYJ_KPRLd63iJy8XiJOUhc6wJljCJ47aZtVnVg1kmfIrNFnENiqx9U0uLwdk5yg4luAk45AiPMkASJtwcVEzD_AzABWNloNNhNVm00" alt="diagram"></p>
+<p><strong>Level 1: System Context diagram</strong></p>
+<p>eLibraryOnContainers is a library managament system for librarians and online book rental service for personal users.</p>
+<p>Librarians have access to books collection that can be modified should any new book arrive or is lost/sold/given away. System allows for rentals monitoring and managing books stock by adding or removing physical copies of books.</p>
+<p>Personal users can browse available books, borrow a book if a physical copy is available and pick it up personally later. Moreover, users can manage their own rentals, extend due date or mark a borrowed book for return.</p>
+<!-- Azure Blob Storage will be used for storing static images for books. -->
+<h2 id="container-diagram">Container Diagram</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/hLVVRzis47xNNt4L2jW6x1Z3jfTXBUeuNfiYYPtONR4duoITPJOKgP2KNM_e_pwGb6JvL-fiVR4ftV7kk-zuTzGxRL2P8kF1AoPYNYG4lmz_wGz_cG-bCCW4gRT1yEhrrUZFw-7uRWfl85mQa-lV-ds5wukKcMKH5PfKB8KXOIvYcVLDaMEYVkxd78KrtcEn5Bs55AQdSyKCwNw6sf3g9xIoCXq6hn9QC47mn_XkDlWycevlH_0ZFRbtk2OjC-hz6ZJYnRyBHVs1_HtAB9FY8Yyo_lP0OsgamhJKlEGoAbySg7EPIjrN64NCP4ydn29bucifsmfhelieqeAZSXh7v5zmXIU5YJI2p4bnff_uN9DQqMdxkTGcLQIV-9vA8q5zcmxjvS7DuA_nfzdyy_Nim_ncz7vqTzNk185XXXFKXmaIXgd231PI0TsmIA7QZ4Kjrq4m8QMbQCU5DZ8ZrOLmM2x3BeG3g0GW5s2M1DmRwGANyf69r9b6YAHy12CXaah9zKNOgGnxVOQY2-5DjGxhXmsifNgqVZCKc5g3rfI6M79EiM5ITArVfY1VRZIBaKCiSqOQK2IWI1ZasleBfXjjA9jVoa8ag3Rj-ASkXCU23Zl_102mfQcjS-n2E9qCNCp-ADZbR4cG8HF0X26rm9Z0BD4u8cfYd0nZes7Dp18ARODOKmIHacljU7pjg-DDM1wpiBC784L3QznOxvDhUE-VB8ABkz7CsnrC9-vXA1LPoOCiZ6M1Sr3qL90ssYO0yrp9N34q1FRCiPWqa4XooOJHJIp-r5hcTh3S5rHGsvTJ5yBHYeI1gD3EftjxUnys1Vu4w8s8bqeAMTZSPLaXM8msVGsNLOsMBkjCiOI4OSQ6Vrqkmmxu9EtoL6dECMSDxIhIvncxjIUCDBWo0enZMGZZpr6kv8eb15YOfJLv07tBrW6egsWBAucQg18q6A5spYU-mAVtD_RfW-H90m8J2wco0v_Rfb3w_RP7d2kLBeINzly4PKwdvClflOIiWsBqRErLeZOoVjHdi-KHEQeyeE_nv44SytmkSSSXACAaYQFzC1fSTSw4iyS9hf1nZ1YtYJy3LeMgp6kzh7DRjZPRTNvr8h-bNfdXKhUPuu-uGf_ZQQviRxgKqZHIN1hmKN0krsM1rDtS1zmCn4x34ynMS1oj5PhlCLf18DjJVcocAppRN5UWpimsfgaYsv-J7QOEfj5_o7-pfbjruhM_vzY1v5TrubjxKykBvsMkjnlsAxoHR9Qv5cYtKW9CWBjUWRrVGUNkL1stlWNVWg05lHwClXfImaLVJLNezOBM_cMjZNil6b7PONVCUJYElb1ie0pFZHUxjaVNCk-2g-y9FY1t0N387eWxtlMIvGxJ0_76xSPF-a-Qt3pxC9jDfc77wJGkAiULWXPC9mEdwnIsCxlIT4Em2n-duxj-jQjLwn-Xue4mqR1GCZkrFMXLjm5GiZ1Cf0v0xNjl83w7P6TVSogSlMctrJotBMX1DGMTYLsOk-DoIu9BxzfzHu2H3Tk3gx4xnywmwzNEQYE8-huoKJ8fOl9t8P7O0wgBZ8wpFBYzdvH1DcmrvjEBi1qrq-mxBukpx5FEx0xp_plMNMkx3Vkx63zUNGwVi_EYW4jZjhHsMrTPD_iTxbWxmTMMWOGu6Ng-f8vRhaaTda5Yy8v4OZ_3_WK0" alt="diagram"></p>
+<p><strong>Level 2: Container diagram</strong></p>
+<p>Librarians and Customers can interact with system using <em>Single Page Application</em> written in Angular.</p>
+<p>All API calls are routed to appropriate services through <em>API Gateway</em> that handles user authentication using <em>Identity</em> API.</p>
+<p>System's business logic is divided into bounded contexts, each serving a specific subset of functionalities. Communication between contexts is <strong>strictly asynchronous</strong> (not in a meaning of asynchronous calls inside application but globally asynchronous using fire-and-forget event publishing pattern).</p>
+<p>In current state, system is based on contexts:</p>
+<ul>
+<li>Identity - responsible for managing user account and authentication</li>
+<li>Books - responsible for managing books catalog and physical copies collection</li>
+<li>Rentals - responsible for managing rentals and allowing users to borrow books</li>
+</ul>
+<!-- * Storage - responsible for managing books cover images stored in an external object storage -->
+<h2 id="component-diagrams">Component Diagrams</h2>
+<h2 id="api-gateway">API Gateway</h2>
+<p><em>API gateway</em> acts as a proxy exposing all functionatiles, allowing other services to be hidden behind it. Due to using <strong>Ocelot</strong> library, this service contains only configuration and pipeline definition, hence no diagram.</p>
+<h2 id="identity-service">Identity service</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/bLPDZzf84BtxLrIi743om65pMcrM8GpAi9eT64nsjIVKk0lJMhlQqrs6e2Z_VTNjJnZGR6wkxgfwpwzUOJvP5eRBF0lUAKgoKYByDlqmddxOJ7LUQ4BYtuFWtVlxsL_pwU8fXeyGxfaB--juRCHnb2hUbzlIeaaqCHAF4fsFkIo4DB-CYqoGQtwd4artEqryPmkZ6Equ5vRHZ2KUt9qDWuv02pQMcWbvL9pnwwuBRJarQ5-oAYLudFop-BhU_3rVFsmUPrzcJ_U3OH2muWoXVH-GIgH6vB3J1l1HROqmfmLDDR5GXCR27Smb4Yi-WKLpK0a6GNizI0NZKPmY22VBENofeZ22SFGqMyDHyHucyT87KstGtQnqoMX1P1aOV2dHiWNM88h2wC8emTW0MK2IXLR4DepWVQNMnx0I8XnsDEwt0rMJtCXj165BMGeMMs4zyB9IA7v-TD63pgG5aIIw9BQWQATDBbXfwcDrgeR3tdjlFkkIf32d5hSFMjCFX_0zW4xhWIXvxreOdMLed6Obxw4xyUgWvOkZIPRfemNdAw-KLIc18lzuienvE3o7gT_f7AfvqP-6CvWgPqyG927P2qeHU8_ATE8LmjgZDj9fr6EocNtZGOvI2TQEmv_rOzW-ho2hBDTg5a4ueqGKjio4iqcYyxmabVZ9m1RvY4YGj8ojfzKOveB0m4arf-SIZHjGx8IR4_ZO8KsVLt4LmOCWMGlWqfmXl0GNsZPYJ7MU2v9UmLgU-gZjMyVzpask1S9Z8zy5GgNmibQqmvbMoZSN_mUkAcbDVcjCtfTnfM1ZohWRXr_UNhmq-g0aMjYLbBYfYCoPtg0Rc6mCgYW5HH4SqAZToKKDkeq0EHdTCEqA2sqLQp-mrhJTQSle_EXjKhaWaJeUhMipzI-sxbQKHc2GZSA3oz86oa8AxbSutNu4mGgpxdVlrKv_jUX-hS8_uiNJ-66zNiRXyABasdvUBVDrbmYzXOgHf8MN4etotlVfLxg_AaagirJBqzNx1bto-VPuXiEBbDVxS3NjbgdhP9zzXdPkoLxFywnhfkdtV4NlpOeRJ6_okPN_5iwrXFDls0g5jB0pElTJElg_2i3QkKJO4oKHJEuNRXV2OV09IRgl_dy0" alt="diagram"></p>
+<p><strong>Level 3: Component diagram for <em>Identity</em> service</strong></p>
+<p><em>Identity</em> service acts as a guard for entire system, managing user accounts infomation, providing authentication and allowing (or restricting) authenticated users access to parts of the system.</p>
+<p><em>CQRS</em> (Command Query Responsibility Segregation) is used for reduced coupling between facade (controllers) and internal business logic services.</p>
+<p>According to <em>CQS</em> (Command-query separation) principles, in the system <em>Queries</em> retrieves data from database and processes it before returning it to user (without any side effects on system state) and <em>Commands</em> performs actions that changes state of the system without returning any data.</p>
+<h2 id="rentals-service">Rentals service</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/hLPDZnev4BtthwYqSW09wCFcjDgiGW1bPZKxmm3PKKx8tIx0EswNnn-3KBJ_VMKttJIaqUIG6owNgzvxzUpcatNCE5_Av9rGXVGSuO_9XspoOJsXKfD2vVvCadVlfxD_RYSFzqlu2EdEEMr_ppB3zgEjS3kVUukc8ELGkL51PUQyPjpybcd9L2W-50MfuOQK6rfjX4ERbSmwD1d7rx1dqrP_ILkocM5vBbpvCjA-b053lTzWoJWvXIucT6rhicvhqBx8AYMv6tzx-BfQFzskRjPtio-p-scldoHEE8dGq0KksDQm4ZPa0Ez4RfWvFAW9ASU4GcDX20jKZaaB5ishA319cjtUbZdSiyC0ql7y5hvKgtG0wUX-jeAzS3iOB-TnCI63OMT1tg459YKOVF5edGL7mBGsf8rW3kj65b1nJK8vcmxWVQNbnxJI8UsVO3nwzDYh91n0EdiDn79lOxiO_VinRMz4jimULB4pfCXRAAWilH85Su9KgrizbrQtQTupbI9hdeSEHtauSondDfASLyDOFjw5rGr9Rk5u232WiC0K1xqxM54m2GLfWHQ4sf0fBp6afz6ctJWCCduEfhUOZQVzDp6nxTPW629lu7NXOgzCI9OBATpXfq2UKAu_arUScKCDjWNoEEUq3zyJE7copWmr34c9fdNc58pJHUikGcCfQMyXND9eB8kAdvncK4QsZY0dUewiXTgE0kOE20ja_Anz5GXzbje8jMqun1p6BMX3_s8Hr86DeHB289evX3uTRPx8F9-rgGADPuC_bVLb5PfKloyTTQNsiWBOAhuyGJvMrpwNmkwgydD3t1UTvRibqcI58tCuawaEjgGoPy6veLV1qSB6goWNY-vg3QWM3KYZYNwp8CKpGh1xA1YiwZLdOO9jtOKwLxrRcCYz4ttrJlmI3ljmEOQavA6IyJgfa5cJggzbM1-VYvOUQJ_vBqaMA4_FRzUD-Menle1_BH_kivlLQhuC4mp7Eh8l_HuFzz_8FbdhcDxEhptTPPCVgpVPzIFUcBpY7uZ41ti0L_dKu7-kOtkxwnqDTpbUu32GECOmX3QEwUV91O96a8R6_7YptkBHMUIQJplK_Y7fx1FrT1t-9rGy_5tu7m00" alt="diagram"></p>
+<p><strong>Level 3: Component diagram for <em>Rentals</em> service</strong></p>
+<p><em>Rentals</em> service is responsible for all actions related to the rental of books. The service saves each borrowing as an event into the database and the worker creates a projection that.</p>
+<p>According to <em>CQS</em> (Command-query separation) principles, in the system <em>Queries</em> retrieves data from database and processes it before returning it to user (without any side effects on system state) and <em>Commands</em> performs actions that changes state of the system without returning any data.</p>
+<p>According to <em>Event Sourcing</em> pattern <em>Rentals Repository</em> is append only database in which none record can be edited. <em>Rentals READ Repository</em> is a projection, built by <em>Rentals worker</em> from aggregated events, that facilitates reading from the database.</p>
+<h2 id="books-service">Books service</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/fLPDRziu4BthLqo97cp0YGxjQT4MTHqZoI9D_DKDzcHGujWcId4KaehNMEn_Nr3KboqdAT2RE9oPzsRcSUolrd7ZYan5xwHELI4GFaq-nfEFwmbbEMdKxaiKlNj_DVthTl9mluJFm7REvVQFE3PyVxcLRbSaXKMJadQetMLAMUoAd0lp8SuLrpxvXKn9Nsn8kmkR6-dGnXct3aqiyDdVMHQr11gmM93Jw2xp8txjTKxMRGtQ9tNYyadHbcniU998bpsLjr-Yw6xyzyEFrVhnTdMplfjUJ--l1iCeSj8fXAPS499l3SzWGmRmJYQ6cyE3df1sN6eq5YxW6z5F2nRDiqmnYfgxmPOxtFF32DXuTWlNuSH6m2xlfolOIxU3yN9M7YPaqDyig71eWIi51fyAjCw28-1vRYWtaZkiWIoW5Zb9xImRmVlGoSyiD8aDMnhp0WiSXEf7mARFlgoai2LSQVq-PzsBibPk3phT6T9KM4WfomejK-uawGvQtT8EsbKoI7m_rY8P0Gkj4TpnXDkom5cOqd9-vqytf8I5CW2u5f3l3bQcN45AkKGBKc_8PAUmh1qrEmTja8ik_c0n7LyDtwJ1jrk3VcQYOlGhw2ty-XiLMd1p69Ie3NerBpQ4VoDebHMu-cX3Ig5f_5iJ6x45MdTi6Ij5-r8K5dNDrA0gUTUQOSC-r2EPdnsOS6IZC7S_OssBhBHCmcSz62mTpgLSXjAQdDMvJPeNYP9sLsQTLT_zjEVQacLS2zjfIZ3uQKtcYsLjW1kkHTaOO6FX0mGgz4_8lrSXNK0xHtvUe97OGbJdrn2kiShdi_SrCZnNYDVncN9AUVz6LTsNSW3Q0AyBxP9OJ_znWmo5v8xywBzNdwpvNe0AIwtHgLy5EkMvBRocJXu_9EZsYDhBfT9aUBdrLZeX4Bgmm9oiT6GEJGTQKxCGZqqpGyzIe8LDeLCFpPLqlccrrXr1nZNVIhrzPOFG9booOVHV52rGjLkv_m1_s33_FvSFz_7DQZLR-d9yKC-tqzGbQX7Qv6TPidYgj5H5jyudoYi1X-TyEf9vpUb4NPLhIxc1Efr3D-i9O7zaVTzZtBSZwkNpekTBbEiLynRVTXNz4jcUU-lVPNVyUy8Uotyhu6W42-J2miPGriNgnnw57U4q55uQJRzxpOzuiw6R9TfFspYtYxVn_efQ59dw7m00" alt="diagram"></p>
+<p><strong>Level 3: Component diagram for <em>Books</em> service</strong></p>
+<p><em>Books</em> service allows performing actions related to books (adding, deleting and editing books and their physical copies) and reading aggregated data from database.</p>
+<p><em>CQRS</em> (Command Query Responsibility Segregation) is used for reduced coupling between facade (controllers) and internal business logic services.</p>
+<p>According to <em>CQS</em> (Command-query separation) principles, in the system <em>Queries</em> retrieves data from database and processes it before returning it to user (without any side effects on system state) and <em>Commands</em> performs actions that changes state of the system without returning any data.</p>
+<p><em>RabbitMQ</em> is used to receive events about books rentals and returns from the Rentals service and about book data modifications taking place in the Books service. The contents of the Books Read database are updated on the basis of received messages.</p>
+<p><em>Books Read</em> database contains flattened data about the book and aggregated data about the number of copies available</p>
+<h2 id="deployment-diagram">Deployment Diagram</h2>
+<p><img src="https://www.plantuml.com/plantuml/svg/0/hPPDR-8m48RFHCf_yEO4KfeAjPT529L2rKLYMmH2UuoSU63TEaxMCNJHglzzPSVvW8JIqfvYFEDtdddjnDoa4WkvYPXjVQCyP1i2g3-wlXnT-sD8MBoBWCk1RTcMf981AYSHeNWjS8HMiK0mfO70OlV8Hp6Nc78GgLfKfliFCO5so2XmwI9df0SetQKI8iT5JhzFO4j360oS3lfdMwt3fO68Nr8GBd9kir7ZgbPHlqqvWRykSlJJ-oqZbgt0Gj8L3gLQOrkjLzjwLQYw230QkCXPWDWUAQ3JqWIxo1dozOPXWHQpeKcDmsSG1S5WeAPfXDVGGqfPEHJpi73eSYLYBe6JEZnVKwxWzVCOToldMMC9BtYdc6OJT9_zEfF9QDMHJC0dZBd8CKMyOK8zmjX9H4g0IoeLuyGCpmJCbHfst4GCObxdmum-2IhBqHXB7E0KJlCcSIhN0j9Uj-jrhxL-WxQ_IGYM-YZNQg1b5lkaDnSak31LthAfG3bqBCTvbsr173-dwhrKppF1jKOTLKyRE2tl3MUJzqFjcwq5liffhV-cpOS4UsrytE3iKExtyAaJAO1BpDJ6pRFHcKuOdRe19k0_OUK-JXBl2OkJpUQhTBk6x6iQXgswJ8ADRXa70PK__vmM53gpT-LzzxfNHizS6LEyyvVDRtPbifCdrezaFbEa51_oDC4TLUAMpe7voofxkM-AfY4XVn-TFOMzZrlbQwooLCRyP2CroV9SLajcOiURhSbKTto_kKniMjhIm3qkeuSKbL2JxZYxnylBimWL_rFC_u4iO5kB7u-__EdT_Tt3kAsdRe2JJSJ-0m00" alt="diagram"></p>
+<p><strong>Deployment diagram</strong></p>
+<p>Deployment diagram shows physical division of components throughout project's infrastructure. For testing environment, all components and databases are deployed as docker containers with specified image and version. Each container that is an internal part of this project is shown with its main artifact - service or library that is ran or executed as container's entrypoint.</p>
+<p>Remarks:</p>
+<p><em>Database updaters (for Books and Identity service) are infrastructure containers. They do not provide any business functionalities, they are only used for applying database migrations (they will not be included in production environment and are not part of system functionalities so they're not included on other diagrams). In other environments databases will be durable (saved between deployments) and migrations will be applied on these databases as a different deployment step, and not as docker containers, in final deployment.</em></p>
+<p><em>To minimize load on testing environment, write and read databases for each service are stored inside the same database container.</em></p>
+<p><em>Since RabbitMq and Postgres are third-party containers, their artifacts weren't included (their internal structure is not part of this project).</em></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/e-library-on-containers/e-library-on-containers/blob/develop/docs/articles/diagrams.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

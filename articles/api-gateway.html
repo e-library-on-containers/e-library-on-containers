@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API Gateway </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API Gateway ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api-gateway">API Gateway</h1>
+
+<p>API Gateway is an ASP.NET Core API utilizing Ocelot library as API Gateway. Using this service all resources are exposed through this API with clearly separated and descriptive <em>endpoints</em>, <em>authentication</em> and <em>authorization</em> guards.</p>
+<h2 id="api-routes">API Routes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Http method</th>
+<th style="text-align: left;">Route</th>
+<th style="text-align: center;">Guard*</th>
+<th style="text-align: center;">Minimum role</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/identity/auth</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Authenticate existing user</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/identity/register</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Register new user</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/identity/change-password</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">User</td>
+<td style="text-align: center;">Change current user password</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/books</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get all books</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/books/<strong>{ISBN}</strong></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get book</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/books</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Add new book</td>
+</tr>
+<tr>
+<td style="text-align: center;">DELETE</td>
+<td style="text-align: left;">/books</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Delete book</td>
+</tr>
+<tr>
+<td style="text-align: center;">PUT</td>
+<td style="text-align: left;">/books</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Update book</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/books-copies?isbn=<strong>{ISBN}<strong>&amp;isAvailable=</strong>{bool}</strong></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get book copies</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/books-copies/<strong>{id}</strong></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get book copy</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/books-copies</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Add book copy</td>
+</tr>
+<tr>
+<td style="text-align: center;">DELETE</td>
+<td style="text-align: left;">/books-copies</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Delete book copy</td>
+</tr>
+<tr>
+<td style="text-align: center;">PUT</td>
+<td style="text-align: left;">/books-copies</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Update book copy</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/books/get-preview</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Get books in preview</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/books/<strong>{isbn}</strong>/publish</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Publish book by ISBN</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/audiobooks</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Add new audiobook</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/audiobooks/<strong>{id}</strong></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get audiobook</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/audiobooks/<strong>{id}</strong>/publish</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Publish audiobook by ID</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/rentals</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">User</td>
+<td style="text-align: center;">Get user rents</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/rentals/rent</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">User</td>
+<td style="text-align: center;">Rent a book</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/rentals/<strong>{rentId}</strong>/return</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">User</td>
+<td style="text-align: center;">Return book</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/rentals/<strong>{rentId}</strong>/extend</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">User</td>
+<td style="text-align: center;">Extend due date</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/movies</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Add new movie</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/movies</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get all movies</td>
+</tr>
+<tr>
+<td style="text-align: center;">DELETE</td>
+<td style="text-align: left;">/movies/<strong>{id}</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Delete movie</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/movies/<strong>{id}</strong></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get movie</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/movies/<strong>{id}</strong>/publish</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Publish movie by ID</td>
+</tr>
+<tr>
+<td style="text-align: center;">GET</td>
+<td style="text-align: left;">/people</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Get all people</td>
+</tr>
+<tr>
+<td style="text-align: center;">POST</td>
+<td style="text-align: left;">/people</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Add new person</td>
+</tr>
+<tr>
+<td style="text-align: center;">DELETE</td>
+<td style="text-align: left;">/people/<strong>{id}</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Admin</td>
+<td style="text-align: center;">Delete person by ID</td>
+</tr>
+</tbody>
+</table>
+<p>*Endpoint requires user to be authenticated with Bearer token</p>
+<h2 id="routes-definition">Routes definition</h2>
+<p>Gateway configuration (i.e. routes) is defined in <strong>ocelot.json</strong>/<strong>ocelot.{Environment}.json</strong> file. Each route definition consists of downstream path (receiving API route), scheme that will be used for proxying request, receiver's service name (to be used by Consul service discovery), upstream path (gateway API route), upstream methods handled by this definition and authentication options that defines authentication guard for definition and required claims (authenticated user's properties, e.g. role).</p>
+<p>Additionally, Gateway utilizes Consul service discovery to dynamically resolve addresses, ensuring efficient and reliable communication with the registered services.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/e-library-on-containers/e-library-on-containers/blob/develop/docs/articles/api-gateway.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
