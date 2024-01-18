@@ -30,7 +30,22 @@ export class BookService {
             .then((response) => response.filter((book) => book.isAvailable))
             .then((response) => {
                 if (response.length === 0) {
-                    return Promise.reject('No free copies available');
+                    return Promise.reject(new Error('No free copies available'));
+                }
+                return response[0];
+            })
+            .catch((error) => {
+                return Promise.reject(error);
+            });
+    }
+
+    getBookCopy(isbn: string): Promise<BookCopy> {
+        return this.httpClient
+            .get(`${this.apiUrl}/books-copies?isbn=${isbn}`)
+            .then((response) => response.data as BookCopy[])
+            .then((response) => {
+                if (response.length === 0) {
+                    return Promise.reject(new Error('No copies available'));
                 }
                 return response[0];
             })

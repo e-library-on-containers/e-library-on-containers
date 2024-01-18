@@ -27,15 +27,22 @@ const LibraryComponent = () => {
 
     const rentBook = (isbn: string) => {
         bookService.getFreeBook(isbn)
-            .then((book: BookCopy) => {
-                rentalService.rentBook(book.id)
-                    .then(() => updateBooks());
-            })
+            .then((book: BookCopy) => rentalService.rentBook(book.id))
+            .then(() => updateBooks())
             .catch((err: AxiosError) => {
                 setError(err.name.toString());
             })
             .finally(() => setLoading(false));
     };
+
+    const borrowBook = (isbn: string) => {
+        bookService.getBookCopy(isbn)
+            .then((bookCopy: BookCopy) => rentalService.borrowBook(bookCopy.id))
+            .catch((err: AxiosError) => {
+                console.log(err)
+                setError(err.name.toString());
+            })
+    }
 
     const updateBooks = () => {
         bookService.getAllBooks()
@@ -54,8 +61,12 @@ const LibraryComponent = () => {
                 <SimpleGrid minChildWidth='200px' spacing='40px'>
                     {books.length === 0 ?
                         <h1>There are no books yet</h1> :
-                        books.map((book: Book) =>
-                            <LibraryBookTile key={book.id} book={book} isLoggedIn={jwt != null} onRentBook={rentBook}/>)}
+                        books.map((book: Book) => <LibraryBookTile
+                            key={book.id}
+                            book={book}
+                            isLoggedIn={jwt != null}
+                            onRentBook={rentBook}
+                            onBorrowBook={borrowBook}/>)}
                 </SimpleGrid>
             </ErrorWrapper>
         </SpinnerWrapper>

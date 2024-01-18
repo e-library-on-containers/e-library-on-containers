@@ -33,9 +33,9 @@ const BookTileComponent = (props: { book: Book | RentedBook }) => {
                 fallbackSrc={loadDefault()}
             />
             <Box style={bookDescription}>
-                <Text as="b" fontSize={'lg'}>{props.book.title}</Text>
+                <Text fontSize={'lg'} as="b" >{props.book.title}</Text>
                 <Text fontSize={'md'}>{props.book.authors}</Text>
-                <Text as="em" style={lessImportantText} fontSize={'sm'}>ISBN: {props.book.isbn}</Text>
+                <Text fontSize={'sm'} as="em" style={lessImportantText}>ISBN: {props.book.isbn}</Text>
             </Box>
         </>
     )

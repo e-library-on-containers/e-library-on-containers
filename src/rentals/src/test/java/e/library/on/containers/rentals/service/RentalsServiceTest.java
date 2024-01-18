@@ -5,7 +5,9 @@ import e.library.on.containers.rentals.events.BookRentedEvent;
 import e.library.on.containers.rentals.events.ReturnAwaitingApprovalEvent;
 import e.library.on.containers.rentals.exceptions.RentDoesNotExistException;
 import e.library.on.containers.rentals.exceptions.RentalForBookAlreadyExistsException;
+import e.library.on.containers.rentals.message.BorrowEventSender;
 import e.library.on.containers.rentals.message.RentalEventSender;
+import e.library.on.containers.rentals.repository.BorrowReadRepository;
 import e.library.on.containers.rentals.repository.RentalsEventRepository;
 import e.library.on.containers.rentals.repository.RentalsReadRepository;
 import e.library.on.containers.rentals.repository.entity.RentalEntity;
@@ -30,15 +32,17 @@ class RentalsServiceTest {
     private static final int TEST_BOOK_INSTANCE_ID = 1;
     private static final int TEST_DAYS = 30;
 
-    private final RentalsEventRepository eventRepository = mock(RentalsEventRepository.class);
-    private final RentalsReadRepository readRepository = mock(RentalsReadRepository.class);
+    private final RentalsEventRepository rentalsEventRepository = mock(RentalsEventRepository.class);
+    private final RentalsReadRepository rentalsReadRepository = mock(RentalsReadRepository.class);
+    private final BorrowReadRepository borrowReadRepository = mock(BorrowReadRepository.class);
     private final RentalEventSender rentalEventSender = mock(RentalEventSender.class);
-    private final RentalsService sut = new RentalsService(eventRepository, readRepository, rentalEventSender);
+    private final BorrowEventSender borrowEventSender = mock(BorrowEventSender.class);
+    private final RentalsService sut = new RentalsService(rentalsEventRepository, rentalsReadRepository, borrowReadRepository, rentalEventSender, borrowEventSender);
 
     @Test
     void givenBookInstance_WhenItIsNotRented_thenSentRentSuccessfully() {
         // GIVEN
-        when(readRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.empty());
+        when(rentalsReadRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.empty());
 
         // WHEN
         sut.rentBook(TEST_USER_ID, TEST_BOOK_INSTANCE_ID);
@@ -54,7 +58,7 @@ class RentalsServiceTest {
         // GIVEN
         final var borrowedBookRent = new RentalEntity();
 
-        when(readRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.of(borrowedBookRent));
+        when(rentalsReadRepository.findByBookInstanceIdAndRentalStateNot(TEST_BOOK_INSTANCE_ID, RentalState.RETURNED)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.rentBook(TEST_USER_ID, TEST_BOOK_INSTANCE_ID))
@@ -72,7 +76,7 @@ class RentalsServiceTest {
                 .dueDate(ZonedDateTime.now().plusDays(30))
                 .build();
 
-        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
+        when(rentalsReadRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN
         sut.returnBook(TEST_USER_ID, TEST_RENT_ID);
@@ -87,7 +91,7 @@ class RentalsServiceTest {
     @Test
     void givenBookInstance_WhenItIsNotRented_thenThrowExceptionOnReturning() {
         // GIVEN
-        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
+        when(rentalsReadRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.returnBook(TEST_USER_ID, TEST_RENT_ID))
@@ -105,7 +109,7 @@ class RentalsServiceTest {
                 .dueDate(ZonedDateTime.now().plusDays(30))
                 .build();
 
-        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
+        when(rentalsReadRepository.findById(TEST_RENT_ID)).thenReturn(Optional.of(borrowedBookRent));
 
         // WHEN
         sut.extendRent(TEST_USER_ID, TEST_RENT_ID, TEST_DAYS);
@@ -121,7 +125,7 @@ class RentalsServiceTest {
     @Test
     void givenBookInstance_WhenItIsNotRented_thenThrowExceptionOnExtending() {
         // GIVEN
-        when(readRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
+        when(rentalsReadRepository.findById(TEST_RENT_ID)).thenReturn(Optional.empty());
 
         // WHEN-THEN
         assertThatThrownBy(() -> sut.extendRent(TEST_USER_ID, TEST_RENT_ID, TEST_DAYS))

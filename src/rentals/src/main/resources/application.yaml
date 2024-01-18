@@ -27,7 +27,7 @@ spring:
         service-name: ${spring.application.name}
 
 rabbitmq:
-  topic-exchange:
+  rentals-exchange:
     name: "rentals"
   rent-queue:
     name: "rent"
@@ -37,6 +37,12 @@ rabbitmq:
     name: "awaiting"
   extend-queue:
     name: "extend"
+  borrows-exchange:
+    name: "borrows"
+  borrow-queue:
+    name: "borrow"
+  accept-queue:
+    name: "accept"
 
 logging:
   file:
@@ -47,7 +53,8 @@ logging:
       "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [LEVEL: %-5level] [CLASS: %-40logger{39}] %msg%n"
 
   level:
-    root: info
+    root: INFO
+    e.library.on.containers: DEBUG
 
   logback:
     rollingpolicy:

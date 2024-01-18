@@ -275,6 +275,45 @@
         "AllowedScopes": []
       }
     },
+    {
+      "DownstreamPathTemplate": "/api/rents/borrow",
+      "DownstreamScheme": "http",
+      "ServiceName": "rentals",
+      "UpstreamPathTemplate": "/rentals/borrow",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/rents/borrows",
+      "DownstreamScheme": "http",
+      "ServiceName": "rentals",
+      "UpstreamPathTemplate": "/rentals/borrows",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/rents/accept-borrow",
+      "DownstreamScheme": "http",
+      "ServiceName": "rentals",
+      "UpstreamPathTemplate": "/rentals/accept-borrow",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
     // Movies
     {
       "DownstreamPathTemplate": "/movies",
